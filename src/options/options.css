@@ -1,0 +1,603 @@
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400, 500;
+    font-stretch: 100%;
+    src: url(font.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-bg: #141414;
+        --text: rgba(255, 255, 255, 0.87);
+        --secondary-text: rgba(255, 255, 255, 0.55);
+        --tertiary-text: rgba(255, 255, 255, 0.7);
+        --red: 255, 124, 124;
+        --shadow-color: rgba(0, 0, 0, .7);
+        --btn-bg: #292929;
+        --btn-hover-bg: #3c3c3c;
+        --btn-active-bg: #424242;
+    }
+
+    :is(.popup, label) :is(button, input) {
+        --btn-bg: hsla(0, 5%, 100%, 0.1);
+        --btn-hover-bg: hsla(0, 5%, 100%, 0.2);
+        --btn-active-bg: hsla(0, 5%, 100%, 0.3);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --main-bg: #efefef;
+        --text: rgba(0, 0, 0, 0.87);
+        --secondary-text: rgba(0, 0, 0, 0.55);
+        --tertiary-text: rgba(0, 0, 0, 0.7);
+        --red: 195, 0, 0;
+        --shadow-color: rgba(0, 0, 0, .3);
+        --btn-bg: #fff;
+        --btn-hover-bg: #e0e0e0;
+        --btn-active-bg: #cfcfcf;
+    }
+
+    :is(.popup, label) :is(button, input) {
+        --btn-bg: rgba(0, 0, 0, 0.1);
+        --btn-hover-bg: rgba(0, 0, 0, 0.2);
+        --btn-active-bg: rgba(0, 0, 0, 0.3);
+    }
+}
+
+::selection {
+    background: var(--accent);
+    color: white;
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+}
+
+::placeholder {
+    color: var(--secondary-text);
+    opacity: 1;
+}
+
+span {
+    align-content: center;
+}
+
+h4 {
+    display: inline;
+    font-weight: 500;
+    color: var(--tertiary-text);
+    font-size: .9em;
+    margin-block: 0;
+    text-transform: uppercase;
+}
+
+svg {
+    display: block;
+    margin: auto;
+    fill: inherit;
+}
+
+body {
+    --accent: #3584e4;
+    position: relative;
+    font-family: 'Roboto';
+    background-color: var(--main-bg);
+    color: var(--text);
+    width: 375px;
+    min-width: 100%;
+    min-height: 543px;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    margin: 0;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+:root {
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-gutter: stable;
+}
+
+:root#textEditor {
+    overflow: hidden;
+    scrollbar-gutter: auto;
+}
+
+.hidden,
+.searchMode .otherWorks {
+    display: none !important;
+}
+
+.expandable {
+    transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.expandable:not(.expanded) {
+    height: 0 !important;
+}
+
+.expandable.expanded {
+    visibility: visible;
+    height: auto;
+}
+
+button,
+.button {
+    position: relative;
+    gap: 6px;
+    height: 38px;
+    min-width: 38px;
+    transition: background .15s;
+    display: flex;
+    background: var(--btn-bg) !important;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    border: none;
+    fill: var(--text);
+    box-sizing: border-box;
+    color: inherit;
+    text-align: initial;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    border-radius: 100px;
+    padding: initial;
+    text-decoration: none;
+}
+
+.button,
+button:not(label> :nth-child(2), .removeSetting) {
+    padding: 0 12px;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 1px 0, rgba(0, 0, 0, .1) 0 1px 3px 1px;
+}
+
+label :is(button, input) {
+    height: 30px !important;
+    min-width: 30px;
+}
+
+.iconButton {
+    border-radius: 50%;
+}
+
+button.filled {
+    --btn-hover-bg: #1472e4;
+    --btn-active-bg: #0b62cc;
+    background: var(--accent) !important;
+    color: #fff;
+    outline-offset: 2px !important;
+    fill: #fff !important;
+}
+
+button.tinted {
+    background: rgb(var(--btn-bg), 0.2) !important;
+    color: rgb(var(--btn-bg));
+    fill: rgb(var(--btn-bg));
+    outline-color: rgb(var(--btn-bg));
+}
+
+label > :nth-child(2),
+.removeSetting {
+    background: none !important;
+}
+
+label > :nth-child(2) {
+    outline: none !important;
+}
+
+:is(button:not(label > :nth-child(2), .removeSetting), .button, li):is(:hover, .focused):not(:focus-visible),
+label:hover {
+    background: var(--btn-hover-bg) !important;
+}
+
+:is(button:not(label > :nth-child(2), .removeSetting), .button, label):active:not(:focus-visible),
+label.open {
+    background: var(--btn-active-bg) !important;
+}
+
+label:has(:focus-visible:nth-child(2)) {
+    outline-offset: -2px;
+    border-radius: 12px;
+    background: var(--btn-bg) !important;
+    outline: 2px solid var(--accent);
+}
+
+header {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 12px;
+}
+
+header search {
+    position: initial;
+    display: flex;
+    background: none;
+    flex-grow: 1;
+    z-index: 1;
+    width: initial;
+}
+
+search {
+    position: relative;
+    width: 100%;
+}
+
+header .search {
+    position: absolute;
+    width: 90px !important;
+    transition: width .25s cubic-bezier(0.4, 0, 0.2, 1), background .15s !important;
+}
+
+.search {
+    padding-left: 35px !important;
+}
+
+.search:focus-visible {
+    width: 100% !important;
+}
+
+.search:not(:placeholder-shown) {
+    width: 100% !important;
+    padding-right: 12px !important;
+}
+
+.searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 0px;
+    cursor: text;
+    fill: var(--secondary-text);
+    width: 15px;
+    height: 100%;
+    pointer-events: none;
+}
+
+.clearSearch {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+    cursor: pointer;
+    transition: .15s;
+    fill: var(--secondary-text);
+    width: 20px;
+    height: 100%;
+}
+
+.clearSearch:hover {
+    opacity: .75 !important;
+}
+
+input[type="text"]:not(:placeholder-shown)~.searchIcon,
+input[type="text"]:placeholder-shown+.clearSearch {
+    display: none;
+}
+
+section {
+    background: var(--btn-bg);
+    margin-top: 56px;
+    border-radius: 12px;
+    overflow: clip;
+    box-shadow: rgba(0, 0, 0, .1) 0 1px 1px 0,rgba(0, 0, 0, .1) 0 1px 3px 1px;
+}
+
+section>h4,
+label>h4 {
+    padding-left: 12px;
+}
+
+section>h4 {
+    position: absolute;
+    margin-top: -32px;
+}
+
+label>h4 {
+    padding: initial;
+}
+
+label {
+    min-height: 30px;
+    padding: 8px 12px;
+    display: flex;
+    cursor: pointer;
+    transition: background .15s;
+    border-top: 1px solid var(--btn-hover-bg);
+    user-select: none;
+}
+
+label[section="header"] {
+    pointer-events: none;
+    align-items: center;
+}
+
+section>label:is(:first-of-type, .tprBorder) {
+    border-top: 1px solid transparent;
+}
+
+:is(button, a, input):focus-visible {
+    outline-offset: -2px;
+}
+
+label>span {
+    flex-grow: 1;
+    margin-right: 12px;
+    min-width: 0;
+    overflow-wrap: break-word;
+}
+
+label> :is(input, button) {
+    flex-shrink: 0;
+}
+
+.expandable label {
+    padding-left: 36px;
+}
+
+.expandable .expandable:not([matcher]) label {
+    padding-left: 71px !important;
+}
+
+.subLabel {
+    display: block;
+    font-size: .85rem;
+    color: var(--secondary-text);
+    margin: 0;
+    margin-top: 6px;
+}
+
+[type="number"] {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    height: 38px;
+    width: 32px;
+    background: none;
+    color: inherit;
+    text-align: end;
+    padding: 0;
+    cursor: text;
+    -moz-appearance: textfield;
+}
+
+[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+.numInputBtn:before,
+.numInputBtn:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 2px;
+    background: var(--text);
+}
+
+.minus {
+    margin-right: 6px;
+    margin-left: 12px;
+}
+
+.plus {
+    margin: 0;
+}
+
+.plus::after {
+    transform: rotate(90deg);
+}
+
+[type="checkbox"] {
+    appearance: none;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    width: 37.5px;
+    height: 24px !important;
+    cursor: pointer;
+    margin: 3px 0;
+    outline-offset: 2px !important;
+    border-radius: 100px;
+}
+
+[type="checkbox"]:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    border-radius: 100px;
+    clear: both;
+    background: var(--btn-hover-bg);
+    transition: background-color .15s;
+}
+
+[type="checkbox"]:checked:after {
+    background: #35e453;
+}
+
+[type="checkbox"]:before {
+    content: '';
+    height: 18px;
+    display: block;
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 2px 3px 0 rgba(0, 0, 0, .2);
+    animation: knob-left 0.25s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+[type="checkbox"]:checked:before {
+    animation: knob-right 0.25s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@keyframes knob-left {
+    0% {
+        left: initial;
+        right: 3px;
+        width: 18px;
+    } 50% {
+        width: calc(100% - 6px);
+    }
+    100% {
+        width: 18px;
+    }
+}
+
+@keyframes knob-right {
+    0% {
+        width: 18px;
+    } 
+    50% {
+        width: calc(100% - 6px);
+    }
+    100% {
+        left: initial;
+        right: 3px;
+        width: 18px
+    }
+}
+
+input[type="text"] {
+    width: 100%;
+    cursor: text;
+}
+
+input[type="text"]:invalid {
+    color: rgb(var(--red));
+}
+
+.rotableArrow {
+    width: 24px;
+    transition: transform 0.15s ease-in-out;
+}
+
+:is(.open, [rotated]) .rotableArrow {
+    transform: rotateZ(180deg);
+}
+
+button[placeholder] {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+button[placeholder]:is(:not([value]), [value=""])::before {
+    content: attr(placeholder);
+}
+
+button[placeholder]::before {
+    content: attr(value);
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+button[placeholder]:is(:not([value]), [value=""]) + .removeSetting {
+    display: none;
+}
+
+.removeSetting {
+    transition: opacity .15s;
+    width: 20px !important;
+    height: 20px !important;
+    padding: 0 !important;
+    min-width: 0;
+    margin: 5px 0 0 6px;
+    outline-offset: 2px !important;
+}
+
+.removeSetting:hover {
+    opacity: .75;
+}
+
+textarea {
+    position: fixed;
+    inset: 0;
+    resize: none;
+    white-space: pre;
+    background: var(--btn-bg);
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    padding: 12px;
+    field-sizing: content;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.textEditor {
+    background: var(--btn-bg);
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    right: 0px;
+    overflow: hidden;
+    position: fixed;
+    top: 0px !important;
+    border: none;
+    border-radius: 0;
+    max-height: initial;
+}
+
+.noResults {
+    position: fixed;
+    font-size: 22px;
+    text-align: center;
+    align-content: center;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.38;
+}
+
+section:not(.hidden)~.noResults {
+    display: none !important;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    transition: 1.0s;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--btn-hover-bg);
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: 1.0s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--btn-active-bg);
+    transition: 0.3s;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--btn-active-bg);
+}
+
+::-webkit-scrollbar-corner {
+    background: none;
+}

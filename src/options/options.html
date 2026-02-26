@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Options menu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="options.css">
+  <link rel="stylesheet" href="popup-elements/popup-elements.css">
+</head>
+<body>
+  <header>
+    <search>
+      <input class="search button" placeholder="Search" type="text">
+      <svg class="clearSearch" viewBox="0 0 24 24">
+        <path
+          d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+        </path>
+      </svg>
+      <svg class="searchIcon" viewBox="0 0 17 17">
+        <path
+          d="M.136 6.975c0 .896.17 1.738.508 2.528a6.58 6.58 0 0 0 3.481 3.481c.786.335 1.63.502 2.533.502.69 0 1.35-.102 1.979-.307a6.519 6.519 0 0 0 1.733-.862l3.814 3.825c.11.103.23.178.36.226.129.048.262.072.399.072.3 0 .547-.1.738-.298.192-.198.287-.448.287-.748a1.068 1.068 0 0 0-.287-.739l-3.794-3.804c.404-.54.718-1.14.944-1.8.225-.66.338-1.351.338-2.076 0-.902-.17-1.746-.508-2.533a6.64 6.64 0 0 0-1.4-2.076A6.52 6.52 0 0 0 9.186.961 6.348 6.348 0 0 0 6.658.454c-.903 0-1.747.169-2.533.507A6.597 6.597 0 0 0 2.05 2.366 6.597 6.597 0 0 0 .644 4.442a6.337 6.337 0 0 0-.508 2.533Zm1.58 0a4.885 4.885 0 0 1 1.44-3.496 5.036 5.036 0 0 1 1.58-1.062 4.829 4.829 0 0 1 1.922-.384c.683 0 1.323.128 1.917.384.595.257 1.12.61 1.574 1.062.455.45.81.975 1.067 1.574.256.598.384 1.239.384 1.922 0 .684-.128 1.323-.384 1.918a5.01 5.01 0 0 1-1.067 1.574 5.01 5.01 0 0 1-1.574 1.066 4.792 4.792 0 0 1-1.917.385 4.829 4.829 0 0 1-1.923-.385 4.993 4.993 0 0 1-2.64-2.64 4.848 4.848 0 0 1-.38-1.918Z">
+        </path>
+      </svg>
+    </search>
+    <a class="button" id="donate" href="https://ko-fi.com/pedrosou" rel="noreferrer" target="_blank">
+      <svg width="19px" height="100%" viewBox="0 0 19 19">
+        <path style="stroke:none;fill-rule:nonzero;fill-opacity:1;"
+          d="M 17.457031 2.734375 C 16.460938 1.738281 15.132812 1.1875 13.722656 1.1875 C 12.3125 1.1875 10.988281 1.738281 9.992188 2.734375 L 9.5 3.226562 L 9.007812 2.734375 C 8.011719 1.738281 6.6875 1.1875 5.277344 1.1875 C 3.867188 1.1875 2.539062 1.738281 1.542969 2.734375 C -0.515625 4.792969 -0.515625 8.140625 1.542969 10.199219 L 8.917969 17.574219 C 9.039062 17.695312 9.1875 17.769531 9.347656 17.796875 C 9.398438 17.808594 9.453125 17.8125 9.503906 17.8125 C 9.714844 17.8125 9.921875 17.734375 10.082031 17.574219 L 17.457031 10.199219 C 19.515625 8.140625 19.515625 4.792969 17.457031 2.734375 Z M 16.304688 9.046875 L 9.5 15.847656 L 2.695312 9.046875 C 1.273438 7.625 1.273438 5.308594 2.695312 3.886719 C 3.386719 3.199219 4.300781 2.820312 5.277344 2.820312 C 6.25 2.820312 7.167969 3.199219 7.855469 3.886719 L 8.921875 4.953125 C 9.230469 5.261719 9.769531 5.261719 10.078125 4.953125 L 11.144531 3.886719 C 11.832031 3.199219 12.75 2.820312 13.722656 2.820312 C 14.699219 2.820312 15.613281 3.199219 16.304688 3.886719 C 17.726562 5.308594 17.726562 7.625 16.304688 9.046875 Z M 16.304688 9.046875 " />
+      </svg>
+      Donate
+    </a>
+    <button class="openPage"
+      chrome="https://chromewebstore.google.com/detail/youtube-tweaks/oeakphpfoaeggagmgphfejmfjbhjfhhh/reviews"
+      firefox="https://addons.mozilla.org/en-US/firefox/addon/youtube-tweaks/" rel="noreferrer" target="_blank"
+      edge="https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh"
+      rel="noreferrer" target="_blank">
+      <svg width="21px" height="100%" viewBox="0 0 21 21">
+        <path
+          style="fill:none;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter;stroke:var(--text);stroke-opacity:1;stroke-miterlimit:10;"
+          d="M 7.660714 10.102679 L 11.758929 4 C 12.160714 3.401786 13.160714 3 13.959821 3.303571 C 14.861607 3.602679 15.459821 4.602679 15.258929 5.5 L 14.758929 8.700893 C 14.660714 9.401786 15.160714 9.901786 15.758929 9.901786 L 19.758929 9.901786 C 21.258929 9.901786 22.178571 11.053571 21.660714 12.5 C 21.138393 13.950893 20.678571 16.553571 19.258929 18.803571 C 18.611607 19.830357 17.897321 20.553571 16.678571 20.553571 C 12.678571 20.553571 6.660714 20.553571 6.660714 20.553571 "
+          transform="matrix(0.875,0,0,0.875,0,0)" />
+        <path
+          style="fill:none;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter;stroke:var(--text);stroke-opacity:1;stroke-miterlimit:4;"
+          d="M 2.178571 10.553571 C 2.178571 10 2.629464 9.553571 3.178571 9.553571 L 6.678571 9.553571 C 7.232143 9.553571 7.678571 10 7.678571 10.553571 L 7.678571 20.553571 L 3.178571 20.553571 C 2.629464 20.553571 2.178571 20.102679 2.178571 19.553571 Z M 2.178571 10.553571 "
+          transform="matrix(0.875,0,0,0.875,0,0)" />
+      </svg>
+      Rate
+    </button>
+  </header>
+  <section class="otherWorks">
+    <h4>My other work</h4>
+    <label class="openPage"
+      chrome="https://chromewebstore.google.com/detail/reddit-multi-column/cnmkjpfehcebihkadcikjgkoefjcknpm"
+      firefox="https://addons.mozilla.org/firefox/addon/reddit-multi-column/"
+      edge="https://microsoftedge.microsoft.com/addons/detail/reddit-multicolumn/ehpdofagnjlobaopngfnbhgodnbeompp">
+      <span>Reddit Multi-Column <span class="subLabel">Displays posts in multiple columns.</span>
+      </span>
+      <button class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+          <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0" />
+          <path
+            d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1 1 1 0 0 0 1-1z" />
+        </svg>
+      </button>
+    </label>
+  </section>
+  <section>
+    <h4>Video grid</h4>
+    <label>
+      <span>Items per row<span class="subLabel">Control how many videos, shorts and posts appear per row.</span></span>
+      <input type="checkbox" id="videosPerRow">
+    </label>
+    <div class="expandable">
+      <label section="header">
+        <h4>Videos</h4>
+      </label>
+      <label section="content">
+        <span>Maximum number of columns</span>
+        <button class="selectMenu openPopup" id="maxNumOfColumns">
+          <span>6</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="1">1</li>
+            <li value="2">2</li>
+            <li value="3">3</li>
+            <li value="4">4</li>
+            <li value="5">5</li>
+            <li value="6" class="selected">6</li>
+            <li value="7">7</li>
+            <li value="8">8</li>
+            <li value="9">9</li>
+            <li value="10">10</li>
+            <li value="11">11</li>
+            <li value="12">12</li>
+            <li value="13">13</li>
+            <li value="14">14</li>
+            <li value="15">15</li>
+          </ul>
+        </button>
+      </label>
+      <label section="content">
+        <span>Minimum column width (px)</span>
+        <input type="number" id="minColumnWidth" value="270">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label section="header">
+        <h4>Shorts</h4>
+      </label>
+      <label section="content">
+        <span>Maximum number of columns</span>
+        <button class="selectMenu openPopup" id="maxNumOfColumns2">
+          <span>12</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="1">1</li>
+            <li value="2">2</li>
+            <li value="3">3</li>
+            <li value="4">4</li>
+            <li value="5">5</li>
+            <li value="6">6</li>
+            <li value="7">7</li>
+            <li value="8">8</li>
+            <li value="9">9</li>
+            <li value="10">10</li>
+            <li value="11">11</li>
+            <li value="12" class="selected">12</li>
+          </ul>
+        </button>
+      </label>
+      <label section="content">
+        <span>Minimum column width (px)</span>
+        <input type="number" id="minColumnWidth2" value="170">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label section="header">
+        <h4>Posts</h4>
+      </label>
+      <label section="content">
+        <span>Maximum number of columns</span>
+        <button class="selectMenu openPopup" id="maxNumOfColumns3">
+          <span>6</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="1">1</li>
+            <li value="2">2</li>
+            <li value="3">3</li>
+            <li value="4">4</li>
+            <li value="5">5</li>
+            <li value="6" class="selected">6</li>
+          </ul>
+        </button>
+      </label>
+      <label class="videosPerRow" section="content">
+        <span>Minimum column width (px)</span>
+        <input type="number" id="minColumnWidth3" value="326">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Hide profile pictures</span>
+      <input type="checkbox" id="hideProfilePictures">
+    </label>
+    </div>
+    <label>
+      <span>Decrease font size</span>
+      <input type="checkbox" id="decreaseFontSize">
+    </label>
+    <label>
+      <span>Fix missaligned videos <span class="subLabel">Adblockers can cause this issue.</span>
+      </span>
+      <input type="checkbox" id="gridFix">
+    </label>
+  </section>
+  <section>
+    <h4>Homepage</h4>
+    <label>
+      <span>Hide Shorts and other items </span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Shorts</span>
+        <input type="checkbox" id="hideShorts">
+      </label>
+      <label>
+        <span>Watched videos</span>
+        <button class="selectMenu openPopup" id="hideWatchVideos">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="All videos">Watched %: 0-100</li>
+            <li value="50-100%">Watched %: 50-100</li>
+            <li value="70-100%">Watched %: 70-100</li>
+            <li value="75-100%">Watched %: 75-100</li>
+            <li value="80-100%">Watched %: 80-100</li>
+            <li value="85-100%">Watched %: 85-100</li>
+            <li value="90-100%">Watched %: 90-100</li>
+            <li value="95-100%">Watched %: 95-100</li>
+            <li value="Only fully-watched videos">Watched %: 100</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Mixes</span>
+        <input type="checkbox" id="hideMixes">
+      </label>
+      <label>
+        <span>Live streams</span>
+        <button class="selectMenu openPopup" id="hideLiveStreams">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="current">Current</li>
+            <li value="completed">Completed (requires refresh)</li>
+            <li value="both">Both</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Upcoming videos</span>
+        <input type="checkbox" id="hideUpcoming">
+      </label>
+      <label>
+        <span>Topic bar</span>
+        <input type="checkbox" id="hideRecommendationBar">
+      </label>
+      <label>
+        <span>'Latest YouTube Posts'</span>
+        <input type="checkbox" id="hideLatestYouTubePosts">
+      </label>
+    </div>
+    <label>
+      <span>Dim watched videos</span>
+      <button class="selectMenu openPopup" id="dimWatchVideos">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="dimAllVideos">Watched %: 0-100</li>
+          <li value="50-100%">Watched %: 50-100</li>
+          <li value="70-100%">Watched %: 70-100</li>
+          <li value="75-100%">Watched %: 75-100</li>
+          <li value="80-100%">Watched %: 80-100</li>
+          <li value="85-100%">Watched %: 85-100</li>
+          <li value="90-100%">Watched %: 90-100</li>
+          <li value="95-100%">Watched %: 95-100</li>
+          <li value="dimFullyWatchVideos">Watched %: 100</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Video opacity</span>
+        <input type="number" id="watchVideoOpacity" step="0.01" min="0" max="1" value="0.3">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Navigate to Homepage</span>
+      <button class="keyBinder openPopup" placeholder="Set hotkey" id="redToHomeHotkey">
+      </button>
+      <button class="removeSetting">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+          </path>
+        </svg>
+      </button>
+    </label>
+  </section>
+  <section>
+    <h4>Subscriptions page</h4>
+    <label>
+      <span>Hide Shorts and other items</span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Shorts</span>
+        <input type="checkbox" id="hideShorts2">
+      </label>
+      <label>
+        <span>Watched videos</span>
+        <button class="selectMenu openPopup" id="hideWatchVideos2">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="All videos">Watched %: 0-100</li>
+            <li value="50-100%">Watched %: 50-100</li>
+            <li value="70-100%">Watched %: 70-100</li>
+            <li value="75-100%">Watched %: 75-100</li>
+            <li value="80-100%">Watched %: 80-100</li>
+            <li value="85-100%">Watched %: 85-100</li>
+            <li value="90-100%">Watched %: 90-100</li>
+            <li value="95-100%">Watched %: 95-100</li>
+            <li value="Only fully-watched videos">Watched %: 100</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Live streams</span>
+        <button class="selectMenu openPopup" id="hideLiveStreams2">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="current">Current</li>
+            <li value="completed">Completed (requires refresh)</li>
+            <li value="both">Both</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Upcoming videos</span>
+        <input type="checkbox" id="hideUpcoming2">
+      </label>
+    </div>
+    <label>
+      <span>Dim watched videos</span>
+      <button class="selectMenu openPopup" id="dimWatchVideos2">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="dimAllVideos">Watched %: 0-100</li>
+          <li value="50-100%">Watched %: 50-100</li>
+          <li value="70-100%">Watched %: 70-100</li>
+          <li value="75-100%">Watched %: 75-100</li>
+          <li value="80-100%">Watched %: 80-100</li>
+          <li value="85-100%">Watched %: 85-100</li>
+          <li value="90-100%">Watched %: 90-100</li>
+          <li value="95-100%">Watched %: 95-100</li>
+          <li value="dimFullyWatchVideos">Watched %: 100</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Video opacity</span>
+        <input type="number" id="watchVideoOpacity2" step="0.01" min="0" max="1" value="0.3">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Navigate to Subscriptions page</span>
+      <button class="keyBinder openPopup" placeholder="Set hotkey" id="redToSubsHotkey">
+      </button>
+      <button class="removeSetting">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+          </path>
+        </svg>
+      </button>
+    </label>
+  </section>
+  <section>
+    <h4>Channel page</h4>
+    <label>
+      <span>Default to Videos tab</span>
+      <input type="checkbox" id="videosAsDefaultTab">
+    </label>
+    <label>
+      <span>Hide Shorts and other items</span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Home tab: Shorts</span>
+        <input type="checkbox" id="hideShorts3">
+      </label>
+      <label>
+        <span>Videos tab: Watched videos</span>
+        <button class="selectMenu openPopup" id="hideWatchVideos5">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="All videos">Watched %: 0-100</li>
+            <li value="50-100%">Watched %: 50-100</li>
+            <li value="70-100%">Watched %: 70-100</li>
+            <li value="75-100%">Watched %: 75-100</li>
+            <li value="80-100%">Watched %: 80-100</li>
+            <li value="85-100%">Watched %: 85-100</li>
+            <li value="90-100%">Watched %: 90-100</li>
+            <li value="95-100%">Watched %: 95-100</li>
+            <li value="Only fully-watched videos">Watched %: 100</li>
+          </ul>
+        </button>
+      </label>
+    </div>
+    <label>
+      <span>Dim watched videos</span>
+      <button class="selectMenu openPopup" id="dimWatchVideos5">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="dimAllVideos">Watched %: 0-100</li>
+          <li value="50-100%">Watched %: 50-100</li>
+          <li value="70-100%">Watched %: 70-100</li>
+          <li value="75-100%">Watched %: 75-100</li>
+          <li value="80-100%">Watched %: 80-100</li>
+          <li value="85-100%">Watched %: 85-100</li>
+          <li value="90-100%">Watched %: 90-100</li>
+          <li value="95-100%">Watched %: 95-100</li>
+          <li value="dimFullyWatchVideos">Watched %: 100</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Video opacity</span>
+        <input type="number" id="watchVideoOpacity5" step="0.01" min="0" max="1" value="0.3">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+  </section>
+  <section>
+    <h4>Video player</h4>
+    <label>
+      <span>Default video quality</span>
+      <button class="selectMenu openPopup" id="videoQuality">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="highres">4320p (8K)</li>
+          <li value="hd2160">2160p (4K)</li>
+          <li value="hd1440">1440p (HD)</li>
+          <li value="hd1080">1080p (HD)</li>
+          <li value="hd720">720p</li>
+          <li value="large">480p</li>
+          <li value="medium">360p</li>
+          <li value="small">240p</li>
+          <li value="tiny">144p</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Fallback to <span class="subLabel">If the target quality isn't available.</span></span>
+        <button class="selectMenu openPopup" id="vqFallback">
+          <span>Next lowest quality</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="highest">Next highest quality</li>
+            <li value="lowest" class="selected">Next lowest quality</li>
+          </ul>
+        </button>
+      </label>
+    </div>
+    <label>
+      <span>Default video speed</span>
+      <input type="checkbox" id="videoSpeed">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Speed</span>
+        <input type="number" id="vsSpeed" min="0" value="1.5" step="0.05">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Per-channel video speed</span>
+      <input type="checkbox" id="perChannelVideoSpeed">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Saved speeds</span>
+        <button class="list openPopup" listType="text+number" enablesearch number-placeholder="1.5" number-title="Speed" number-min="0" number-step="0.05" text-placeholder="Channel name" text-title="Exact, case-sensitive match" id="perChannelSpeeds">
+          <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M4 4C4 2.34315 5.34315 1 7 1H17C18.6569 1 20 2.34315 20 4V20.9425C20 22.6114 18.0766 23.5462 16.7644 22.5152L12 18.7717L7.23564 22.5152C5.92338 23.5462 4 22.6114 4 20.9425V4ZM7 3C6.44772 3 6 3.44772 6 4V20.9425L12 16.2283L18 20.9425V4C18 3.44772 17.5523 3 17 3H7Z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Player UI: Show channel speed button</span>
+        <input type="checkbox" id="channelSpeedButton" checked>
+      </label>
+      <label>
+        <span>Set channel speed</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="setChannelSpeedHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+    </div>
+    <label>
+      <span>Scroll speed over video player</span>
+      <input type="checkbox" id="changeSpeedOnScroll">
+    </label>
+    <div class="expandable">
+      <label title="Negative number = reversed mouse wheel direction">
+        <span>Speed change step (x)</span>
+        <input type="number" id="speedChangePerScroll" step="0.01" value="0.05">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Require holding</span>
+        <button class="selectMenu openPopup" id="changeSpeedOnScrollModifier">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="1">Left mouse button</li>
+            <li value="2">Right mouse button</li>
+            <li value="ctrlKey">Ctrl</li>
+            <li value="shiftKey">Shift</li>
+            <li value="altKey">Alt</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Return to normal speed</span>
+        <button class="selectMenu openPopup" id="resetSpeedOnPlayerClick">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="leftClick">Left-click</li>
+            <li value="rightClick">Right-click</li>
+            <li value="middleClick">Middle-click</li>
+          </ul>
+        </button>
+      </label>
+      <div class="expandable">
+        <label>
+            <span>Require holding</span>
+            <button class="selectMenu openPopup" id="resetSpeedOnPlayerClickModifier">
+              <span>Off</span>
+              <svg class="rotableArrow" viewBox="0 0 24 24">
+                <path
+                  d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+              </svg>
+              <ul>
+                <li value>Off</li>
+                <li value="1">Left mouse button</li>
+                <li value="2">Right mouse button</li>
+                <li value="ctrlKey">Ctrl</li>
+                <li value="shiftKey">Shift</li>
+                <li value="altKey">Alt</li>
+              </ul>
+            </button>
+          </label>
+      </div>
+    </div>
+    <label>
+      <span>Scroll volume over video player</span>
+      <input type="checkbox" id="changeVolOnScroll">
+    </label>
+    <div class="expandable">
+      <label title="Negative number = reversed mouse wheel direction">
+        <span>Volume change step (%)</span>
+        <input type="number" id="volChangePerScroll" step="1" value="5">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Require holding</span>
+        <button class="selectMenu openPopup" id="changeVolOnScrollModifier">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="1">Left mouse button</li>
+            <li value="2">Right mouse button</li>
+            <li value="ctrlKey">Ctrl</li>
+            <li value="shiftKey">Shift</li>
+            <li value="altKey">Alt</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Toggle mute/unmute</span>
+        <button class="selectMenu openPopup" id="toggleMuteOnPlayerClick">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="leftClick">Left-click</li>
+            <li value="rightClick">Right-click</li>
+            <li value="middleClick">Middle-click</li>
+          </ul>
+        </button>
+      </label>
+      <div class="expandable">
+        <label>
+          <span>Require holding</span>
+          <button class="selectMenu openPopup" id="toggleMuteOnPlayerClickModifier">
+            <span>Off</span>
+            <svg class="rotableArrow" viewBox="0 0 24 24">
+              <path
+                d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+            </svg>
+            <ul>
+              <li value>Off</li>
+              <li value="1">Left mouse button</li>
+              <li value="2">Right mouse button</li>
+              <li value="ctrlKey">Ctrl</li>
+              <li value="shiftKey">Shift</li>
+              <li value="altKey">Alt</li>
+            </ul>
+          </button>
+        </label>
+      </div>
+    </div>
+    <label>
+      <span>Seek by scrolling over video player</span>
+      <input type="checkbox" id="seekOnScroll">
+    </label>
+    <div class="expandable">
+      <label title="Negative number = reversed mouse wheel direction">
+        <span>Forward (seconds)</span>
+        <input type="number" id="seekOnScrollFtime" step="1" value="5">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label title="Negative number = reversed mouse wheel direction">
+        <span>Backward (seconds)</span>
+        <input type="number" id="seekOnScrollBtime" step="1" value="5">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Require holding</span>
+        <button class="selectMenu openPopup" id="seekOnScrollModifier">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="1">Left mouse button</li>
+            <li value="2">Right mouse button</li>
+            <li value="ctrlKey">Ctrl</li>
+            <li value="shiftKey">Shift</li>
+            <li value="altKey">Alt</li>
+          </ul>
+        </button>
+      </label>
+      </label>
+    </div>
+    <label>
+      <span>Video focus <span class="subLabel">Darkens everything around the player except the chat when hovering
+          it.</span>
+      </span>
+      <input type="checkbox" id="videoFocus">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Opacity</span>
+        <input type="number" id="vfOpacity" min="0" max="1" step="0.01" value="0.9">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Blur (px)</span>
+        <input type="number" id="vfBlur" min="0" value="0">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Volume boost</span>
+      <input type="checkbox" id="volumeBoost">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Boosting level (x)</span>
+        <input type="number" id="boostingLevel" step="1" value="2" min="2">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Toggle boost by right clicking the volume button</span>
+        <input type="checkbox" id="toggleVolBoost" checked>
+      </label>
+      <label>
+        <span>Toggle volume boost</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleVolBoostHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Automatically boost the volume</span>
+        <input type="checkbox" id="autoVolumeBoost">
+      </label>
+    </div>
+    <label>
+      <span>Mono audio<span class="subLabel">Useful for those one-sided
+          videos.</span></span>
+      <input type="checkbox" id="monoAudio">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Player UI: Show toggle button</span>
+        <input type="checkbox" id="monoAudioButton" checked>
+      </label>
+      <label>
+        <span>Toggle on/off</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleMonoAudioHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Automatically enable mono</span>
+        <input type="checkbox" id="autoMono">
+      </label>
+    </div>
+    <label>
+      <span>Force original audio track</span>
+      <input type="checkbox" id="forceOgAudio">
+    </label>
+    <label>
+      <span>Video snapshot</span>
+      <input type="checkbox" id="videoSnapshot">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Snapshot format</span>
+        <button class="selectMenu openPopup" id="snapshotFormat">
+          <span>PNG</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="png">PNG</li>
+            <li value="jpeg">JPG</li>
+            <li value="webp">WEBP</li>
+          </ul>
+        </button>
+      </label>
+      <div class="expandable">
+        <div class="expandable" matcher="jpeg|webp">
+          <label>
+            <span>Snapshot quality</span>
+            <input type="number" id="snapshotQuality" min="0" max="1" step="0.1" value="1">
+            <button class="numInputBtn minus iconButton"></button>
+            <button class="numInputBtn plus iconButton"></button>
+          </label>
+        </div>
+      </div>
+      <label>
+        <span>Include subtitles/captions</span>
+        <input type="checkbox" id="snapshotWithSubtitles">
+      </label>
+      <label>
+        <span>Player UI: Show snapshot button</span>
+        <input type="checkbox" id="snapshotButton" checked>
+      </label>
+      <div class="expandable expanded">
+        <label>
+          <span>Save method (Left-click)</span>
+          <button class="selectMenu openPopup" id="snapshotButtonSaveMethod">
+            <span>File</span>
+            <svg class="rotableArrow" viewBox="0 0 24 24">
+              <path
+                d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+            </svg>
+            <ul>
+              <li value="file">File</li>
+              <li value="clipboard">Clipboard</li>
+              <li value="both">File and clipboard</li>
+            </ul>
+          </button>
+        </label>
+        <label>
+          <span>Save method (Right-click)</span>
+          <button class="selectMenu openPopup" id="snapshotButtonSaveMethodRc">
+            <span>Clipboard</span>
+            <svg class="rotableArrow" viewBox="0 0 24 24">
+              <path
+                d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+            </svg>
+            <ul>
+              <li value="file">File</li>
+              <li value="clipboard" class="selected">Clipboard</li>
+              <li value="both">File and clipboard</li>
+            </ul>
+          </button>
+        </label>
+      </div>
+      <label>
+        <span>Snapshot to file</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="snapshotToFileHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Snapshot to clipboard</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="snapshotToClipHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Snapshot to file and clipboard</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="snapshotToFileAndClipHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+    </div>
+    <label>
+      <span>Flip the video horizontally/vertically</span>
+      <input type="checkbox" id="flipVideo">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Player UI: Show flip horizontally button</span>
+        <input type="checkbox" id="flipHorizontallyButton" checked>
+      </label>
+      <label>
+        <span>Player UI: Show flip vertically button</span>
+        <input type="checkbox" id="flipVerticallyButton" checked>
+      </label>
+      <label>
+        <span>Flip horizontally</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="flipHorizontallyHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Flip vertically</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="flipVerticallyHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+    </div>
+    <label>
+      <span>Show video remaining time</span>
+      <input type="checkbox" id="videoRemTime">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Where?</span>
+        <button class="selectMenu openPopup" id="whereToShowTime">
+          <span>Player</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="player">Player</li>
+            <li value="tabTitle">Tab title</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Format</span>
+        <button class="selectMenu openPopup" id="timeFormat">
+          <span>23:06</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="left">23:06</li>
+            <li value="left%">50%</li>
+            <li value="left+left%">23:06 (50%)</li>
+          </ul>
+        </button>
+      </label>
+    </div>
+    <label>
+      <span>Always show progress bar</span>
+      <input type="checkbox" id="alwaysShowProgBar">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Pinned to the bottom</span>
+        <input type="checkbox" id="keepProgBarAtBottom">
+      </label>
+      <label>
+        <span>Outside the player</span>
+        <input type="checkbox" id="showProgBarOutsidePlayer">
+      </label>
+      <label>
+        <span>Opacity</span>
+        <input type="number" id="progBarOpacity" step="0.01" min="0" max="1" value="1">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Custom progress bar</span>
+      <button class="selectMenu openPopup" id="customProgBar">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="solidColor">Solid color</li>
+          <li value="nyanCat">Nyan cat</li>
+          <li value="pacMan">Pac-Man</li>
+          <li value="lightSaber">Lightsaber</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <div class="expandable" matcher="solidColor|lightSaber">
+        <label>
+          <span>Color</span>
+          <button class="colorPicker openPopup" id="progBarColor" style="--selectedColor: hsla(204, 100%, 50%, 1);">
+            <div class="checker"></div>
+            <div class="selectedColor"></div>
+          </button>
+        </label>
+      </div>
+    </div>
+    <label>
+      <span>Sticky player <span class="subLabel">The player will follow you as you scroll down the page.</span></span>
+      <input type="checkbox" id="pinVideoOnScroll">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Activate when scrolling down</span>
+        <input type="checkbox" checked id="pinOnScroll">
+      </label>
+      <label>
+        <span>Activate/deactivate</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="pinUnpinHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Size</span>
+        <button class="selectMenu openPopup" id="pinnedVideoSize">
+          <span>480x270</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="320x180">320x180</li>
+            <li value="400x225">400x225</li>
+            <li value="480x270" class="selected">480x270</li>
+            <li value="560x315">560x315</li>
+            <li value="640x360">640x360</li>
+            <li value="720x405">720x405</li>
+            <li value="800x450">800x450</li>
+            <li value="880x495">880x495</li>
+            <li value="960x540">960x540</li>
+            <li value="1040x585">1040x585</li>
+            <li value="1120x630">1120x630</li>
+            <li value="1200x675">1200x675</li>
+            <li value="1280x720">1280x720</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Position</span>
+        <button class="selectMenu openPopup" id="pinnedVideoPosition">
+          <span>Bottom right</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value="Bottom right">Bottom right</li>
+            <li value="Bottom center">Bottom center</li>
+            <li value="Bottom left">Bottom left</li>
+            <li value="Center right">Center right</li>
+            <li value="Center left">Center left</li>
+            <li value="Top right">Top right</li>
+            <li value="Top center">Top center</li>
+            <li value="Top left">Top left</li>
+          </ul>
+        </button>
+      </label>
+      <div class="expandable">
+        <div class="expandable" matcher="Top">
+          <label>
+            <span>Below header</span>
+            <input type="checkbox" id="pinnedVideoBelowHeader">
+          </label>
+        </div>
+      </div>
+      <label>
+        <span>Floating (px)</span>
+        <input type="number" id="floatingPinnedVideo" min="0" value="10">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Rounded corners (px)</span>
+        <input type="number" id="pinnedVideoRoundCorners" min="0" value="12">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Theater mode: Player height <span class="subLabel">Set how much vertical space the player takes up in Theater
+          mode.</span></span>
+      <input type="checkbox" id="fullscreenTheaterMode">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Height (%)</span>
+        <input type="number" id="ftmHeight" min="0" max="100" step="1" value="100">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Auto-hide header</span>
+        <input type="checkbox" checked id="ftmAutoHideHeader">
+      </label>
+    </div>
+    <label>
+      <span>Pause the previous video when another starts playing</span>
+      <input type="checkbox" id="playOneVideoAtAtime">
+    </label>
+    <label>
+      <span>Disable 'Video paused. Continue watching?'</span>
+      <input type="checkbox" id="disableAutoPause">
+    </label>
+    <label>
+      <span>Disable number keys shortcuts</span>
+      <input type="checkbox" id="disableNumHotkeys">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Top row</span>
+        <button class="selectMenu openPopup" id="dnhTopRow">
+          <span>0-9</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="0-9" class="selected">0-9</li>
+            <li value="1-9">1-9</li>
+            <li value="0">0</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Numpad</span>
+        <button class="selectMenu openPopup" id="dnhNumpad">
+          <span>0-9</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="0-9" class="selected">0-9</li>
+            <li value="1-9">1-9</li>
+            <li value="0">0</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Home</span>
+        <input type="checkbox" id="dnhHome" checked>
+      </label>
+      <label>
+        <span>End</span>
+        <input type="checkbox" id="dnhEnd" checked>
+      </label>
+    </div>
+    <label>
+      <span>Disable auto-play in playlists</span>
+      <input type="checkbox" id="disablePlAutoPlay">
+    </label>
+    <label>
+      <span>Auto-scroll Shorts <span class="subLabel">Autoplays the next short when the first has finished.</span></span>
+      <input type="checkbox" id="autoScrollShorts">
+    </label>
+    <label>
+      <span>Enable Ambient mode on Theater mode</span>
+      <input type="checkbox" id="ambientMode">
+    </label>
+    <label>
+      <span>Hide End cards and other items </span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>End cards</span>
+        <button class="selectMenu openPopup" id="hideEndCards">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Default</li>
+            <li value="hide">Hide</li>
+            <li value="autoHide">Show on hover/pause</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Video controls on pause/seek</span>
+        <input type="checkbox" id="hideControlsOnPause">
+      </label>
+    </div>
+    <label>
+      <span>Keyboard shortcuts <span class="subLabel">Seek, change speed, volume and quality...</span></span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label section="header">
+        <h4>Seek forward/backward</h4>
+      </label>
+      <label section="content">
+        <span>Seek forward</span>
+        <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0" number-step="1" id="seekFhotkeys">
+        </button>
+      </label>
+      <label section="content">
+        <span>Seek backward</span>
+        <button class="list openPopup" listType="hotkey+number" number-value="3"" number-title="Seconds" number-min="0" number-step="1" id="seekBhotkeys">
+        </button>
+      </label>
+      <label section="content">
+        <span>Undo seek</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="undoSeekHotkey">
+        </button> 
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <div class="expandable">
+        <label section="content">
+          <span>Redo seek</span>
+          <button class="keyBinder openPopup" placeholder="Set hotkey" id="redoSeekHotkey">
+          </button>
+          <button class="removeSetting">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+              </path>
+            </svg>
+          </button>
+        </label>
+      </div>
+      <label section="content">
+        <span>Type a number and press Enter to seek to that time<span class="subLabel">E.g. 1 + 3 + 0 + Enter will seek to
+            1 minute and 30 seconds.</span></span>
+        <input type="checkbox" id="numbersThenEnter">
+      </label>
+      <label section="content">
+        <span>Type a number and press left/right arrow key to seek by that amount of time<span class="subLabel">E.g. 1
+            + 5 + right arrow key will seek forward by 15 seconds.</span></span>
+        <input type="checkbox" id="numbersThenArrowKey">
+      </label>
+      <label section="header">
+        <h4>Video speed</h4>
+      </label>
+      <label section="content">
+        <span>Increase speed</span>
+        <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="increaseSpeedHotkeys">
+        </button>
+      </label>
+      <label section="content">
+        <span>Decrease speed</span>
+        <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="decreaseSpeedHotkeys">
+        </button>
+      </label>
+      <label section="content">
+        <span>Normal speed</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="resetSpeedHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label section="content">
+        <span>Custom speed</span>
+        <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="Speed" number-min="0" number-step="0.05" id="customSpeedHotkeys">
+        </button>
+      </label>
+      <label section="content">
+        <span>Type a number and press Shift to set speed to that number<span class="subLabel">E.g. 1 + 2 + 5 + Shift will set speed to
+            1.25x.</span></span>
+        <input type="checkbox" id="numbersThenShift">
+      </label>
+      <label section="header">
+        <h4>Video volume</h4>
+      </label>
+      <label section="content">
+        <span>Increase volume</span>
+        <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change"
+          number-min="0" number-step="1" id="increaseVolHotkeys">
+        </button>
+      </label>
+      <label section="content">
+        <span>Decrease volume</span>
+        <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change"
+          number-min="0" number-step="1" id="decreaseVolHotkeys">
+        </button>
+      </label>
+      <label section="header">
+        <h4>Video quality</h4>
+      </label>
+      <label section="content">
+        <span>Increase quality</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="increaseQualityHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label section="content">
+        <span>Decrease quality</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="decreaseQualityHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label section="content">
+        <span>Highest quality</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="highestQualityHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label section="content">
+        <span>Lowest quality</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="lowestQualityHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label section="header">
+        <h4>Other</h4>
+      </label>
+      <label section="content">
+        <span>Toggle loop</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleLoopHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+    </div>
+  </section>
+  <section>
+    <h4>Watch page</h4>
+    <label>
+      <span>Video description</span>
+      <button class="selectMenu openPopup" id="videoDescription">
+        <span>Default</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Default</li>
+          <li value="Minimalist">Minimalist</li>
+          <li value="Expanded">Expanded</li>
+        </ul>
+      </button>
+    </label>
+    <label>
+      <span>Auto-expand long comments</span>
+      <input type="checkbox" id="autoExpandComments">
+    </label>
+    <label>
+      <span>Comments in sidebar</span>
+      <input type="checkbox" id="sidebarComments">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Automatically show comments in sidebar</span>
+        <input type="checkbox" id="autoSidebarComments" checked>
+      </label>
+      <label>
+        <span>Toggle comments in sidebar</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleSidebarCommentsHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Height (%)</span>
+        <input type="number" id="scHeight" min="0" max="100" step="1" value="100">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Use player height instead</span>
+        </span>
+        <input type="checkbox" id="scUsePlayerHeight">
+      </label>
+    </div>
+    <label>
+      <span>Allow opening channels from the sidebar <span class="subLabel">Allows you to click on a channel's name to go
+          to that channel.</span>
+      </span>
+      <input type="checkbox" id="fixChannelLinks">
+    </label>
+    <label>
+      <span>Hide Shorts and other items </span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Sidebar: Shorts</span>
+        <input type="checkbox" id="hideShorts4">
+      </label>
+      <label>
+        <span>Sidebar: Watched videos</span>
+        <button class="selectMenu openPopup" id="hideWatchVideos3">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="All videos">Watched %: 0-100</li>
+            <li value="50-100%">Watched %: 50-100</li>
+            <li value="70-100%">Watched %: 70-100</li>
+            <li value="75-100%">Watched %: 75-100</li>
+            <li value="80-100%">Watched %: 80-100</li>
+            <li value="85-100%">Watched %: 85-100</li>
+            <li value="90-100%">Watched %: 90-100</li>
+            <li value="95-100%">Watched %: 95-100</li>
+            <li value="Only fully-watched videos">Watched %: 100</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Sidebar: Mixes</span>
+        <input type="checkbox" id="hideMixes2">
+      </label>
+      <label>
+        <span>Sidebar: Live streams</span>
+        <button class="selectMenu openPopup" id="hideLiveStreams3">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="current">Current</li>
+            <li value="completed">Completed (requires refresh)</li>
+            <li value="both">Both</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Share button</span>
+        <input type="checkbox" id="hideShareButton">
+      </label>
+      <label>
+        <span>Download button</span>
+        <input type="checkbox" id="hideDownloadButton">
+      </label>
+      <label>
+        <span>Clip button</span>
+        <input type="checkbox" id="hideClipButton">
+      </label>
+      <label>
+        <span>Thanks button</span>
+        <input type="checkbox" id="hideThanksButton">
+      </label>
+      <label>
+        <span>Save button</span>
+        <input type="checkbox" id="hideSaveButton">
+      </label>
+      <label>
+        <span>Button labels</span>
+        <input type="checkbox" id="compactButtons">
+      </label>
+    </div>
+    <label>
+      <span>Sidebar: Dim watched videos</span>
+      <button class="selectMenu openPopup" id="dimWatchVideos3">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="dimAllVideos">Watched %: 0-100</li>
+          <li value="50-100%">Watched %: 50-100</li>
+          <li value="70-100%">Watched %: 70-100</li>
+          <li value="75-100%">Watched %: 75-100</li>
+          <li value="80-100%">Watched %: 80-100</li>
+          <li value="85-100%">Watched %: 85-100</li>
+          <li value="90-100%">Watched %: 90-100</li>
+          <li value="95-100%">Watched %: 95-100</li>
+          <li value="dimFullyWatchVideos">Watched %: 100</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Video opacity</span>
+        <input type="number" id="watchVideoOpacity3" step="0.01" min="0" max="1" value="0.3">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Keyboard shortcuts <span class="subLabel">Like/dislike, navigate to Shorts page.</span></span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Like/unlike</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="likeUnlikeHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Dislike/undislike</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="dislikeUndislikeHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>Navigate to Shorts page</span>
+        <button class="keyBinder openPopup" placeholder="Set hotkey" id="redToShortsHotkey">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+    </div>
+  </section>
+  <section>
+    <h4>Search page</h4>
+    <label>
+      <span>Search results in Grid view</span>
+      <input type="checkbox" id="gridSearchResults">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Hide right sidebar</span>
+        <input type="checkbox" id="hideRightSidebar">
+      </label>
+    </div>
+    <label>
+      <span>Hide Shorts and other items </span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Shorts</span>
+        <input type="checkbox" id="hideShorts5">
+      </label>
+      <label>
+        <span>Watched videos</span>
+        <button class="selectMenu openPopup" id="hideWatchVideos4">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="All videos">Watched %: 0-100</li>
+            <li value="50-100%">Watched %: 50-100</li>
+            <li value="70-100%">Watched %: 70-100</li>
+            <li value="75-100%">Watched %: 75-100</li>
+            <li value="80-100%">Watched %: 80-100</li>
+            <li value="85-100%">Watched %: 85-100</li>
+            <li value="90-100%">Watched %: 90-100</li>
+            <li value="95-100%">Watched %: 95-100</li>
+            <li value="Only fully-watched videos">Watched %: 100</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Mixes</span>
+        <input type="checkbox" id="hideMixes3">
+      </label>
+      <label>
+        <span>Live streams</span>
+        <button class="selectMenu openPopup" id="hideLiveStreams4">
+          <span>Off</span>
+          <svg class="rotableArrow" viewBox="0 0 24 24">
+            <path
+              d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+          </svg>
+          <ul>
+            <li value>Off</li>
+            <li value="current">Current</li>
+            <li value="completed">Completed (requires refresh)</li>
+            <li value="both">Both</li>
+          </ul>
+        </button>
+      </label>
+      <label>
+        <span>Upcoming videos</span>
+        <input type="checkbox" id="hideUpcoming3">
+      </label>
+      <label>
+        <span>Irrelevant search results <span class="subLabel">For you, People also watched, Watch again... </span>
+        </span>
+        <input type="checkbox" id="hideSearchResults">
+      </label>
+    </div>
+    <label>
+      <span>Dim watched videos</span>
+      <button class="selectMenu openPopup" id="dimWatchVideos4">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="dimAllVideos">Watched %: 0-100</li>
+          <li value="50-100%">Watched %: 50-100</li>
+          <li value="70-100%">Watched %: 70-100</li>
+          <li value="75-100%">Watched %: 75-100</li>
+          <li value="80-100%">Watched %: 80-100</li>
+          <li value="85-100%">Watched %: 85-100</li>
+          <li value="90-100%">Watched %: 90-100</li>
+          <li value="95-100%">Watched %: 95-100</li>
+          <li value="dimFullyWatchVideos">Watched %: 100</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Video opacity</span>
+        <input type="number" id="watchVideoOpacity4" step="0.01" min="0" max="1" value="0.3">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+  </section>
+  <section>
+    <h4>Header bar</h4>
+    <label>
+      <span>Compact header bar</span>
+      <input type="checkbox" id="compactHeaderBar">
+    </label>
+    <label>
+      <span>Make logo redirect to another page</span>
+      <input type="checkbox" id="ytLogoSubsPage">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Page</span>
+        <button class="page" placeholder="Open a YouTube page" value="/feed/subscriptions" id="ylspPage">
+        </button>
+        <button class="removeSetting">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+            </path>
+          </svg>
+        </button>
+      </label>
+    </div>
+    <label>
+      <span>Open search results in new tab <spab class="subLabel">Adds a 'Open in a new tab' button to the search box.</span>
+      </span>
+      <input type="checkbox" id="sResultsInNewTab">
+    </label>
+  </section>
+  <section>
+    <h4>Left sidebar</h4>
+    <label>
+      <span>Compact left sidebar</span>
+      <input type="checkbox" id="compactLeftSidebar">
+    </label>
+    <label>
+      <span>Hide Shorts button and other items </span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Shorts button</span>
+        <input type="checkbox" id="hideShortsButton">
+      </label>
+      <label>
+        <span>'Explore' section</span>
+        <input type="checkbox" id="hideExplore">
+      </label>
+      <label>
+        <span>'More from YouTube' section</span>
+        <input type="checkbox" id="hideMoreFromYt">
+      </label>
+    </div>
+  </section>
+  <section>
+    <h4>YouTube Themes</h4>
+    <label>
+      <span>Dark theme</span>
+      <button class="selectMenu openPopup" id="darkThemes">
+        <span>Default</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Default</li>
+          <li value="Remedy Dark">Remedy Dark</li>
+          <li value="Dark Magic">Dark Magic</li>
+          <li value="Dark Magic Dracula">Dark Magic Dracula</li>
+          <li value="Dark Magic Frankenstein">Dark Magic Frankenstein</li>
+          <li value="Dark Magic Night">Dark Magic Night</li>
+          <li value="Dark Magic Nord">Dark Magic Nord</li>
+          <li value="Dark Magic Tokyo">Dark Magic Tokyo</li>
+          <li value="Wired">Wired</li>
+          <li value="Wired Brighter">Wired Brighter</li>
+          <li value="Spacedust">Spacedust</li>
+          <li value="Noctis">Noctis</li>
+          <li value="Noctis Azureus">Noctis Azureus</li>
+          <li value="Noctis Bordo">Noctis Bordo</li>
+          <li value="Noctis Minimus">Noctis Minimus</li>
+          <li value="Noctis Obscuro">Noctis Obscuro</li>
+          <li value="Noctis Sereno">Noctis Sereno</li>
+          <li value="Noctis Uva">Noctis Uva</li>
+          <li value="Noctis Viola">Noctis Viola</li>
+          <li value="Ilicit Purple">Ilicit Purple</li>
+          <li value="Icy Blue">Icy Blue</li>
+          <li value="Gruvbox">Gruvbox</li>
+          <li value="Gruvbox Black">Gruvbox Black</li>
+          <li value="Opulo">Opulo</li>
+          <li value="Dune">Dune</li>
+          <li value="Solarized">Solarized</li>
+          <li value="Dusklight">Dusklight</li>
+          <li value="Space Blue">Space Blue</li>
+          <li value="Nature">Nature</li>
+          <li value="Sweet">Sweet</li>
+          <li value="Flexoki">Flexoki</li>
+          <li value="Hot Iron">Hot Iron</li>
+          <li value="Flaming Ruby">Flaming Ruby</li>
+          <li value="Obsidian">Obsidian</li>
+          <li value="Ophéline">Ophéline</li>
+          <li value="Shades-of-Purple">Shades-of-Purple</li>
+          <li value="Neon">Neon</li>
+          <li value="Yaru">Yaru</li>
+          <li value="Qogir Ubuntu">Qogir Ubuntu</li>
+          <li value="Sunset">Sunset</li>
+          <li value="Catppuccin Mocha">Catppuccin Mocha</li>
+          <li value="Catppuccin Macchiato">Catppuccin Macchiato</li>
+          <li value="Catppuccin Frappe">Catppuccin Frappe</li>
+          <li value="Bearded Theme Coffee">Bearded Theme Coffee</li>
+          <li value="Bearded Theme Coffee Reversed">Bearded Theme Coffee Reversed</li>
+          <li value="Bearded Theme Earth">Bearded Theme Earth</li>
+          <li value="Bearded Theme Oceanic">Bearded Theme Oceanic</li>
+          <li value="Bearded Theme Oceanic Reversed">Bearded Theme Oceanic Reversed</li>
+          <li value="Bearded Theme HC Minuit">Bearded Theme HC Minuit</li>
+          <li value="Bearded Theme Surprising Eggplant">Bearded Theme Surprising Eggplant</li>
+          <li value="Bearded Theme Surprising Blueberry">Bearded Theme Surprising Blueberry</li>
+          <li value="Rosé Pine">Rosé Pine</li>
+          <li value="Rosé Pine Moon">Rosé Pine Moon</li>
+          <li value="Everforest">Everforest</li>
+          <li value="Kanagawa">Kanagawa</li>
+          <li value="Nord">Nord</li>
+          <li value="White Oak Chillhop">White Oak Chillhop</li>
+          <li value="Sleek Coral">Sleek Coral</li>
+          <li value="Sleek Cherry">Sleek Cherry</li>
+          <li value="Sleek Futura">Sleek Futura</li>
+          <li value="Sleek BladeRunner">Sleek BladeRunner</li>
+          <li value="Pastel Green">Pastel Green</li>
+          <li value="Sweet Pastel">Sweet Pastel</li>
+          <li value="Pink">Pink</li>
+          <li value="Trollwut Pink">Trollwut Pink</li>
+          <li value="Dracula">Dracula</li>
+          <li value="Monokai Pro">Monokai Pro</li>
+          <li value="Sonokai Espresso">Sonokai Espresso</li>
+          <li value="Sonokai Shusia">Sonokai Shusia</li>
+          <li value="Karma">Karma</li>
+          <li value="Grey and White">Grey and White</li>
+          <li value="Black and Blue">Black and Blue</li>
+          <li value="Black and Yellow">Black and Yellow</li>
+          <li value="Black and Green">Black and Green</li>
+          <li value="Black and Pink">Black and Pink</li>
+          <li value="Black and Orange">Black and Orange</li>
+          <li value="Black and Red">Black and Red</li>
+          <li value="Black and Violet">Black and Violet</li>
+          <li value="GX Classic">GX Classic</li>
+          <li value="Ultraviolet">Ultraviolet</li>
+          <li value="Sub Zero">Sub Zero</li>
+          <li value="Frutti Di Mare">Frutti Di Mare</li>
+          <li value="Purple Haze">Purple Haze</li>
+          <li value="Vaporwave">Vaporwave</li>
+          <li value="Rose Quartz">Rose Quartz</li>
+          <li value="Coming Soon">Coming Soon</li>
+          <li value="Hackerman">Hackerman</li>
+          <li value="Lambda">Lambda</li>
+          <li value="After Eight">After Eight</li>
+          <li value="Pay-To-Win">Pay-To-Win</li>
+          <li value="White Wolf">White Wolf</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Enable on light mode</span>
+        <input type="checkbox" id="dtEnableOnLightMode">
+      </label>
+    </div>
+    <label>
+      <span>Light theme</span>
+      <button class="selectMenu openPopup" id="lightThemes">
+        <span>Default</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Default</li>
+          <li value="remedyBright">Remedy Bright</li>
+          <li value="noctisHibernus">Noctis Hibernus</li>
+          <li value="noctisLilac">Noctis Lilac</li>
+          <li value="noctisLux">Noctis Lux</li>
+          <li value="catppuccinLatte">Catppuccin Latte</li>
+          <li value="btCoffeeCream">Bearded Theme Coffee Cream</li>
+          <li value="btCoffeeMilkshakeBlueberry">Bearded Theme Milkshake Blueberry</li>
+          <li value="btCoffeeMilkshakeMango">Bearded Theme Milkshake Mango</li>
+          <li value="btCoffeeMilkshakeMint">Bearded Theme Milkshake Mint</li>
+          <li value="btCoffeeMilkshakeRaspberry">Bearded Theme Milkshake Raspberry</li>
+          <li value="btCoffeeMilkshakeVanillaBanana">Bearded Theme Milkshake Vanilla Banana</li>
+          <li value="gruvbox">Gruvbox</li>
+          <li value="everforest">Everforest</li>
+          <li value="rosePineDawn">Rosé Pine Dawn</li>
+          <li value="yaru">Yaru</li>
+          <li value="qogirUbuntu">Qogir Ubuntu</li>
+          <li value="nord">Nord</li>
+          <li value="snes">SNES</li>
+          <li value="solarized">Solarized</li>
+          <li value="flexoki">Flexoki</li>
+          <li value="monokaiPro">Monokai Pro</li>
+          <li value="blue">Blue</li>
+          <li value="violet">Violet</li>
+          <li value="green">Green</li>
+          <li value="pink">Pink</li>
+          <li value="orange">Orange</li>
+          <li value="red">Red</li>
+        </ul>
+      </button>
+    </label>
+  </section>
+  <section>
+    <h4>Other</h4>
+    <label>
+      <span>Show full video titles</span>
+      <input type="checkbox" id="showFullVideoTitles">
+    </label>
+    <label>
+      <span>Show back to top button</span>
+      <button class="selectMenu openPopup" id="scrollUpButton">
+        <span>Off</span>
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+        <ul>
+          <li value>Off</li>
+          <li value="On the right">On the right</li>
+          <li value="On the left">On the left</li>
+          <li value="Centered">Centered</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Button color</span>
+        <button class="colorPicker openPopup" id="scrollUpBtnColor" style="--selectedColor: hsla(0, 0%, 95%, 1);">
+          <div class="checker"></div>
+          <div class="selectedColor"></div>
+        </button>
+      </label>
+      <label>
+        <span>Arrow color</span>
+        <button class="colorPicker openPopup" id="scrollUpBtnSvgColor" style="--selectedColor: hsla(0, 0%, 6%, 1);">
+          <div class="checker"></div>
+          <div class="selectedColor"></div>
+        </button>
+      </label>
+      <label>
+        <span>Button size (px)</span>
+        <input type="number" id="scrollUpBtnWidth" value="36">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+      <label>
+        <span>Rounded corners (px)</span>
+        <input type="number" id="scrollUpBtnRoundCorners" min="0" value="18">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Scroll back to top</span>
+      <button class="keyBinder openPopup" placeholder="Set hotkey" id="scrollToTopHotkey">
+      </button>
+      <button class="removeSetting">
+        <svg viewBox="0 0 24 24">
+          <path
+            d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
+          </path>
+        </svg>
+      </button>
+    </label>
+    <label>
+      <span>More animations</span>
+      <input type="checkbox" id="moreAnimations">
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Speed (seconds)</span>
+        <input type="number" id="maAnimationsSpeed" min="0" step="0.01" value="0.75">
+        <button class="numInputBtn minus iconButton"></button>
+        <button class="numInputBtn plus iconButton"></button>
+      </label>
+    </div>
+    <label>
+      <span>Red subscribe button</span>
+      <input type="checkbox" id="redSubscribeButton">
+    </label>
+    <label>
+      <span>Custom CSS & JavaScript</span>
+      <button class="expand icon">
+        <svg class="rotableArrow" viewBox="0 0 24 24">
+          <path
+            d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+        </svg>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>CSS</span>
+        <button class="openPage icon" htmlFile="options/custom-css.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+            <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect>
+            <path
+              d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1 1 1 0 0 0 1-1z">
+            </path>
+          </svg>
+        </button>
+      </label>
+      <label>
+        <span>JavaScript</span>
+        <button class="openPage icon" htmlFile="options/custom-js.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+            <rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect>
+            <path
+              d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1 1 1 0 0 0 1-1z">
+            </path>
+          </svg>
+        </button>
+      </label>
+    </div>
+  </section>
+  <section>
+    <h4>Export/import settings</h4>
+    <label>
+      <span>Export</span>
+      <button class="export icon">
+        <svg width="15px" height="15px" viewBox="0 0 537.794 537.795">
+          <g>
+            <path
+              d="M463.091,466.114H74.854c-11.857,0-21.497,9.716-21.497,21.497v28.688c0,11.857,9.716,21.496,21.497,21.496h388.084    c11.857,0,21.496-9.716,21.496-21.496v-28.688C484.665,475.677,474.949,466.114,463.091,466.114z" />
+            <path
+              d="M253.94,427.635c4.208,4.208,9.716,6.35,15.147,6.35c5.508,0,11.016-2.142,15.147-6.35l147.033-147.033    c8.339-8.338,8.339-21.955,0-30.447l-20.349-20.349c-8.339-8.339-21.956-8.339-30.447,0l-75.582,75.659V21.497    C304.889,9.639,295.173,0,283.393,0h-28.688c-11.857,0-21.497,9.562-21.497,21.497v284.044l-75.658-75.659    c-8.339-8.338-22.032-8.338-30.447,0l-20.349,20.349c-8.338,8.338-8.338,22.032,0,30.447L253.94,427.635z" />
+          </g>
+        </svg>
+      </button>
+    </label>
+    <label>
+      <span>Import</span>
+      <button class="import icon openPopup">
+        <svg style="transform: rotateZ(180deg);" width="15px" height="15px" viewBox="0 0 537.794 537.795">
+          <g>
+            <path
+              d="M463.091,466.114H74.854c-11.857,0-21.497,9.716-21.497,21.497v28.688c0,11.857,9.716,21.496,21.497,21.496h388.084    c11.857,0,21.496-9.716,21.496-21.496v-28.688C484.665,475.677,474.949,466.114,463.091,466.114z" />
+            <path
+              d="M253.94,427.635c4.208,4.208,9.716,6.35,15.147,6.35c5.508,0,11.016-2.142,15.147-6.35l147.033-147.033    c8.339-8.338,8.339-21.955,0-30.447l-20.349-20.349c-8.339-8.339-21.956-8.339-30.447,0l-75.582,75.659V21.497    C304.889,9.639,295.173,0,283.393,0h-28.688c-11.857,0-21.497,9.562-21.497,21.497v284.044l-75.658-75.659    c-8.339-8.338-22.032-8.338-30.447,0l-20.349,20.349c-8.338,8.338-8.338,22.032,0,30.447L253.94,427.635z" />
+          </g>
+        </svg>
+      </button>
+      </button>
+    </label>
+  </section>
+    <span class="noResults">¯\_(ツ)_/¯</span>
+  <script src="options.js" type="module"></script>
+</body>
+</html>

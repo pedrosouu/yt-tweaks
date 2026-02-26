@@ -1,0 +1,274 @@
+.popup {
+    position: absolute;
+    background: var(--btn-bg);
+    width: max-content;
+    max-width: calc(100% - 48px);
+    max-height: calc(100vh - 24px);
+    padding: 12px;
+    right: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--btn-hover-bg);
+    box-shadow: 0 4px 32px 0 var(--shadow-color);
+    box-sizing: border-box;
+    list-style: none;
+    transition: scale .15s cubic-bezier(0.25, 0, 0.25, 1.75), opacity .15s, visibility .15s;
+    scale: 0.75;
+    visibility: hidden;
+    opacity: 0;
+    margin: 0;
+    z-index: 9;
+    overflow: auto;
+    cursor: default;
+    text-wrap: initial !important;
+    overflow-wrap: break-word;
+    outline: none;
+    scrollbar-width: thin;
+}
+
+.popup.open {
+    scale: 1;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* SELECT MENU */
+button.selectMenu {
+    display: flex;
+    border-radius: 100px;
+}
+
+button.selectMenu>span {
+    max-width: 114px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+button.selectMenu>ul {
+    display: none;
+}
+
+ul {
+    padding: 6px !important;
+}
+
+li {
+    position: relative;
+    padding: 6px 12px;
+    border-radius: 10px;
+    transition: .15s;
+    cursor: pointer;
+}
+
+li.focused::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 7px;
+    left: 12px;
+    border-left: 3px solid var(--accent);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0px;
+    height: calc(100% - 15px);
+    border-radius: 12px;
+}
+
+/* COLOR PICKER */
+#colorPicker {
+    padding: 12px;
+    padding-top: 6px;
+}
+
+button.colorPicker {
+    position: relative;
+    width: 30px;
+    outline-offset: 2px !important;
+}
+
+.selectedColor {
+    position: absolute;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    background: var(--selectedColor);
+    border-radius: 50%;
+    border: 1px solid var(--btn-hover-bg);
+}
+
+.gradient,
+.track.checker {
+    position: absolute;
+    background: var(--trackColor);
+    border-radius: 50px;
+    height: 12px;
+    margin: 10px 0px;
+    width: 200px;
+}
+
+.checker {
+    border: none;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAF0lEQVR42mM4Awb/wYCBYg6EgghRzAEAWDWBGQVyKPMAAAAASUVORK5CYII=) !important;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+}
+
+[type="range"] {
+    appearance: none;
+    height: 12px;
+    margin: 10px 0px;
+    width: 200px;
+    border-radius: 100px;
+    background: transparent;
+    position: relative;
+    box-sizing: border-box;
+    border: 1px solid var(--btn-hover-bg);
+    outline-offset: 5px !important;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 3px 8px 3px rgba(0, 0, 0, .2);
+    transition: scale .15s;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 3px 8px 3px rgba(0, 0, 0, .2);
+    transition: scale .15s;
+    cursor: pointer;
+}
+
+input[type=range]::-webkit-slider-thumb:active {
+    transform: scale(0.90);
+}
+
+input[type=range]::-moz-range-thumb:active {
+    transform: scale(0.90);
+}
+
+.hsla {
+    margin-top: 6px;
+    text-align: center;
+}
+
+/* KEYBINDER */
+#keyBinder {
+    text-align: center;
+}
+
+/* LIST */
+#list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: calc(100% - 24px);
+    max-width: initial;
+}
+
+#list:not(.enableSearch) search {
+    display: none;
+}
+
+button.add:before,
+button.add:after {
+    display: block;
+    position: absolute;
+    content: "";
+    background: #fff;
+    width: 14px;
+    height: 2px;
+}
+
+button.add:after {
+    transform: rotate(90deg);
+}
+
+button.delete {
+    --btn-bg: var(--red);
+    --btn-hover-bg: rgb(var(--red), 0.15);
+    --btn-active-bg: rgb(var(--red), 0.10);
+}
+
+button.keybinder.active::before {
+    content: '. . .';
+}
+
+button.keybinder::before {
+    max-width: initial;
+}
+
+search.list {
+    width: 50%;
+    max-width: 200px;
+}
+
+.listItems {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+}
+
+.listItem {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 12px;
+}
+
+.listItem > :first-child {
+    flex: 1;
+}
+
+[type="number"].list {
+    width: 60px;
+}
+
+input.list {
+    text-align: center;
+}
+
+/* SETTINGS IMPORTER */
+#importer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* CLOSE BUTTON */
+.close {
+    height: 24px;
+    min-width: 24px;
+}
+
+.close:before,
+.close:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 12px;
+    height: 2px;
+    background: var(--text);
+}
+
+.close::after {
+    transform: rotate(50deg);
+}
+
+.close::before {
+    transform: rotate(130deg);
+}
