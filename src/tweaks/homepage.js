@@ -1,4 +1,7 @@
 ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
+    if (settings.subscriptionRedirect && window.location.hostname === 'www.youtube.com' && window.location.pathname === '/')
+        window.location.replace('/feed/subscriptions');
+
     if (settings.hideShorts) ytTweaks.sheet.textContent += `
     [page-subtype="home"] ytd-rich-section-renderer:has([is-shorts]) {
       display: none !important;
