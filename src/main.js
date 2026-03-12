@@ -349,38 +349,6 @@ document.addEventListener('yttwStorageData', function (e) {
 }, { once: true });
 
 function initTweaks(settings) {    
-    for (const func of ytTweaks.tweaks) func(settings, fixMisalignedVideos);
-
-    function fixMisalignedVideos() {
-        fixMisalignedVideos = ytTweaks.noop;
-
-        ytTweaks.sheet.textContent += `
-        /* Removes the 24px margin from items in first column */
-        ytd-rich-item-renderer[rendered-from-rich-grid]:not([is-shorts-grid]) {
-          margin-left: calc(var(--ytd-rich-grid-item-margin, 16px) / 2) !important;
-          margin-right: calc(var(--ytd-rich-grid-item-margin, 16px) / 2) !important;
-        }
-
-        /* Adds it to the grid container as a padding */
-        body[dir="ltr"] #contents.ytd-rich-grid-renderer {
-          padding-left: calc(var(--ytd-rich-grid-gutter-margin) * 2) !important;
-        }
-
-        body[dir="rtl"] #contents.ytd-rich-grid-renderer {
-          padding-right: calc(var(--ytd-rich-grid-gutter-margin) * 2) !important;
-        }
-
-        /* Non-grid items remain unaffected */
-        body[dir="ltr"] #contents.ytd-rich-grid-renderer > :not(ytd-rich-item-renderer) {
-          margin-left: calc(var(--ytd-rich-grid-gutter-margin) * -1) !important;
-          margin-right: var(--ytd-rich-grid-gutter-margin) !important;
-        }
-
-        body[dir="rtl"] #contents.ytd-rich-grid-renderer > :not(ytd-rich-item-renderer) {
-          margin-left: var(--ytd-rich-grid-gutter-margin) !important;
-          margin-right: calc(var(--ytd-rich-grid-gutter-margin) * -1) !important;
-        }
-        `;
-    }
+    for (const func of ytTweaks.tweaks) func(settings);
 }
 })();

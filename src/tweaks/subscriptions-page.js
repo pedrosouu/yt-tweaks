@@ -1,4 +1,4 @@
-ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
+ytTweaks.tweaks.push(function (settings) {
     if (settings.hideShorts2) ytTweaks.sheet.textContent += `
     [page-subtype="subscriptions"] ytd-rich-section-renderer:has([is-shorts]),
     [page-subtype="subscriptions"] ytd-reel-shelf-renderer {
@@ -28,8 +28,6 @@ ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
         ) {
             display: none !important;
         }`;
-
-        fixMisalignedVideos();
     }
 
     if (settings.dimWatchVideos2) {
@@ -62,8 +60,6 @@ ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
           display: none !important;
         }
         `;
-
-        fixMisalignedVideos();
     }
 
     if (settings.hideLiveStreams2) {
@@ -75,8 +71,6 @@ ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
           display: none !important;
         }
         `;
-
-        fixMisalignedVideos();
     }
 
     if (settings.redToSubsHotkey) {

@@ -1,4 +1,4 @@
-ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
+ytTweaks.tweaks.push(function (settings) {
     if (settings.videosAsDefaultTab) {
         if (document.readyState == 'loading' && /(@|\/c\/|channel\/)(?!.*\/)/.test(location.pathname)) {
             location.pathname += '/videos';
@@ -49,9 +49,6 @@ ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
         ) {
             display: none !important;
         }`;
-
-        fixMisalignedVideos();
-
     }
 
     if (settings.dimWatchVideos5) {

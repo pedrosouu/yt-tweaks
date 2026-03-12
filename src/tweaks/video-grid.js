@@ -1,9 +1,5 @@
-ytTweaks.tweaks.push(function (settings, fixMisalignedVideos) {
-    if (settings.gridFix) fixMisalignedVideos();
-
+ytTweaks.tweaks.push(function (settings) {
     if (settings.videosPerRow) {
-        fixMisalignedVideos();
-
         // Videos
         let maxNumOfColumns = settings.maxNumOfColumns ?? 6;
         let minColumnWidth = settings.minColumnWidth ?? 270;
