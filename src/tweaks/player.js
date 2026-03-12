@@ -2259,38 +2259,7 @@ ytTweaks.tweaks.push(function (settings) {
 				}
 				`;
 		}
-	} 
-
-	if (settings.ambientMode) ytTweaks.sheet.textContent += `
-	ytd-watch-flexy:not([default-layout]) #player.ytd-watch-flexy {
-	  display: block !important;
-	  position: absolute;
-	  top: 30px;
-	  left: 0;
-	  right: 0;
 	}
-	
-	ytd-watch-flexy:not([default-layout]) #cinematics.ytd-watch-flexy > div > div {
-	  width: 100vw !important;
-	}
-	
-	ytd-watch-flexy .html5-video-player {
-	  z-index: 2000;
-	}
-	
-	body {
-	  overflow-x: hidden;
-	}
-	
-	body:has(#player-container[style="touch-action: auto;"]) {
-	  --headerBgOpacity: 0;
-	}
-	
-	ytd-masthead[is-watch-page] #background.ytd-masthead {
-	  transition: opacity .25s;
-	  opacity: var(--headerBgOpacity, 1) !important;
-	}
-	`;
 
 	if (settings.hideControlsOnPause) {
 		ytTweaks.sheet.textContent += `
