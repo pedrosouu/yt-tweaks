@@ -1,11 +1,11 @@
 ytTweaks.tweaks.push(function (settings) {
     if (settings.videosAsDefaultTab) {
-        if (document.readyState == 'loading' && /(@|\/c\/|channel\/)(?!.*\/)/.test(location.pathname)) {
+        if (document.readyState == 'loading' && /(@|\/c\/|\/channel\/)(?!.*\/)/.test(location.pathname)) {
             location.pathname += '/videos';
         }
 
         function isUserInAchannel(e) {
-            if (e.detail.pageType == 'channel' && /(@|\/c\/|channel\/)(?!.*\/)/.test(e.detail.url)) {
+            if (e.detail.pageType == 'channel' && /(@|\/c\/|\/channel\/)(?!.*\/)/.test(e.detail.url)) {
                 const data = e.detail.endpoint;
                 data.browseEndpoint.params = 'EgZ2aWRlb3PyBgQKAjoA';
                 e.target.handleNavigate({ command: data });
