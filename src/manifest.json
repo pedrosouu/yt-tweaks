@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "YT Tweaks",
   "description": "A collection of tweaks for hiding Shorts, disabling auto-dubbing, changing the number of videos per row and more!",
-  "version": "2026.3.12",
+  "version": "2026.3.15",
   "icons": {
     "16": "icons/icon-16.png",
     "32": "icons/icon-32.png",

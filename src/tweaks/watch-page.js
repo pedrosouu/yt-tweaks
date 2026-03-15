@@ -329,11 +329,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         function getButton(type) {
-            if (window.location.pathname.includes('shorts')) {
-                return document.querySelector(`[is-active] ${type}-button-view-model button`);
-            } else {
-                return document.querySelector(`#below ${type}-button-view-model button`);
-            }
+            return document.querySelector(`[role="main"] ${location.pathname.includes('shorts') ? '': '#below'} ${type}-button-view-model button`);
         }
     }
 
