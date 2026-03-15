@@ -1676,6 +1676,15 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-spec-brand-link-text: ${red} !important;
           --yt-spec-static-grey: rgba(${white || black || bg}, 0.2) !important;
           --yt-deprecated-white-opacity-lighten-4: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
+
+          --t2d807bb79e75606d: rgb(${accent}) !important;
+          --t904a88c623ca27ab: ${green} !important;
+          --tffc2fd3a644f6275: rgb(${text}) !important;
+          --t4a6da19e16bf221a: rgba(${text}, 0.68) !important;
+          --t6216186c28b3834b: rgb(${black || white || bg}) !important;
+          --tf3fc855af2285f5f: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
+          --t518e925f61bdcb91: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
+          --t7f4f2c6d54836ce0: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
         }
   
         html,
