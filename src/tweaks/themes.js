@@ -1677,6 +1677,7 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-spec-static-grey: rgba(${white || black || bg}, 0.2) !important;
           --yt-deprecated-white-opacity-lighten-4: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
 
+          --t3e41d7b17b187f69: rgb(${bg}) !important;
           --t2d807bb79e75606d: rgb(${accent}) !important;
           --t904a88c623ca27ab: ${green} !important;
           --tffc2fd3a644f6275: rgb(${text}) !important;
@@ -2006,7 +2007,7 @@ ytTweaks.tweaks.push(function (settings) {
         .yt-spec-button-shape-next--call-to-action-inverse.yt-spec-button-shape-next--text:hover {
           background: rgba(${black || white || bg}, 0.2);
         }
-  
+
         /* Hyperlinks */
         .yt-core-attributed-string__link--call-to-action-color:not(.yt-core-attributed-string--link-inherit-color),
         .yt-channel-external-link-view-model__link,
@@ -2027,7 +2028,7 @@ ytTweaks.tweaks.push(function (settings) {
         .badge-style-type-live-now-alternate.ytd-badge-supported-renderer yt-icon,
         .badge-style-type-live-now-alternate.ytd-badge-supported-renderer,
         ytd-thumbnail-overlay-time-status-renderer[overlay-style=LIVE] #time-status.ytd-thumbnail-overlay-time-status-renderer,
-        .yt-spec-avatar-shape__badge-text {
+        .yt-spec-avatar-shape__live-badge-text {
           color: rgb(${white || white2 || black || bg}) !important;
         }
   
@@ -2067,6 +2068,7 @@ ytTweaks.tweaks.push(function (settings) {
           color: ${red};
         }
   
+        .ytSpecIconBadgeShapeStyleOverlay .ytSpecIconBadgeShapeIcon,
         .yt-spec-icon-badge-shape,
         .yt-spec-profile-page-header-information-view-model-shape__profile-page-header-title,
         .yt-spec-icon-badge-shape--style-overlay .yt-spec-icon-badge-shape__icon,
@@ -2195,6 +2197,15 @@ ytTweaks.tweaks.push(function (settings) {
         /* Page loading bar */
         #progress.yt-page-navigation-progress {
           background: rgb(${accent}) !important;
+        }
+
+        /* Horizontal scrolling list > Gradient */
+        .ytChipsShelfViewModelGradientButton .ytChipsShelfViewModelLeftArrowContainer::after {
+            background: linear-gradient(to left, rgba(${bg}, 0) 0, rgba(${bg}, 0.3) 25%, rgba(${bg}, 0.6) 50%, rgba(${bg}, 0.9) 75%, rgb(${bg}) 100%);
+        }
+
+        .ytChipsShelfViewModelGradientButton .ytChipsShelfViewModelRightArrowContainer::before {
+            background: linear-gradient(to right, rgba(${bg}, 0) 0, rgba(${bg}, 0.3) 25%, rgba(${bg}, 0.6) 50%, rgba(${bg}, 0.9) 75%, rgb(${bg}) 100%);
         }
   
         /* Dialogs > Report dialog */
