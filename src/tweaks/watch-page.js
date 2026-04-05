@@ -129,7 +129,7 @@ ytTweaks.tweaks.push(function (settings) {
     }
 
     if (settings.fixChannelLinks) {
-        let videoContainer, channelName, command, sidebar;
+        let channelName, command, sidebar;
 
         document.addEventListener('yt-player-updated', main);
 
@@ -143,18 +143,11 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         function fixChannelLink(e) {
-            if ((e.target.tagName == 'SPAN' && e.target.closest('.yt-content-metadata-view-model__metadata-row:first-child')) ||
-                e.target.tagName == 'YT-FORMATTED-STRING' && e.target.closest('.ytd-channel-name')) {
+            if (e.target.matches('h3 + * :first-child > SPAN')) {
                 channelName = e.target;
-                videoContainer = e.target.closest(':is(yt-lockup-view-model, ytd-compact-video-renderer)');
-                let channelUrl;
-                try {
-                    command = videoContainer.rawProps.data().metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.rendererContext.commandContext.onTap.innertubeCommand
-                    channelUrl = command.commandMetadata.webCommandMetadata.url;
-                } catch {
-                    command = videoContainer.data.shortBylineText.runs[0].navigationEndpoint;
-                    channelUrl = command.browseEndpoint.canonicalBaseUrl;
-                }
+                const videoContainer = e.target.closest('yt-lockup-view-model');
+                command = videoContainer.rawProps.data().metadata.lockupMetadataViewModel.image.decoratedAvatarViewModel.rendererContext.commandContext.onTap.innertubeCommand;
+                const channelUrl = command.commandMetadata.webCommandMetadata.url;
 
                 if (channelName.parentElement.tagName == 'A') {
                     channelName.parentElement.href = channelUrl;
