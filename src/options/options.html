@@ -536,7 +536,7 @@
         </button>
       </label>
       <label>
-        <span>Player UI: Show channel speed button</span>
+        <span>Player UI: Channel speed button</span>
         <input type="checkbox" id="channelSpeedButton" checked>
       </label>
       <label>
@@ -780,11 +780,11 @@
     </label>
     <div class="expandable">
       <label>
-        <span>Player UI: Show toggle button</span>
+        <span>Player UI: Mono button</span>
         <input type="checkbox" id="monoAudioButton" checked>
       </label>
       <label>
-        <span>Toggle on/off</span>
+        <span>Toggle mono on/off</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleMonoAudioHotkey">
         </button>
         <button class="removeSetting">
@@ -796,7 +796,7 @@
         </button>
       </label>
       <label>
-        <span>Automatically enable mono</span>
+        <span>Automatically switch to mono</span>
         <input type="checkbox" id="autoMono">
       </label>
     </div>
@@ -839,7 +839,7 @@
         <input type="checkbox" id="snapshotWithSubtitles">
       </label>
       <label>
-        <span>Player UI: Show snapshot button</span>
+        <span>Player UI: Snapshot button</span>
         <input type="checkbox" id="snapshotButton" checked>
       </label>
       <div class="expandable expanded">
@@ -917,11 +917,11 @@
     </label>
     <div class="expandable">
       <label>
-        <span>Player UI: Show flip horizontally button</span>
+        <span>Player UI: Flip horizontally button</span>
         <input type="checkbox" id="flipHorizontallyButton" checked>
       </label>
       <label>
-        <span>Player UI: Show flip vertically button</span>
+        <span>Player UI: Flip vertically button</span>
         <input type="checkbox" id="flipVerticallyButton" checked>
       </label>
       <label>
@@ -1244,11 +1244,13 @@
       <label section="content">
         <span>Seek forward</span>
         <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0" number-step="1" id="seekFhotkeys">
+          <span>Hotkeys</span>
         </button>
       </label>
       <label section="content">
         <span>Seek backward</span>
         <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0" number-step="1" id="seekBhotkeys">
+          <span>Hotkeys</span>
         </button>
       </label>
       <label section="content">
@@ -1293,11 +1295,13 @@
       <label section="content">
         <span>Increase speed</span>
         <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="increaseSpeedHotkeys">
+          <span>Hotkeys</span>
         </button>
       </label>
       <label section="content">
         <span>Decrease speed</span>
         <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="decreaseSpeedHotkeys">
+          <span>Hotkeys</span>
         </button>
       </label>
       <label section="content">
@@ -1315,6 +1319,7 @@
       <label section="content">
         <span>Custom speed</span>
         <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="Speed" number-min="0" number-step="0.05" id="customSpeedHotkeys">
+          <span>Hotkeys</span>
         </button>
       </label>
       <label section="content">
@@ -1329,12 +1334,14 @@
         <span>Increase volume</span>
         <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change"
           number-min="0" number-step="1" id="increaseVolHotkeys">
+          <span>Hotkeys</span>
         </button>
       </label>
       <label section="content">
         <span>Decrease volume</span>
         <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change"
           number-min="0" number-step="1" id="decreaseVolHotkeys">
+          <span>Hotkeys</span>
         </button>
       </label>
       <label section="header">
