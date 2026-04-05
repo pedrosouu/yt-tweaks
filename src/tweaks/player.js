@@ -606,7 +606,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 			else if (e.button == 2 && ctxMenuEvent) {
 				handlePlayerClick(ctxMenuEvent);
-				ctxMenuEvent.currentTarget.dispatchEvent(ctxMenuEvent);
+				e.target.dispatchEvent(ctxMenuEvent);
 				ctxMenuEvent = 0;
 			}
 		}
