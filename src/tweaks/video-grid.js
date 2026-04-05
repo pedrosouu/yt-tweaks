@@ -141,15 +141,16 @@ ytTweaks.tweaks.push(function (settings) {
       --yttw-dfs-1-8rem: 1.8rem;
     }
     
-    ytd-rich-item-renderer :is(.yt-lockup-metadata-view-model__title, .shortsLockupViewModelHostOutsideMetadataTitle),
-    #video-title[class*="style-scope ytd-rich-grid"],
-    ytd-game-details-renderer[is-rich-grid]:not([mini-mode]) #title.ytd-game-details-renderer {
+    ytd-rich-grid-media h3 yt-formatted-string,
+    ytd-rich-item-renderer h3 span,
+    ytd-rich-item-renderer #title {
       font-size: 1.4rem !important;
       line-height: 2rem !important;
     }
     
-    ytd-rich-item-renderer :is(.yt-content-metadata-view-model__metadata-text, .shortsLockupViewModelHostMetadataSubhead),
-    .ytd-rich-grid-media ytd-video-meta-block[rich-meta] .ytd-video-meta-block:is(#byline-container, #metadata-line) {
+    ytd-rich-grid-media h3 + * yt-formatted-string,
+    ytd-rich-item-renderer h3 + * span,
+    ytd-rich-item-renderer #title ~ yt-formatted-string {
       font-size: 1.2rem !important;
       line-height: 1.8rem !important;
     }
