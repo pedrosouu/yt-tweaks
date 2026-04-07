@@ -121,14 +121,10 @@ ytTweaks.tweaks.push(function (settings) {
       --yttw-hpp-display: none;
     }
   
-    /* Old el */ 
-    #avatar-container.ytd-rich-grid-media,
-    /* New el */ 
-    ytd-rich-item-renderer .yt-lockup-metadata-view-model__avatar,
-    /* Homepage loading: skeleton el */
-     #home-page-skeleton .channel-avatar,
-    /* Skeleton el */
-    .channel-avatar.ytd-ghost-grid-renderer {
+    .ytLockupMetadataViewModelAvatar,
+    #home-page-skeleton .channel-avatar,
+    .channel-avatar.ytd-ghost-grid-renderer,
+    .ytdGhostGridViewModelChannelAvatar {
       display: none !important;
     }
     `;
