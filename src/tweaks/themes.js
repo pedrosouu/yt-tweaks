@@ -2048,7 +2048,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
   
         .badge-style-type-live-now-alternate.ytd-badge-supported-renderer,
-        .yt-spec-icon-badge-shape--type-notification .yt-spec-icon-badge-shape__badge,
+        .ytSpecIconBadgeShapeTypeNotification .ytSpecIconBadgeShapeBadge,
         .ytp-videowall-still-info-live,
         .ytp-live-badge[disabled]:before,
         .yt-badge-shape--live,
