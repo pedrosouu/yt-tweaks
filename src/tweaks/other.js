@@ -1,8 +1,12 @@
 ytTweaks.tweaks.push(function (settings) {
     if (settings.showFullVideoTitles) ytTweaks.sheet.textContent += `
-    #video-title,
-    .yt-lockup-metadata-view-model__title,
-    .shortsLockupViewModelHostOutsideMetadataTitle {
+    h3 a[href^="/watch"] span,
+    h3 a[href^="/watch"],
+    a[href^="/watch"] + * h3,
+    h3 a[href^="/shorts"] span,
+    h3 a[href^="/shorts"],
+    a[href^="/shorts"] + * h3,
+    #video-title {
       -webkit-line-clamp: initial !important;
       max-height: initial !important;
     }
