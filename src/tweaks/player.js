@@ -1733,30 +1733,6 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.pinVideoOnScroll) {
-		// Makes player resizable in 'Default mode'.
-		Object.defineProperty(Object.prototype, 'getPlayerSize', {
-			get: function () {
-				return this.getPlayerSizeValue;
-			},
-			set: function (x) {
-				if (typeof x == 'function') {
-					this.getPlayerSizeValue = function () {
-						const result = x.apply(this, arguments);
-
-						if (typeof result == 'object' && this.element?.id == 'movie_player') {
-							result.width = this.element.clientWidth;
-							result.height = this.element.clientHeight;
-						}
-
-						return result;
-					};
-				} else {
-					this.getPlayerSizeValue = x;
-				}
-			},
-			configurable: true
-		});
-
 		const size = settings.pinnedVideoSize?.match(/\d+/g) || [480, 270];
 		const gap = settings.floatingPinnedVideo ?? 10;
 		const position = settings.pinnedVideoPosition || 'Bottom right';
