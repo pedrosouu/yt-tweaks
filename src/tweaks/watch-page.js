@@ -131,6 +131,17 @@ ytTweaks.tweaks.push(function (settings) {
     if (settings.fixChannelLinks) {
         let channelName, command, sidebar;
 
+        ytTweaks.sheet.textContent += `
+        .yttw-channel-name {
+          text-decoration: none;
+          color: currentColor;
+        }
+
+        .yttw-channel-name:hover {
+          color: var(--tffc2fd3a644f6275);
+        }
+        `;
+
         document.addEventListener('yt-player-updated', main);
 
         function main() {
@@ -154,8 +165,7 @@ ytTweaks.tweaks.push(function (settings) {
                 } else {
                     const a = document.createElement('a');
                     a.href = channelUrl;
-                    a.classList.add('yt-core-attributed-string__link', 'yt-core-attributed-string__link--call-to-action-color', 'yt-core-attributed-string--link-inherit-color');
-                    channelName.parentElement.classList.add('yt-core-attributed-string--link-inherit-color')
+                    a.classList.add('yttw-channel-name');
                     channelName.before(a);
                     a.appendChild(channelName);
                 }
