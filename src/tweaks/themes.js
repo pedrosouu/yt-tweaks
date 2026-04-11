@@ -2009,19 +2009,8 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         /* Hyperlinks */
-        .yt-core-attributed-string__link--call-to-action-color:not(.yt-core-attributed-string--link-inherit-color),
-        .yt-channel-external-link-view-model__link,
-        :is([style*="color: rgb(62, 166, 255);"], [style*="color: rgb(6, 95, 212);"]),
-        .ytChannelExternalLinkViewModelLink {
+        :is([style*="color: rgb(62, 166, 255);"], [style*="color: rgb(6, 95, 212);"]) {
           color: rgb(${accent}) !important;
-        }
-  
-        .yt-core-attributed-string--highlight-text-decorator {
-          background:  rgba(${btn}, ${btnOpacity || '0.10'}) !important;
-        }
-  
-        .yt-lockup-metadata-view-model {
-          --yt-attributed-string-link-hover-color: rgb(${text});
         }
   
         /* Badges/icons */
@@ -2071,7 +2060,6 @@ ytTweaks.tweaks.push(function (settings) {
         .ytSpecIconBadgeShapeStyleOverlay .ytSpecIconBadgeShapeIcon,
         .yt-spec-icon-badge-shape,
         .yt-spec-profile-page-header-information-view-model-shape__profile-page-header-title,
-        .yt-spec-icon-badge-shape--style-overlay .yt-spec-icon-badge-shape__icon,
         .yt-badge-shape--promoted,
         yt-icon.ytd-logo {
           color: rgb(${text});
@@ -2164,7 +2152,7 @@ ytTweaks.tweaks.push(function (settings) {
         /* Text */
         .yt-shelf-header-layout__title,
         .ytd-brand-video-shelf-renderer:is(#title-container, #subtitle-container),
-        .yt-core-attributed-string--link-inherit-color:is([style*="color: rgb(255, 255, 255);"], [style*="color: rgb(19, 19, 19);"]),
+        .ytAttributedStringLinkInheritColor:is([style*="color: rgb(255, 255, 255);"], [style*="color: rgb(19, 19, 19);"]),
         .ytd-menu-title-renderer,
         .page-header-view-model__page-header-title,
         .yt-video-attribute-view-model__title,
@@ -2178,7 +2166,7 @@ ytTweaks.tweaks.push(function (settings) {
           color: rgb(${text}) !important;
         }
 
-        ytd-reel-video-renderer .yt-core-attributed-string--link-inherit-color[style*="color: rgb(255, 255, 255);"] {
+        ytd-reel-video-renderer .ytAttributedStringLinkInheritColor[style*="color: rgb(255, 255, 255);"] {
           color: inherit !important;
         }
 
@@ -2189,7 +2177,7 @@ ytTweaks.tweaks.push(function (settings) {
         .yt-lockup-metadata-view-model__metadata,
         .ytwFactoidRendererLabel,
         .truncated-text,
-        :is(.yt-simple-endpoint, .yt-core-attributed-string--link-inherit-color):is([style*="color: rgb(170, 170, 170);"], [style*="color: rgb(96, 96, 96);"]),
+        :is(.yt-simple-endpoint, .ytAttributedStringLinkInheritColor):is([style*="color: rgb(170, 170, 170);"], [style*="color: rgb(96, 96, 96);"]),
         .ytwFactoidRendererLabel {
           color: rgba(${text}, 0.68) !important;
         }
