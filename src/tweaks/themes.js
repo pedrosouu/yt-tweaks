@@ -1678,14 +1678,16 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-deprecated-white-opacity-lighten-4: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
 
           --t3e41d7b17b187f69: rgb(${bg}) !important;
-          --t2d807bb79e75606d: rgb(${accent}) !important;
-          --t904a88c623ca27ab: ${green} !important;
           --tffc2fd3a644f6275: rgb(${text}) !important;
           --t4a6da19e16bf221a: rgba(${text}, 0.68) !important;
+          --t7e34d5baa4ea6277: rgba(${text}, 0.38) !important;
+          --t2d807bb79e75606d: rgb(${accent}) !important;
+          --t904a88c623ca27ab: ${green} !important;
           --t6216186c28b3834b: rgb(${black || white || bg}) !important;
           --tf3fc855af2285f5f: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --t518e925f61bdcb91: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --t7f4f2c6d54836ce0: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
+          --td8562cdc203bc683: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
         }
   
         html,
@@ -1952,17 +1954,8 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-spec-touch-response: currentcolor;
         }
   
-        .yt-tab-shape__tab {
-          color: rgba(${text}, 0.68);
-        }
-  
-        
-        .yt-tab-shape:hover .yt-tab-shape__tab-bar {
-          background: rgba(${text}, 0.68);
-        }
-  
-        .yt-tab-shape__tab--tab-selected,
-        .yt-tab-shape:focus .yt-tab-shape__tab {
+        .ytTabShapeTabSelected,
+        .ytTabShapeHost:focus .ytTabShapeTab {
           color: rgb(${accent});
         }
 
@@ -2085,12 +2078,6 @@ ytTweaks.tweaks.push(function (settings) {
         ytd-compact-link-renderer [fill="#FFF"],
         ytd-badge-supported-renderer [fill="#FFF"] {
           fill: rgb(${black || white || bg});
-        }
-
-        /* Badges/icons > Bell icon (Personalized) in subscribe button */
-        [d=" M10,19 C10,20.104999542236328 10.895000457763672,21 12,21 C13.104999542236328,21 14,20.104999542236328 14,19 C14,19 10,19 10,19z M16,19 C16,21.208999633789062 14.208999633789062,23 12,23 C9.791000366210938,23 8,21.208999633789062 8,19 C8,19 16,19 16,19z"],
-        [d=" M12,3 C9.23900032043457,3 7,5.238999843597412 7,8 C7,8 7,12.446000099182129 7,12.446000099182129 C7,12.989999771118164 6.8520002365112305,13.52400016784668 6.572000026702881,13.989999771118164 C6.572000026702881,13.989999771118164 4.765999794006348,17 4.765999794006348,17 C4.765999794006348,17 19.232999801635742,17 19.232999801635742,17 C19.232999801635742,17 17.42799949645996,13.98900032043457 17.42799949645996,13.98900032043457 C17.148000717163086,13.52299976348877 17,12.989999771118164 17,12.446000099182129 C17,12.446000099182129 17,8 17,8 C17,5.238999843597412 14.76099967956543,3 12,3z M12,1 C15.866000175476074,1 19,4.133999824523926 19,8 C19,8 19,12.446000099182129 19,12.446000099182129 C19,12.626999855041504 19.049999237060547,12.805999755859375 19.14299964904785,12.961000442504883 C19.14299964904785,12.961000442504883 20.947999954223633,15.972000122070312 20.947999954223633,15.972000122070312 C21.74799919128418,17.30500030517578 20.788000106811523,19 19.232999801635742,19 C19.232999801635742,19 4.765999794006348,19 4.765999794006348,19 C3.2119998931884766,19 2.252000093460083,17.30500030517578 3.0510001182556152,15.972000122070312 C3.0510001182556152,15.972000122070312 4.85699987411499,12.961000442504883 4.85699987411499,12.961000442504883 C4.949999809265137,12.805999755859375 5,12.626999855041504 5,12.446000099182129 C5,12.446000099182129 5,8 5,8 C5,4.133999824523926 8.133999824523926,1 12,1z"] {
-            fill: rgb(${text}) !important;
         }
   
         /* Pop-up notification */
@@ -2255,15 +2242,6 @@ ytTweaks.tweaks.push(function (settings) {
           background: rgb(${black || white || bg});
         }
 
-        /* Shorts metadata */
-        .shortsLockupViewModelHostOutsideMetadataEndpoint {
-          color: rgb(${text});
-        }
-  
-        .shortsLockupViewModelHostOutsideMetadataSubhead {
-          color: rgba(${text}, 0.68);
-        }
-
         /* Player > controls */
         .ytp-play-progress,
         .ytp-scrubber-button,
@@ -2421,32 +2399,8 @@ ytTweaks.tweaks.push(function (settings) {
         .ytProfileCardViewModelHost {
           background: ${btnSolid};
         }
-  
-        .ytProfileInfoViewModelSectionTitle,
-        .ytSharedSubscriptionViewModelChannelName,
-        .profileBadgeViewModelBadgeDescription,
-        .ytCommentInteractionViewModelVideoTitle,
-        .ytCommentInteractionViewModelVideoTitleQuote,
-        .yt-profile-identity-info-view-model__channel-name,
-        .yt-profile-identity-info-view-model__metadata-handle-with-bold-font {
-          color: rgb(${text});
-        }
-  
-        .ytProfileInfoViewModelSectionSubtitle,
-        .profileBadgeViewModelBadgeSubtitle,
-        .ytCommentInteractionViewModelCommentContent,
-        .yt-profile-identity-info-view-model__metadata-content,
-        .yt-profile-identity-info-view-model__metadata-delimiter {
-          color: rgba(${text}, 0.68);
-        }
 
         /* Watch page > Comment section > Reddit style */
-        #comment-container.ytd-comment-thread-renderer .continuation.ytd-comment-thread-renderer,
-        .ytSubThreadConnection,
-        .ytSubThreadContinuation {
-          border-color: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-        }
-
         ytd-comment-thread-renderer[thread-hovered]>#comment-container.ytd-comment-thread-renderer .continuation.ytd-comment-thread-renderer,
         .ytSubThreadHovered>.ytSubThreadThreadline .ytSubThreadConnection, 
         .ytSubThreadHovered>.ytSubThreadThreadline .ytSubThreadContinuation {
