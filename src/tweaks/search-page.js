@@ -20,7 +20,7 @@ ytTweaks.tweaks.push(function (settings) {
         ytd-search grid-shelf-view-model /* YT experiment: shorts container in grid format */,
         ytd-search #channel-name.ytd-video-renderer,
         ytd-search #separator.ytd-video-meta-block,
-        ytd-search .yt-content-metadata-view-model__metadata-row:not(:first-child):not(:last-child) {
+        ytd-search .ytContentMetadataViewModelMetadataRow:not(:first-child):not(:last-child) {
           display: none !important;
         }
 
@@ -116,7 +116,7 @@ ytTweaks.tweaks.push(function (settings) {
           min-width: 100% !important;
         }
 
-        ytd-search .yt-lockup-view-model__content-image/* Playlist related */
+        ytd-search .ytLockupViewModelContentImage /* Playlist related */
         {
           width: 100% !important;
         }
@@ -140,7 +140,7 @@ ytTweaks.tweaks.push(function (settings) {
         ytd-search #dismissible.ytd-video-renderer,
         ytd-search ytd-radio-renderer,
         ytd-search ytd-playlist-renderer,
-        ytd-search .yt-lockup-view-model--horizontal /* Playlist related */,
+        ytd-search .ytLockupViewModelHorizontal /* Playlist related */,
         ytd-search #content-section.ytd-channel-renderer,
         ytd-search #info-section.ytd-channel-renderer,
         ytd-search ytd-show-renderer {
@@ -148,7 +148,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytd-search #video-title:not(.ytd-child-video-renderer),
-        ytd-search .yt-lockup-metadata-view-model__title {
+        ytd-search .ytLockupMetadataViewModelTitle {
           font-size: var(--yttw-dfs-1-4rem, 1.6rem) !important;
           line-height: var(--yttw-dfs-2rem, 2.2rem) !important;
           font-weight: 500 !important;
@@ -167,7 +167,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytd-search :is(#metadata-line, #byline-container),
-        ytd-search .yt-content-metadata-view-model__metadata-text /* Playlist related */,
+        ytd-search .ytContentMetadataViewModelMetadataText /* Playlist related */,
         ytd-search #metadata.ytd-channel-renderer {
           font-size: var(--yttw-dfs-1-2rem, 1.4rem) !important;
           line-height: var(--yttw-dfs-1-8rem, 2rem) !important;
@@ -221,7 +221,7 @@ ytTweaks.tweaks.push(function (settings) {
           padding: 0;
         }
 
-        body[dir="ltr"] ytd-search ytd-menu-renderer.ytd-video-renderer {
+        body[dir="ltr"] ytd-search :is(ytd-menu-renderer.ytd-video-renderer, .ytLockupMetadataViewModelMenuButton) {
           position: absolute;
           right: -12px;
           margin: 4px 0 0 0;
@@ -236,7 +236,7 @@ ytTweaks.tweaks.push(function (settings) {
           padding-left: var(--yttw-hpp-display, 48px);
         }
 
-        body[dir="rtl"] ytd-search ytd-menu-renderer.ytd-video-renderer {
+        body[dir="rtl"] ytd-search :is(ytd-menu-renderer.ytd-video-renderer, .ytLockupMetadataViewModelMenuButton) {
           position: absolute;
           left: -12px;
           margin: 4px 0 0 0;
