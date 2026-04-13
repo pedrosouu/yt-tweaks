@@ -1589,7 +1589,7 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-spec-button-chip-background-hover: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
           --yt-spec-icon-disabled: rgba(${text}, 0.38) !important;
           --yt-spec-suggested-action: rgba(${accent}, 0.30) !important;
-          --yt-spec-suggested-action-inverse: rgba(${white || bg}, 0.2) !important;
+          --yt-spec-suggested-action-inverse: rgba(${black || white || bg}, 0.2) !important;
           --yt-spec-static-overlay-touch-response-inverse: currentcolor !important;
           --yt-spec-static-overlay-background-brand: ${red} !important;
           --yt-spec-static-brand-red: rgb(${accent}) !important;
@@ -1677,6 +1677,54 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-spec-static-grey: rgba(${white || black || bg}, 0.2) !important;
           --yt-deprecated-white-opacity-lighten-4: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
 
+          --yt-sys-color-baseline--text-primary: rgb(${text}) !important;
+          --yt-sys-color-baseline--touch-response: rgb(${text}) !important;
+          --yt-sys-color-baseline--touch-response-inverse: currentcolor !important;
+          --yt-sys-color-baseline--base-background: rgb(${bg}) !important;
+          --yt-sys-color-baseline--raised-background: rgb(${bg}) !important;
+          --yt-sys-color-baseline--frosted-glass-desktop: rgb(${bg}) !important;
+          --yt-sys-color-baseline--additive-background: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
+          --yt-sys-color-baseline--badge-chip-background: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
+          --yt-sys-color-baseline--outline: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --yt-sys-color-baseline--outline-opaque: var(--yt-sys-color-baseline--outline) !important;
+          --yt-sys-color-baseline--outline-inverse-opaque: rgb(${accent}) !important;
+          --yt-sys-color-baseline--10-percent-layer: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --yt-sys-color-baseline--text-secondary: rgba(${text}, 0.68) !important;
+          --yt-sys-color-baseline--button-chip-background-hover: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --yt-sys-color-baseline--icon-disabled: rgba(${text}, 0.38) !important;
+          --yt-sys-color-baseline--suggested-action: rgba(${accent}, 0.30) !important;
+          --yt-sys-color-baseline--suggested-action-inverse: rgba(${black || white || bg}, 0.2) !important;
+          --yt-sys-color-baseline--static-overlay-touch-response-inverse: currentcolor !important;
+          --yt-sys-color-baseline--static-overlay-background-brand: ${red} !important;
+          --yt-sys-color-baseline--static-brand-red: rgb(${accent}) !important;
+          --yt-sys-color-baseline--commerce-filled-hover: ${filledBtnHover} !important;
+          --yt-sys-color-baseline--mono-tonal-hover: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --yt-sys-color-baseline--text-disabled: rgba(${text}, 0.38) !important;
+          --yt-sys-color-baseline--wordmark-text: rgb(${text}) !important;
+          --yt-sys-color-baseline--brand-icon-active: rgb(${text}) !important;
+          --yt-sys-color-baseline--icon-active-other: rgb(${text}) !important;
+          --yt-sys-color-baseline--call-to-action: rgb(${accent}) !important;
+          --yt-sys-color-baseline--call-to-action-inverse: rgb(${black || white || bg}) !important;
+          --yt-sys-color-baseline--call-to-action-faded: rgba(${accent}, 0.30) !important;
+          --yt-sys-color-baseline--themed-blue: rgb(${accent}) !important;
+          --yt-sys-color-baseline--themed-green: ${green} !important;
+          --yt-sys-color-baseline--menu-background: ${btnSolid} !important;
+          --yt-sys-color-baseline--brand-background-primary: rgb(${bg}) !important;
+          --yt-sys-color-baseline--general-background-a: rgb(${bg}) !important;
+          --yt-sys-color-baseline--general-background-b: rgb(${bg}) !important;
+          --yt-sys-color-baseline--general-background-c: rgb(${bg}) !important;
+          --yt-sys-color-baseline--static-brand-black: rgb(${bg}) !important;
+          --yt-sys-color-baseline--static-overlay-call-to-action: currentcolor !important;
+          --yt-sys-color-baseline--dark-blue: rgb(${accent}) !important;
+          --yt-sys-color-baseline--light-blue: rgb(${accent}) !important;
+          --yt-sys-color-baseline--grey-5: rgba(${text}, 0.38) !important;
+          --yt-sys-color-baseline--brand-background-solid: rgb(${bg}) !important;
+          --yt-sys-color-baseline--commerce-badge-background: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
+          --yt-sys-color-baseline--commerce-tonal-hover: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --yt-sys-color-baseline--brand-button-background: ${red} !important;
+          --yt-sys-color-baseline--brand-link-text: ${red} !important;
+          --yt-sys-color-baseline--static-grey: rgba(${white || black || bg}, 0.2) !important;
+
           --t3e41d7b17b187f69: rgb(${bg}) !important;
           --tffc2fd3a644f6275: rgb(${text}) !important;
           --t4a6da19e16bf221a: rgba(${text}, 0.68) !important;
@@ -1699,6 +1747,9 @@ ytTweaks.tweaks.push(function (settings) {
         html[darker-dark-theme] [dark] {
           --yt-spec-text-primary: rgb(${text}) !important;
           --yt-spec-text-primary-inverse: rgb(${black || white || bg}) !important;
+
+          --yt-sys-color-baseline--text-primary: rgb(${text}) !important;
+          --yt-sys-color-baseline--text-primary-inverse: rgb(${black || white || bg}) !important;
         }
   
         html[system-icons],
@@ -1706,6 +1757,10 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-spec-icon-disabled: rgba(${text}, 0.38) !important;
           --yt-spec-brand-icon-inactive: rgb(${text}) !important;
           --yt-spec-icon-inactive: rgb(${text}) !important;
+
+          --yt-sys-color-baseline--icon-disabled: rgba(${text}, 0.38) !important;
+          --yt-sys-color-baseline--brand-icon-inactive: rgb(${text}) !important;
+          --yt-sys-color-baseline--icon-inactive: rgb(${text}) !important;
         }
   
         ::selection {
@@ -2010,7 +2065,7 @@ ytTweaks.tweaks.push(function (settings) {
         .badge-style-type-live-now-alternate.ytd-badge-supported-renderer yt-icon,
         .badge-style-type-live-now-alternate.ytd-badge-supported-renderer,
         ytd-thumbnail-overlay-time-status-renderer[overlay-style=LIVE] #time-status.ytd-thumbnail-overlay-time-status-renderer,
-        .yt-spec-avatar-shape__live-badge-text {
+        .ytSpecAvatarShapeLiveBadgeText {
           color: rgb(${white || white2 || black || bg}) !important;
         }
   
@@ -2033,16 +2088,15 @@ ytTweaks.tweaks.push(function (settings) {
         .ytSpecIconBadgeShapeTypeNotification .ytSpecIconBadgeShapeBadge,
         .ytp-videowall-still-info-live,
         .ytp-live-badge[disabled]:before,
-        .yt-badge-shape--live,
-        .yt-badge-shape--thumbnail-live,
-        .yt-spec-avatar-shape__live-badge {
+        .ytBadgeShapeLive,
+        .ytBadgeShapeThumbnailLive,
+        .ytSpecAvatarShapeLiveBadge {
           background: ${red} !important;
           color: rgba(${white || white2 || black || bg}) !important;
           border: none !important;
         }
   
-        .yt-spec-avatar-shape--live-ring::after,
-        .yt-spec-avatar-shape--cairo-refresh.yt-spec-avatar-shape--live-ring::after {
+        .ytSpecAvatarShapeLiveRing:after {
           background: ${red};
         }
   
