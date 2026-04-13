@@ -1238,22 +1238,19 @@
       </button>
     </label>
     <div class="expandable">
-      <label section="header">
-        <h4>Seek forward/backward</h4>
-      </label>
-      <label section="content">
+      <label>
         <span>Seek forward</span>
         <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0" number-step="1" id="seekFhotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Seek backward</span>
         <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0" number-step="1" id="seekBhotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Undo seek</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="undoSeekHotkey">
         </button> 
@@ -1266,7 +1263,7 @@
         </button>
       </label>
       <div class="expandable">
-        <label section="content">
+        <label>
           <span>Redo seek</span>
           <button class="keyBinder openPopup" placeholder="Set hotkey" id="redoSeekHotkey">
           </button>
@@ -1279,32 +1276,29 @@
           </button>
         </label>
       </div>
-      <label section="content">
+      <label>
         <span>Type a number and press Enter to seek to that time<span class="subLabel">E.g. 1 + 3 + 0 + Enter will seek to
             1 minute and 30 seconds.</span></span>
         <input type="checkbox" id="numbersThenEnter">
       </label>
-      <label section="content">
+      <label>
         <span>Type a number and press left/right arrow key to seek by that amount of time<span class="subLabel">E.g. 1
             + 5 + right arrow key will seek forward by 15 seconds.</span></span>
         <input type="checkbox" id="numbersThenArrowKey">
       </label>
-      <label section="header">
-        <h4>Video speed</h4>
-      </label>
-      <label section="content">
+      <label>
         <span>Increase speed</span>
         <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="increaseSpeedHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Decrease speed</span>
         <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="decreaseSpeedHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Normal speed</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="resetSpeedHotkey">
         </button>
@@ -1316,38 +1310,32 @@
           </svg>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Custom speed</span>
         <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="Speed" number-min="0" number-step="0.05" id="customSpeedHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Type a number and press Shift to set speed to that number<span class="subLabel">E.g. 1 + 2 + 5 + Shift will set speed to
             1.25x.</span></span>
         <input type="checkbox" id="numbersThenShift">
       </label>
-      <label section="header">
-        <h4>Video volume</h4>
-      </label>
-      <label section="content">
+      <label>
         <span>Increase volume</span>
         <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change"
           number-min="0" number-step="1" id="increaseVolHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Decrease volume</span>
         <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change"
           number-min="0" number-step="1" id="decreaseVolHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
-      <label section="header">
-        <h4>Video quality</h4>
-      </label>
-      <label section="content">
+      <label>
         <span>Increase quality</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="increaseQualityHotkey">
         </button>
@@ -1359,7 +1347,7 @@
           </svg>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Decrease quality</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="decreaseQualityHotkey">
         </button>
@@ -1371,7 +1359,7 @@
           </svg>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Highest quality</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="highestQualityHotkey">
         </button>
@@ -1383,7 +1371,7 @@
           </svg>
         </button>
       </label>
-      <label section="content">
+      <label>
         <span>Lowest quality</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="lowestQualityHotkey">
         </button>
@@ -1395,10 +1383,7 @@
           </svg>
         </button>
       </label>
-      <label section="header">
-        <h4>Other</h4>
-      </label>
-      <label section="content">
+      <label>
         <span>Toggle loop</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleLoopHotkey">
         </button>
