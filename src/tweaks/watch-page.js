@@ -253,8 +253,8 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.hideLiveStreams3) ytTweaks.sheet.textContent += `
-    :is(ytd-watch-flexy yt-lockup-view-model, ytd-compact-video-renderer):has(:is(
-        ${settings.hideLiveStreams3 == 'completed' ? '' : '.yt-badge-shape--live, .yt-badge-shape--thumbnail-live,'}
+    ytd-watch-flexy yt-lockup-view-model:has(:is(
+        ${settings.hideLiveStreams3 == 'completed' ? '' : '.ytBadgeShapeLive, .ytBadgeShapeThumbnailLive,'}
         ${settings.hideLiveStreams3 == 'current' ? '' : '[aria-label="yttw-streamed"]' + (ytTweaks.hideStreamedVideos() || '')}
     )) {
       display: none !important;

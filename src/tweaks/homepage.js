@@ -58,7 +58,7 @@ ytTweaks.tweaks.push(function (settings) {
     if (settings.hideLiveStreams) {
         ytTweaks.sheet.textContent += `
         [page-subtype=home] ytd-rich-item-renderer:has(:is(
-            ${settings.hideLiveStreams == 'completed' ? '' : '.yt-badge-shape--live, .yt-badge-shape--thumbnail-live,'}
+            ${settings.hideLiveStreams == 'completed' ? '' : '.ytBadgeShapeLive, .ytBadgeShapeThumbnailLive,'}
             ${settings.hideLiveStreams == 'current' ? '' : '[aria-label="yttw-streamed"]' + (ytTweaks.hideStreamedVideos() || '')}
         )) {
           display: none !important;

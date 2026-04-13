@@ -477,7 +477,7 @@ ytTweaks.tweaks.push(function (settings) {
 
     if (settings.hideLiveStreams4) ytTweaks.sheet.textContent += `
     ytd-video-renderer[is-search]:has(:is(
-        ${settings.hideLiveStreams4 == 'completed' ? '' : '.yt-badge-shape--live, .yt-badge-shape--thumbnail-live,'}
+        ${settings.hideLiveStreams4 == 'completed' ? '' : '.ytBadgeShapeLive, .ytBadgeShapeThumbnailLive,'}
         ${settings.hideLiveStreams4 == 'current' ? '' : '[aria-label="yttw-streamed"]' + (ytTweaks.hideStreamedVideos() || '')}
     )) {
         display: none !important;

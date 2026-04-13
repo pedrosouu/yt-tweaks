@@ -65,7 +65,7 @@ ytTweaks.tweaks.push(function (settings) {
     if (settings.hideLiveStreams2) {
         ytTweaks.sheet.textContent += `
         [page-subtype=subscriptions] :is(ytd-rich-item-renderer, ytd-item-section-renderer):has(:is(
-            ${settings.hideLiveStreams2 == 'completed' ? '' : '.yt-badge-shape--live, .yt-badge-shape--thumbnail-live,'}
+            ${settings.hideLiveStreams2 == 'completed' ? '' : '.ytBadgeShapeLive, .ytBadgeShapeThumbnailLive,'}
             ${settings.hideLiveStreams2 == 'current' ? '' : '[aria-label="yttw-streamed"]' + (ytTweaks.hideStreamedVideos() || '')}
         )){
           display: none !important;
