@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <title>Options menu</title>
   <meta charset="utf-8">
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="options.css">
   <link rel="stylesheet" href="popup-elements/popup-elements.css">
 </head>
+
 <body>
   <header>
     <search>
@@ -527,7 +529,9 @@
     <div class="expandable">
       <label>
         <span>Saved speeds</span>
-        <button class="list openPopup" listType="text+number" enablesearch number-placeholder="1.5" number-title="Speed" number-min="0" number-step="0.05" text-placeholder="Channel name" text-title="Exact, case-sensitive match" id="perChannelSpeeds">
+        <button class="list openPopup" listType="text+number" enablesearch number-placeholder="1.5" number-title="Speed"
+          number-min="0" number-step="0.05" text-placeholder="Channel name" text-title="Exact, case-sensitive match"
+          id="perChannelSpeeds">
           <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd"
               d="M4 4C4 2.34315 5.34315 1 7 1H17C18.6569 1 20 2.34315 20 4V20.9425C20 22.6114 18.0766 23.5462 16.7644 22.5152L12 18.7717L7.23564 22.5152C5.92338 23.5462 4 22.6114 4 20.9425V4ZM7 3C6.44772 3 6 3.44772 6 4V20.9425L12 16.2283L18 20.9425V4C18 3.44772 17.5523 3 17 3H7Z">
@@ -599,23 +603,23 @@
       </label>
       <div class="expandable">
         <label>
-            <span>Require holding</span>
-            <button class="selectMenu openPopup" id="resetSpeedOnPlayerClickModifier">
-              <span>Off</span>
-              <svg class="rotableArrow" viewBox="0 0 24 24">
-                <path
-                  d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
-              </svg>
-              <ul>
-                <li value>Off</li>
-                <li value="1">Left mouse button</li>
-                <li value="2">Right mouse button</li>
-                <li value="ctrlKey">Ctrl</li>
-                <li value="shiftKey">Shift</li>
-                <li value="altKey">Alt</li>
-              </ul>
-            </button>
-          </label>
+          <span>Require holding</span>
+          <button class="selectMenu openPopup" id="resetSpeedOnPlayerClickModifier">
+            <span>Off</span>
+            <svg class="rotableArrow" viewBox="0 0 24 24">
+              <path
+                d="m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2" />
+            </svg>
+            <ul>
+              <li value>Off</li>
+              <li value="1">Left mouse button</li>
+              <li value="2">Right mouse button</li>
+              <li value="ctrlKey">Ctrl</li>
+              <li value="shiftKey">Shift</li>
+              <li value="altKey">Alt</li>
+            </ul>
+          </button>
+        </label>
       </div>
     </div>
     <label>
@@ -1120,7 +1124,8 @@
       </label>
     </div>
     <label>
-      <span>Theater mode: Player height <span class="subLabel">Set how much vertical space the player takes up in Theater
+      <span>Theater mode: Player height <span class="subLabel">Set how much vertical space the player takes up in
+          Theater
           mode.</span></span>
       <input type="checkbox" id="fullscreenTheaterMode">
     </label>
@@ -1140,6 +1145,12 @@
       <span>Pause the previous video when another starts playing</span>
       <input type="checkbox" id="playOneVideoAtAtime">
     </label>
+    <div class="expandable">
+      <label>
+        <span>Automatic resume</span>
+        <input type="checkbox" id="autoResume">
+      </label>
+    </div>
     <label>
       <span>Disable 'Video paused. Continue watching?'</span>
       <input type="checkbox" id="disableAutoPause">
@@ -1195,7 +1206,8 @@
       <input type="checkbox" id="disablePlAutoPlay">
     </label>
     <label>
-      <span>Auto-scroll Shorts <span class="subLabel">Autoplays the next short when the first has finished.</span></span>
+      <span>Auto-scroll Shorts <span class="subLabel">Autoplays the next short when the first has
+          finished.</span></span>
       <input type="checkbox" id="autoScrollShorts">
     </label>
     <label>
@@ -1240,20 +1252,22 @@
     <div class="expandable">
       <label>
         <span>Seek forward</span>
-        <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0" number-step="1" id="seekFhotkeys">
+        <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0"
+          number-step="1" id="seekFhotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
       <label>
         <span>Seek backward</span>
-        <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0" number-step="1" id="seekBhotkeys">
+        <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0"
+          number-step="1" id="seekBhotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
       <label>
         <span>Undo seek</span>
         <button class="keyBinder openPopup" placeholder="Set hotkey" id="undoSeekHotkey">
-        </button> 
+        </button>
         <button class="removeSetting">
           <svg viewBox="0 0 24 24">
             <path
@@ -1277,7 +1291,8 @@
         </label>
       </div>
       <label>
-        <span>Type a number and press Enter to seek to that time<span class="subLabel">E.g. 1 + 3 + 0 + Enter will seek to
+        <span>Type a number and press Enter to seek to that time<span class="subLabel">E.g. 1 + 3 + 0 + Enter will seek
+            to
             1 minute and 30 seconds.</span></span>
         <input type="checkbox" id="numbersThenEnter">
       </label>
@@ -1288,13 +1303,15 @@
       </label>
       <label>
         <span>Increase speed</span>
-        <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="increaseSpeedHotkeys">
+        <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change"
+          number-min="0" number-step="0.05" id="increaseSpeedHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
       <label>
         <span>Decrease speed</span>
-        <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change" number-min="0" number-step="0.05" id="decreaseSpeedHotkeys">
+        <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change"
+          number-min="0" number-step="0.05" id="decreaseSpeedHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
@@ -1312,12 +1329,14 @@
       </label>
       <label>
         <span>Custom speed</span>
-        <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="Speed" number-min="0" number-step="0.05" id="customSpeedHotkeys">
+        <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="Speed" number-min="0"
+          number-step="0.05" id="customSpeedHotkeys">
           <span>Hotkeys</span>
         </button>
       </label>
       <label>
-        <span>Type a number and press Shift to set speed to that number<span class="subLabel">E.g. 1 + 2 + 5 + Shift will set speed to
+        <span>Type a number and press Shift to set speed to that number<span class="subLabel">E.g. 1 + 2 + 5 + Shift
+            will set speed to
             1.25x.</span></span>
         <input type="checkbox" id="numbersThenShift">
       </label>
@@ -1750,7 +1769,8 @@
       </label>
     </div>
     <label>
-      <span>Open search results in new tab <span class="subLabel">Adds a 'Open in a new tab' button to the search box.</span>
+      <span>Open search results in new tab <span class="subLabel">Adds a 'Open in a new tab' button to the search
+          box.</span>
       </span>
       <input type="checkbox" id="sResultsInNewTab">
     </label>
@@ -2071,7 +2091,8 @@
       </button>
     </label>
   </section>
-    <span class="noResults">¯\_(ツ)_/¯</span>
+  <span class="noResults">¯\_(ツ)_/¯</span>
   <script src="options.js" type="module"></script>
 </body>
+
 </html>

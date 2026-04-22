@@ -87,20 +87,20 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 	})();
 
-	function formatSecToDDHHMMSS(totalSecLeft) {
-		let daysLeft, hoursLeft, minLeft, secLeft;
+	function formatSecToDDHHMMSS(time) {
+		let days, hours, min, sec;
 
-		daysLeft = Math.floor(totalSecLeft / 86400);
-		hoursLeft = Math.floor((totalSecLeft - (daysLeft * 86400)) / 3600);
-		minLeft = Math.floor((totalSecLeft - (daysLeft * 86400) - (hoursLeft * 3600)) / 60);
-		secLeft = Math.floor(totalSecLeft - (daysLeft * 86400) - (hoursLeft * 3600) - (minLeft * 60));
+		days = Math.floor(time / 86400);
+		hours = Math.floor((time - (days * 86400)) / 3600);
+		min = Math.floor((time - (days * 86400) - (hours * 3600)) / 60);
+		sec = Math.floor(time - (days * 86400) - (hours * 3600) - (min * 60));
 
 		return (
-			daysLeft ?
-				daysLeft + (hoursLeft < 10 ? ':0' + hoursLeft : ':' + hoursLeft) + (minLeft < 10 ? ':0' + minLeft : ':' + minLeft) + (secLeft < 10 ? ':0' + secLeft : ':' + secLeft) :
-				hoursLeft ?
-					hoursLeft + (minLeft < 10 ? ':0' + minLeft : ':' + minLeft) + (secLeft < 10 ? ':0' + secLeft : ':' + secLeft) :
-					minLeft + (secLeft < 10 ? ':0' + secLeft : ':' + secLeft)
+			days ?
+				days + (hours < 10 ? ':0' + hours : ':' + hours) + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
+				hours ?
+					hours + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
+					min + (sec < 10 ? ':0' + sec : ':' + sec)
 		);
 	}
 
@@ -1203,8 +1203,8 @@ ytTweaks.tweaks.push(function (settings) {
 		const quality = settings.snapshotQuality ?? 1;
 		const showButton = settings.snapshotButton != false;
 		const buttonSaveMethod = settings.snapshotButtonSaveMethod || 'file';
-        const buttonSaveMethodRc = settings.snapshotButtonSaveMethodRc || 'clipboard';
-        const subtitles = settings.snapshotWithSubtitles;
+		const buttonSaveMethodRc = settings.snapshotButtonSaveMethodRc || 'clipboard';
+		const subtitles = settings.snapshotWithSubtitles;
 
 		const img = document.createElement('img');
 		img.style = 'display: block; margin: auto; height: 60%';
@@ -1215,16 +1215,16 @@ ytTweaks.tweaks.push(function (settings) {
 		snapshotButton.style = 'vertical-align: top';
 		snapshotButton.appendChild(img);
 		snapshotButton.addEventListener('click', snapshotButtonClicked);
-        snapshotButton.addEventListener('contextmenu', snapshotButtonClicked);
+		snapshotButton.addEventListener('contextmenu', snapshotButtonClicked);
 
 		function snapshotButtonClicked(e) {
-            e.preventDefault();
-            e.stopImmediatePropagation();
+			e.preventDefault();
+			e.stopImmediatePropagation();
 
-            const saveMethod = e.type == 'click' ? buttonSaveMethod : buttonSaveMethodRc;
-            if (saveMethod == 'file') takeSnapshot(true, false);
-            else if (saveMethod == 'clipboard') takeSnapshot(false, true);
-            else takeSnapshot(true, true);
+			const saveMethod = e.type == 'click' ? buttonSaveMethod : buttonSaveMethodRc;
+			if (saveMethod == 'file') takeSnapshot(true, false);
+			else if (saveMethod == 'clipboard') takeSnapshot(false, true);
+			else takeSnapshot(true, true);
 		}
 
 		if (showButton) addButtonToPlayer(snapshotButton);
@@ -1261,25 +1261,25 @@ ytTweaks.tweaks.push(function (settings) {
 
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
-        
+
 				context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-                if (subtitles) {
-                    const captions = player.querySelectorAll('.ytp-caption-segment');
-                    const videoRect = video.getBoundingClientRect();
+				if (subtitles) {
+					const captions = player.querySelectorAll('.ytp-caption-segment');
+					const videoRect = video.getBoundingClientRect();
 
-                    let outsideBottom = 0;
-                    let outsideTop = 0;
-                    let outsideLeft = 0
-                    let outsideRight = 0;
+					let outsideBottom = 0;
+					let outsideTop = 0;
+					let outsideLeft = 0
+					let outsideRight = 0;
 
-                    for (const caption of captions) {
+					for (const caption of captions) {
 						if (caption.clientWidth - video.clientWidth > 0) {
 							caption.style.width = video.clientWidth + 'px';
 							caption.style.boxSizing = 'border-box';
 						}
-						
-                        const capRect = caption.getBoundingClientRect();
+
+						const capRect = caption.getBoundingClientRect();
 
 						const num = videoRect.y + video.clientHeight - (capRect.y + caption.clientHeight);
 						const num2 = capRect.y - videoRect.y;
@@ -1290,23 +1290,23 @@ ytTweaks.tweaks.push(function (settings) {
 						if (num2 < 0 && !(outsideTop < num2)) outsideTop = num2;
 						if (num3 < 0 && !(outsideLeft < num3)) outsideLeft = num3;
 						if (num4 < 0 && !(outsideRight < num4)) outsideRight = num4;
-                    }
+					}
 
-                    for (const caption of captions) {
+					for (const caption of captions) {
 						const scaleX = 100 / video.clientWidth * video.videoWidth / 100;
-                        const capRect = caption.getBoundingClientRect();
-                        const fontSize = +caption.style.fontSize.replace('px', '') * scaleX;
+						const capRect = caption.getBoundingClientRect();
+						const fontSize = +caption.style.fontSize.replace('px', '') * scaleX;
 						const y = (capRect.y - videoRect.y + (outsideBottom ? outsideBottom : Math.abs(outsideTop))) * scaleX;
 						const x = (capRect.x - videoRect.x + (outsideRight ? outsideRight : Math.abs(outsideLeft))) * scaleX;
 
-                        const width = caption.clientWidth * scaleX;
-                        const height = caption.clientHeight * scaleX;
+						const width = caption.clientWidth * scaleX;
+						const height = caption.clientHeight * scaleX;
 
-                        context.fillStyle = caption.style.backgroundColor;
-                        context.fillRect(x, y, width, height);
+						context.fillStyle = caption.style.backgroundColor;
+						context.fillRect(x, y, width, height);
 
 						context.font = fontSize + 'px ' + caption.style.fontFamily;
-                        context.fillStyle = caption.style.color;
+						context.fillStyle = caption.style.color;
 						context.textBaseline = 'middle';
 						context.textAlign = "center";
 
@@ -1321,18 +1321,18 @@ ytTweaks.tweaks.push(function (settings) {
 
 							else lines[lines.length - 1] += whiteSpace + words[i + 1];
 						}
-						
+
 						for (let i = 0; i < lines.length; i++) {
-							context.fillText(lines[i], x + (width/2), y + (height / lines.length)/ 2 + height / lines.length * i);
+							context.fillText(lines[i], x + (width / 2), y + (height / lines.length) / 2 + height / lines.length * i);
 						}
-                    }
+					}
 
 					for (const caption of captions) {
 						caption.style.width = '';
 						caption.style.boxSizing = '';
 					}
-                }
-                
+				}
+
 				if (saveToFile) canvas.toBlob(function (blob) {
 					a.href = URL.createObjectURL(blob);
 					a.download = navigator.mediaSession.metadata.artist + ' - ' + navigator.mediaSession.metadata.title + ' - ' + video.currentTime + '.' + format;
@@ -1436,24 +1436,62 @@ ytTweaks.tweaks.push(function (settings) {
 
 	if (settings.playOneVideoAtAtime) {
 		const bc = new BroadcastChannel('yttwPlayOneVideoAtAtime');
-		bc.addEventListener('message', function() {
-			if (video?.paused == false) {
-				document.hidden ? video.pause() : bc.postMessage('');
+
+		bc.addEventListener('message', function (e) {
+			if (e.data) {
+				if (localStorage?.getItem('yttwLastVideoPaused') == location.href) resumeVideo();
+			}
+			else if (video?.paused == false) {
+				if (document.hidden) pauseVideo();
+				else bc.postMessage('');
 			}
 		});
 
-		document.addEventListener('playing', postMessage, true);
+		addEventListener('playing', postMessage, true);
+
+		if (settings.autoResume) {
+			addEventListener('beforeunload', postMessage);
+			addEventListener('pause', postMessage, true);
+			addEventListener('visibilitychange', resumeVideo);
+			addEventListener('abort', postMessage, true);
+		}
+
+		function resumeVideo(e) {
+			if (video?.autoPaused) {
+				if (e?.type == 'visibilitychange' && document.hidden) return;
+				video.play();
+				delete video.autoPaused;
+			}
+		}
+
+		function pauseVideo() {
+			video.pause();
+			if (!settings.autoResume) return;
+			video.autoPaused = true;
+			localStorage?.setItem('yttwLastVideoPaused', location.href);
+		}
 
 		function postMessage(e) {
-			video = e.target;
-			if (video.parentElement.parentElement.id == 'inline-preview-player') return;
-			bc.postMessage('');
+			if (video?.autoPaused) return;
+			if (e.type != 'beforeunload') video = e.target;
+			if (watchPage()) bc.postMessage(e.type != 'playing' ? 1 : '');
+		}
+
+		function watchPage() {
+			player = video?.parentElement?.parentElement;
+			if (player?.id == 'movie_player' || player?.id == 'shorts-player') {
+				return true;
+			}
 		}
 
 		ytTweaks.playOneVideoAtAtime = {
 			storageChanged: function () {
 				bc.close();
-				document.removeEventListener('playing', postMessage, true);
+				removeEventListener('playing', postMessage, true);
+				removeEventListener('beforeunload', postMessage);
+				removeEventListener('pause', postMessage, true);
+				removeEventListener('visibilitychange', resumeVideo);
+				removeEventListener('abort', postMessage, true);
 			}
 		};
 	}
@@ -1736,7 +1774,7 @@ ytTweaks.tweaks.push(function (settings) {
 		const size = settings.pinnedVideoSize?.match(/\d+/g) || [480, 270];
 		const gap = settings.floatingPinnedVideo ?? 10;
 		const position = settings.pinnedVideoPosition || 'Bottom right';
-        const header = settings.pinnedVideoBelowHeader ? settings.compactHeaderBar ? 36 : 56 : 0;
+		const header = settings.pinnedVideoBelowHeader ? settings.compactHeaderBar ? 36 : 56 : 0;
 		const cssProp = {
 			top: 'initial',
 			bottom: 'initial',
@@ -1755,7 +1793,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		else if (position.startsWith('Top')) {
-            cssProp.top = gap + header + 'px';
+			cssProp.top = gap + header + 'px';
 		}
 
 		if (position.endsWith('right')) {
@@ -2129,7 +2167,7 @@ ytTweaks.tweaks.push(function (settings) {
 		.ytp-play-progress,
 		.ytProgressBarLineProgressBarPlayed
 		`;
-		
+
 		const scrubber = `
 		.ytp-scrubber-button,
 		.ytProgressBarPlayheadProgressBarPlayheadDot
@@ -2612,10 +2650,10 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 	}
 
-    if (settings.numbersThenEnter || settings.numbersThenArrowKey || settings.numbersThenShift) {
+	if (settings.numbersThenEnter || settings.numbersThenArrowKey || settings.numbersThenShift) {
 		ytTweaks.listenForHotkeys();
 
-        let timeoutId;
+		let timeoutId;
 		let num = '';
 
 		ytTweaks.numbersThenKey = {
@@ -2625,7 +2663,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 				if (e.key != ' ' && !isNaN(e.key)) {
 					e.stopImmediatePropagation();
-                    timeout();
+					timeout();
 
 					num += e.key;
 					showFeedback(num, '', 2000);
@@ -2634,7 +2672,7 @@ ytTweaks.tweaks.push(function (settings) {
 				if (!num) return;
 
 				else if (settings.numbersThenEnter && e.key == 'Enter') {
-                    showFeedback(formatSecToDDHHMMSS(convertToSeconds(num)) + ' (' + (convertToSeconds(num) - video.currentTime > 0 ? '+' : '-') + formatSecToDDHHMMSS(Math.abs(convertToSeconds(num) - video.currentTime)) + ')');
+					showFeedback(formatSecToDDHHMMSS(convertToSeconds(num)) + ' (' + (convertToSeconds(num) - video.currentTime > 0 ? '+' : '-') + formatSecToDDHHMMSS(Math.abs(convertToSeconds(num) - video.currentTime)) + ')');
 					seek(e, convertToSeconds(num));
 				}
 
@@ -2644,54 +2682,54 @@ ytTweaks.tweaks.push(function (settings) {
 				}
 
 				else if (settings.numbersThenShift && e.key == 'Shift') {
-                    let formattedRate;
-                    if (num[0] == '0') formattedRate = +num.replace('0', '0.');
-                    else formattedRate = +num >= 100 ? +num / 100 : +num;
+					let formattedRate;
+					if (num[0] == '0') formattedRate = +num.replace('0', '0.');
+					else formattedRate = +num >= 100 ? +num / 100 : +num;
 
-                    if (formattedRate > 16) formattedRate = 16;
-                    else if (formattedRate < 0.08) formattedRate = 1;
+					if (formattedRate > 16) formattedRate = 16;
+					else if (formattedRate < 0.08) formattedRate = 1;
 
-                    player.setPlaybackRate(formattedRate);
-                    video.playbackRate = formattedRate;
-                    showFeedback(formattedRate + 'x');
-                    num = '';
-                    
-                    try {
-                        sessionStorage.setItem('yt-player-playback-rate', JSON.stringify({
-                            data: formattedRate + '',
-                            creation: Date.now()
-                        }))
-                    } catch { }
-                }
+					player.setPlaybackRate(formattedRate);
+					video.playbackRate = formattedRate;
+					showFeedback(formattedRate + 'x');
+					num = '';
 
-                else if (e.key == 'Backspace') {
-                    timeout();
+					try {
+						sessionStorage.setItem('yt-player-playback-rate', JSON.stringify({
+							data: formattedRate + '',
+							creation: Date.now()
+						}))
+					} catch { }
+				}
+
+				else if (e.key == 'Backspace') {
+					timeout();
 					num = num.slice(0, -1);
-                    showFeedback(num, '', 2000);
-                }
+					showFeedback(num, '', 2000);
+				}
 
 				return true;
 			},
 			storageChanged: function () {
-                delete ytTweaks.numbersThenKey;
+				delete ytTweaks.numbersThenKey;
 			}
 		};
 
-        function timeout() {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(function () {
-                num = '';
-            }, 2000);
+		function timeout() {
+			clearTimeout(timeoutId);
+			timeoutId = setTimeout(function () {
+				num = '';
+			}, 2000);
 		}
 
-        function seek(e, sec) {
-            e.stopImmediatePropagation();
+		function seek(e, sec) {
+			e.stopImmediatePropagation();
 			e.preventDefault();
 
-            video.currentTime = sec;
-            player.wakeUpControls();
-            num = '';
-        }
+			video.currentTime = sec;
+			player.wakeUpControls();
+			num = '';
+		}
 
 		function convertToSeconds(strg) {
 			const arr = strg.split('').reverse().join('').match(/\d\d|\d/g);
