@@ -1571,7 +1571,9 @@ ytTweaks.tweaks.push(function (settings) {
         ytTweaks.sheet.textContent += `
         html,
         html[dark],
-        html [dark] {
+        html [dark],
+        [color-version=v2_0] [dark], 
+        html[color-version=v2_0][dark] {
           --yt-spec-text-primary: rgb(${text}) !important;
           --yt-spec-touch-response: rgb(${text}) !important;
           --yt-spec-touch-response-inverse: currentcolor !important;
@@ -1627,9 +1629,9 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-live-chat-background-color: rgb(${bg}) !important;
           --yt-live-chat-banner-gradient-scrim: linear-gradient(rgb(${bg}), transparent) !important;
           --yt-live-chat-action-panel-gradient-scrim: linear-gradient(to top, rgb(${bg}), transparent) !important;
-          --yt-live-chat-toast-background-color: ${btnSolid} !important;
-          --yt-live-chat-toast-action-color: rgb(${accent}) !important;
-          --yt-live-chat-toast-text-color: rgb(${text}) !important;
+          --yt-live-chat-toast-background-color: rgb(${accent}) !important;
+          --yt-live-chat-toast-action-color: rgb(${black || white || bg}) !important;
+          --yt-live-chat-toast-text-color: rgb(${black || white || bg}) !important;
           --yt-live-chat-product-picker-hover-color: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
           --yt-live-chat-sub-panel-background-color-transparent: rgb(${bg}) !important;
           --yt-live-chat-action-panel-background-color: rgb(${bg}) !important;
@@ -1723,19 +1725,27 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-sys-color-baseline--commerce-tonal-hover: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
           --yt-sys-color-baseline--brand-button-background: ${red} !important;
           --yt-sys-color-baseline--brand-link-text: ${red} !important;
+          --yt-sys-color-baseline--error-indicator: ${red} !important;
           --yt-sys-color-baseline--static-grey: rgba(${white || black || bg}, 0.2) !important;
 
           --t3e41d7b17b187f69: rgb(${bg}) !important;
           --tffc2fd3a644f6275: rgb(${text}) !important;
           --t4a6da19e16bf221a: rgba(${text}, 0.68) !important;
           --t7e34d5baa4ea6277: rgba(${text}, 0.38) !important;
-          --t2d807bb79e75606d: rgb(${accent}) !important;
-          --t904a88c623ca27ab: ${green} !important;
+          --tb628117fc164ad87: rgb(${black || white || bg}) !important;
           --t6216186c28b3834b: rgb(${black || white || bg}) !important;
+          --t2d807bb79e75606d: rgb(${accent}) !important;
+          --tfa3475c508f5dfef: rgba(${accent}, 0.30) !important;
+          --t904a88c623ca27ab: ${green} !important;
           --tf3fc855af2285f5f: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --t518e925f61bdcb91: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --t7f4f2c6d54836ce0: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --td8562cdc203bc683: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --t416e5931fc464589: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --t7d8b8e5ee291aec0: rgba(${white || black || bg}, 0.10) !important;
+          --tb7d74bb3291c951d: rgba(${white || black || bg}, 0.20) !important;
+          --t441a0e44e495381a: rgba(${white || black || bg}, 0.20) !important;
+          --t20480717de80f555: rgba(${white || black || bg}, 0.20) !important;
         }
   
         html,
@@ -1887,126 +1897,40 @@ ytTweaks.tweaks.push(function (settings) {
           background: linear-gradient(to bottom, transparent, ${btnSolid}) !important;
         }
   
-        /* Buttons */
-        .yt-spec-touch-feedback-shape__fill {
-          background: currentcolor !important;
-        }
-
-        /* YT experiment: shorts container in grid format */
-        .ytGridShelfViewModelGridShelfBottomButtonContainer {
-          background: rgb(${bg});
-        }
-  
-        #masthead .yt-spec-button-shape-next--overlay,
-        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal {
-          background: rgba(${btn}, ${btnOpacity || '0.10'});
-          color: rgb(${text});
-        }
-  
-        #masthead .yt-spec-button-shape-next--overlay:hover,
-        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover {
-          background: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-        }
-  
-        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--outline {
-          color: rgb(${text});
-          border-color: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-        }
-        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--outline:hover {
-          background: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-          border-color: transparent;
-        }
-  
-        .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--outline {
-          color: rgb(${accent});
-          border-color: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-        }
-  
-        .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--outline:hover {
-          background: rgba(${accent}, 0.3);
-          border-color: transparent;
-        }
-  
-        .yt-spec-button-shape-next--size-m.yt-spec-button-shape-next--segmented-start::after {
-          background: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-        }
-  
-        .yt-spec-button-shape-next--disabled.yt-spec-button-shape-next--text {
-          color: rgba(${text}, 0.38);
-        }
-  
-        .yt-spec-button-shape-next--disabled.yt-spec-button-shape-next--tonal {
-          color: rgba(${text}, 0.38);
-          background: rgba(${btn}, ${btnOpacity || '0.10'});
-        }
-  
-        .yt-spec-button-shape-next--disabled.yt-spec-button-shape-next--filled {
-          background: rgba(${btn}, ${btnOpacity || '0.10'});
-          color: rgba(${text}, 0.38);
-        }
-  
-        .yt-spec-button-shape-next--disabled.yt-spec-button-shape-next--outline {
-          color: rgba(${text}, 0.38);
-          border-color: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-        }
-  
-        .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text {
-          color: rgb(${accent});
-        }
-        .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--text:hover {
-          background: rgba(${accent}, 0.3);
-        }
-        .yt-spec-button-shape-next--call-to-action.yt-spec-button-shape-next--tonal {
-          color: rgb(${accent});
-          background-color: rgba(${accent}, 0.3);
-        }
-  
-        .yt-spec-button-shape-next--filled:is(.yt-spec-button-shape-next--mono,
-        .yt-spec-button-shape-next--overlay,
-        .yt-spec-button-shape-next--call-to-action) {
+        /* Buttons */      
+        .ytSpecButtonShapeNextMono.ytSpecButtonShapeNextFilled,
+        .ytSpecButtonShapeNextOverlay.ytSpecButtonShapeNextFilled,
+        .ytSpecButtonShapeNextCallToAction.ytSpecButtonShapeNextFilled {
           background: rgb(${accent});
           color: rgb(${black || white || bg});
         }
   
-        .yt-spec-button-shape-next--filled:is(.yt-spec-button-shape-next--mono, .yt-spec-button-shape-next--overlay, .yt-spec-button-shape-next--call-to-action):hover {
+        .ytSpecButtonShapeNextMono.ytSpecButtonShapeNextFilled:hover,
+        .ytSpecButtonShapeNextOverlay.ytSpecButtonShapeNextFilled:hover,
+        .ytSpecButtonShapeNextCallToAction.ytSpecButtonShapeNextFilled:hover {
           background: ${filledBtnHover};
         }
-  
-        .yt-spec-touch-feedback-shape--touch-response .yt-spec-touch-feedback-shape__stroke {
-          border-color: currentcolor;
+
+        /* Buttons > Header > Buttons of type 'Overlay' */
+        #masthead .ytSpecButtonShapeNextOverlay.ytSpecButtonShapeNextTonal {
+          background: rgba(${btn}, ${btnOpacity || '0.10'});
+          color: rgba(${text});
         }
-  
-        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
-          color: rgb(${text});
-        }
-  
-        .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text:hover {
+
+        #masthead .ytSpecButtonShapeNextOverlay.ytSpecButtonShapeNextTonal:hover {
           background: rgba(${btn}, ${btnHoverOpacity || '0.20'});
         }
-  
-        #search-clear-button .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--text {
-          background: none;
-          --yt-spec-touch-response: none;
+
+        #masthead .ytSpecButtonShapeNextOverlay.ytSpecButtonShapeNextText {
+          color: rgba(${text});
         }
   
+        /* Buttons > Tabs */
         yt-chip-cloud-chip-renderer[chip-style=STYLE_DEFAULT][selected] #chip-container.yt-chip-cloud-chip-renderer, 
         yt-chip-cloud-chip-renderer[chip-style=STYLE_HOME_FILTER][selected] #chip-container.yt-chip-cloud-chip-renderer,
         .ytChipShapeActive {
           background: rgb(${accent});
           color: rgb(${black || white || bg});
-        }
-  
-        .ytChipShapeInactive {
-          color: rgb(${text});
-          background: rgba(${btn}, ${btnOpacity || '0.10'});
-        }
-  
-        yt-icon-button.yt-live-chat-item-list-renderer,
-        yt-icon-button.yt-live-chat-item-list-renderer[disabled],
-        yt-icon.yt-live-chat-ticker-renderer {
-          background: rgb(${accent});
-          color: rgb(${black || white || bg});
-          --yt-spec-touch-response: currentcolor;
         }
   
         .ytTabShapeTabSelected,
@@ -2017,45 +1941,13 @@ ytTweaks.tweaks.push(function (settings) {
         .tabGroupShapeSlider {
           background: rgb(${accent});
         }
-  
-        tp-yt-paper-item[disabled],
-        .tp-yt-paper-item.tp-yt-paper-item[disabled] {
-          --paper-item-focused-before-background: rgba(${text}, 0.38);
-        }
-  
-        #voice-search-button .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text,
-        .yt-spec-button-shape-with-label__label {
-          color: rgb(${text});
-        }
 
-        #voice-search-button .yt-spec-button-shape-next--overlay.yt-spec-button-shape-next--text:hover {
-          background: rgba(${btn}, ${btnHoverOpacity || '0.20'});
-          --yt-spec-static-overlay-touch-response: rgb(${text});
-        }
-  
-        yt-notification-action-renderer[ui-refresh] yt-icon-button.yt-notification-action-renderer,
-        .yt-spec-button-shape-next--mono-inverse.yt-spec-button-shape-next--text {
-          color: rgb(${black || white || bg});
-          --yt-spec-touch-response: currentcolor;
-        }
-  
-        .yt-spec-button-shape-next--mono-inverse.yt-spec-button-shape-next--text:hover {
-          background: rgba(${black || white || bg}, 0.2);
-        }
-  
-        .ytp-flyout-cta .ytp-flyout-cta-action-button.ytp-flyout-cta-action-button-rounded {
+        /* Buttons > Live chat > Arrow down button */
+        yt-icon-button.yt-live-chat-item-list-renderer {
           background: rgb(${accent});
-          color: rgb(${black || white || bg}) !important;
-        }
-  
-        .yt-spec-button-shape-next--call-to-action-inverse.yt-spec-button-shape-next--text {
           color: rgb(${black || white || bg});
         }
   
-        .yt-spec-button-shape-next--call-to-action-inverse.yt-spec-button-shape-next--text:hover {
-          background: rgba(${black || white || bg}, 0.2);
-        }
-
         /* Hyperlinks */
         :is([style*="color: rgb(62, 166, 255);"], [style*="color: rgb(6, 95, 212);"]) {
           color: rgb(${accent}) !important;
@@ -2153,10 +2045,6 @@ ytTweaks.tweaks.push(function (settings) {
         /* Pop-up notification (Saved to playlist) */
         .snackbarViewModelHost {
           background: rgb(${accent});
-        }
-  
-        .snackbarViewModelTitle {
-          color: rgb(${black || white || bg});
         }
   
         /* Skeletons */
