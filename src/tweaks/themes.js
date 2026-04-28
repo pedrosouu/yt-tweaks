@@ -1728,6 +1728,7 @@ ytTweaks.tweaks.push(function (settings) {
           --yt-sys-color-baseline--error-indicator: ${red} !important;
           --yt-sys-color-baseline--static-grey: rgba(${white || black || bg}, 0.2) !important;
 
+          --ta889dfda9605a358: rgb(${bg}) !important;
           --t3e41d7b17b187f69: rgb(${bg}) !important;
           --tffc2fd3a644f6275: rgb(${text}) !important;
           --t4a6da19e16bf221a: rgba(${text}, 0.68) !important;
@@ -1737,8 +1738,9 @@ ytTweaks.tweaks.push(function (settings) {
           --t2d807bb79e75606d: rgb(${accent}) !important;
           --tfa3475c508f5dfef: rgba(${accent}, 0.30) !important;
           --t904a88c623ca27ab: ${green} !important;
+          --t518e925f61bdcb91: ${btnSolid} !important;
+          --t08a7c6c176cbc5c2: ${btnSolid} !important;
           --tf3fc855af2285f5f: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
-          --t518e925f61bdcb91: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --t7f4f2c6d54836ce0: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --td8562cdc203bc683: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
           --t416e5931fc464589: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
