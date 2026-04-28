@@ -1437,80 +1437,43 @@ ytTweaks.tweaks.push(function (settings) {
 	if (settings.playOneVideoAtAtime) {
 		const bc = new BroadcastChannel('yttwPlayOneVideoAtAtime');
 
-		let resumeStack = [];
-
-		function addVideoToStack() {
-			if (!resumeStack.includes(video.videoId)) resumeStack.unshift(video.videoId);
-			bc.postMessage(resumeStack);
-		}
-
-		function removeVideoFromStack() {
-			if (resumeStack.indexOf(video.videoId) >= 0) resumeStack?.splice(resumeStack.indexOf(video.videoId), 1);
-			bc.postMessage(resumeStack);
-		}
-
 		bc.addEventListener('message', function (e) {
-			if (typeof e.data == 'object') {
-				resumeStack = e.data;
-			}
-			else if (e.data) {
-				if (resumeStack?.[0] == video.videoId) resumeVideo();
-			}
-			else if (video?.paused == false) {
+			if (video?.paused == false) {
 				if (document.hidden) pauseVideo();
 				else bc.postMessage('');
 			}
 		});
 
 		addEventListener('playing', postMessage, true);
-
-		if (settings.autoResume) {
-			addEventListener('beforeunload', postMessage);
-			addEventListener('pause', postMessage, true);
-			addEventListener('visibilitychange', resumeVideo);
-			addEventListener('abort', postMessage, true);
-		}
+		if (settings.autoResume) addEventListener('visibilitychange', resumeVideo);
 
 		function resumeVideo(e) {
-			if (video?.videoId) {
+			if (video?.autoPaused) {
 				video.play();
-				removeVideoFromStack();
-				delete video.videoId;
+				delete video.autoPaused;
 			}
 		}
 
 		function pauseVideo() {
 			video.pause();
-			if (!settings.autoResume) return;
-			video.videoId = video.src;
-			addVideoToStack();
+			video.autoPaused = true;
 		}
 
 		function postMessage(e) {
-			if (video?.videoId) {
-				if (e.type == 'beforeunload') removeVideoFromStack();
-				return;
-			}
-
-			if (e.type != 'beforeunload') video = e.target;
-			if (watchPage()) bc.postMessage(e.type != 'playing' ? 1 : '');
+			video = e.target;
+			if (watchPage()) bc.postMessage('');
 		}
 
 		function watchPage() {
-			player = video?.parentElement?.parentElement;
-			if (player?.id == 'movie_player' || player?.id == 'shorts-player') {
-				return true;
-			}
+			player = video.parentElement.parentElement;
+			return (player.id == 'movie_player' || player.id == 'shorts-player');
 		}
 
 		ytTweaks.playOneVideoAtAtime = {
 			storageChanged: function () {
 				bc.close();
 				removeEventListener('playing', postMessage, true);
-				removeEventListener('beforeunload', postMessage);
-				removeEventListener('pause', postMessage, true);
 				removeEventListener('visibilitychange', resumeVideo);
-				removeEventListener('abort', postMessage, true);
 			}
 		};
 	}
