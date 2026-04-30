@@ -1436,44 +1436,104 @@ ytTweaks.tweaks.push(function (settings) {
 
 	if (settings.playOneVideoAtAtime) {
 		const bc = new BroadcastChannel('yttwPlayOneVideoAtAtime');
+		let tabId, resumeStack, autoPaused, stop;
+
+		addEventListener('playing', postMessage, true);
+
+		if (settings.autoResume) {
+			tabId = crypto.randomUUID();
+			resumeStack = [];
+
+			addEventListener('pause', postMessage, true);
+			addEventListener('abort', videoClosed, true);
+			addEventListener('volumechange', handleMute, true);
+			addEventListener('focus', resumeVideo);
+			addEventListener('beforeunload', videoClosed);
+		}
 
 		bc.addEventListener('message', function (e) {
-			if (video?.paused == false) {
-				if (document.hidden) pauseVideo();
-				else bc.postMessage('');
+			if (Array.isArray(e.data)) {
+				resumeStack = e.data;
+			}
+			else if (e.data == 'resume') {
+				if (resumeStack?.[0] == tabId) resumeVideo(e);
+			}
+			else if (video?.paused == false) {
+				if (e.data.silentTab || video.muted) return;
+
+				if (!document.hasFocus()) pauseVideo(e);
+				else bc.postMessage({ tabId: tabId });
 			}
 		});
 
-		addEventListener('playing', postMessage, true);
-		if (settings.autoResume) addEventListener('visibilitychange', resumeVideo);
-
-		function resumeVideo(e) {
-			if (video?.autoPaused) {
-				video.play();
-				delete video.autoPaused;
+		function addTabIdToStack() {
+			if (!resumeStack.includes(tabId)) {
+				resumeStack.unshift(tabId);
+				bc.postMessage(resumeStack);
 			}
 		}
 
-		function pauseVideo() {
+		function removeTabIdFromStack() {
+			if (resumeStack.indexOf(tabId) >= 0) {
+				resumeStack.splice(resumeStack.indexOf(tabId), 1);
+				bc.postMessage(resumeStack);
+			}
+		}
+
+		function resumeVideo(e) {
+			if (autoPaused) {
+				stop = e.type == 'message';
+				video.play();
+				resumeStack.tabWithAudioPlaying = tabId;
+				removeTabIdFromStack();
+				autoPaused = false;
+			}
+		}
+
+		function pauseVideo(e) {
 			video.pause();
-			video.autoPaused = true;
+			if (!settings.autoResume) return;
+			stop = true;
+			autoPaused = true;
+			resumeStack.tabWithAudioPlaying = e.data.tabId;
+			addTabIdToStack();
+		}
+
+		function handleMute(e) {
+			if (e.target.muted && resumeStack.tabWithAudioPlaying == tabId) {
+				bc.postMessage('resume');
+				e.target.isMuted = true;
+			} else if (e.target.isMuted) {
+				bc.postMessage({ tabId: tabId });
+				e.target.isMuted = false;
+			}
+		}
+
+		function videoClosed() {
+			if (autoPaused) removeTabIdFromStack();
+			else if (resumeStack.tabWithAudioPlaying == tabId) bc.postMessage('resume');
 		}
 
 		function postMessage(e) {
-			video = e.target;
-			if (watchPage()) bc.postMessage('');
-		}
+			if (stop) stop = false;
+			else {
+				video = e.target;
+				video.isMuted = video.muted;
 
-		function watchPage() {
-			player = video.parentElement.parentElement;
-			return (player.id == 'movie_player' || player.id == 'shorts-player');
+				if (e.type == 'pause' && resumeStack.tabWithAudioPlaying == tabId) bc.postMessage('resume');
+				else bc.postMessage({ tabId: tabId, silentTab: video.muted });
+			}
 		}
 
 		ytTweaks.playOneVideoAtAtime = {
 			storageChanged: function () {
 				bc.close();
 				removeEventListener('playing', postMessage, true);
-				removeEventListener('visibilitychange', resumeVideo);
+				removeEventListener('pause', postMessage, true);
+				removeEventListener('abort', videoClosed, true);
+				removeEventListener('volumechange', handleMute, true);
+				removeEventListener('focus', resumeVideo);
+				removeEventListener('beforeunload', videoClosed);
 			}
 		};
 	}
