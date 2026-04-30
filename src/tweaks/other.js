@@ -210,24 +210,14 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.redSubscribeButton) ytTweaks.sheet.textContent += `
-    :is(ytd-subscribe-button-renderer, yt-subscribe-button-view-model) .yt-spec-button-shape-next--filled,
-    [button-style=COMPACT_GRAY]:not([subscribed]) .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal,
-    .yt-subscribe-button-view-model__container > .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled,
-    .ytp-sb-subscribe {
+    :is(yt-subscribe-button-view-model, ytd-subscribe-button-renderer) .ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono {
       background: #cc0000 !important;
-      color: white !important;
+      color: #ffff !important;
     }
-  
-    :is(ytd-subscribe-button-renderer, yt-subscribe-button-view-model) .yt-spec-button-shape-next--filled:hover,
-    [button-style=COMPACT_GRAY]:not([subscribed]) .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--tonal:hover,
-    .yt-subscribe-button-view-model__container > .yt-spec-button-shape-next--mono.yt-spec-button-shape-next--filled:hover,
-    .ytp-sb-subscribe:hover {
+    
+    :is(yt-subscribe-button-view-model, ytd-subscribe-button-renderer) .ytSpecButtonShapeNextFilled.ytSpecButtonShapeNextMono:hover {
       background: #b70000 !important;
-    }
-  
-    .yt-spec-touch-feedback-shape--touch-response-inverse .yt-spec-touch-feedback-shape__fill {
-      background: currentcolor;
-    }
+    }       
     `;
 
     if (settings.customCss) ytTweaks.sheet.textContent += settings.customCss;
