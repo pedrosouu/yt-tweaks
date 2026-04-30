@@ -1736,6 +1736,7 @@ ytTweaks.tweaks.push(function (settings) {
           --tb628117fc164ad87: rgb(${black || white || bg}) !important;
           --t6216186c28b3834b: rgb(${black || white || bg}) !important;
           --t2d807bb79e75606d: rgb(${accent}) !important;
+          --t02c0a2c868c14ce8: rgb(${accent}) !important;
           --tfa3475c508f5dfef: rgba(${accent}, 0.30) !important;
           --t904a88c623ca27ab: ${green} !important;
           --t518e925f61bdcb91: ${btnSolid} !important;
