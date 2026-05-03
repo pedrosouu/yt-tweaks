@@ -1436,19 +1436,22 @@ ytTweaks.tweaks.push(function (settings) {
 
 	if (settings.playOneVideoAtAtime) {
 		const bc = new BroadcastChannel('yttwPlayOneVideoAtAtime');
-		let tabId, resumeStack, autoPaused, stop;
+		let tabId, autoPaused, resumeStack, playingEvtCanceled, pauseEvtCanceled;
 
-		addEventListener('playing', postMessage, true);
+		addEventListener('playing', videoStarted, true);
 
 		if (settings.autoResume) {
 			tabId = crypto.randomUUID();
 			resumeStack = [];
 
-			addEventListener('pause', postMessage, true);
-			addEventListener('abort', videoClosed, true);
+			addEventListener('pause', videoStopped, true);
 			addEventListener('volumechange', handleMute, true);
 			addEventListener('focus', resumeVideo);
-			addEventListener('beforeunload', videoClosed);
+			addEventListener('beforeunload', videoStopped);
+			HTMLVideoElement.prototype.removeAttribute = function (attr) {
+				if (attr == 'src') videoStopped();
+				return HTMLElement.prototype.removeAttribute.call(this, attr);
+			}
 		}
 
 		bc.addEventListener('message', function (e) {
@@ -1482,58 +1485,58 @@ ytTweaks.tweaks.push(function (settings) {
 
 		function resumeVideo(e) {
 			if (autoPaused) {
-				stop = e.type == 'message';
 				video.play();
+				autoPaused = false;
 				resumeStack.tabWithAudioPlaying = tabId;
 				removeTabIdFromStack();
-				autoPaused = false;
+				playingEvtCanceled = e.type == 'message';
 			}
 		}
 
 		function pauseVideo(e) {
 			video.pause();
 			if (!settings.autoResume) return;
-			stop = true;
 			autoPaused = true;
 			resumeStack.tabWithAudioPlaying = e.data.tabId;
 			addTabIdToStack();
+			pauseEvtCanceled = true;
 		}
 
 		function handleMute(e) {
 			if (e.target.muted && resumeStack.tabWithAudioPlaying == tabId) {
 				bc.postMessage('resume');
 				e.target.isMuted = true;
-			} else if (e.target.isMuted) {
+			}
+			else if (e.target.isMuted && !e.target.muted && !e.target.paused) {
 				bc.postMessage({ tabId: tabId });
 				e.target.isMuted = false;
 			}
 		}
 
-		function videoClosed() {
-			if (autoPaused) removeTabIdFromStack();
+		function videoStopped() {
+			if (pauseEvtCanceled) pauseEvtCanceled = false;
+			else if (autoPaused) removeTabIdFromStack();
 			else if (resumeStack.tabWithAudioPlaying == tabId) bc.postMessage('resume');
 		}
 
-		function postMessage(e) {
-			if (stop) stop = false;
+		function videoStarted(e) {
+			if (playingEvtCanceled) playingEvtCanceled = false;
 			else {
 				video = e.target;
 				video.isMuted = video.muted;
 
-				if (e.type == 'pause' && resumeStack.tabWithAudioPlaying == tabId) bc.postMessage('resume');
-				else bc.postMessage({ tabId: tabId, silentTab: video.muted });
+				bc.postMessage({ tabId: tabId, silentTab: video.muted });
 			}
 		}
 
 		ytTweaks.playOneVideoAtAtime = {
 			storageChanged: function () {
 				bc.close();
-				removeEventListener('playing', postMessage, true);
-				removeEventListener('pause', postMessage, true);
-				removeEventListener('abort', videoClosed, true);
+				removeEventListener('playing', videoStarted, true);
+				removeEventListener('pause', videoStopped, true);
 				removeEventListener('volumechange', handleMute, true);
 				removeEventListener('focus', resumeVideo);
-				removeEventListener('beforeunload', videoClosed);
+				removeEventListener('beforeunload', videoStopped);
 			}
 		};
 	}
