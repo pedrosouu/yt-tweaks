@@ -292,18 +292,18 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.compactButtons) ytTweaks.sheet.textContent += `
-    #top-level-buttons-computed yt-button-view-model .yt-spec-button-shape-next__button-text-content, 
-    #flexible-item-buttons .yt-spec-button-shape-next__button-text-content {
+    #top-level-buttons-computed yt-button-view-model .ytSpecButtonShapeNextButtonTextContent,
+    #flexible-item-buttons .ytSpecButtonShapeNextButtonTextContent {
       display: none !important;
     }
   
-    #top-level-buttons-computed yt-button-view-model .yt-spec-button-shape-next__icon, 
-    #flexible-item-buttons .yt-spec-button-shape-next__icon {
+    #top-level-buttons-computed yt-button-view-model .ytSpecButtonShapeNextIcon,
+    #flexible-item-buttons .ytSpecButtonShapeNextIcon {
       margin: 0;
     }
   
-    #top-level-buttons-computed yt-button-view-model .yt-spec-button-shape-next--size-m, 
-    #flexible-item-buttons .yt-spec-button-shape-next--size-m {
+    #top-level-buttons-computed yt-button-view-model .ytSpecButtonShapeNextSizeM,
+    #flexible-item-buttons .ytSpecButtonShapeNextSizeM {
       padding: 0 6px;
     }
     `;
@@ -332,7 +332,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         function getButton(type) {
-            return document.querySelector(`[role="main"] ${location.pathname.includes('shorts') ? '': '#below'} ${type}-button-view-model button`);
+            return document.querySelector(`[role="main"] ${location.pathname.includes('shorts') ? '' : '#below'} ${type}-button-view-model button`);
         }
     }
 
