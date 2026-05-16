@@ -1423,6 +1423,57 @@ ytTweaks.tweaks.push(function (settings) {
 		};
 	}
 
+	if (settings.rotateButton || settings.rotateHotkey) {
+		const img = document.createElement('img');
+		img.style = 'display: block; margin: auto; height: 60%';
+		img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'%3E%3Cpath d='M21.37,5.07a1,1,0,0,0-1.3.56l-1,2.45A9,9,0,1,0,17.75,18a1,1,0,0,0-.09-1.41,1,1,0,0,0-1.41.09,7,7,0,1,1,1.2-7.33L14.37,8.07a1,1,0,1,0-.74,1.86l5,2A1,1,0,0,0,19,12a1,1,0,0,0,.93-.63l2-5A1,1,0,0,0,21.37,5.07Z' style='fill: %23fff'/%3E%3C/svg%3E";
+
+		const rotateButton = document.createElement('button');
+		rotateButton.classList.add('ytp-button');
+		rotateButton.style = 'vertical-align: top';
+		rotateButton.appendChild(img);
+		rotateButton.addEventListener('click', rotate);
+
+		if (settings.rotateButton) addButtonToPlayer(rotateButton);
+
+		if (settings.rotateHotkey) {
+			ytTweaks.listenForHotkeys();
+			ytTweaks.getHotkeys()[settings.rotateHotkey] = rotate;
+		}
+
+		function rotate() {
+			getPlayerAndVideo();
+			if (video.clientWidth > video.clientHeight) video.style.scale = 100 / video.clientWidth * video.clientHeight / 100;
+			else video.style.scale = 100 / video.clientHeight * video.clientWidth / 100;
+
+			switch (video.style.rotate) {
+				case '90deg':
+					video.style.rotate = '180deg'
+					video.style.scale = '';
+					showFeedback('180°');
+					break;
+				case '180deg':
+					video.style.rotate = '270deg'
+					showFeedback('270°');
+					break;
+				case '270deg':
+					video.style.rotate = '';
+					video.style.scale = '';
+					showFeedback('0°');
+					break;
+				default:
+					video.style.rotate = '90deg';
+					showFeedback('90°');
+			}
+		}
+
+		ytTweaks.rotateVideo = {
+			storageChanged: function () {
+				rotateButton.remove();
+			}
+		};
+	}
+
 	if (settings.playOneVideoAtAtime) {
 		const bc = new BroadcastChannel('yttwPlayOneVideoAtAtime');
 		let tabId, autoPaused, resumeStack, playingEvtCanceled, pauseEvtCanceled;
