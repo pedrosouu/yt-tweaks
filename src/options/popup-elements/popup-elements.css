@@ -22,7 +22,6 @@
     text-wrap: initial !important;
     overflow-wrap: break-word;
     outline: none;
-    scrollbar-width: thin;
 }
 
 .popup.open {
@@ -175,7 +174,7 @@ input[type=range]::-moz-range-thumb:active {
     gap: 15px;
     justify-content: space-between;
     flex-direction: row-reverse;
-    width: calc(100% - 24px);
+    width: calc(75% - 24px);
     max-width: initial;
 }
 
@@ -183,31 +182,14 @@ input[type=range]::-moz-range-thumb:active {
     display: none;
 }
 
-button.add:before,
-button.add:after {
-    display: block;
-    position: absolute;
-    content: "";
-    background: #fff;
-    width: 14px;
-    height: 2px;
-}
-
-button.add:after {
-    transform: rotate(90deg);
-}
-
 button.delete {
     --btn-bg: var(--red);
-    --btn-hover-bg: rgb(var(--red), 0.15);
-    --btn-active-bg: rgb(var(--red), 0.10);
+    background-image: var(--trash-can);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
-button.keybinder.active::before {
-    content: '. . .';
-}
-
-button.keybinder::before {
+#list button.keybinder::before {
     max-width: initial;
 }
 
@@ -244,8 +226,7 @@ input.list {
 
 /* SETTINGS IMPORTER */
 #importer {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;    
     gap: 12px;
 }
 

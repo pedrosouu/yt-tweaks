@@ -7,43 +7,43 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --main-bg: #141414;
-        --text: rgba(255, 255, 255, 0.87);
-        --secondary-text: rgba(255, 255, 255, 0.55);
-        --tertiary-text: rgba(255, 255, 255, 0.7);
-        --red: 255, 124, 124;
-        --shadow-color: rgba(0, 0, 0, .7);
-        --btn-bg: #292929;
-        --btn-hover-bg: #3c3c3c;
-        --btn-active-bg: #424242;
-    }
-
-    :is(.popup, label) :is(button, input) {
-        --btn-bg: hsla(0, 5%, 100%, 0.1);
-        --btn-hover-bg: hsla(0, 5%, 100%, 0.2);
-        --btn-active-bg: hsla(0, 5%, 100%, 0.3);
-    }
+:root {
+    --main-bg: #efefef;
+    --text: rgba(0, 0, 0, 0.87);
+    --secondary-text: rgba(0, 0, 0, 0.55);
+    --red: 255, 95, 95;
+    --shadow-color: rgba(0, 0, 0, .3);
+    --btn-bg: #fff;
+    --btn-hover-bg: #e0e0e0;
+    --btn-active-bg: #cfcfcf;
+    --trash-can: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='24px' viewBox='4 4 24 24' version='1.1' style='fill:rgb(255, 95, 95);fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M11,4.5l10,0c0.828,-0 1.5,-0.672 1.5,-1.5c-0,-0.828 -0.672,-1.5 -1.5,-1.5l-10,0c-0.828,-0 -1.5,0.672 -1.5,1.5c-0,0.828 0.672,1.5 1.5,1.5Z'%3E%3C/path%3E%3Cpath d='M5,9.5l0,16.5c0,2.761 2.239,5 5,5l12,0c2.761,0 5,-2.239 5,-5l0,-16.5l1.645,0c0.748,-0 1.355,-0.672 1.355,-1.5c-0,-0.828 -0.607,-1.5 -1.355,-1.5l-25.29,0c-0.748,-0 -1.355,0.672 -1.355,1.5c-0,0.828 0.607,1.5 1.355,1.5l1.645,0Zm7,3.5l0,12c-0,0.552 0.448,1 1,1c0.552,0 1,-0.448 1,-1l0,-12c-0,-0.552 -0.448,-1 -1,-1c-0.552,0 -1,0.448 -1,1Zm6,-0l0,12c0,0.552 0.448,1 1,1c0.552,-0 1,-0.448 1,-1l0,-12c0,-0.552 -0.448,-1 -1,-1c-0.552,-0 -1,0.448 -1,1Z'%3E%3C/path%3E%3C/svg%3E");
+    --rotable-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='rotableArrow' viewBox='0 0 24 24'%3E%3Cpath style='fill:rgba(0, 0, 0, 0.87);' d='m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2'%3E%3C/path%3E%3C/svg%3E");
 }
 
-@media (prefers-color-scheme: light) {
+:is(.popup, label) :is(button, input) {
+    --btn-bg: rgba(0, 0, 0, 0.1);
+    --btn-hover-bg: rgba(0, 0, 0, 0.2);
+    --btn-active-bg: rgba(0, 0, 0, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
     :root {
-        --main-bg: #efefef;
-        --text: rgba(0, 0, 0, 0.87);
-        --secondary-text: rgba(0, 0, 0, 0.55);
-        --tertiary-text: rgba(0, 0, 0, 0.7);
-        --red: 195, 0, 0;
-        --shadow-color: rgba(0, 0, 0, .3);
-        --btn-bg: #fff;
-        --btn-hover-bg: #e0e0e0;
-        --btn-active-bg: #cfcfcf;
+        --main-bg: #121212;
+        --text: rgba(255, 255, 255, 0.87);
+        --secondary-text: rgba(255, 255, 255, 0.55);
+        --red: 255, 95, 95;
+        --shadow-color: rgba(0, 0, 0, .7);
+        --btn-bg: #252525;
+        --btn-hover-bg: #353535;
+        --btn-active-bg: #454545;
+        --trash-can: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='24px' viewBox='4 4 24 24' version='1.1' style='fill:rgb(255, 95, 95);fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M11,4.5l10,0c0.828,-0 1.5,-0.672 1.5,-1.5c-0,-0.828 -0.672,-1.5 -1.5,-1.5l-10,0c-0.828,-0 -1.5,0.672 -1.5,1.5c-0,0.828 0.672,1.5 1.5,1.5Z'%3E%3C/path%3E%3Cpath d='M5,9.5l0,16.5c0,2.761 2.239,5 5,5l12,0c2.761,0 5,-2.239 5,-5l0,-16.5l1.645,0c0.748,-0 1.355,-0.672 1.355,-1.5c-0,-0.828 -0.607,-1.5 -1.355,-1.5l-25.29,0c-0.748,-0 -1.355,0.672 -1.355,1.5c-0,0.828 0.607,1.5 1.355,1.5l1.645,0Zm7,3.5l0,12c-0,0.552 0.448,1 1,1c0.552,0 1,-0.448 1,-1l0,-12c-0,-0.552 -0.448,-1 -1,-1c-0.552,0 -1,0.448 -1,1Zm6,-0l0,12c0,0.552 0.448,1 1,1c0.552,-0 1,-0.448 1,-1l0,-12c0,-0.552 -0.448,-1 -1,-1c-0.552,-0 -1,0.448 -1,1Z'%3E%3C/path%3E%3C/svg%3E");
+        --rotable-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='rotableArrow' viewBox='0 0 24 24'%3E%3Cpath style='fill:rgba(255, 255, 255, 0.87);' d='m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2'%3E%3C/path%3E%3C/svg%3E");
     }
 
     :is(.popup, label) :is(button, input) {
-        --btn-bg: rgba(0, 0, 0, 0.1);
-        --btn-hover-bg: rgba(0, 0, 0, 0.2);
-        --btn-active-bg: rgba(0, 0, 0, 0.3);
+        --btn-bg: rgba(255, 255, 255, 0.1);
+        --btn-hover-bg: rgba(255, 255, 255, 0.2);
+        --btn-active-bg: rgba(255, 255, 255, 0.3);
     }
 }
 
@@ -61,6 +61,10 @@
     opacity: 1;
 }
 
+.hidden {
+    display: none !important;
+}
+
 span {
     align-content: center;
 }
@@ -68,10 +72,8 @@ span {
 h4 {
     display: inline;
     font-weight: 500;
-    color: var(--tertiary-text);
-    font-size: .9em;
+    font-size: 1em;
     margin-block: 0;
-    text-transform: uppercase;
 }
 
 svg {
@@ -81,181 +83,69 @@ svg {
 }
 
 body {
-    --accent: #3584e4;
+    --accent: #5294e2;
+    --navbar-width: 180px;
+    --btn-height: 34px;
+    --label-btn-height: 30px;
+    --spacing-1x: 6px;
+    --spacing-2x: 12px;
+    --spacing-4x: 24px;
     position: relative;
     font-family: 'Roboto';
     background-color: var(--main-bg);
     color: var(--text);
-    width: 380px;
+    width: 600;
     min-width: 100%;
-    min-height: 543px;
+    min-height: 600px;
     font-size: .9rem;
     font-weight: 400;
     line-height: 1.25rem;
     margin: 0;
-    padding: 12px;
     box-sizing: border-box;
+    padding: calc(var(--btn-height) + var(--spacing-2x)) var(--spacing-2x) var(--spacing-2x) 0px;
 }
 
 :root {
-    overflow-x: hidden;
-    scrollbar-width: thin;
     scrollbar-gutter: stable;
+}
+
+:root, 
+div,
+.popup {
+    scrollbar-width: thin;
     scrollbar-color: var(--btn-active-bg) transparent;
 }
 
-:root#textEditor {
-    overflow: hidden;
-    scrollbar-gutter: auto;
-}
-
-.hidden,
-.searchMode .otherWorks {
-    display: none !important;
-}
-
-.expandable {
-    transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
-    overflow: hidden;
-    visibility: hidden;
-}
-
-.expandable:not(.expanded) {
-    height: 0 !important;
-}
-
-.expandable.expanded {
-    visibility: visible;
-    height: auto;
-}
-
-button,
-.button {
-    position: relative;
-    gap: 6px;
-    height: 38px;
-    min-width: 38px;
-    transition: background .15s;
-    display: flex;
-    background: var(--btn-bg) !important;
-    justify-content: center;
-    align-items: center;
-    appearance: none;
-    border: none;
-    fill: var(--text);
-    box-sizing: border-box;
-    color: inherit;
-    text-align: initial;
-    font-size: inherit;
-    font-family: inherit;
-    line-height: inherit;
-    line-height: inherit;
-    cursor: pointer;
-    border-radius: 100px;
-    padding: initial;
-    text-decoration: none;
-}
-
-.button,
-button:not(label> :nth-child(2), .removeSetting) {
-    padding: 0 12px;
-}
-
-label :is(button, input) {
-    height: 30px !important;
-    min-width: 30px;
-}
-
-.iconButton {
-    border-radius: 50%;
-}
-
-button.filled {
-    --btn-hover-bg: #1472e4;
-    --btn-active-bg: #0b62cc;
-    background: var(--accent) !important;
-    color: #fff;
-    outline-offset: 2px !important;
-    fill: #fff !important;
-}
-
-button.tinted {
-    background: rgb(var(--btn-bg), 0.2) !important;
-    color: rgb(var(--btn-bg));
-    fill: rgb(var(--btn-bg));
-    outline-color: rgb(var(--btn-bg));
-}
-
-label > :nth-child(2),
-.removeSetting {
-    background: none !important;
-}
-
-label > :nth-child(2) {
-    outline: none !important;
-}
-
-:is(button:not(label > :nth-child(2), .removeSetting), .button, li):is(:hover, .focused):not(:focus-visible),
-label:hover {
-    background: var(--btn-hover-bg) !important;
-}
-
-:is(button:not(label > :nth-child(2), .removeSetting), .button, label):active:not(:focus-visible),
-label.open {
-    background: var(--btn-active-bg) !important;
-}
-
-label:has(:focus-visible:nth-child(2)) {
-    outline-offset: -2px;
-    border-radius: 12px;
-    background: var(--btn-bg) !important;
-    outline: 2px solid var(--accent);
-}
-
 header {
-    position: relative;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     width: 100%;
     gap: 12px;
-}
-
-header search {
-    position: initial;
-    display: flex;
-    background: none;
-    flex-grow: 1;
+    position: fixed;
+    top: 0;
     z-index: 1;
-    width: initial;
+    padding: var(--spacing-2x);
+    box-sizing: border-box;
+    background: var(--main-bg);
 }
 
 search {
     position: relative;
-    width: 100%;
+    width: calc(var(--navbar-width) - var(--spacing-2x));
 }
 
-header .search {
-    position: absolute;
-    width: 91px !important;
-    transition: width .25s cubic-bezier(0.4, 0, 0.2, 1), background .15s !important;
+#buttons {
+    display: flex;
+    gap: var(--spacing-2x);
 }
 
 .search {
-    padding-left: 35px !important;
-}
-
-.search:focus-visible {
-    width: 100% !important;
-}
-
-.search:not(:placeholder-shown) {
-    width: 100% !important;
-    padding-right: 12px !important;
+    padding-left: calc(27px + var(--spacing-1x)) !important;
 }
 
 .searchIcon {
     position: absolute;
-    left: 12px;
+    left: var(--spacing-2x);
     top: 0px;
     cursor: text;
     fill: var(--secondary-text);
@@ -276,7 +166,135 @@ header .search {
 }
 
 .clearSearch:hover {
-    opacity: .75 !important;
+    opacity: .75;
+}
+
+main {
+    padding-left: calc(var(--navbar-width) + var(--spacing-4x));
+}
+
+#navigation {
+    position: fixed;
+    width: var(--navbar-width);
+    height: calc(100% - (var(--btn-height) + var(--spacing-2x)) - var(--spacing-4x) - var(--spacing-2x));
+    overflow: auto;
+    padding-top: var(--spacing-4x);
+}
+
+.expandable {
+    transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.25s;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.expandable:not(.expanded) {
+    height: 0 !important;
+}
+
+.expandable.expanded {
+    visibility: visible;
+    height: auto;
+}
+
+.tabHeading {
+    display: block;
+    min-height: var(--btn-height);
+    height: auto;
+    background: none;
+    width: 100%;
+    justify-content: initial;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.tabHeading.selected {
+    color: #fff;
+    font-weight: 500;
+    background: var(--accent) !important;
+}
+
+button,
+.button {
+    position: relative;
+    gap: var(--spacing-1x);
+    height: var(--btn-height);
+    min-width: var(--btn-height);
+    transition: background .15s;
+    display: flex;
+    background: var(--btn-bg);
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    border: none;
+    fill: var(--text);
+    box-sizing: border-box;
+    color: inherit;
+    text-align: initial;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    border-radius: 100px;
+    padding: initial;
+    text-decoration: none;
+}
+
+.button,
+button:not(label> :nth-child(2), .removeSetting) {
+    padding: var(--spacing-1x) var(--spacing-2x);
+}
+
+label :is(button, input) {
+    height: var(--label-btn-height) !important;
+    min-width: var(--label-btn-height);
+}
+
+.iconButton {
+    border-radius: 50%;
+}
+
+button.filled {
+    --btn-hover-bg: #3c87e2;
+    --btn-active-bg: #2076e0;
+    background-color: var(--accent) !important;
+    color: #fff;
+    fill: #fff !important;
+    outline-offset: 2px !important;
+}
+
+button.tinted {
+    --btn-hover-bg: rgb(var(--btn-bg), 0.15);
+    --btn-active-bg: rgb(var(--btn-bg), 0.10);
+    background-color: rgb(var(--btn-bg), 0.2);
+    color: rgb(var(--btn-bg));
+    outline-color: rgb(var(--btn-bg));
+}
+
+label > :nth-child(2),
+.removeSetting {
+    background-color: initial !important;
+}
+
+label > :nth-child(2) {
+    outline: none !important;
+}
+
+:is(button:not(label > :nth-child(2), .removeSetting), .button, li):is(:hover, .focused):not(:focus-visible),
+label:hover {
+    background-color: var(--btn-hover-bg);
+}
+
+:is(button:not(label > :nth-child(2), .removeSetting), .button, label):active:not(:focus-visible),
+label.open {
+    background-color: var(--btn-active-bg);
+}
+
+label:has(:focus-visible:nth-child(2)) {
+    outline-offset: -2px;
+    border-radius: 12px;
+    background-color: var(--btn-bg) !important;
+    outline: 2px solid var(--accent);
 }
 
 input[type="text"]:not(:placeholder-shown)~.searchIcon,
@@ -291,9 +309,13 @@ section {
     overflow: clip;
 }
 
+section:has(> label:first-child) {
+    margin-top: var(--spacing-4x);
+}
+
 section>h4,
 label>h4 {
-    padding-left: 12px;
+    padding-left: var(--spacing-2x);
 }
 
 section>h4 {
@@ -306,13 +328,15 @@ label>h4 {
 }
 
 label {
-    min-height: 30px;
-    padding: 8px 12px;
+    min-height: calc(var(--label-btn-height) + var(--spacing-2x));
+    padding: var(--spacing-1x) var(--spacing-2x);
     display: flex;
+    gap: var(--spacing-1x);
     cursor: pointer;
     transition: background .15s;
     border-top: 1px solid var(--btn-hover-bg);
     user-select: none;
+    box-sizing: border-box;
 }
 
 label[section="header"] {
@@ -330,7 +354,7 @@ section>label:is(:first-of-type, .tprBorder) {
 
 label>span {
     flex-grow: 1;
-    margin-right: 12px;
+    margin-right: var(--spacing-1x);
     min-width: 0;
     overflow-wrap: break-word;
 }
@@ -352,16 +376,15 @@ label> :is(input, button) {
     font-size: .85rem;
     color: var(--secondary-text);
     margin: 0;
-    margin-top: 6px;
+    margin-top: var(--spacing-1x);
 }
 
 [type="number"] {
     font-family: inherit;
     font-size: inherit;
     border: none;
-    height: 38px;
+    height: var(--btn-height);
     width: 32px;
-    background: none;
     color: inherit;
     text-align: end;
     padding: 0;
@@ -384,7 +407,7 @@ label> :is(input, button) {
 }
 
 .minus {
-    margin: 0 12px;
+    margin: 0 var(--spacing-1x);
 }
 
 .plus {
@@ -402,8 +425,8 @@ label> :is(input, button) {
     width: 37.5px;
     height: 24px !important;
     cursor: pointer;
-    margin: 3px 0;
-    outline-offset: 2px !important;
+    margin: calc((var(--label-btn-height) - 24px)/2) 0px;
+    outline-offset: -2px;
     border-radius: 100px;
 }
 
@@ -419,7 +442,7 @@ label> :is(input, button) {
 }
 
 [type="checkbox"]:checked:after {
-    background: #35e453;
+    background: #42d6aa;
 }
 
 [type="checkbox"]:before {
@@ -479,20 +502,17 @@ input[type="text"]:invalid {
     color: rgb(var(--red));
 }
 
-.rotableArrow {
+.rotableArrow::after {
+    content: "";
+    background-image: var(--rotable-arrow);
+    background-repeat: no-repeat;
     width: 24px;
+    height: 24px;
     transition: transform 0.15s ease-in-out;
 }
 
-:is(.open, [rotated]) .rotableArrow {
+.open .rotableArrow::after {
     transform: rotateZ(180deg);
-}
-
-button[placeholder] {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
 }
 
 button[placeholder]:is(:not([value]), [value=""])::before {
@@ -513,12 +533,10 @@ button[placeholder]:is(:not([value]), [value=""]) + .removeSetting {
 
 .removeSetting {
     transition: opacity .15s;
-    width: 20px !important;
-    height: 20px !important;
-    padding: 0 !important;
-    min-width: 0;
-    margin: 5px 0 0 6px;
-    outline-offset: 2px !important;
+    fill: rgb(var(--red));
+    background-image: var(--trash-can);
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .removeSetting:hover {
@@ -535,7 +553,7 @@ textarea {
     color: inherit;
     font-family: inherit;
     font-size: inherit;
-    padding: 12px;
+    padding: var(--spacing-2x);
     field-sizing: content;
     box-sizing: border-box;
     outline: none;

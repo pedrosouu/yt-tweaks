@@ -46,7 +46,7 @@ ytTweaks.tweaks.push(function (settings) {
     }
     `;
 
-    if (settings.sidebarComments) {
+    if (settings.autoSidebarComments || settings.toggleSidebarCommentsHotkey) {
         const strg = `
         ytd-watch-flexy {
           --yttw-sidebar-comments-height: ${settings.scUsePlayerHeight ? 'var(--ytd-watch-flexy-panel-max-height)' : `calc(${settings.scHeight ?? 100}vh - var(--ytd-margin-6x) - var(--ytd-toolbar-height));`};
@@ -113,7 +113,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
         `
 
-        if (settings.autoSidebarComments != false) ytTweaks.sheet.textContent += strg;
+        if (settings.autoSidebarComments) ytTweaks.sheet.textContent += strg;
 
         if (settings.toggleSidebarCommentsHotkey) {
             ytTweaks.listenForHotkeys();

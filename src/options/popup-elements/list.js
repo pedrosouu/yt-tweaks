@@ -52,44 +52,30 @@ function restoreList() {
         addItem(document.createElement('div'), key, popupTrigger.value[key]);
     }
 
-    else for (const key in popupTrigger.value) {
-        addItem(document.createElement('div'), key);
+    else for (const value of popupTrigger.value) {
+        addItem(document.createElement('div'), value);
     }
 
-    addItem(document.createElement('div'), '', '');
+    addItem(document.createElement('div'));
 }
 
 function addItem(item, value1, value2) {
     item.classList.add('listItem');
 
-    if (listType == 'text+number') item.append(getTextInput(), getNumberInput());
+    if (listType == 'text+number') item.append(getTextInput(value1), getNumberInput(value2));
 
-    else if (listType == 'hotkey+number') item.append(getSetHotkeyBtn(), getNumberInput());
+    else if (listType == 'hotkey+number') item.append(getSetHotkeyBtn(value1), getNumberInput(value2));
 
-    else item.appendChild(getTextInput());
+    else item.appendChild(getTextInput(value1));
 
-    item.insertAdjacentHTML('beforeend', `
-    <button class="tinted delete iconButton" title="Delete">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14px" height="24px" viewBox="4 4 24 24" version="1.1" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-        <path d="M11,4.5l10,0c0.828,-0 1.5,-0.672 1.5,-1.5c-0,-0.828 -0.672,-1.5 -1.5,-1.5l-10,0c-0.828,-0 -1.5,0.672 -1.5,1.5c-0,0.828 0.672,1.5 1.5,1.5Z"></path>
-        <path d="M5,9.5l0,16.5c0,2.761 2.239,5 5,5l12,0c2.761,0 5,-2.239 5,-5l0,-16.5l1.645,0c0.748,-0 1.355,-0.672 1.355,-1.5c-0,-0.828 -0.607,-1.5 -1.355,-1.5l-25.29,0c-0.748,-0 -1.355,0.672 -1.355,1.5c-0,0.828 0.607,1.5 1.355,1.5l1.645,0Zm7,3.5l0,12c-0,0.552 0.448,1 1,1c0.552,0 1,-0.448 1,-1l0,-12c-0,-0.552 -0.448,-1 -1,-1c-0.552,0 -1,0.448 -1,1Zm6,-0l0,12c0,0.552 0.448,1 1,1c0.552,-0 1,-0.448 1,-1l0,-12c0,-0.552 -0.448,-1 -1,-1c-0.552,-0 -1,0.448 -1,1Z"></path>
-      </svg>
-    </button>
-    `);
-
-    if (listType?.includes('+')) {
-        if (value1) item.children[0].value = value1;
-        if (value2) item.children[1].value = value2;
-    }
-
-    else item.children[0].value = value1;
+    item.insertAdjacentHTML('beforeend', `<button class="tinted delete iconButton" title="Delete"></button>`);
 
     list.lastElementChild.appendChild(item);
 }
 
 function listUpdated() {
     Object.defineProperty(popupTrigger, 'value', {
-        value: {},
+        value: listType?.includes('+') ? {} : [],
         configurable: true
     });
 
@@ -104,12 +90,12 @@ function listUpdated() {
 
     else {
         for (const item of items) {
-            if (item.children[0].value) popupTrigger.value[item.children[0].value] = 1;
+            if (item.children[0].value) popupTrigger.value.push(item.children[0].value);
         }
     }
 
     if (items[items.length - 1]?.children[0].value || !items.length) {
-        addItem(document.createElement('div'), '', '');
+        addItem(document.createElement('div'));
         list.scrollTo({ top: list.scrollHeight });
     }
 
@@ -128,34 +114,36 @@ function handleSearch(e) {
     }
 }
 
-function getNumberInput() {
+function getNumberInput(value) {
     const number = document.createElement('input');
     number.classList.add('button', 'list');
     number.type = 'number';
-    number.placeholder = popupTrigger.getAttribute('number-placeholder') || '';
-    number.title = popupTrigger.getAttribute('number-title') || '';
-    number.min = popupTrigger.getAttribute('number-min') || '';
-    number.step = popupTrigger.getAttribute('number-step') || '';
-    number.value = popupTrigger.getAttribute('number-value') || '';
+    number.placeholder = popupTrigger.getAttribute('number-placeholder') ?? '';
+    number.title = popupTrigger.getAttribute('number-title') ?? '';
+    number.min = popupTrigger.getAttribute('number-min') ?? '';
+    number.step = popupTrigger.getAttribute('number-step') ?? '';
+    number.value = value ?? popupTrigger.getAttribute('number-value') ?? '';
 
     return number;
 }
 
-function getTextInput() {
+function getTextInput(value) {
     const text = document.createElement('input');
     text.classList.add('button', 'list');
     text.type = 'text';
     text.spellcheck = false;
-    text.placeholder = popupTrigger.getAttribute('text-placeholder') || '';
-    text.title = popupTrigger.getAttribute('text-title') || '';
+    text.placeholder = popupTrigger.getAttribute('text-placeholder') ?? '';
+    text.title = popupTrigger.getAttribute('text-title') ?? '';
+    if (value) text.value = value;
 
     return text;
 }
 
-function getSetHotkeyBtn() {
+function getSetHotkeyBtn(value) {
     const button = document.createElement('button');
     button.classList.add('keyBinder', 'openPopup');
     button.setAttribute('placeholder', 'Set hotkey');
+    if (value) button.value = value;
 
     return button;
 }

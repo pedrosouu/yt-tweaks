@@ -1,0 +1,163 @@
+<section>
+  <label>
+    <span>Video description</span>
+    <button class="selectMenu openPopup rotableArrow" id="videoDescription">
+      <span>Default</span>
+      <ul>
+        <li value>Default</li>
+        <li value="Minimalist">Minimalist</li>
+        <li value="Expanded">Expanded</li>
+      </ul>
+    </button>
+  </label>
+  <label>
+    <span>Allow opening channels from the sidebar <span class="subLabel">Allows you to click on a channel's name to go
+        to that channel.</span>
+    </span>
+    <input type="checkbox" id="fixChannelLinks">
+  </label>
+  <label>
+    <span>Like/unlike</span>
+    <button class="keyBinder openPopup" placeholder="Set hotkey" id="likeUnlikeHotkey">
+    </button>
+    <button class="removeSetting">
+    </button>
+  </label>
+  <label>
+    <span>Dislike/undislike</span>
+    <button class="keyBinder openPopup" placeholder="Set hotkey" id="dislikeUndislikeHotkey">
+    </button>
+    <button class="removeSetting">
+    </button>
+  </label>
+  <label>
+    <span>Navigate to Shorts page</span>
+    <button class="keyBinder openPopup" placeholder="Set hotkey" id="redToShortsHotkey">
+    </button>
+    <button class="removeSetting">
+    </button>
+  </label>
+</section>
+<section>
+  <h4>Comments</h4>
+  <label>
+    <span>Auto-expand long comments</span>
+    <input type="checkbox" id="autoExpandComments">
+  </label>
+  <label>
+    <span>Show comments in sidebar</span>
+    <input type="checkbox" id="autoSidebarComments">
+  </label>
+  <label>
+    <span>Toggle comments in sidebar</span>
+    <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleSidebarCommentsHotkey">
+    </button>
+    <button class="removeSetting">
+    </button>
+  </label>
+  <label>
+    <span>Sidebar comments: Height (%)</span>
+    <input type="number" id="scHeight" min="0" max="100" step="1" value="100">
+    <button class="numInputBtn minus iconButton"></button>
+    <button class="numInputBtn plus iconButton"></button>
+  </label>
+  <label>
+    <span>Sidebar comments: Use player height instead</span>
+    </span>
+    <input type="checkbox" id="scUsePlayerHeight">
+  </label>
+</section>
+<section>
+  <h4>Hide</h4>
+    <label>
+      <span>Sidebar: Shorts</span>
+      <input type="checkbox" id="hideShorts4">
+    </label>
+    <label>
+      <span>Sidebar: Mixes</span>
+      <input type="checkbox" id="hideMixes2">
+    </label>
+    <label>
+      <span>Sidebar: Live streams</span>
+      <button class="selectMenu openPopup rotableArrow" id="hideLiveStreams3">
+        <span>Off</span>
+        <ul>
+          <li value>Off</li>
+          <li value="current">Current</li>
+          <li value="completed">Completed (requires refresh)</li>
+          <li value="both">Both</li>
+        </ul>
+      </button>
+    </label>
+    <label>
+      <span>Share button</span>
+      <input type="checkbox" id="hideShareButton">
+    </label>
+    <label>
+      <span>Download button</span>
+      <input type="checkbox" id="hideDownloadButton">
+    </label>
+    <label>
+      <span>Clip button</span>
+      <input type="checkbox" id="hideClipButton">
+    </label>
+    <label>
+      <span>Thanks button</span>
+      <input type="checkbox" id="hideThanksButton">
+    </label>
+    <label>
+      <span>Save button</span>
+      <input type="checkbox" id="hideSaveButton">
+    </label>
+    <label>
+      <span>Button labels</span>
+      <input type="checkbox" id="compactButtons">
+    </label>
+</section>
+<section>
+  <h4>Watched videos</h4>
+  <label>
+    <span>Sidebar: Hide watched videos</span>
+    <button class="selectMenu openPopup rotableArrow" id="hideWatchVideos3">
+      <span>Off</span>
+      <ul>
+        <li value>Off</li>
+        <li value="All videos">Watched %: 0-100</li>
+        <li value="50-100%">Watched %: 50-100</li>
+        <li value="70-100%">Watched %: 70-100</li>
+        <li value="75-100%">Watched %: 75-100</li>
+        <li value="80-100%">Watched %: 80-100</li>
+        <li value="85-100%">Watched %: 85-100</li>
+        <li value="90-100%">Watched %: 90-100</li>
+        <li value="95-100%">Watched %: 95-100</li>
+        <li value="Only fully-watched videos">Watched %: 100</li>
+      </ul>
+    </button>
+  </label>
+  <label>
+    <span>Sidebar: Dim watched videos</span>
+    <button class="selectMenu openPopup rotableArrow" id="dimWatchVideos3">
+      <span>Off</span>
+      <ul>
+        <li value>Off</li>
+        <li value="dimAllVideos">Watched %: 0-100</li>
+        <li value="50-100%">Watched %: 50-100</li>
+        <li value="70-100%">Watched %: 70-100</li>
+        <li value="75-100%">Watched %: 75-100</li>
+        <li value="80-100%">Watched %: 80-100</li>
+        <li value="85-100%">Watched %: 85-100</li>
+        <li value="90-100%">Watched %: 90-100</li>
+        <li value="95-100%">Watched %: 95-100</li>
+        <li value="dimFullyWatchVideos">Watched %: 100</li>
+      </ul>
+    </button>
+  </label>
+  <div class="expandable">
+    <label>
+      <span>Video opacity</span>
+      <input type="number" id="watchVideoOpacity3" step="0.01" min="0" max="1" value="0.3">
+      <button class="numInputBtn minus iconButton"></button>
+      <button class="numInputBtn plus iconButton"></button>
+    </label>
+  </div>
+</section>

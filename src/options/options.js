@@ -4,21 +4,39 @@ import { getKeyBinder } from '/options/popup-elements/key-binder.js';
 import { getList } from '/options/popup-elements/list.js';
 import { getSettingsImporter } from '/options/popup-elements/settings-importer.js';
 
-export { handlePopupDisplay, saveSettings, exportSettings, openPopup};
+export { handlePopupDisplay, saveSettings, exportSettings, openPopup };
+
+await load(chrome.runtime.getURL('options/tabs/video-grid.html'), document.getElementById('video-grid'));
+await load(chrome.runtime.getURL('options/tabs/homepage.html'), document.getElementById('homepage'));
+await load(chrome.runtime.getURL('options/tabs/subscriptions-page.html'), document.getElementById('subscriptions-page'));
+await load(chrome.runtime.getURL('options/tabs/channel-page.html'), document.getElementById('channel-page'));
+await load(chrome.runtime.getURL('options/tabs/player.html'), document.getElementById('player'));
+await load(chrome.runtime.getURL('options/tabs/watch-page.html'), document.getElementById('watch-page'));
+await load(chrome.runtime.getURL('options/tabs/search-page.html'), document.getElementById('search-page'));
+await load(chrome.runtime.getURL('options/tabs/header-bar.html'), document.getElementById('header-bar'));
+await load(chrome.runtime.getURL('options/tabs/left-sidebar.html'), document.getElementById('left-sidebar'));
+await load(chrome.runtime.getURL('options/tabs/themes.html'), document.getElementById('themes'));
+await load(chrome.runtime.getURL('options/tabs/other.html'), document.getElementById('other'));
+await load(chrome.runtime.getURL('options/tabs/custom-code.html'), document.getElementById('custom-code'));
+await load(chrome.runtime.getURL('options/tabs/user-settings.html'), document.getElementById('user-settings'));
 
 let timeoutId;
 const openPopup = [];
 
 chrome.storage.local.get().then(function (settings) {
     for (const key in settings) {
-        applySettingsToUI(document.getElementById(key), key, settings);
+        restoreSetting(document.getElementById(key), key, settings);
     }
 });
 
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     let button;
-    
-    if (button = e.target.closest('.removeSetting')) {
+
+    if (button = e.target.closest('.tabHeading')) {
+        handleTabClick(button);
+    }
+
+    else if (button = e.target.closest('.removeSetting')) {
         removeSettingBtnClicked(button);
     }
 
@@ -32,22 +50,11 @@ document.addEventListener('click', function(e) {
     }
 
     else if (button = e.target.closest('.openPage')) {
-        if (button.attributes.htmlFile) window.open(chrome.runtime.getURL(button.attributes.htmlFile.value), '_blank');
-        else window.open(navigator.userAgent.includes('Firefox') ? button.attributes.firefox.value : navigator.userAgent.includes('Edg') ? button.attributes.edge.value : button.attributes.chrome.value, '_blank');
-        e.preventDefault();
-    }
-
-    else if (button = e.target.closest('.expand')) {
-        button.toggleAttribute('rotated');
-        toggleExpandedDiv(button.parentElement.nextElementSibling);
+        openPage(button);
     }
 
     else if (e.target.closest('.clearSearch')) {
-        let input = e.target.closest('search').children[0];
-        input.value = '';
-        input.dispatchEvent(new Event('input', {
-            bubbles: true
-        }));
+        clearSearchBar(e.target.closest('search').children[0]);
     }
 
     else if (button = e.target.closest('.export')) {
@@ -55,7 +62,7 @@ document.addEventListener('click', function(e) {
     }
 });
 
-document.addEventListener('input', function(e) {
+document.addEventListener('input', function (e) {
     if (e.target.matches('.search')) handleSearch(e.target);
     else saveSettings(0, 0, e);
 });
@@ -67,32 +74,9 @@ document.addEventListener('focus', function handler() {
     }
 }, true);
 
-document.addEventListener('mousedown', function(e) {
+document.addEventListener('mousedown', function (e) {
     if (e.target.matches('.numInputBtn')) {
-        const input = e.target.closest('label').children[1];
-        if (e.target.matches('.plus')) {
-            input.stepUp();
-            timeoutId = setTimeout(function() {
-                timeoutId = setInterval(function() {
-                    input.stepUp();
-                }, 35);
-            }, 150);
-        } else {
-            input.stepDown();
-            timeoutId = setTimeout(function() {
-                timeoutId = setInterval(function() {
-                    input.stepDown();
-                }, 35);
-            }, 150);
-        }
-    }
-});
-
-document.addEventListener('mouseup', function(e) {
-    clearTimeout(timeoutId);
-    if (e.target.matches('.numInputBtn')) {
-        const input = e.target.parentElement.children[1];
-        saveSettings({[input.id]: input.valueAsNumber});
+        quantityButtonPressed(e.target.closest('label').children[1], e.target);
     }
 });
 
@@ -111,7 +95,7 @@ async function saveSettings(settings, target, event) {
     await chrome.storage.local.set(settings);
 }
 
-function applySettingsToUI(button, key, data) {
+function restoreSetting(button, key, data) {
     if (!button) return;
 
     const expandableDiv = button.parentElement.nextElementSibling;
@@ -134,12 +118,12 @@ function applySettingsToUI(button, key, data) {
         case 'colorPicker':
             button.style.setProperty('--selectedColor', data[key]);
             break;
-        
+
         case 'page':
             button.value = data[key].commandMetadata?.webCommandMetadata?.url || data[key];
             break;
 
-        default :
+        default:
             if (typeof data[key] == 'object') {
                 Object.defineProperty(button, 'value', {
                     value: data[key],
@@ -226,10 +210,18 @@ function hidePopup(popup) {
     }, { once: true });
 }
 
+function openPage(button) {
+    if (button.getAttribute('pageType') == 'browserStore') {
+        window.open(navigator.userAgent.includes('Firefox') ? button.attributes.firefox.value : navigator.userAgent.includes('Edg') ? button.attributes.edge.value : button.attributes.chrome.value, '_blank');
+    }
+
+    else window.open(chrome.runtime.getURL(button.attributes.htmlFile.value), '_blank');
+}
+
 function toggleExpandedDiv(div, value) {
-     for (const child of div.children) {
+    for (const child of div.children) {
         const matcher = child.getAttribute('matcher');
-        if (matcher) {            
+        if (matcher) {
             if (new RegExp(matcher).test(value)) {
                 if (!child.matches('.expanded')) expandedClass(child, 'add', div.matches('.expanded'));
             }
@@ -240,7 +232,7 @@ function toggleExpandedDiv(div, value) {
     }
 
     if (value && div.matches('.expanded')) return;
-    expandedClass(div, 'toggle', true);
+    expandedClass(div, 'toggle', div.clientWidth);
 
     function expandedClass(div, method, animateHeight) {
         if (animateHeight) {
@@ -262,7 +254,15 @@ function removeSettingBtnClicked(button) {
     const prevSibling = button.previousElementSibling;
     prevSibling.value = '';
     prevSibling.focus();
-    saveSettings({ [prevSibling.id]: ''}, prevSibling);
+    saveSettings({ [prevSibling.id]: '' }, prevSibling);
+}
+
+function handleTabClick(button) {
+    button.parentElement.querySelector('.selected').classList.remove('selected');
+    button.classList.add('selected');
+
+    document.querySelector('.tabContent:not(.hidden)').classList.add('hidden');
+    document.getElementById(button.value).classList.remove('hidden');
 }
 
 function exportSettings(button) {
@@ -291,7 +291,7 @@ function handleSearch(input) {
         for (let i = 0; i < els.length; i++) {
             if (matcher.test(els[i].textContent)) unhideSearcRelatedEl(els[i], i);
         }
-        
+
         fixMessedUpSeparators();
     }
 
@@ -380,4 +380,44 @@ function handleSearch(input) {
             children[0]?.classList.add('tprBorder');
         }
     }
+}
+
+function clearSearchBar(input) {
+    input.value = '';
+    input.dispatchEvent(new Event('input', {
+        bubbles: true
+    }));
+}
+
+function quantityButtonPressed(input, buttton) {
+    if (buttton.matches('.plus')) {
+        input.stepUp();
+        timeoutId = setTimeout(function () {
+            timeoutId = setInterval(function () {
+                input.stepUp();
+            }, 35);
+        }, 150);
+    } else {
+        input.stepDown();
+        timeoutId = setTimeout(function () {
+            timeoutId = setInterval(function () {
+                input.stepDown();
+            }, 35);
+        }, 150);
+    }
+
+    document.addEventListener('mouseup', function (e) {
+        clearTimeout(timeoutId);
+        saveSettings({ [input.id]: input.valueAsNumber });
+    }, {once: true});
+}
+
+function load(url, element) {
+    return fetch(url)
+        .then(data => {
+            return data.text()
+        })
+        .then(data => {
+            element?.insertAdjacentHTML('afterbegin', data);
+        })
 }

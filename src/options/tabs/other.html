@@ -1,0 +1,72 @@
+<section>
+  <label>
+    <span>Show full video titles</span>
+    <input type="checkbox" id="showFullVideoTitles">
+  </label>
+  <label>
+    <span>More animations</span>
+    <input type="checkbox" id="moreAnimations">
+  </label>
+  <div class="expandable">
+    <label>
+      <span>Speed (seconds)</span>
+      <input type="number" id="maAnimationsSpeed" min="0" step="0.01" value="0.75">
+      <button class="numInputBtn minus iconButton"></button>
+      <button class="numInputBtn plus iconButton"></button>
+    </label>
+  </div>
+  <label>
+    <span>Red subscribe button</span>
+    <input type="checkbox" id="redSubscribeButton">
+  </label>
+</section>
+<section>
+  <h4>Back to the top</h4>
+  <label>
+    <span>Show back to top button</span>
+    <button class="selectMenu openPopup rotableArrow" id="scrollUpButton">
+      <span>Off</span>
+      <ul>
+        <li value>Off</li>
+        <li value="On the right">On the right</li>
+        <li value="On the left">On the left</li>
+        <li value="Centered">Centered</li>
+      </ul>
+    </button>
+  </label>
+  <div class="expandable">
+    <label>
+      <span>Button color</span>
+      <button class="colorPicker openPopup" id="scrollUpBtnColor" style="--selectedColor: hsla(0, 0%, 95%, 1);">
+        <div class="checker"></div>
+        <div class="selectedColor"></div>
+      </button>
+    </label>
+    <label>
+      <span>Arrow color</span>
+      <button class="colorPicker openPopup" id="scrollUpBtnSvgColor" style="--selectedColor: hsla(0, 0%, 6%, 1);">
+        <div class="checker"></div>
+        <div class="selectedColor"></div>
+      </button>
+    </label>
+    <label>
+      <span>Button size (px)</span>
+      <input type="number" id="scrollUpBtnWidth" value="36">
+      <button class="numInputBtn minus iconButton"></button>
+      <button class="numInputBtn plus iconButton"></button>
+    </label>
+    <label>
+      <span>Rounded corners (px)</span>
+      <input type="number" id="scrollUpBtnRoundCorners" min="0" value="18">
+      <button class="numInputBtn minus iconButton"></button>
+      <button class="numInputBtn plus iconButton"></button>
+    </label>
+  </div>
+  <label>
+    <span>Scroll back to top</span>
+    <button class="keyBinder openPopup" placeholder="Set hotkey" id="scrollToTopHotkey">
+    </button>
+    <button class="removeSetting">
+    </button>
+  </label>
+</section>
