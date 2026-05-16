@@ -4,21 +4,18 @@ ytTweaks.tweaks.push(function (settings) {
             location.pathname += '/videos';
         }
 
-        function isUserInAchannel(e) {
-            if (e.detail.pageType == 'channel' && /(@|\/c\/|\/channel\/)(?!.*\/)/.test(e.detail.url)) {
-                const data = e.detail.endpoint;
-                data.browseEndpoint.params = 'EgZ2aWRlb3PyBgQKAjoA';
-                e.target.handleNavigate({ command: data });
+        document.addEventListener('yt-navigate-finish', overwriteHandleNavigate, {once: true});
+
+        function overwriteHandleNavigate(e) {
+            const handleNavigate = e.target.handleNavigate;
+            e.target.handleNavigate = function name(d) {
+                if (d?.command?.commandMetadata?.webCommandMetadata?.webPageType == 'WEB_PAGE_TYPE_CHANNEL' && /(@|\/c\/|\/channel\/)(?!.*\/)/.test(d.command.commandMetadata.webCommandMetadata.url)) {
+                    if (d.command.browseEndpoint) d.command.browseEndpoint.params = 'EgZ2aWRlb3PyBgQKAjoA';
+                }
+
+                handleNavigate.apply(this, arguments);
             }
         }
-
-        document.addEventListener('yt-navigate-start', isUserInAchannel, true);
-
-        ytTweaks.videosAsDefaultTab = {
-            storageChanged: function () {
-                document.removeEventListener('yt-navigate-start', isUserInAchannel, true);
-            }
-        };
     }
 
     if (settings.hideShorts3) ytTweaks.sheet.textContent += `
