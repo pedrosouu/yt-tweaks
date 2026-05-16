@@ -1619,16 +1619,13 @@ ytTweaks.tweaks.push(function (settings) {
 		  appearance: none;
 		}
 	
-		.yttw-playlist-autoplay-button-icon {
-		  fill: none;
-		  stroke: var(--yt-spec-text-primary);
-		  stroke-linecap: round;
-		  stroke-linejoin: round;
-		  stroke-width: 2px;
+		#yttw-playlist-autoplay-button svg {
+		  stroke: var(--tffc2fd3a644f6275);
+		  opacity: 0.45;
 		}
-	
-		input:checked + svg .yttw-playlist-autoplay-button-icon {
-		  stroke-width: 3.5px;
+
+		#yttw-playlist-autoplay-button input:checked + svg {
+		  opacity: 1; 
 		}
 		`;
 
@@ -1647,10 +1644,8 @@ ytTweaks.tweaks.push(function (settings) {
 		autoPlay = input.checked;
 		label.title = `Auto-play is ${autoPlay ? 'on' : 'off'}`;
 		label.insertAdjacentHTML('beforeend', `
-			<svg viewBox="37 25 25 50" style="height: 24px; width: 24px; position: absolute;">
-			  <polygon class="yttw-playlist-autoplay-button-icon" points="46.05 44.99 46.07 58 56.3 51.48 46.05 44.99"></polygon>
-			  <polyline class="yttw-playlist-autoplay-button-icon" points="37.41 31.09 43.69 33.54 41.24 39.81"></polyline>
-			  <path class="yttw-playlist-autoplay-button-icon" d="M43.67,33.55a18.22,18.22,0,1,0,13.18.37"></path>
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+			  <path d="M8 17.1783V6.82167C8 6.03258 8.87115 5.55437 9.53688 5.97801L17.6742 11.1563C18.2917 11.5493 18.2917 12.4507 17.6742 12.8437L9.53688 18.022C8.87115 18.4456 8 17.9674 8 17.1783Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 			</svg>
 			`);
 
