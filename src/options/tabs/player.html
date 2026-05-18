@@ -65,10 +65,6 @@
     </label>
   </div>
   <label>
-    <span>Force original audio track</span>
-    <input type="checkbox" id="forceOgAudio">
-  </label>
-  <label>
     <span>Pause the previous video when another starts playing</span>
     <input type="checkbox" id="playOneVideoAtAtime">
   </label>
@@ -96,6 +92,14 @@
   <label>
     <span>'Video paused. Continue watching?'</span>
     <input type="checkbox" id="disableAutoPause">
+  </label>
+  <label>
+    <span>Automatic dubbing</span>
+    <input type="checkbox" id="forceOgAudio">
+  </label>
+  <label>
+    <span>Auto-play in playlists</span>
+    <input type="checkbox" id="disablePlAutoPlay">
   </label>
   <label>
     <span>Number keys shortcuts</span>
@@ -135,10 +139,6 @@
       <input type="checkbox" id="dnhEnd" checked>
     </label>
   </div>
-  <label>
-    <span>Auto-play in playlists</span>
-    <input type="checkbox" id="disablePlAutoPlay">
-  </label>
 </section>
 <section>
   <h4>Progress bar</h4>
@@ -715,8 +715,12 @@
     <input type="checkbox" id="flipVerticallyButton">
   </label>
   <label>
-    <span>Rotate button</span>
+    <span>Rotate clockwise button</span>
     <input type="checkbox" id="rotateButton">
+  </label>
+  <label>
+    <span>Rotate anti-clockwise button</span>
+    <input type="checkbox" id="rotateAcwButton">
   </label>
   <label>
     <span>Flip horizontally</span>
@@ -733,8 +737,15 @@
     </button>
   </label>
   <label>
-    <span>Rotate</span>
+    <span>Rotate clockwise</span>
     <button class="keyBinder openPopup" placeholder="Set hotkey" id="rotateHotkey">
+    </button>
+    <button class="removeSetting">
+    </button>
+  </label>
+  <label>
+    <span>Rotate anti-clockwise</span>
+    <button class="keyBinder openPopup" placeholder="Set hotkey" id="rotateAcwHotkey">
     </button>
     <button class="removeSetting">
     </button>

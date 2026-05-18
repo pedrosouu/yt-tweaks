@@ -20,6 +20,16 @@ await load(chrome.runtime.getURL('options/tabs/other.html'), document.getElement
 await load(chrome.runtime.getURL('options/tabs/custom-code.html'), document.getElementById('custom-code'));
 await load(chrome.runtime.getURL('options/tabs/user-settings.html'), document.getElementById('user-settings'));
 
+function load(url, element) {
+    return fetch(url)
+        .then(data => {
+            return data.text();
+        })
+        .then(data => {
+            element?.insertAdjacentHTML('afterbegin', data);
+        })
+}
+
 let timeoutId;
 const openPopup = [];
 
@@ -262,7 +272,7 @@ function handleTabClick(button) {
     button.classList.add('selected');
 
     document.querySelector('.tabContent:not(.hidden)').classList.add('hidden');
-    document.getElementById(button.value).classList.remove('hidden');
+    document.querySelector(`.tabContent:nth-child(${[...button.parentElement.children].indexOf(button) + 1}`).classList.remove('hidden');
 }
 
 function exportSettings(button) {
@@ -410,14 +420,4 @@ function quantityButtonPressed(input, buttton) {
         clearTimeout(timeoutId);
         saveSettings({ [input.id]: input.valueAsNumber });
     }, {once: true});
-}
-
-function load(url, element) {
-    return fetch(url)
-        .then(data => {
-            return data.text()
-        })
-        .then(data => {
-            element?.insertAdjacentHTML('afterbegin', data);
-        })
 }

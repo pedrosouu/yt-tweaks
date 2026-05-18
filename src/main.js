@@ -335,7 +335,7 @@ document.addEventListener('yttwStorageChanged', function (e) {
     initTweaks(e.detail.settings);
 
     document.dispatchEvent(new CustomEvent('yt-player-updated'));
-    document.querySelector('ytd-app').dispatchEvent(new CustomEvent('yt-navigate-finish', { detail: { pageType: yt.config_.TIMING_ACTION } }));
+    document.querySelector('ytd-app')?.dispatchEvent(new CustomEvent('yt-navigate-finish', { detail: { pageType: yt.config_.TIMING_ACTION } }));
     for (const video of document.querySelectorAll('video')) {
         if (video.clientWidth) {
             video.dispatchEvent(new Event('loadstart'));

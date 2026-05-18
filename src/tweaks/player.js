@@ -948,236 +948,24 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.forceOgAudio) {
-		let original = '';
-		switch (document.documentElement.lang) {
-			case 'en':
-			case 'en-IN':
-			case 'en-GB':
-			case 'bs-Latn-BA':
-			case 'ca-ES':
-			case 'es-ES':
-			case 'es-419':
-			case 'es-US':
-			case 'fr-FR':
-			case 'nb-NO':
-			case 'uz-Latn-UZ':
-			case 'pt-PT':
-			case 'pt-BR':
-			case 'ro-RO':
-				original += 'original';
-				break;
-			case 'de-DE':
-				original += 'Original';
-				break;
-			case 'af-ZA':
-				original += 'oorspronklike';
-				break;
-			case 'az-Latn-AZ':
-			case 'tr-TR':
-				original += 'orijinal';
-				break;
-			case 'id-ID':
-				original += 'asli';
-				break;
-			case 'ms-MY':
-				original += 'asal';
-				break;
-			case 'da-DK':
-				original += 'originalt';
-				break;
-			case 'et-EE':
-				original += 'algne';
-				break;
-			case 'eu-ES':
-				original += 'jatorrizkoa';
-				break;
-			case 'cs-CZ':
-				original += 'původní';
-				break;
-			case 'sl-SI':
-				original += 'Izvirnik';
-				break;
-			case 'sk-SK':
-				original += 'pôvodná zvuková stopa';
-				break;
-			case 'fi-FI':
-				original += 'alkuperäinen';
-				break;
-			case 'sr-Latn-RS':
-				original += 'originalna';
-				break;
-			case 'fil-PH':
-				original += 'orihinal';
-				break;
-			case 'fr-CA':
-			case 'it-IT':
-				original += 'originale';
-				break;
-			case 'gl-ES':
-				original += 'orixinal';
-				break;
-			case 'hr-HR':
-				original += 'izvorno';
-				break;
-			case 'zu-ZA':
-				original += 'yokuqala';
-				break;
-			case 'is-IS':
-				original += 'upprunalegt';
-				break;
-			case 'sw-TZ':
-				original += 'halisi';
-				break;
-			case 'lv-LV':
-				original += 'oriģināls';
-				break;
-			case 'lt-LT':
-				original += 'pradinis';
-				break;
-			case 'hu-HU':
-				original += 'eredeti';
-				break;
-			case 'nl-NL':
-				original += 'Originele';
-				break;
-			case 'sq-AL':
-				original += 'origjinale';
-				break;
-			case 'pl-PL':
-				original += 'oryginalny';
-				break;
-			case 'sv-SE':
-				original += 'ursprungligt';
-				break;
-			case 'vi-VN':
-				original += 'gốc';
-				break;
-			case 'be-BY':
-				original += 'арыгінальны';
-				break;
-			case 'bg-BG':
-			case 'mk-MK':
-				original += 'оригинален';
-				break;
-			case 'ky-KG':
-				original += 'түпнуска';
-				break;
-			case 'kk-KZ':
-				original += 'түпнұсқа';
-				break;
-			case 'mn-MN':
-				original += 'эх хувь';
-				break;
-			case 'ru-RU':
-				original += 'оригинальная';
-				break;
-			case 'sr-Cyrl-RS':
-				original += 'оригинална';
-				break;
-			case 'uk-UA':
-				original += 'оригінал';
-				break;
-			case 'el-GR':
-				original += 'πρωτότυπο αρχείο';
-				break;
-			case 'hy-AM':
-				original += 'բնօրինակ';
-				break;
-			case 'he-IL':
-				original += 'מקור';
-				break;
-			case 'ur-PK':
-				original += 'اصل';
-				break;
-			case 'ar':
-				original += 'أصلي';
-				break;
-			case 'fa-IR':
-				original += 'اصلی';
-				break;
-			case 'ne-NP':
-			case 'hi-IN':
-				original += 'मूल';
-				break;
-			case 'mr-IN':
-				original += 'मूळ';
-				break;
-			case 'as-IN':
-			case 'bn-BD':
-				original += 'মূল';
-				break;
-			case 'pa-Guru-IN':
-				original += 'ਮੂਲ';
-				break;
-			case 'gu-IN':
-				original += 'ઑરિજિનલ';
-				break;
-			case 'or-IN':
-				original += 'ମୂଳ';
-				break;
-			case 'ta-IN':
-				original += 'அசல்';
-				break;
-			case 'te-IN':
-				original += 'అసలైనది';
-				break;
-			case 'kn-IN':
-				original += 'ಮೂಲ';
-				break;
-			case 'ml-IN':
-				original += 'ഒറിജിനൽ';
-				break;
-			case 'si-LK':
-				original += 'මුල්';
-				break;
-			case 'th-TH':
-				original += 'เสียงต้นฉบับภาษ';
-				break;
-			case 'lo-LA':
-				original += 'ຕົ້ນສະບັບ';
-				break;
-			case 'my-MM':
-				original += 'မူရင်း';
-				break;
-			case 'ka-GE':
-				original += 'ორიგინალია';
-				break;
-			case 'am-ET':
-				original += 'የመጀመሪያ';
-				break;
-			case 'km-KH':
-				original += 'ដើម';
-				break;
-			case 'zh-Hans-CN':
-				original += '原始';
-				break;
-			case 'zh-Hant-TW':
-				original += '原文';
-				break;
-			case 'zh-Hant-HK':
-				original += '原聲';
-				break;
-			case 'ja-JP':
-				original += 'オリジナル';
-				break;
-			case 'ko-KR':
-				original += '원본';
-		}
-
-		let tracks;
+		let tracks, videoMetadata;
 		document.addEventListener('playing', setOgAudio, true);
 
 		function setOgAudio(e) {
+			if (navigator.mediaSession.metadata == videoMetadata) return;
+			videoMetadata = navigator.mediaSession.metadata;
+
 			player = e.target.parentElement.parentElement;
 			tracks = player.getAvailableAudioTracks();
 
-			if (!tracks.length || player.getAudioTrack().getLanguageInfo().name.includes(original)) {
+			if (!tracks.length || atob(player.getAudioTrack().id.replace(/.*;/g, '')).includes('original')) {
 				return;
 			}
 
 			for (const p of tracks) {
-				if (p.getLanguageInfo().name.includes(original)) {
+				if (atob(p.id.replace(/.*;/g, '')).includes('original')) {
 					player.setAudioTrack(p);
+					break;
 				}
 			}
 		}
@@ -1385,8 +1173,12 @@ ytTweaks.tweaks.push(function (settings) {
 
 		flipHorButton.style = flipVerButton.style = 'vertical-align: top';
 
-		if (settings.flipHorizontallyButton || settings.flipVerticallyButton) {
-			addButtonToPlayer(settings.flipHorizontallyButton ? flipHorButton : '', settings.flipVerticallyButton ? flipVerButton : '');
+		if (settings.flipHorizontallyButton) {
+			addButtonToPlayer(flipHorButton);
+		}
+
+		if (settings.flipVerticallyButton) {
+			addButtonToPlayer(flipVerButton);
 		}
 
 		if (settings.flipHorizontallyHotkey) {
@@ -1423,53 +1215,66 @@ ytTweaks.tweaks.push(function (settings) {
 		};
 	}
 
-	if (settings.rotateButton || settings.rotateHotkey) {
+	if (settings.rotateButton || settings.rotateAcwButton || settings.rotateHotkey || settings.rotateAcwHotkey) {
 		const img = document.createElement('img');
-		img.style = 'display: block; margin: auto; height: 60%';
+		img.style = 'display: block; margin: auto; height: 60%;';
 		img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'%3E%3Cpath d='M21.37,5.07a1,1,0,0,0-1.3.56l-1,2.45A9,9,0,1,0,17.75,18a1,1,0,0,0-.09-1.41,1,1,0,0,0-1.41.09,7,7,0,1,1,1.2-7.33L14.37,8.07a1,1,0,1,0-.74,1.86l5,2A1,1,0,0,0,19,12a1,1,0,0,0,.93-.63l2-5A1,1,0,0,0,21.37,5.07Z' style='fill: %23fff'/%3E%3C/svg%3E";
 
 		const rotateButton = document.createElement('button');
 		rotateButton.classList.add('ytp-button');
 		rotateButton.style = 'vertical-align: top';
 		rotateButton.appendChild(img);
-		rotateButton.addEventListener('click', rotate);
+		rotateButton.addEventListener('click', function () {
+			rotate(true);
+		});
 
+		const img2 = document.createElement('img');
+		img2.style = img.attributes.style.value + 'scale: -1 1;';
+		img2.src = img.src;
+
+		const rotateAcwButton = document.createElement('button');
+		rotateAcwButton.classList.add('ytp-button');
+		rotateAcwButton.style = 'vertical-align: top';
+		rotateAcwButton.appendChild(img2);
+		rotateAcwButton.addEventListener('click', function () {
+			rotate();
+		});
+
+		rotate = function () {
+			let r = 0;
+			return function (clockwise) {
+				getPlayerAndVideo();
+				video.style.transition = 'rotate .25s, scale .25s';
+
+				clockwise ? r += 90 : r -= 90;
+
+				if (video.clientWidth > video.clientHeight && Math.abs(r) / 90 % 2 == 1) video.style.scale = video.clientHeight / video.clientWidth;
+				else if (Math.abs(r) / 90 % 2 == 1) video.style.scale = video.clientWidth / video.clientHeight;
+				else video.style.scale = '';
+
+				video.style.rotate = r + 'deg';
+			}
+		}();
+
+		if (settings.rotateAcwButton) addButtonToPlayer(rotateAcwButton);
 		if (settings.rotateButton) addButtonToPlayer(rotateButton);
 
 		if (settings.rotateHotkey) {
 			ytTweaks.listenForHotkeys();
-			ytTweaks.getHotkeys()[settings.rotateHotkey] = rotate;
+			ytTweaks.getHotkeys()[settings.rotateHotkey] = function () {
+				rotate(true);
+			};
 		}
 
-		function rotate() {
-			getPlayerAndVideo();
-			if (video.clientWidth > video.clientHeight) video.style.scale = 100 / video.clientWidth * video.clientHeight / 100;
-			else video.style.scale = 100 / video.clientHeight * video.clientWidth / 100;
-
-			switch (video.style.rotate) {
-				case '90deg':
-					video.style.rotate = '180deg'
-					video.style.scale = '';
-					showFeedback('180°');
-					break;
-				case '180deg':
-					video.style.rotate = '270deg'
-					showFeedback('270°');
-					break;
-				case '270deg':
-					video.style.rotate = '';
-					video.style.scale = '';
-					showFeedback('0°');
-					break;
-				default:
-					video.style.rotate = '90deg';
-					showFeedback('90°');
-			}
+		if (settings.rotateAcwHotkey) {
+			ytTweaks.listenForHotkeys();
+			ytTweaks.getHotkeys()[settings.rotateAcwHotkey] = rotate;
 		}
 
 		ytTweaks.rotateVideo = {
 			storageChanged: function () {
 				rotateButton.remove();
+				rotateAcwButton.remove();
 			}
 		};
 	}
