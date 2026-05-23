@@ -87,7 +87,7 @@ ytTweaks.tweaks.push(function (settings) {
     #home-chips {
       display: none;
     }
-  
+
     #frosted-glass {
       height: var(--ytd-toolbar-height) !important;
     }
@@ -117,4 +117,46 @@ ytTweaks.tweaks.push(function (settings) {
             });
         }
     }
+
+    if (settings.hidePlayables)
+        ytTweaks.sheet.textContent += `
+        mini-game-card-view-model, .ytd-mini-game-card-view-model {
+            display: none !important;
+        }
+        ytd-rich-item-renderer[is-mini-game-card-shelf] {
+            display: none !important;
+        }
+        ytd-rich-section-renderer:has(ytd-rich-item-renderer[is-mini-game-card-shelf]) {
+            display: none !important;
+        }
+        *[subtype="playables"] {
+            display: none !important;
+        }
+    `;
+
+    if (settings.hideTopLiveGames)
+        ytTweaks.sheet.textContent += `
+        mini-game-card-view-model, .ytd-mini-game-card-view-model {
+            background: red !important;
+        }
+        ytd-rich-item-renderer[is-game-card-shelf] {
+            display: none !important;
+        }
+        ytd-rich-section-renderer.style-scope:has(div.ytd-rich-section-renderer ytd-rich-shelf-renderer.style-scope #dismissible #contents-container) {
+            display: none !important;
+        }
+        ytd-horizontal-card-list-renderer[has-game-card] {
+            display: none !important;
+        }
+        ytd-item-section-renderer:has(ytd-horizontal-card-list-renderer[has-game-card]) {
+            display: none !important;
+        }
+    `;
+
+    if (settings.hideExploreMoreTopics)
+        ytTweaks.sheet.textContent += `
+       ytd-rich-section-renderer:has(#content > .ytdChipsShelfWithVideoShelfRendererHost > div > div > ytd-rich-shelf-renderer > div > div > div > ytd-rich-item-renderer[is-responsive-grid="STANDARD"]) {
+           display: none !important;
+       }
+    `;
 });
