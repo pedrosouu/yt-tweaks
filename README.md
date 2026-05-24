@@ -1,26 +1,32 @@
-![Add-On icon](./src/icons/icon-128.png)
-# YT Tweaks
+<div align="center">
+<img src="./src/icons/icon-128.png" alt="Add-On icon" />
+<h1>YT Tweaks</h1>
+<p>A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Video paused. Continue watching?', changing the number of videos per row and more!</p>
+</div>
 
-A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Video paused. Continue watching?', changing the number of videos per row and more!
+<div align="center">
 
-## Install
 [![Chrome Web Store](./images/cws-banner.png)](https://chromewebstore.google.com/detail/yt-tweaks/oeakphpfoaeggagmgphfejmfjbhjfhhh)
+[![Edge Addons](./images/edge-addons-banner.png)](https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh)
 [![Firefox Addons](./images/firefox-addons-banner.png)](https://addons.mozilla.org/en-US/firefox/addon/youtube-tweaks/)
-[![Edge Addons](./images/edge-addons-banner.png)](https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh) 
+
+</div>
+
+<hr />
 
 ## Features
 - Change the number of videos per row / Change the size of thumbnails
 - Video grid: Hide profile pictures/Decrease font size
 - Show full video titles
-- Hide Shorts, Mixes, watched videos, upcoming videos and live streams
-- Hide irrelevant search results (For you, People also watched, Previously watched etc.)
-- Search results in Grid view
+- Hide *Shorts*, *Mixes*, *watched videos*, *upcoming videos* and *live streams*
+- Hide irrelevant search results (*For you*, *People also watched*, *Previously watched*, etc.)
+- Search results shown in Grid view
 - More animations
 - Compact left sidebar/header bar
-- Channel page: Default to Videos tab
+- Channel page: default to *Videos* tab
 - Open search results in new tab
-- YouTube logo: Redirect to Subscriptions
-- Homepage: Hide topic bar and Latest YouTube posts
+- YouTube logo: Redirect to *Subscriptions*
+- Homepage: Hide *topic bar* and *Latest YouTube posts*
 - Auto-expand comments
 - Show comments in sidebar
 - Like/dislike shortcuts
@@ -37,25 +43,31 @@ A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Vid
 - Video screenshot button/hotkey
 - Flip videos horizontally/vertically / Mirror videos
 - Pause the previous video when another starts playing
-- Disable 'Video paused. Continue watching?'
-- Disable auto-play next video in playlists
+- Disable *'Video paused. Continue watching?'*
+- Disable *auto-play next video* in playlists
 - Disable number keys shortcuts
 - Auto-scroll Shorts
 - Pin video while scrolling
 - Show video remaining time
 - Hide video controls on pause
 - Always show progress bar
-- Live chat next to video in full screen mode
-- Fullscreen Theater mode
+- Live chat next to video in *full screen mode*
+- Fullscreen *Theater mode*
 - Ambient mode on Theater mode
 - Nyan cat progress bar
 - Bring the red subscribe button back
 - Watch page: Allow opening channels from the sidebar
-- Watch page: Hide end cards and buttons Share, Download, Clip, Thanks and Save
-- Left sidebar: Hide Shorts button, Explore and More from YouTube
-- Navigation shortcuts (Home, Subscriptions, Shorts)
-- Video playback shortcuts (Seek, undo seek, change volume, speed and quality, toggle loop)
-- Scroll to top shortcut
-- Show back to top button
+- Watch page: Hide *end cards* and *buttons Share*, *Download*, *Clip*, *Thanks* and *Save*
+- Left sidebar: Hide *Shorts button*, *Explore* and *More from YouTube*
+- Navigation shortcuts (*Home*, *Subscriptions*, *Shorts*)
+- Video playback shortcuts (*Seek*, *undo seek*, *change volume*, *speed and quality*, *toggle loop*)
+- *Scroll to top* shortcut
+- Show *back to top* button
 - Over 100 YouTube themes
 - Custom CSS/JavaScript
+
+## Development
+
+1. Enable development mode in browser.
+2. Load/Debug addon.
+3. Select `manifest.json` inside `src` folder as entry point.
