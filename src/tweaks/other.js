@@ -5,10 +5,18 @@ ytTweaks.tweaks.push(function (settings) {
     a[href^="/watch"] + * h3,
     h3 a[href^="/shorts"] span,
     h3 a[href^="/shorts"],
-    a[href^="/shorts"] + * h3,
-    #video-title {
+    a[href^="/shorts"] + * h3 {
       -webkit-line-clamp: initial !important;
       max-height: initial !important;
+      white-space: normal !important;
+    }
+    `;
+
+    if (settings.showFullInfoBelowVideoTitle) ytTweaks.sheet.textContent += `
+    a[href^="/watch"] + * h3 + * span {
+      -webkit-line-clamp: initial !important;
+      max-height: initial !important;
+      white-space: normal !important;
     }
     `;
 
