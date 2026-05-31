@@ -12,7 +12,7 @@ A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Vid
 - Change the number of videos per row / Change the size of thumbnails
 - Video grid: Hide profile pictures/Decrease font size
 - Show full video titles
-- Hide Shorts, Mixes, watched videos, upcoming videos and live streams
+- Hide Shorts, Mixes, Playables, Top Live Games, Explore More Topics, watched videos, upcoming videos and live streams
 - Hide irrelevant search results (For you, People also watched, Previously watched etc.)
 - Search results in Grid view
 - More animations
