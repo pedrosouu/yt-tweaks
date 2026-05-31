@@ -338,7 +338,7 @@
 <section>
   <h4>Video seeking</h4>
   <label>
-    <span>Seek by scrolling over video player</span>
+    <span>Seek by scrolling over player</span>
     <input type="checkbox" id="seekOnScroll">
   </label>
   <div class="expandable">
@@ -357,9 +357,9 @@
     <label>
       <span>Require holding</span>
       <button class="selectMenu openPopup rotableArrow" id="seekOnScrollModifier">
-        <span>Off</span>
+        <span>Nothing</span>
         <ul>
-          <li value>Off</li>
+          <li value>Nothing</li>
           <li value="1">Left mouse button</li>
           <li value="2">Right mouse button</li>
           <li value="ctrlKey">Ctrl</li>
@@ -427,12 +427,12 @@
     </label>
   </div>
   <label>
-    <span>Scroll speed over video player</span>
+    <span>Scroll speed over player</span>
     <input type="checkbox" id="changeSpeedOnScroll">
   </label>
   <div class="expandable">
     <label title="Negative number = reversed mouse wheel direction">
-      <span>Speed change step (x)</span>
+      <span>Step (x)</span>
       <input type="number" id="speedChangePerScroll" step="0.01" value="0.05">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
@@ -440,9 +440,9 @@
     <label>
       <span>Require holding</span>
       <button class="selectMenu openPopup rotableArrow" id="changeSpeedOnScrollModifier">
-        <span>Off</span>
+        <span>Nothing</span>
         <ul>
-          <li value>Off</li>
+          <li value>Nothing</li>
           <li value="1">Left mouse button</li>
           <li value="2">Right mouse button</li>
           <li value="ctrlKey">Ctrl</li>
@@ -467,9 +467,9 @@
       <label>
         <span>Require holding</span>
         <button class="selectMenu openPopup rotableArrow" id="resetSpeedOnPlayerClickModifier">
-          <span>Off</span>
+          <span>Nothing</span>
           <ul>
-            <li value>Off</li>
+            <li value>Nothing</li>
             <li value="1">Left mouse button</li>
             <li value="2">Right mouse button</li>
             <li value="ctrlKey">Ctrl</li>
@@ -536,12 +536,12 @@
 <section>
   <h4>Video volume</h4>
   <label>
-    <span>Scroll volume over video player</span>
+    <span>Scroll volume over player</span>
     <input type="checkbox" id="changeVolOnScroll">
   </label>
   <div class="expandable">
     <label title="Negative number = reversed mouse wheel direction">
-      <span>Volume change step (%)</span>
+      <span>Step (%)</span>
       <input type="number" id="volChangePerScroll" step="1" value="5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
@@ -549,9 +549,9 @@
     <label>
       <span>Require holding</span>
       <button class="selectMenu openPopup rotableArrow" id="changeVolOnScrollModifier">
-        <span>Off</span>
+        <span>Nothing</span>
         <ul>
-          <li value>Off</li>
+          <li value>Nothing</li>
           <li value="1">Left mouse button</li>
           <li value="2">Right mouse button</li>
           <li value="ctrlKey">Ctrl</li>
@@ -576,9 +576,9 @@
       <label>
         <span>Require holding</span>
         <button class="selectMenu openPopup rotableArrow" id="toggleMuteOnPlayerClickModifier">
-          <span>Off</span>
+          <span>Nothing</span>
           <ul>
-            <li value>Off</li>
+            <li value>Nothing</li>
             <li value="1">Left mouse button</li>
             <li value="2">Right mouse button</li>
             <li value="ctrlKey">Ctrl</li>
@@ -705,7 +705,107 @@
   </label>
 </section>
 <section>
-  <h4>Flip/rotate video</h4>
+  <h4>Zoom / Flip / Rotate video</h4>
+  <label>
+    <span>Zoom in/out by scrolling over player</span>
+    <input type="checkbox" id="zoomOnScroll">
+  </label>
+  <div class="expandable">
+    <label title="Negative number = reversed mouse wheel direction">
+      <span>Step (x)</span>
+      <input type="number" id="zoomChangePerScroll" step="0.1" value="0.5">
+      <button class="numInputBtn minus iconButton"></button>
+      <button class="numInputBtn plus iconButton"></button>
+    </label>
+    <label>
+      <span>Follow mouse cursor</span>
+      <input type="checkbox" checked id="zoomToCursor">
+    </label>
+    <label>
+      <span>Require holding</span>
+      <button class="selectMenu openPopup rotableArrow" id="zoomOnScrollModifier">
+        <span>Nothing</span>
+        <ul>
+          <li value>Nothing</li>
+          <li value="2">Right mouse button</li>
+          <li value="ctrlKey">Ctrl</li>
+          <li value="shiftKey">Shift</li>
+          <li value="altKey">Alt</li>
+        </ul>
+      </button>
+    </label>
+    <label>
+      <span>Cancel zoom</span>
+      <button class="selectMenu openPopup rotableArrow" id="cancelZoomOnPlayerClick">
+        <span>Off</span>
+        <ul>
+          <li value>Off</li>
+          <li value="leftClick">Left-click</li>
+          <li value="rightClick">Right-click</li>
+          <li value="middleClick">Middle-click</li>
+        </ul>
+      </button>
+    </label>
+    <div class="expandable">
+      <label>
+        <span>Require holding</span>
+        <button class="selectMenu openPopup rotableArrow" id="cancelZoomOnPlayerClickModifier">
+          <span>Nothing</span>
+          <ul>
+            <li value>Nothing</li>
+            <li value="1">Left mouse button</li>
+            <li value="2">Right mouse button</li>
+            <li value="ctrlKey">Ctrl</li>
+            <li value="shiftKey">Shift</li>
+            <li value="altKey">Alt</li>
+          </ul>
+        </button>
+      </label>
+    </div>
+    </label>
+  </div>
+  <label>
+    <span>Zoom in</span>
+    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="Zoom factor" number-min="0"
+      number-step="0.10" id="zoomInHotkeys">
+      <span>Hotkeys</span>
+    </button>
+  </label>
+  <label>
+    <span>Zoom out</span>
+    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="Zoom factor" number-min="0"
+      number-step="0.10" id="zoomOutHotkeys">
+      <span>Hotkeys</span>
+    </button>
+  </label>
+  <label>
+    <span>Move zoomed area right</span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+      number-step="10" id="moveZoomedAreaRightHotkeys">
+      <span>Hotkeys</span>
+    </button>
+  </label>
+  <label>
+    <span>Move zoomed area left</span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+      number-step="10" id="moveZoomedAreaLeftHotkeys">
+      <span>Hotkeys</span>
+    </button>
+  </label>
+  <label>
+    <span>Move zoomed area up</span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+      number-step="10" id="moveZoomedAreaUpHotkeys">
+      <span>Hotkeys</span>
+    </button>
+  </label>
+    <label>
+    <span>Move zoomed area down</span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+      number-step="10" id="moveZoomedAreaDownHotkeys">
+      <span>Hotkeys</span>
+    </button>
+  </label>
   <label>
     <span>Flip horizontally button</span>
     <input type="checkbox" id="flipHorizontallyButton">
