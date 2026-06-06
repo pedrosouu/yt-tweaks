@@ -120,6 +120,7 @@ const videoZoom = function() {
 
 	function toggleDragMode(boolean) {
 		video.dragMode = boolean;
+		video.style.cursor = '';
 		method = boolean ? 'addEventListener' : 'removeEventListener';
 
 		video[method]('pointermove', drag);
