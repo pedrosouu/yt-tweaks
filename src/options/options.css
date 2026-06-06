@@ -8,6 +8,13 @@
 }
 
 :root {
+    --accent: #5294e2;
+    --navbar-width: 180px;
+    --btn-height: 34px;
+    --label-btn-height: 30px;
+    --spacing-1x: 6px;
+    --spacing-2x: 12px;
+    --spacing-4x: 24px;
     --main-bg: #efefef;
     --text: rgba(0, 0, 0, 0.87);
     --secondary-text: rgba(0, 0, 0, 0.55);
@@ -83,13 +90,6 @@ svg {
 }
 
 body {
-    --accent: #5294e2;
-    --navbar-width: 180px;
-    --btn-height: 34px;
-    --label-btn-height: 30px;
-    --spacing-1x: 6px;
-    --spacing-2x: 12px;
-    --spacing-4x: 24px;
     position: relative;
     font-family: 'Roboto';
     background-color: var(--main-bg);

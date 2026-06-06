@@ -194,7 +194,7 @@ function showPopup(popup, button, centered) {
         const vwTop = button.getBoundingClientRect().top + button.offsetHeight;
 
         if (vwTop + popup.offsetHeight > window.innerHeight) {
-            popup.style.top = `${(button.offsetTop + button.offsetHeight) - (popup.offsetHeight - (window.innerHeight - vwTop)) - document.body.children[0].offsetTop}px`;
+            popup.style.top = `calc(${(button.offsetTop + button.offsetHeight) - (popup.offsetHeight - (window.innerHeight - vwTop))}px - var(--spacing-2x))`;
         } else {
             popup.style.top = `${button.offsetTop + button.offsetHeight}px`;
         }

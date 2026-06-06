@@ -37,18 +37,14 @@ const showFeedback = function () {
 				  top: 10%;
 				  left: 50%;
 				  transform: translateX(-50%);
-				  transform-origin: 0 50% 0;
-				  scale: 0.75;
 				  opacity: 0;
 				  z-index: 999;
 				  background: rgba(0, 0, 0, 0.7);
 				  border-radius: 20px;
 				  padding: 10px 16px;
-				  transition: scale .15s cubic-bezier(0.25, 0, 0.25, 1.75), opacity .15s;
 				}
 	
 				#yttw-feedback.show {
-				  scale: 1;
 				  opacity: 1;
 				}
 		  
@@ -74,7 +70,6 @@ const showFeedback = function () {
 
 		if (osd.parentElement != player) {
 			player.appendChild(osd);
-			osd.clientWidth;
 		}
 
 		osd.classList.add('show');
