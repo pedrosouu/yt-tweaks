@@ -105,23 +105,21 @@ function formatSecToDDHHMMSS(time) {
 }
 
 const videoZoom = function() {
-	let mousedownX, mousedownY, dragged;
+	let translate, mousedownX, mousedownY, dragged;
 
 	function drag(e) {
 		if (e.buttons == 1) {
 			dragged = true;
 			video.style['transition-duration'] = '0s';
 
-			const translate = videoZoom.getTranslate();
+			translate = videoZoom.getTranslate();
 			translate.x += e.x - mousedownX;
 			translate.y += e.y - mousedownY;
-
-			videoZoom.correctPosition(videoZoom.getScale(), translate);
 
 			mousedownX = e.x;
 			mousedownY = e.y;
 
-			video.style.translate = `${translate.x}px ${translate.y}px`;
+			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
 		}
 	}
 
@@ -131,21 +129,30 @@ const videoZoom = function() {
 
 		video[method]('pointermove', drag);
 		video[method]('pointerdown', lmbPressed);
-		document[method]('click', cancelEvent, true);
+		document[method]('click', dragStopped, true);
 	}
 
 	function lmbPressed(e) {
 		if (e.button == 0) {
+			video.style.cursor = 'grab';
+
 			video.setPointerCapture(e.pointerId);
 			mousedownX = e.x;
 			mousedownY = e.y;
 		}
 	}
 
-	function cancelEvent(e) {
+	function dragStopped(e) {
+		video.style.cursor = '';
+
 		if (dragged) {
 			dragged = false;
+
 			video.style['transition-duration'] = '0.3s';
+
+			videoZoom.correctPosition(videoZoom.getScale(), translate);
+			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
+
 			e.preventDefault(e);
 			e.stopImmediatePropagation();
 		}
@@ -156,20 +163,19 @@ const videoZoom = function() {
 			const width = video.clientWidth * videoZoom.getScale();
 			const height = video.clientHeight * videoZoom.getScale();
 
-			const cursorRelativeX = origin.x / width;
-			const cursorRelativeY = origin.y / height;
+			const originRelativeX = origin.x / width;
+			const originRelativeY = origin.y / height;
 
-			const translate = videoZoom.getTranslate();
-			translate.x -= Math.round(cursorRelativeX * (video.clientWidth * scale - width));
-			translate.y -= Math.round(cursorRelativeY * (video.clientHeight * scale - height));
-
+			translate = videoZoom.getTranslate();
+			translate.x -= originRelativeX * (video.clientWidth * scale - width);
+			translate.y -= originRelativeY * (video.clientHeight * scale - height);
 			videoZoom.correctPosition(scale, translate);
 
 			video.style.rotate = '';
 			video.style['transition-duration'] = '0.3s';
 			video.style['transition-property'] = 'translate, scale';
 			video.style.transformOrigin = '0 0';
-			video.style.translate = `${translate.x}px ${translate.y}px`;
+			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
 			video.style.scale = scale;
 
 			if (scale == 1) toggleDragMode(false);
@@ -183,18 +189,18 @@ const videoZoom = function() {
 				translate.y = 0;
 			}
 			if (translate.x + video.clientWidth * scale < video.clientWidth) {
-				translate.x += video.clientWidth - (translate.x + video.clientWidth * scale);
+				translate.x = +(translate.x).toFixed(1) + +(video.clientWidth - (translate.x + video.clientWidth * scale)).toFixed(1);
 			}
 			if (translate.y + video.clientHeight * scale < video.clientHeight) {
-				translate.y += video.clientHeight - (translate.y + video.clientHeight * scale);
+				translate.y = +(translate.y).toFixed(1) + +(video.clientHeight - (translate.y + video.clientHeight * scale)).toFixed(1);
 			}
 		},
 		getTranslate() {
 			const translate = video.style.translate.match(/\-?\d*\.?\d+/g) || [0, 0];
 			return {
-				x: +translate[0],
-				y: +translate[1] || 0
-			}
+				x: +translate[0] / 100 * video.clientWidth,
+				y: (+translate[1] || 0) / 100 * video.clientHeight
+			};
 		},
 		getScale() {
 			return +video.style.scale || 1;
@@ -2810,7 +2816,7 @@ ytTweaks.tweaks.push(function (settings) {
 			xAxis ? translate.x += px : translate.y += px;
 			videoZoom.correctPosition(videoZoom.getScale(), translate);
 
-			video.style.translate = `${translate.x}px ${translate.y}px`;
+			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
 		}
 	}
 });
