@@ -299,9 +299,13 @@ ytTweaks = {
                 catch { }
             }
 
-            // YT began using a differently structured 'data' object in the watch page.
             if (arguments[0]?.data?.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel?.metadataRows?.[1]?.metadataParts?.[1]?.text?.content?.includes?.(streamed)) {
                 try { arguments[0].data.rendererContext.accessibilityContext.label = 'yttw-streamed'; }
+                catch { }
+            }
+
+            if (arguments[0]?.data?.content?.lockupViewModel?.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel?.metadataRows?.[0]?.metadataParts?.[2]?.text?.content?.includes?.(streamed)) {
+                try { arguments[0].data.content.lockupViewModel.rendererContext.accessibilityContext.label = 'yttw-streamed'; }
                 catch { }
             }
 
