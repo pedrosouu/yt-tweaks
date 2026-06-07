@@ -13,7 +13,11 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.showFullInfoBelowVideoTitle) ytTweaks.sheet.textContent += `
-    a[href^="/watch"] + * h3 + * span {
+    a[href^="/watch"] + * h3 + * > * > div {
+      display: block;
+    }
+
+    a[href^="/watch"] + * h3 + * :is(span, yt-formatted-string) {
       -webkit-line-clamp: initial !important;
       max-height: initial !important;
       white-space: normal !important;
