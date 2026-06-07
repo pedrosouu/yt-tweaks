@@ -100,16 +100,17 @@ function formatSecToDDHHMMSS(time) {
 }
 
 const videoZoom = function() {
-	let translate, mousedownX, mousedownY, dragged;
+	let mousedownX, mousedownY, dragged;
 
 	function drag(e) {
 		if (e.buttons == 1) {
 			dragged = true;
 			video.style['transition-duration'] = '0s';
 
-			translate = videoZoom.getTranslate();
+			const translate = videoZoom.getTranslate();
 			translate.x += e.x - mousedownX;
 			translate.y += e.y - mousedownY;
+			videoZoom.correctPosition(videoZoom.getScale(), translate);
 
 			mousedownX = e.x;
 			mousedownY = e.y;
@@ -120,7 +121,6 @@ const videoZoom = function() {
 
 	function toggleDragMode(boolean) {
 		video.dragMode = boolean;
-		video.style.cursor = '';
 		method = boolean ? 'addEventListener' : 'removeEventListener';
 
 		video[method]('pointermove', drag);
@@ -130,8 +130,6 @@ const videoZoom = function() {
 
 	function lmbPressed(e) {
 		if (e.button == 0) {
-			video.style.cursor = 'grab';
-
 			video.setPointerCapture(e.pointerId);
 			mousedownX = e.x;
 			mousedownY = e.y;
@@ -139,15 +137,10 @@ const videoZoom = function() {
 	}
 
 	function dragStopped(e) {
-		video.style.cursor = '';
-
 		if (dragged) {
 			dragged = false;
 
 			video.style['transition-duration'] = '0.3s';
-
-			videoZoom.correctPosition(videoZoom.getScale(), translate);
-			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
 
 			e.preventDefault(e);
 			e.stopImmediatePropagation();
@@ -162,7 +155,7 @@ const videoZoom = function() {
 			const originRelativeX = origin.x / width;
 			const originRelativeY = origin.y / height;
 
-			translate = videoZoom.getTranslate();
+			const translate = videoZoom.getTranslate();
 			translate.x -= originRelativeX * (video.clientWidth * scale - width);
 			translate.y -= originRelativeY * (video.clientHeight * scale - height);
 			videoZoom.correctPosition(scale, translate);
@@ -543,7 +536,7 @@ ytTweaks.tweaks.push(function (settings) {
 		function handleCtxMenu(e) {
 			if (!e.isTrusted) return;
 			if (e.buttons != 2 && e.buttons != 3) handleClick(e);
-			// Fallback for Linux because In most linux distros the context menu is trigered on buttton press rather than release
+			// Fallback for Linux because in most distros the context menu is triggered on button press rather than release
 			else {
 				if (document.body.lastElementChild.matches('.ytp-contextmenu') && document.body.lastElementChild.clientWidth) return;
 				if (e.currentTarget.lastElementChild.matches('.ytp-contextmenu') && e.currentTarget.lastElementChild.clientWidth) return;
