@@ -121,6 +121,7 @@ ytTweaks.tweaks.push(function (settings) {
       --yttw-hpp-display: none;
     }
   
+    #avatar-container.ytd-rich-grid-media,
     .ytLockupMetadataViewModelAvatar,
     #home-page-skeleton .channel-avatar,
     .channel-avatar.ytd-ghost-grid-renderer,
@@ -136,17 +137,17 @@ ytTweaks.tweaks.push(function (settings) {
       --yttw-dfs-1-2rem: 1.2rem;
       --yttw-dfs-1-8rem: 1.8rem;
     }
-    
+
     ytd-rich-grid-media h3 yt-formatted-string,
     ytd-rich-item-renderer h3 span,
     ytd-rich-item-renderer #title {
       font-size: 1.4rem !important;
       line-height: 2rem !important;
     }
-    
-    ytd-rich-grid-media h3 + * yt-formatted-string,
+
     ytd-rich-item-renderer h3 + * span,
-    ytd-rich-item-renderer #title ~ yt-formatted-string {
+    ytd-rich-item-renderer #title ~ yt-formatted-string,
+    ytd-rich-grid-media h3 + * :is(span, yt-formatted-string) {
       font-size: 1.2rem !important;
       line-height: 1.8rem !important;
     }

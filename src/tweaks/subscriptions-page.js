@@ -74,8 +74,6 @@ ytTweaks.tweaks.push(function (settings) {
     }
 
     if (settings.redToSubsHotkey) {
-        ytTweaks.listenForHotkeys();
-
         ytTweaks.getHotkeys()[settings.redToSubsHotkey] = function () {
             document.querySelector('ytd-app').handleNavigate({
                 command: {

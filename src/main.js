@@ -4,6 +4,7 @@ ytTweaks = {
     sheet: document.createElement('style'),
     noop() { },
     getHotkeys() {
+        ytTweaks.listenForHotkeys();
         return ytTweaks.hotkeys || (ytTweaks.hotkeys = {
             storageChanged: function () {
                 delete ytTweaks.hotkeys;
@@ -298,9 +299,13 @@ ytTweaks = {
                 catch { }
             }
 
-            // YT began using a differently structured 'data' object in the watch page.
             if (arguments[0]?.data?.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel?.metadataRows?.[1]?.metadataParts?.[1]?.text?.content?.includes?.(streamed)) {
                 try { arguments[0].data.rendererContext.accessibilityContext.label = 'yttw-streamed'; }
+                catch { }
+            }
+
+            if (arguments[0]?.data?.content?.lockupViewModel?.metadata?.lockupMetadataViewModel?.metadata?.contentMetadataViewModel?.metadataRows?.[0]?.metadataParts?.[2]?.text?.content?.includes?.(streamed)) {
+                try { arguments[0].data.content.lockupViewModel.rendererContext.accessibilityContext.label = 'yttw-streamed'; }
                 catch { }
             }
 
@@ -335,7 +340,7 @@ document.addEventListener('yttwStorageChanged', function (e) {
     initTweaks(e.detail.settings);
 
     document.dispatchEvent(new CustomEvent('yt-player-updated'));
-    document.querySelector('ytd-app')?.dispatchEvent(new CustomEvent('yt-navigate-finish', { detail: { pageType: yt.config_.TIMING_ACTION } }));
+    document.querySelector('ytd-app')?.dispatchEvent(new CustomEvent('yt-navigate-finish', { detail: { pageType: yt.config_.TIMING_ACTION }, bubbles: true }));
     for (const video of document.querySelectorAll('video')) {
         if (video.clientWidth) {
             video.dispatchEvent(new Event('loadstart'));
