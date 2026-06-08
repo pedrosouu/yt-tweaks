@@ -156,8 +156,8 @@ const videoZoom = function() {
 			const originRelativeY = origin.y / height;
 
 			const translate = videoZoom.getTranslate();
-			translate.x -= originRelativeX * (video.clientWidth * scale - width);
-			translate.y -= originRelativeY * (video.clientHeight * scale - height);
+			translate.x = +(translate.x - originRelativeX * (video.clientWidth * scale - width)).toFixed(4);
+			translate.y = +(translate.y - originRelativeY * (video.clientHeight * scale - height)).toFixed(4);
 			videoZoom.correctPosition(scale, translate);
 
 			video.style.rotate = '';
@@ -178,10 +178,10 @@ const videoZoom = function() {
 				translate.y = 0;
 			}
 			if (translate.x + video.clientWidth * scale < video.clientWidth) {
-				translate.x = +(translate.x).toFixed(1) + +(video.clientWidth - (translate.x + video.clientWidth * scale)).toFixed(1);
+				translate.x += +(video.clientWidth - (translate.x + video.clientWidth * scale)).toFixed(4);
 			}
 			if (translate.y + video.clientHeight * scale < video.clientHeight) {
-				translate.y = +(translate.y).toFixed(1) + +(video.clientHeight - (translate.y + video.clientHeight * scale)).toFixed(1);
+				translate.y += +(video.clientHeight - (translate.y + video.clientHeight * scale)).toFixed(4);
 			}
 		},
 		getTranslate() {
