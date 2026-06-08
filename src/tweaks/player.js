@@ -1,29 +1,29 @@
-ytTweaks.tweaks.push(function (settings) {
-	let player, video;
+(function() {
+let mainPlayer, player, video;
 
-	function getPlayerAndVideo() {
-		if (!player?.clientWidth || !video?.clientWidth) {
-			for (const el of document.querySelectorAll('video')) {
-				if (el.clientWidth) {
-					video = el;
-					player = el.parentElement.parentElement;
-					break;
-				}
+function getPlayerAndVideo() {
+	if (!player?.clientWidth || !video?.clientWidth) {
+		for (const el of document.querySelectorAll('video')) {
+			if (el.clientWidth) {
+				video = el;
+				player = el.parentElement.parentElement;
+				break;
 			}
 		}
 	}
+}
 
-	const showFeedback = (function () {
-		let osd, timeoutId;
+const showFeedback = function () {
+	let osd, timeoutId;
 
-		return function (strg, icon, timeoutTime) {
-			if (!osd) {
-				osd = document.createElement('div');
-				osd.id = 'yttw-feedback';
-				const style = document.createElement('style');
-				document.documentElement.appendChild(style);
+	return function (strg, icon, timeoutTime) {
+		if (!osd) {
+			osd = document.createElement('div');
+			osd.id = 'yttw-feedback';
+			const style = document.createElement('style');
+			document.documentElement.appendChild(style);
 
-				style.textContent = `
+			style.textContent = `
 				#yttw-feedback {
 				  pointer-events: none;
 				  color: rgb(255, 255, 255);
@@ -37,18 +37,14 @@ ytTweaks.tweaks.push(function (settings) {
 				  top: 10%;
 				  left: 50%;
 				  transform: translateX(-50%);
-				  transform-origin: 0 50% 0;
-				  scale: 0.75;
 				  opacity: 0;
 				  z-index: 999;
 				  background: rgba(0, 0, 0, 0.7);
 				  border-radius: 20px;
 				  padding: 10px 16px;
-				  transition: scale .15s cubic-bezier(0.25, 0, 0.25, 1.75), opacity .15s;
 				}
 	
 				#yttw-feedback.show {
-				  scale: 1;
 				  opacity: 1;
 				}
 		  
@@ -61,75 +57,193 @@ ytTweaks.tweaks.push(function (settings) {
 				  background-position: center center;
 				  background-size: cover;
 				}`;
-			}
-
-			osd.textContent = strg;
-
-			if (icon) {
-				osd.style.setProperty('--icon', `url("${icon}")`);
-				osd.classList.add('showIcon');
-			} else {
-				osd.classList.remove('showIcon');
-			}
-
-			if (osd.parentElement != player) {
-				player.appendChild(osd);
-				osd.clientWidth;
-			}
-
-			osd.classList.add('show');
-
-			clearTimeout(timeoutId);
-
-			timeoutId = setTimeout(function () {
-				osd.classList.remove('show');
-			}, timeoutTime || 1000);
 		}
-	})();
 
-	function formatSecToDDHHMMSS(time) {
-		let days, hours, min, sec;
+		osd.textContent = strg;
 
-		days = Math.floor(time / 86400);
-		hours = Math.floor((time - (days * 86400)) / 3600);
-		min = Math.floor((time - (days * 86400) - (hours * 3600)) / 60);
-		sec = Math.floor(time - (days * 86400) - (hours * 3600) - (min * 60));
+		if (icon) {
+			osd.style.setProperty('--icon', `url("${icon}")`);
+			osd.classList.add('showIcon');
+		} else {
+			osd.classList.remove('showIcon');
+		}
 
-		return (
-			days ?
-				days + (hours < 10 ? ':0' + hours : ':' + hours) + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
-				hours ?
-					hours + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
-					min + (sec < 10 ? ':0' + sec : ':' + sec)
-		);
+		if (osd.parentElement != player) {
+			player.appendChild(osd);
+		}
+
+		osd.classList.add('show');
+
+		clearTimeout(timeoutId);
+
+		timeoutId = setTimeout(function () {
+			osd.classList.remove('show');
+		}, timeoutTime || 1000);
 	}
+}();
 
-	function overwriteStorageSetItem() {
-		overwriteStorageSetItem = ytTweaks.noop;
+function formatSecToDDHHMMSS(time) {
+	let days, hours, min, sec;
 
-		const store = Storage.prototype.setItem;
+	days = Math.floor(time / 86400);
+	hours = Math.floor((time - (days * 86400)) / 3600);
+	min = Math.floor((time - (days * 86400) - (hours * 3600)) / 60);
+	sec = Math.floor(time - (days * 86400) - (hours * 3600) - (min * 60));
 
-		Storage.prototype.setItem = function () {
-			ytTweaks.videoQuality?.handleManuallySetQuality(arguments);
-			ytTweaks.videoSpeed?.handleManuallySetSpeed(arguments);
-			ytTweaks.perChannelVideoSpeed?.handleManuallySetSpeed(arguments);
+	return (
+		days ?
+			days + (hours < 10 ? ':0' + hours : ':' + hours) + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
+			hours ?
+				hours + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
+				min + (sec < 10 ? ':0' + sec : ':' + sec)
+	);
+}
 
-			store.apply(this, arguments);
+const videoZoom = function() {
+	let mousedownX, mousedownY, dragged;
+
+	function drag(e) {
+		if (e.buttons == 1) {
+			dragged = true;
+			video.style['transition-duration'] = '0s';
+
+			const translate = videoZoom.getTranslate();
+			translate.x += e.x - mousedownX;
+			translate.y += e.y - mousedownY;
+			videoZoom.correctPosition(videoZoom.getScale(), translate);
+
+			mousedownX = e.x;
+			mousedownY = e.y;
+
+			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
 		}
 	}
 
-	ytTweaks.playerButtons = [];
-	function addButtonToPlayer() {
-		if (!ytTweaks.playerButtons.length) document.addEventListener('loadstart', function handler() {
-			if ((ytTweaks.mainPlayer || (ytTweaks.mainPlayer = document.getElementById('movie_player')))) {
-				document.removeEventListener('loadstart', handler, true);
-				ytTweaks.mainPlayer.querySelector('.ytp-right-controls').prepend(...ytTweaks.playerButtons);
-			}
-		}, true);
+	function toggleDragMode(boolean) {
+		video.dragMode = boolean;
+		method = boolean ? 'addEventListener' : 'removeEventListener';
 
-		ytTweaks.playerButtons.push(...arguments);
+		video[method]('pointermove', drag);
+		video[method]('pointerdown', lmbPressed);
+		document[method]('click', dragStopped, true);
 	}
 
+	function lmbPressed(e) {
+		if (e.button == 0) {
+			video.setPointerCapture(e.pointerId);
+			mousedownX = e.x;
+			mousedownY = e.y;
+		}
+	}
+
+	function dragStopped(e) {
+		if (dragged) {
+			dragged = false;
+
+			video.style['transition-duration'] = '0.3s';
+
+			e.preventDefault(e);
+			e.stopImmediatePropagation();
+		}
+	}
+
+	return {
+		set(scale, origin) {
+			const width = video.clientWidth * videoZoom.getScale();
+			const height = video.clientHeight * videoZoom.getScale();
+
+			const originRelativeX = origin.x / width;
+			const originRelativeY = origin.y / height;
+
+			const translate = videoZoom.getTranslate();
+			translate.x = +(translate.x - originRelativeX * (video.clientWidth * scale - width)).toFixed(4);
+			translate.y = +(translate.y - originRelativeY * (video.clientHeight * scale - height)).toFixed(4);
+			videoZoom.correctPosition(scale, translate);
+
+			video.style.rotate = '';
+			video.style['transition-duration'] = '0.3s';
+			video.style['transition-property'] = 'translate, scale';
+			video.style.transformOrigin = '0 0';
+			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
+			video.style.scale = scale;
+
+			if (scale == 1) toggleDragMode(false);
+			else if (!video.dragMode) toggleDragMode(true);
+		},
+		correctPosition(scale, translate) {
+			if (translate.x > 0) {
+				translate.x = 0;
+			}
+			if (translate.y > 0) {
+				translate.y = 0;
+			}
+			if (translate.x + video.clientWidth * scale < video.clientWidth) {
+				translate.x += +(video.clientWidth - (translate.x + video.clientWidth * scale)).toFixed(4);
+			}
+			if (translate.y + video.clientHeight * scale < video.clientHeight) {
+				translate.y += +(video.clientHeight - (translate.y + video.clientHeight * scale)).toFixed(4);
+			}
+		},
+		getTranslate() {
+			const translate = video.style.translate.match(/\-?\d*\.?\d+/g) || [0, 0];
+			return {
+				x: +translate[0] / 100 * video.clientWidth,
+				y: (+translate[1] || 0) / 100 * video.clientHeight
+			};
+		},
+		getScale() {
+			return +video.style.scale || 1;
+		},
+		getPosition() {
+			const rect = player.getBoundingClientRect();
+			const ogX = rect.x + (player.clientWidth - video.clientWidth) / 2;
+			const ogY = rect.y + (player.clientHeight - video.clientHeight) / 2;
+			const translate = videoZoom.getTranslate();
+
+			return {
+				x: ogX + translate.x,
+				y: ogY + translate.y
+			};
+		}
+	}
+}();
+
+function overwriteStorageSetItem() {
+	overwriteStorageSetItem = ytTweaks.noop;
+
+	const store = Storage.prototype.setItem;
+
+	Storage.prototype.setItem = function () {
+		ytTweaks.videoQuality?.handleManuallySetQuality(arguments);
+		ytTweaks.videoSpeed?.handleManuallySetSpeed(arguments);
+		ytTweaks.perChannelVideoSpeed?.handleManuallySetSpeed(arguments);
+
+		store.apply(this, arguments);
+	}
+}
+
+const addButtonToPlayer = function() {
+	let fragment;
+
+	return function(button) {
+		if (!fragment) {
+			fragment = document.createDocumentFragment();
+			document.addEventListener('loadstart', insert, true);
+
+			function insert() {
+				if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
+					document.removeEventListener('loadstart', insert, true);
+					mainPlayer.querySelector('.ytp-right-controls').prepend(fragment);
+					fragment = '';
+				}
+			}
+		}
+
+		fragment.append(button);
+	}
+}();
+
+ytTweaks.tweaks.push(function (settings) {
 	if (settings.videoQuality) {
 		const qualities = {
 			tiny: 0,
@@ -343,7 +457,6 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		if (settings.setChannelSpeedHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.setChannelSpeedHotkey] = handleSpeedSetting;
 		}
 
@@ -363,7 +476,7 @@ ytTweaks.tweaks.push(function (settings) {
 		};
 	}
 
-	if (settings.changeSpeedOnScroll || settings.changeVolOnScroll || settings.seekOnScroll) {
+	if (settings.changeSpeedOnScroll || settings.changeVolOnScroll || settings.seekOnScroll || settings.zoomOnScroll) {
 		ytTweaks.sheet.textContent += `
 		.blockHoldFor2x .ytp-speedmaster-overlay {
 		  display: none;
@@ -371,22 +484,24 @@ ytTweaks.tweaks.push(function (settings) {
 	
 		.blockHoldFor2x .ytp-chrome-bottom {
 		  display: block !important;
-		}`;
+		}
+		`;
 
 		let preventDefault;
 
 		const changeSpeedOnScroll = settings.changeSpeedOnScroll;
 		const changeVolOnScroll = settings.changeVolOnScroll;
 		const seekOnScroll = settings.seekOnScroll;
+		const zoomOnScroll = settings.zoomOnScroll;
 
 		const normalSpeed = settings.videoSpeed ? settings.vsSpeed ?? 1.5 : 1;
 
-		const speedChange = settings.speedChangePerScroll ?? 0.05;
+		const speedStep = settings.speedChangePerScroll ?? 0.05;
 		const changeSpeedModifier = settings.changeSpeedOnScrollModifier;
 		const resetSpeedAction = settings.resetSpeedOnPlayerClick;
 		const resetSpeedModifier = settings.resetSpeedOnPlayerClickModifier;
 
-		const volChange = settings.volChangePerScroll ?? 5;
+		const volStep = settings.volChangePerScroll ?? 5;
 		const changeVolModifier = settings.changeVolOnScrollModifier;
 		const toggleMuteAction = settings.toggleMuteOnPlayerClick;
 		const toggleMuteModifier = settings.toggleMuteOnPlayerClickModifier;
@@ -394,6 +509,12 @@ ytTweaks.tweaks.push(function (settings) {
 		const seekFtime = settings.seekOnScrollFtime ?? 5;
 		const seekBtime = settings.seekOnScrollBtime ?? 5;
 		const seekModifier = settings.seekOnScrollModifier;
+
+		const zoomToCursor = settings.zoomToCursor != false;
+		const zoomStep = settings.zoomChangePerScroll ?? 0.5;
+		const zoomModifier = settings.zoomOnScrollModifier;
+		const cancelZoomAction = settings.cancelZoomOnPlayerClick;
+		const cancelZoomModifier = settings.cancelZoomOnPlayerClickModifier;
 
 		document.addEventListener('loadstart', main, true);
 
@@ -405,18 +526,17 @@ ytTweaks.tweaks.push(function (settings) {
 			if (player.handleWheel == handleWheel) return;
 			player.handleWheel = handleWheel;
 			HTMLElement.prototype.addEventListener.call(player, 'wheel', handleWheel, true);
-			HTMLElement.prototype.addEventListener.call(player, 'click', handlePlayerClick, true);
+			HTMLElement.prototype.addEventListener.call(player, 'click', handleClick, true);
 			HTMLElement.prototype.addEventListener.call(player, 'contextmenu', handleCtxMenu, true);
-			HTMLElement.prototype.addEventListener.call(player, 'mousedown', handleMmbPress, true);
-			HTMLElement.prototype.addEventListener.call(player, 'mouseup', handleMmbRelease, true);
+			HTMLElement.prototype.addEventListener.call(player, 'mousedown', handleMousedown, true);
+			HTMLElement.prototype.addEventListener.call(player, 'mouseup', handleMouseup, true);
 		}
 
 		let ctxMenuEvent;
 		function handleCtxMenu(e) {
 			if (!e.isTrusted) return;
-			// Windows
-			if (e.buttons != 2 && e.buttons != 3) handlePlayerClick(e);
-			// Linux
+			if (e.buttons != 2 && e.buttons != 3) handleClick(e);
+			// Fallback for Linux because in most distros the context menu is triggered on button press rather than release
 			else {
 				if (document.body.lastElementChild.matches('.ytp-contextmenu') && document.body.lastElementChild.clientWidth) return;
 				if (e.currentTarget.lastElementChild.matches('.ytp-contextmenu') && e.currentTarget.lastElementChild.clientWidth) return;
@@ -430,7 +550,7 @@ ytTweaks.tweaks.push(function (settings) {
 			}
 		}
 
-		function runFunction(e, func, modifier, clickAction) {
+		function runFunction(e, data, modifier, clickAction) {
 			if (!modifier) {
 				if (e.target.parentElement != e.currentTarget && e.target != e.currentTarget.video && e.target != e.currentTarget) return;
 				if (e.target.tagName == 'BUTTON') return;
@@ -456,7 +576,16 @@ ytTweaks.tweaks.push(function (settings) {
 				else if (e.type != 'click') return;
 			}
 
-			func(e);
+			e.stopImmediatePropagation();
+			e.preventDefault();
+			blockHoldFor2x(e);
+
+			// Touchpad scroll = small deltaX/deltaY
+			if (Math.abs(e.deltaX) <= 5 && Math.abs(e.deltaY) <= 5) {
+				data.funcThrottle(e, data.arg);
+			}
+
+			else data.func(e, data.arg);
 		}
 
 		const ogDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'playbackRate');
@@ -487,76 +616,45 @@ ytTweaks.tweaks.push(function (settings) {
 			}
 		}
 
-		function handleSpeedChange(e) {
-			blockHoldFor2x(e);
-
-			let newSpeed;
-
+		function getSumOrDifference(e, a, b, c) {
 			if (e.deltaY < 0 || e.deltaX > 0) {
-				newSpeed = Math.round((e.currentTarget.video.playbackRate + speedChange) * 100) / 100;
+				return a + b;
 			} else {
-				newSpeed = Math.round((e.currentTarget.video.playbackRate - speedChange) * 100) / 100;
+				return a - (c || b);
 			}
-
-			// Touchpad scroll = small deltaX/deltaY
-			if (Math.abs(e.deltaX) <= 5 && Math.abs(e.deltaY) <= 5) {
-				setSpeedThrottle(e, newSpeed);
-			}
-
-			else setSpeed(e, newSpeed);
-		}
-
-		function handleVolChange(e) {
-			blockHoldFor2x(e);
-
-			let newVolume;
-
-			if (e.deltaY < 0 || e.deltaX > 0) {
-				newVolume = e.currentTarget.getVolume() + volChange;
-			} else {
-				newVolume = e.currentTarget.getVolume() - volChange;
-			}
-
-			if (Math.abs(e.deltaX) <= 5 && Math.abs(e.deltaY) <= 5) {
-				setVolumeThrottle(e, newVolume);
-			}
-
-			else setVolume(e, newVolume);
-		}
-
-		function handleVideoTimeChange(e) {
-			blockHoldFor2x(e);
-
-			let newTime;
-
-			if (e.deltaY < 0 || e.deltaX > 0) {
-				newTime = e.currentTarget.video.currentTime + (seekBtime < 0 ? seekBtime : seekFtime) * e.currentTarget.video.playbackRate;
-			} else {
-				newTime = e.currentTarget.video.currentTime - (seekFtime < 0 ? seekFtime : seekBtime) * e.currentTarget.video.playbackRate;
-			}
-
-			if (Math.abs(e.deltaX) <= 5 && Math.abs(e.deltaY) <= 5) {
-				seekToThrottle(e, newTime);
-			}
-
-			else seekTo(e, newTime);
 		}
 
 		function handleWheel(e) {
 			if (changeSpeedOnScroll) {
-				runFunction(e, handleSpeedChange, changeSpeedModifier);
+				runFunction(e, {
+					func: adjustSpeed,
+					funcThrottle: adjustSpeedThrottle
+				}, changeSpeedModifier);
 			}
 
 			if (changeVolOnScroll) {
-				runFunction(e, handleVolChange, changeVolModifier);
+				runFunction(e, {
+					func: adjustVolume,
+					funcThrottle: adjustVolumeThrottle
+				}, changeVolModifier);
 			}
 
 			if (seekOnScroll) {
-				runFunction(e, handleVideoTimeChange, seekModifier);
+				runFunction(e, {
+					func: adjustTime,
+					funcThrottle: adjustTimeThrottle
+				}, seekModifier);			
+			}
+
+			if (zoomOnScroll) {
+				runFunction(e, {
+					func: adjustZoom,
+					funcThrottle: adjustZoomThrottle
+				}, zoomModifier);
 			}
 		}
 
-		function handlePlayerClick(e) {
+		function handleClick(e) {
 			if (preventDefault) {
 				e.stopImmediatePropagation();
 				e.preventDefault();
@@ -564,15 +662,28 @@ ytTweaks.tweaks.push(function (settings) {
 			}
 
 			if (changeSpeedOnScroll && resetSpeedAction) {
-				runFunction(e, setSpeed, resetSpeedModifier, resetSpeedAction);
+				runFunction(e, {
+					func: adjustSpeed,
+					arg: true
+				}, resetSpeedModifier, resetSpeedAction);
 			}
 
 			if (changeVolOnScroll && toggleMuteAction) {
-				runFunction(e, toggleMute, toggleMuteModifier, toggleMuteAction);
+				runFunction(e, {
+					func: adjustVolume,
+					arg: true
+				}, toggleMuteModifier, toggleMuteAction);
+			}
+
+			if (zoomOnScroll && cancelZoomAction && videoZoom.getScale(video = e.currentTarget.video) != 1) {
+				runFunction(e, {
+					func: adjustZoom,
+					arg: true
+				}, cancelZoomModifier, cancelZoomAction);
 			}
 		}
 
-		function handleMmbPress(e) {
+		function handleMousedown(e) {
 			if (e.button == 0) currSpeed = e.currentTarget.video.playbackRate;
 			else if (e.button == 1) {
 				if (changeSpeedOnScroll && resetSpeedAction == 'middleClick') {
@@ -581,6 +692,10 @@ ytTweaks.tweaks.push(function (settings) {
 
 				if (changeVolOnScroll && toggleMuteAction == 'middleClick') {
 					preventDefault(toggleMuteModifier, toggleMuteAction);
+				}
+
+				if (zoomOnScroll && cancelZoomAction == 'middleClick') {
+					preventDefault(cancelZoomModifier, cancelZoomAction);
 				}
 
 				function preventDefault(modifier) {
@@ -593,28 +708,41 @@ ytTweaks.tweaks.push(function (settings) {
 			}
 		}
 
-		function handleMmbRelease(e) {
+		function handleMouseup(e) {
 			if (preventDefault && e.button + e.buttons == 0) {
 				setTimeout(function () {
 					preventDefault = false;
 				}, 0);
 			}
 
-			else if (e.button == 1) handlePlayerClick(e);
+			else if (e.button == 1) handleClick(e);
 
 			else if (e.button == 2 && ctxMenuEvent) {
-				handlePlayerClick(ctxMenuEvent);
+				handleClick(ctxMenuEvent);
 				e.target.dispatchEvent(ctxMenuEvent);
 				ctxMenuEvent = 0;
 			}
 		}
 
-		function setSpeed(e, speed) {
-			e.stopImmediatePropagation();
-			e.preventDefault();
-			blockHoldFor2x(e);
+		function adjustZoom(e, cancel) {
+			player = e.currentTarget;
+			video = e.currentTarget.video;
 
-			speed = speed ?? normalSpeed;
+			const scale = cancel ? 1 : Math.max(getSumOrDifference(e, videoZoom.getScale(), zoomStep), 1);
+
+			if (zoomToCursor) {
+				const position = videoZoom.getPosition();
+				videoZoom.set(scale, { x: e.x - position.x, y: e.y - position.y });
+			}
+			else {
+				const translate = videoZoom.getTranslate();
+				videoZoom.set(scale, { x: Math.abs(translate.x) + (0.5 * e.currentTarget.video.clientWidth), y: Math.abs(translate.y) + (0.5 * e.currentTarget.video.clientHeight) });
+			}
+		}
+
+		function adjustSpeed(e, reset) {
+			const speed = reset ? normalSpeed : Math.round(getSumOrDifference(e, e.currentTarget.video.playbackRate, speedStep) * 100) / 100;
+
 			e.currentTarget.setPlaybackRate(speed);
 			ogDescriptor.set.call(e.currentTarget.video, speed);
 
@@ -627,58 +755,55 @@ ytTweaks.tweaks.push(function (settings) {
 				}))
 			} catch { }
 		}
+		
+		const adjustVolume = function() {
+			const muteIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24' fill='%23fff'%3E%3Cpath d='M11.60 2.08L11.48 2.14L3.91 6.68C3.02 7.21 2.28 7.97 1.77 8.87C1.26 9.77 1.00 10.79 1 11.83V12.16L1.01 12.56C1.07 13.52 1.37 14.46 1.87 15.29C2.38 16.12 3.08 16.81 3.91 17.31L11.48 21.85C11.63 21.94 11.80 21.99 11.98 21.99C12.16 22.00 12.33 21.95 12.49 21.87C12.64 21.78 12.77 21.65 12.86 21.50C12.95 21.35 13 21.17 13 21V3C12.99 2.83 12.95 2.67 12.87 2.52C12.80 2.37 12.68 2.25 12.54 2.16C12.41 2.07 12.25 2.01 12.08 2.00C11.92 1.98 11.75 2.01 11.60 2.08ZM4.94 8.4V8.40L11 4.76V19.23L4.94 15.6C4.38 15.26 3.92 14.80 3.58 14.25C3.24 13.70 3.05 13.07 3.00 12.43L3 12.17V11.83C2.99 11.14 3.17 10.46 3.51 9.86C3.85 9.25 4.34 8.75 4.94 8.4ZM21.29 8.29L19 10.58L16.70 8.29L16.63 8.22C16.43 8.07 16.19 7.99 15.95 8.00C15.70 8.01 15.47 8.12 15.29 8.29C15.12 8.47 15.01 8.70 15.00 8.95C14.99 9.19 15.07 9.43 15.22 9.63L15.29 9.70L17.58 12L15.29 14.29C15.19 14.38 15.12 14.49 15.06 14.61C15.01 14.73 14.98 14.87 14.98 15.00C14.98 15.13 15.01 15.26 15.06 15.39C15.11 15.51 15.18 15.62 15.28 15.71C15.37 15.81 15.48 15.88 15.60 15.93C15.73 15.98 15.86 16.01 15.99 16.01C16.12 16.01 16.26 15.98 16.38 15.93C16.50 15.87 16.61 15.80 16.70 15.70L19 13.41L21.29 15.70L21.36 15.77C21.56 15.93 21.80 16.01 22.05 15.99C22.29 15.98 22.53 15.88 22.70 15.70C22.88 15.53 22.98 15.29 22.99 15.05C23.00 14.80 22.93 14.56 22.77 14.36L22.70 14.29L20.41 12L22.70 9.70C22.80 9.61 22.87 9.50 22.93 9.38C22.98 9.26 23.01 9.12 23.01 8.99C23.01 8.86 22.98 8.73 22.93 8.60C22.88 8.48 22.81 8.37 22.71 8.28C22.62 8.18 22.51 8.11 22.39 8.06C22.26 8.01 22.13 7.98 22.00 7.98C21.87 7.98 21.73 8.01 21.61 8.06C21.49 8.12 21.38 8.19 21.29 8.29Z'%3E%3C/path%3E%3C/svg%3E";
 
-		const muteIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24' fill='%23fff'%3E%3Cpath d='M11.60 2.08L11.48 2.14L3.91 6.68C3.02 7.21 2.28 7.97 1.77 8.87C1.26 9.77 1.00 10.79 1 11.83V12.16L1.01 12.56C1.07 13.52 1.37 14.46 1.87 15.29C2.38 16.12 3.08 16.81 3.91 17.31L11.48 21.85C11.63 21.94 11.80 21.99 11.98 21.99C12.16 22.00 12.33 21.95 12.49 21.87C12.64 21.78 12.77 21.65 12.86 21.50C12.95 21.35 13 21.17 13 21V3C12.99 2.83 12.95 2.67 12.87 2.52C12.80 2.37 12.68 2.25 12.54 2.16C12.41 2.07 12.25 2.01 12.08 2.00C11.92 1.98 11.75 2.01 11.60 2.08ZM4.94 8.4V8.40L11 4.76V19.23L4.94 15.6C4.38 15.26 3.92 14.80 3.58 14.25C3.24 13.70 3.05 13.07 3.00 12.43L3 12.17V11.83C2.99 11.14 3.17 10.46 3.51 9.86C3.85 9.25 4.34 8.75 4.94 8.4ZM21.29 8.29L19 10.58L16.70 8.29L16.63 8.22C16.43 8.07 16.19 7.99 15.95 8.00C15.70 8.01 15.47 8.12 15.29 8.29C15.12 8.47 15.01 8.70 15.00 8.95C14.99 9.19 15.07 9.43 15.22 9.63L15.29 9.70L17.58 12L15.29 14.29C15.19 14.38 15.12 14.49 15.06 14.61C15.01 14.73 14.98 14.87 14.98 15.00C14.98 15.13 15.01 15.26 15.06 15.39C15.11 15.51 15.18 15.62 15.28 15.71C15.37 15.81 15.48 15.88 15.60 15.93C15.73 15.98 15.86 16.01 15.99 16.01C16.12 16.01 16.26 15.98 16.38 15.93C16.50 15.87 16.61 15.80 16.70 15.70L19 13.41L21.29 15.70L21.36 15.77C21.56 15.93 21.80 16.01 22.05 15.99C22.29 15.98 22.53 15.88 22.70 15.70C22.88 15.53 22.98 15.29 22.99 15.05C23.00 14.80 22.93 14.56 22.77 14.36L22.70 14.29L20.41 12L22.70 9.70C22.80 9.61 22.87 9.50 22.93 9.38C22.98 9.26 23.01 9.12 23.01 8.99C23.01 8.86 22.98 8.73 22.93 8.60C22.88 8.48 22.81 8.37 22.71 8.28C22.62 8.18 22.51 8.11 22.39 8.06C22.26 8.01 22.13 7.98 22.00 7.98C21.87 7.98 21.73 8.01 21.61 8.06C21.49 8.12 21.38 8.19 21.29 8.29Z'%3E%3C/path%3E%3C/svg%3E";
-		function setVolume(e, vol) {
-			e.stopImmediatePropagation();
-			e.preventDefault();
+			return function(e, toggleMute) {
+				if (toggleMute) {
+					if (e.currentTarget.video.muted) {
+						e.currentTarget.unMute();
+						showFeedback(e.currentTarget.getVolume());
+					} else {
+						e.currentTarget.mute();
+						showFeedback('', muteIcon);
+					}
+				} else {
+					let vol = getSumOrDifference(e, e.currentTarget.getVolume(), volStep);
+					if (vol < 0) vol = 0;
+					else if (vol > 100) vol = 100;
 
-			if (vol < 0) vol = 0;
-			else if (vol > 100) vol = 100;
+					e.currentTarget.setVolume(vol);
+					showFeedback(vol, e.currentTarget.video.muted ? muteIcon : '');
+				}
 
-			e.currentTarget.setVolume(vol);
-			showFeedback(vol, e.currentTarget.video.muted ? muteIcon : '');
-			storeVolume(e);
-		}
-
-		function toggleMute(e) {
-			e.stopImmediatePropagation();
-			e.preventDefault();
-			blockHoldFor2x(e);
-
-			if (e.currentTarget.video.muted) {
-				e.currentTarget.unMute();
-				showFeedback(e.currentTarget.getVolume());
-			} else {
-				e.currentTarget.mute();
-				showFeedback('', muteIcon);
+				try {
+					localStorage.setItem('yt-player-volume', JSON.stringify({
+						data: `{\"volume\":${e.currentTarget.getVolume()},\"muted\":${e.currentTarget.video.muted}}`,
+						expiration: Date.now() + 2592E3 * 1E3,
+						creation: Date.now()
+					}))
+					sessionStorage.setItem('yt-player-volume', JSON.stringify({
+						data: `{\"volume\":${e.currentTarget.getVolume()},\"muted\":${e.currentTarget.video.muted}}`,
+						creation: Date.now()
+					}))
+				} catch { }
 			}
+		}();
 
-			storeVolume(e);
-		}
-
-		function storeVolume(e) {
-			try {
-				localStorage.setItem('yt-player-volume', JSON.stringify({
-					data: `{\"volume\":${e.currentTarget.getVolume()},\"muted\":${e.currentTarget.video.muted}}`,
-					expiration: Date.now() + 2592E3 * 1E3,
-					creation: Date.now()
-				}))
-				sessionStorage.setItem('yt-player-volume', JSON.stringify({
-					data: `{\"volume\":${e.currentTarget.getVolume()},\"muted\":${e.currentTarget.video.muted}}`,
-					creation: Date.now()
-				}))
-			} catch { }
-		}
-
-		const seekTo = function () {
+		const adjustTime = function () {
 			let seekedForward;
 			let amountSeeked = 0;
 			let timeoutId;
 
-			return function (e, time) {
-				e.stopImmediatePropagation();
-				e.preventDefault();
+			return function (e) {
+				const time = getSumOrDifference(
+					e,
+					e.currentTarget.video.currentTime,
+					(seekBtime < 0 ? seekBtime : seekFtime) * e.currentTarget.video.playbackRate,
+					(seekFtime < 0 ? seekFtime : seekBtime) * e.currentTarget.video.playbackRate
+				);
+
 				clearTimeout(timeoutId);
 				timeoutId = setTimeout(function () {
 					amountSeeked = 0;
@@ -697,19 +822,17 @@ ytTweaks.tweaks.push(function (settings) {
 		}();
 
 		let throttleWait = 200;
-		let setSpeedThrottle = throttle(setSpeed);
-		let setVolumeThrottle = throttle(setVolume);
-		let seekToThrottle = throttle(seekTo);
+		let adjustSpeedThrottle = throttle(adjustSpeed);
+		let adjustVolumeThrottle = throttle(adjustVolume);
+		let adjustTimeThrottle = throttle(adjustTime);
+		let adjustZoomThrottle = throttle(adjustZoom);
 
 		function throttle(func) {
 			let isWaiting;
 
-			return function (e, data) {
-				e.stopImmediatePropagation();
-				e.preventDefault();
-
+			return function () {
 				if (!isWaiting) {
-					func(e, data);
+					func(...arguments);
 
 					isWaiting = true
 					setTimeout(function () {
@@ -724,10 +847,10 @@ ytTweaks.tweaks.push(function (settings) {
 				document.removeEventListener('loadstart', main, true);
 				for (const video of document.querySelectorAll('video')) {
 					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'wheel', handleWheel, true);
-					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'click', handlePlayerClick, true);
+					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'click', handleClick, true);
 					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'contextmenu', handleCtxMenu, true);
-					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'mousedown', handleMmbPress, true);
-					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'mouseup', handleMmbRelease, true);
+					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'mousedown', handleMousedown, true);
+					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'mouseup', handleMouseup, true);
 				}
 			}
 		};
@@ -773,11 +896,11 @@ ytTweaks.tweaks.push(function (settings) {
 		document.addEventListener('loadstart', main, true);
 
 		function main() {
-			if ((ytTweaks.mainPlayer || (ytTweaks.mainPlayer = document.getElementById('movie_player')))) {
+			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
 				document.removeEventListener('loadstart', main, true);
 
-				if (ytTweaks.mainPlayer.matches(':hover')) { showBackdrop(); };
-				HTMLElement.prototype.addEventListener.call(ytTweaks.mainPlayer, 'mouseenter', showBackdrop);
+				if (mainPlayer.matches(':hover')) { showBackdrop(); };
+				HTMLElement.prototype.addEventListener.call(mainPlayer, 'mouseenter', showBackdrop);
 			}
 		}
 
@@ -800,7 +923,7 @@ ytTweaks.tweaks.push(function (settings) {
 		ytTweaks.videoFocus = {
 			storageChanged: function () {
 				document.removeEventListener('loadstart', main, true);
-				HTMLElement.prototype.removeEventListener.call(ytTweaks.mainPlayer, 'mouseenter', showBackdrop);
+				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'mouseenter', showBackdrop);
 				backdrop.remove();
 			}
 		};
@@ -812,7 +935,6 @@ ytTweaks.tweaks.push(function (settings) {
 		if (settings.autoVolumeBoost) document.addEventListener('loadstart', autoEnableVolBoost, true);
 
 		if (settings.toggleVolBoostHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.toggleVolBoostHotkey] = toggleVolBoost;
 		}
 
@@ -894,7 +1016,6 @@ ytTweaks.tweaks.push(function (settings) {
 		if (settings.monoAudioButton) addButtonToPlayer(monoButton);
 
 		if (settings.toggleMonoAudioHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.toggleMonoAudioHotkey] = toggleMonoAudio;
 		}
 
@@ -1008,21 +1129,18 @@ ytTweaks.tweaks.push(function (settings) {
 		if (settings.snapshotButton) addButtonToPlayer(snapshotButton);
 
 		if (settings.snapshotToFileHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.snapshotToFileHotkey] = function () {
 				takeSnapshot(true, false);
 			};
 		}
 
 		if (settings.snapshotToClipHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.snapshotToClipHotkey] = function () {
 				takeSnapshot(false, true);
 			};
 		}
 
 		if (settings.snapshotToFileAndClipHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.snapshotToFileAndClipHotkey] = function () {
 				takeSnapshot(true, true);
 			};
@@ -1052,7 +1170,7 @@ ytTweaks.tweaks.push(function (settings) {
 					let outsideRight = 0;
 
 					for (const caption of captions) {
-						if (caption.clientWidth - video.clientWidth > 0) {
+						if (caption.clientWidth > video.clientWidth) {
 							caption.style.width = video.clientWidth + 'px';
 							caption.style.boxSizing = 'border-box';
 						}
@@ -1071,7 +1189,7 @@ ytTweaks.tweaks.push(function (settings) {
 					}
 
 					for (const caption of captions) {
-						const scaleX = 100 / video.clientWidth * video.videoWidth / 100;
+						const scaleX = video.videoWidth / video.clientWidth;
 						const capRect = caption.getBoundingClientRect();
 						const fontSize = +caption.style.fontSize.replace('px', '') * scaleX;
 						const y = (capRect.y - videoRect.y + (outsideBottom ? outsideBottom : Math.abs(outsideTop))) * scaleX;
@@ -1133,40 +1251,28 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.flipHorizontallyButton || settings.flipVerticallyButton || settings.flipHorizontallyHotkey || settings.flipVerticallyHotkey) {
-		ytTweaks.sheet.textContent += `
-		.yttw-flip-horizontally video {
-		  --sx: -1;
-		  transform: scale(var(--sx, 1), var(--sy, 1)) !important;
-		}
-	
-		.yttw-flip-vertically video {
-		  --sy: -1;
-		  transform: scale(var(--sx, 1), var(--sy, -1)) !important;
-		}
-		`;
-
 		const flipHorOffIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M11 3L11 21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M20 8.2L20 8.16146C20 7.63431 20 7.17955 19.9694 6.80497C19.9371 6.40963 19.8658 6.01641 19.673 5.63803C19.3854 5.07354 18.9265 4.6146 18.362 4.32698C17.9836 4.13419 17.5904 4.06287 17.195 4.03057C16.8205 3.99997 16.3657 3.99998 15.8385 4L15.8 4L14 4L14 6L15.8 6C16.3766 6 16.7488 6.00078 17.0322 6.02393C17.3038 6.04612 17.4045 6.0838 17.454 6.10899C17.6422 6.20487 17.7951 6.35785 17.891 6.54601C17.9162 6.59545 17.9539 6.69617 17.9761 6.96784C17.9992 7.25117 18 7.62345 18 8.2L18 15.8C18 16.3766 17.9992 16.7488 17.9761 17.0322C17.9539 17.3038 17.9162 17.4045 17.891 17.454C17.7951 17.6422 17.6422 17.7951 17.454 17.891C17.4045 17.9162 17.3038 17.9539 17.0322 17.9761C16.7488 17.9992 16.3766 18 15.8 18L14 18L14 20L15.8 20L15.8385 20C16.3657 20 16.8204 20 17.195 19.9694C17.5904 19.9371 17.9836 19.8658 18.362 19.673C18.9265 19.3854 19.3854 18.9265 19.673 18.362C19.8658 17.9836 19.9371 17.5904 19.9694 17.195C20 16.8205 20 16.3657 20 15.8385L20 15.8L20 8.2ZM12 20L12 18L8.2 18C7.62344 18 7.25117 17.9992 6.96783 17.9761C6.69617 17.9539 6.59545 17.9162 6.54601 17.891C6.35785 17.7951 6.20486 17.6422 6.10899 17.454C6.0838 17.4045 6.04612 17.3038 6.02393 17.0322C6.00078 16.7488 6 16.3766 6 15.8L6 8.2C6 7.62345 6.00078 7.25117 6.02393 6.96784C6.04612 6.69617 6.0838 6.59545 6.10899 6.54601C6.20487 6.35785 6.35785 6.20487 6.54601 6.10899C6.59545 6.0838 6.69617 6.04612 6.96783 6.02393C7.25117 6.00078 7.62345 6 8.2 6L12 6L12 4L8.2 4L8.16146 4C7.63431 3.99998 7.17954 3.99997 6.80497 4.03057C6.40963 4.06287 6.01641 4.13419 5.63803 4.32698C5.07354 4.6146 4.6146 5.07354 4.32698 5.63803C4.13419 6.01641 4.06287 6.40963 4.03057 6.80497C3.99997 7.17955 3.99998 7.63432 4 8.16148L4 8.2L4 15.8L4 15.8385C3.99998 16.3657 3.99997 16.8205 4.03057 17.195C4.06287 17.5904 4.13419 17.9836 4.32698 18.362C4.6146 18.9265 5.07354 19.3854 5.63803 19.673C6.01641 19.8658 6.40963 19.9371 6.80497 19.9694C7.17955 20 7.63432 20 8.16148 20L8.2 20L12 20Z' fill='%23fff'/%3E%3C/svg%3E";
 		const flipHorOnIcon = "data:image/svg+xml,%3Csvg xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none' version='1.1' id='svg2' sodipodi:docname='2.svg' inkscape:version='1.4 (86a8ad7, 2024-10-11)'%3E%3Cpath d='M 10.999999,2.9999995 V 20.999999' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' id='path1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='m 19.999999,8.1999995 v -0.03854 c 2e-5,-0.52715 3e-5,-0.98191 -0.03057,-1.35649 -0.0323,-0.39534 -0.10362,-0.78856 -0.29641,-1.16694 -0.28762,-0.56449 -0.74656,-1.02343 -1.31105,-1.31105 -0.37838,-0.19279 -0.7716,-0.26411 -1.16694,-0.29641 -0.37457,-0.0306 -0.82934,-0.03059 -1.35649,-0.03057 h -0.03854 -1.8 v 2 h 1.8 c 0.57655,0 0.94883,7.8e-4 1.23216,0.02393 0.27167,0.02219 0.37239,0.05987 0.42183,0.08506 0.18816,0.09588 0.34114,0.24886 0.43702,0.43702 0.02519,0.04944 0.06287,0.15016 0.08506,0.42183 0.02315,0.28333 0.02393,0.65561 0.02393,1.23216 v 7.5999995 c 0,0.5766 -7.8e-4,0.9488 -0.02393,1.2322 -0.02219,0.2716 -0.05987,0.3723 -0.08506,0.4218 -0.09588,0.1882 -0.24886,0.3411 -0.43702,0.437 -0.04944,0.0252 -0.15016,0.0629 -0.42183,0.0851 -0.28333,0.0231 -0.65561,0.0239 -1.23216,0.0239 h -1.8 v 2 h 1.8 0.03852 c 0.52716,0 0.98193,0 1.35651,-0.0306 0.39534,-0.0323 0.78856,-0.1036 1.16694,-0.2964 0.56449,-0.2876 1.02343,-0.7465 1.31105,-1.311 0.19279,-0.3784 0.26411,-0.7716 0.29641,-1.167 0.0306,-0.3745 0.03059,-0.8293 0.03057,-1.3565 v -0.0385 z m -8,11.7999995 v -2 H 8.1999995 c -0.5766,0 -0.9488,-8e-4 -1.2322,-0.0239 -0.2716,-0.0222 -0.3723,-0.0599 -0.4218,-0.0851 -0.1882,-0.0959 -0.3411,-0.2488 -0.437,-0.437 -0.0252,-0.0495 -0.0629,-0.1502 -0.0851,-0.4218 -0.0231,-0.2834 -0.0239,-0.6556 -0.0239,-1.2322 V 8.1999995 c 0,-0.57655 8e-4,-0.94883 0.0239,-1.23216 0.0222,-0.27167 0.0599,-0.37239 0.0851,-0.42183 0.0959,-0.18816 0.2488,-0.34114 0.437,-0.43702 0.0495,-0.02519 0.1502,-0.06287 0.4218,-0.08506 0.2834,-0.02315 0.6556,-0.02393 1.2322,-0.02393 h 3.7999995 v -2 h -3.7999995 -0.0385 c -0.5272,-2e-5 -0.982,-3e-5 -1.3565,0.03057 -0.3954,0.0323 -0.7886,0.10362 -1.167,0.29641 -0.5645,0.28762 -1.0234,0.74656 -1.311,1.31105 -0.1928,0.37838 -0.2641,0.7716 -0.2964,1.16694 -0.0306,0.37458 -0.0306,0.82935 -0.0306,1.35651 v 0.03852 7.5999995 0.0385 c 0,0.5272 0,0.982 0.0306,1.3565 0.0323,0.3954 0.1036,0.7886 0.2964,1.167 0.2876,0.5645 0.7465,1.0234 1.311,1.311 0.3784,0.1928 0.7716,0.2641 1.167,0.2964 0.3745,0.0306 0.8293,0.0306 1.3565,0.0306 h 0.0385 z' fill='%23fff' id='path2'/%3E%3Crect style='fill:%23fff;stroke-width:0.0466197' id='rect2' width='14.014849' height='4.3531132' x='4.9771724' y='-18.35318' rx='0' transform='rotate(90)'/%3E%3Crect style='fill:%23fff;stroke-width:0.0526548' id='rect2-0' width='14.014849' height='5.5531135' x='5.1161728' y='-11.064057' rx='0' transform='rotate(90)'/%3E%3C/svg%3E";
 		const flipVertOffIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 13H21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.2 4H8.16146C7.63431 3.99998 7.17955 3.99997 6.80497 4.03057C6.40963 4.06287 6.01641 4.13419 5.63803 4.32698C5.07354 4.6146 4.6146 5.07354 4.32698 5.63803C4.13419 6.01641 4.06287 6.40963 4.03057 6.80497C3.99997 7.17954 3.99998 7.63431 4 8.16146V8.2V10H6V8.2C6 7.62345 6.00078 7.25117 6.02393 6.96784C6.04612 6.69617 6.0838 6.59545 6.10899 6.54601C6.20487 6.35785 6.35785 6.20487 6.54601 6.10899C6.59545 6.0838 6.69617 6.04612 6.96784 6.02393C7.25117 6.00078 7.62345 6 8.2 6H15.8C16.3766 6 16.7488 6.00078 17.0322 6.02393C17.3038 6.04612 17.4045 6.0838 17.454 6.10899C17.6422 6.20487 17.7951 6.35785 17.891 6.54601C17.9162 6.59545 17.9539 6.69617 17.9761 6.96784C17.9992 7.25117 18 7.62345 18 8.2V10H20V8.2V8.16148C20 7.63432 20 7.17955 19.9694 6.80497C19.9371 6.40963 19.8658 6.01641 19.673 5.63803C19.3854 5.07354 18.9265 4.6146 18.362 4.32698C17.9836 4.13419 17.5904 4.06287 17.195 4.03057C16.8205 3.99997 16.3657 3.99998 15.8385 4H15.8H8.2ZM20 12H18V15.8C18 16.3766 17.9992 16.7488 17.9761 17.0322C17.9539 17.3038 17.9162 17.4045 17.891 17.454C17.7951 17.6422 17.6422 17.7951 17.454 17.891C17.4045 17.9162 17.3038 17.9539 17.0322 17.9761C16.7488 17.9992 16.3766 18 15.8 18H8.2C7.62345 18 7.25117 17.9992 6.96784 17.9761C6.69617 17.9539 6.59545 17.9162 6.54601 17.891C6.35785 17.7951 6.20487 17.6422 6.10899 17.454C6.0838 17.4045 6.04612 17.3038 6.02393 17.0322C6.00078 16.7488 6 16.3766 6 15.8V12H4V15.8V15.8385C3.99998 16.3657 3.99997 16.8205 4.03057 17.195C4.06287 17.5904 4.13419 17.9836 4.32698 18.362C4.6146 18.9265 5.07354 19.3854 5.63803 19.673C6.01641 19.8658 6.40963 19.9371 6.80497 19.9694C7.17955 20 7.63432 20 8.16148 20H8.2H15.8H15.8385C16.3657 20 16.8205 20 17.195 19.9694C17.5904 19.9371 17.9836 19.8658 18.362 19.673C18.9265 19.3854 19.3854 18.9265 19.673 18.362C19.8658 17.9836 19.9371 17.5904 19.9694 17.195C20 16.8205 20 16.3657 20 15.8385V15.8V12Z' fill='%23fff'/%3E%3C/svg%3E";
 		const flipVertOnIcon = "data:image/svg+xml,%3Csvg xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none' version='1.1' id='svg2' sodipodi:docname='flip-horizontal-1-svgrepo-com (1).svg' inkscape:version='1.4 (86a8ad7, 2024-10-11)'%3E%3Cpath d='M3 13H21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' id='path1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.2 4H8.16146C7.63431 3.99998 7.17955 3.99997 6.80497 4.03057C6.40963 4.06287 6.01641 4.13419 5.63803 4.32698C5.07354 4.6146 4.6146 5.07354 4.32698 5.63803C4.13419 6.01641 4.06287 6.40963 4.03057 6.80497C3.99997 7.17954 3.99998 7.63431 4 8.16146V8.2V10H6V8.2C6 7.62345 6.00078 7.25117 6.02393 6.96784C6.04612 6.69617 6.0838 6.59545 6.10899 6.54601C6.20487 6.35785 6.35785 6.20487 6.54601 6.10899C6.59545 6.0838 6.69617 6.04612 6.96784 6.02393C7.25117 6.00078 7.62345 6 8.2 6H15.8C16.3766 6 16.7488 6.00078 17.0322 6.02393C17.3038 6.04612 17.4045 6.0838 17.454 6.10899C17.6422 6.20487 17.7951 6.35785 17.891 6.54601C17.9162 6.59545 17.9539 6.69617 17.9761 6.96784C17.9992 7.25117 18 7.62345 18 8.2V10H20V8.2V8.16148C20 7.63432 20 7.17955 19.9694 6.80497C19.9371 6.40963 19.8658 6.01641 19.673 5.63803C19.3854 5.07354 18.9265 4.6146 18.362 4.32698C17.9836 4.13419 17.5904 4.06287 17.195 4.03057C16.8205 3.99997 16.3657 3.99998 15.8385 4H15.8H8.2ZM20 12H18V15.8C18 16.3766 17.9992 16.7488 17.9761 17.0322C17.9539 17.3038 17.9162 17.4045 17.891 17.454C17.7951 17.6422 17.6422 17.7951 17.454 17.891C17.4045 17.9162 17.3038 17.9539 17.0322 17.9761C16.7488 17.9992 16.3766 18 15.8 18H8.2C7.62345 18 7.25117 17.9992 6.96784 17.9761C6.69617 17.9539 6.59545 17.9162 6.54601 17.891C6.35785 17.7951 6.20487 17.6422 6.10899 17.454C6.0838 17.4045 6.04612 17.3038 6.02393 17.0322C6.00078 16.7488 6 16.3766 6 15.8V12H4V15.8V15.8385C3.99998 16.3657 3.99997 16.8205 4.03057 17.195C4.06287 17.5904 4.13419 17.9836 4.32698 18.362C4.6146 18.9265 5.07354 19.3854 5.63803 19.673C6.01641 19.8658 6.40963 19.9371 6.80497 19.9694C7.17955 20 7.63432 20 8.16148 20H8.2H15.8H15.8385C16.3657 20 16.8205 20 17.195 19.9694C17.5904 19.9371 17.9836 19.8658 18.362 19.673C18.9265 19.3854 19.3854 18.9265 19.673 18.362C19.8658 17.9836 19.9371 17.5904 19.9694 17.195C20 16.8205 20 16.3657 20 15.8385V15.8V12Z' fill='%23fff' id='path2'/%3E%3Crect style='fill:%23fff;stroke-width:0.0466197' id='rect2' width='14.014849' height='4.3531132' x='4.9771729' y='5.6468191' rx='0'/%3E%3Crect style='fill:%23fff;stroke-width:0.0526548' id='rect2-0' width='14.014849' height='5.5531135' x='5.1161733' y='12.935942' rx='0'/%3E%3Crect style='fill:%23fff;stroke-width:0.04686' id='rect3' width='2.6039784' height='1.3019892' x='7.20434' y='7.3779387'/%3E%3C/svg%3E";
 
-		const img = document.createElement('img');
-		const img2 = document.createElement('img');
-		img.style = img2.style = 'display: block; margin: auto; height: 60%';
-		img.src = flipHorOffIcon;
-		img2.src = flipVertOffIcon;
+		const h = document.createElement('img');
+		const v = document.createElement('img');
+		h.style = v.style = 'display: block; margin: auto; height: 60%';
+		h.src = flipHorOffIcon;
+		v.src = flipVertOffIcon;
 
 		const flipHorButton = document.createElement('button');
 		const flipVerButton = document.createElement('button');
 
 		flipHorButton.classList.add('ytp-button');
-		flipHorButton.appendChild(img);
+		flipHorButton.appendChild(h);
 		flipHorButton.addEventListener('click', function (e) {
 			flipVideo(true, e)
 		});
 
 		flipVerButton.classList.add('ytp-button');
-		flipVerButton.appendChild(img2);
+		flipVerButton.appendChild(v);
 		flipVerButton.addEventListener('click', function (e) {
 			flipVideo(false, e);
 		});
@@ -1182,28 +1288,34 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		if (settings.flipHorizontallyHotkey) {
-			ytTweaks.listenForHotkeys();
-
 			ytTweaks.getHotkeys()[settings.flipHorizontallyHotkey] = function () {
 				flipVideo(true);
 			}
 		}
 
 		if (settings.flipVerticallyHotkey) {
-			ytTweaks.listenForHotkeys();
-
 			ytTweaks.getHotkeys()[settings.flipVerticallyHotkey] = flipVideo;
 		}
 
 		function flipVideo(horizontally, e) {
+			getPlayerAndVideo();
+			video.style.transition = 'scale 0.25s';
+			video.style.translate = video.style.transformOrigin = '';
+
 			if (horizontally) {
-				document.body.classList.toggle('yttw-flip-horizontally');
-				img.src = img.src == flipHorOffIcon ? flipHorOnIcon : flipHorOffIcon;
-				if (!e) showFeedback('', img.src);
+				const horFlipped = h.src == flipHorOnIcon;
+				const vertFlipped = v.src == flipVertOnIcon;
+
+				video.style.scale = horFlipped ? vertFlipped ? '1 -1' : '' : vertFlipped ? '-1' : '-1 1';
+				h.src = horFlipped ? flipHorOffIcon : flipHorOnIcon;
+				if (!e) showFeedback('', h.src);
 			} else {
-				document.body.classList.toggle('yttw-flip-vertically');
-				img2.src = img2.src == flipVertOffIcon ? flipVertOnIcon : flipVertOffIcon;
-				if (!e) showFeedback('', img2.src);
+				const horFlipped = h.src == flipHorOnIcon;
+				const vertFlipped = v.src == flipVertOnIcon;
+
+				video.style.scale = vertFlipped ? horFlipped ? '-1 1' : '' : horFlipped ? '-1' : '1 -1';
+				v.src = vertFlipped ? flipVertOffIcon : flipVertOnIcon;
+				if (!e) showFeedback('', v.src);
 			}
 		}
 
@@ -1216,43 +1328,44 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.rotateButton || settings.rotateAcwButton || settings.rotateHotkey || settings.rotateAcwHotkey) {
-		const img = document.createElement('img');
-		img.style = 'display: block; margin: auto; height: 60%;';
-		img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'%3E%3Cpath d='M21.37,5.07a1,1,0,0,0-1.3.56l-1,2.45A9,9,0,1,0,17.75,18a1,1,0,0,0-.09-1.41,1,1,0,0,0-1.41.09,7,7,0,1,1,1.2-7.33L14.37,8.07a1,1,0,1,0-.74,1.86l5,2A1,1,0,0,0,19,12a1,1,0,0,0,.93-.63l2-5A1,1,0,0,0,21.37,5.07Z' style='fill: %23fff'/%3E%3C/svg%3E";
+		const clockwise = document.createElement('img');
+		clockwise.style = 'display: block; margin: auto; height: 60%;';
+		clockwise.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'%3E%3Cpath d='M21.37,5.07a1,1,0,0,0-1.3.56l-1,2.45A9,9,0,1,0,17.75,18a1,1,0,0,0-.09-1.41,1,1,0,0,0-1.41.09,7,7,0,1,1,1.2-7.33L14.37,8.07a1,1,0,1,0-.74,1.86l5,2A1,1,0,0,0,19,12a1,1,0,0,0,.93-.63l2-5A1,1,0,0,0,21.37,5.07Z' style='fill: %23fff'/%3E%3C/svg%3E";
 
 		const rotateButton = document.createElement('button');
 		rotateButton.classList.add('ytp-button');
 		rotateButton.style = 'vertical-align: top';
-		rotateButton.appendChild(img);
+		rotateButton.appendChild(clockwise);
 		rotateButton.addEventListener('click', function () {
 			rotate(true);
 		});
 
-		const img2 = document.createElement('img');
-		img2.style = img.attributes.style.value + 'scale: -1 1;';
-		img2.src = img.src;
+		const antiClockwise = document.createElement('img');
+		antiClockwise.style = clockwise.attributes.style.value + 'scale: -1 1;';
+		antiClockwise.src = clockwise.src;
 
 		const rotateAcwButton = document.createElement('button');
 		rotateAcwButton.classList.add('ytp-button');
 		rotateAcwButton.style = 'vertical-align: top';
-		rotateAcwButton.appendChild(img2);
+		rotateAcwButton.appendChild(antiClockwise);
 		rotateAcwButton.addEventListener('click', function () {
 			rotate();
 		});
 
-		rotate = function () {
+		const rotate = function () {
 			let r = 0;
 			return function (clockwise) {
 				getPlayerAndVideo();
-				video.style.transition = 'rotate .25s, scale .25s';
 
 				clockwise ? r += 90 : r -= 90;
+
+				video.style.transition = 'rotate 0.25s, scale 0.25s';
+				video.style.translate = video.style.transformOrigin = '';
+				video.style.rotate = r + 'deg';
 
 				if (video.clientWidth > video.clientHeight && Math.abs(r) / 90 % 2 == 1) video.style.scale = video.clientHeight / video.clientWidth;
 				else if (Math.abs(r) / 90 % 2 == 1) video.style.scale = video.clientWidth / video.clientHeight;
 				else video.style.scale = '';
-
-				video.style.rotate = r + 'deg';
 			}
 		}();
 
@@ -1260,14 +1373,12 @@ ytTweaks.tweaks.push(function (settings) {
 		if (settings.rotateButton) addButtonToPlayer(rotateButton);
 
 		if (settings.rotateHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.rotateHotkey] = function () {
 				rotate(true);
 			};
 		}
 
 		if (settings.rotateAcwHotkey) {
-			ytTweaks.listenForHotkeys();
 			ytTweaks.getHotkeys()[settings.rotateAcwHotkey] = rotate;
 		}
 
@@ -1762,7 +1873,7 @@ ytTweaks.tweaks.push(function (settings) {
 		buttons[1].style = 'left: initial; right: 10px;';
 
 		buttons[0].addEventListener('click', function () {
-			ytTweaks.mainPlayer.classList.remove('yttw-sticky-player');
+			mainPlayer.classList.remove('yttw-sticky-player');
 		});
 
 		buttons[1].addEventListener('click', function () {
@@ -1774,10 +1885,10 @@ ytTweaks.tweaks.push(function (settings) {
 		document.addEventListener('yt-player-updated', main);
 
 		function main() {
-			if ((ytTweaks.mainPlayer || (ytTweaks.mainPlayer = document.getElementById('movie_player')))) {
+			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
 				document.removeEventListener('yt-player-updated', main);
 
-				ytTweaks.mainPlayer.append(...buttons);
+				mainPlayer.append(...buttons);
 
 				below = document.getElementById('below');
 				below.style.position = 'relative';
@@ -1791,12 +1902,12 @@ ytTweaks.tweaks.push(function (settings) {
 		function toggleStickyPlayer(entries) {
 			if (entries[0].boundingClientRect.height) {
 				if (entries[0].isIntersecting) {
-					ytTweaks.mainPlayer.classList.remove('yttw-sticky-player');
+					mainPlayer.classList.remove('yttw-sticky-player');
 					window.dispatchEvent(new Event('orientationchange'));
 					videoIsOutOfView = 0;
 				} else {
 					if (enableOnScroll && navigator.mediaSession.playbackState == 'playing') {
-						ytTweaks.mainPlayer.classList.add('yttw-sticky-player');
+						mainPlayer.classList.add('yttw-sticky-player');
 						window.dispatchEvent(new Event('orientationchange'));
 					}
 
@@ -1809,24 +1920,22 @@ ytTweaks.tweaks.push(function (settings) {
 			const time = e.target.href?.match(/(?<=t=)\d+/);
 
 			if (time) {
-				const video = ytTweaks.mainPlayer.querySelector('video');
+				const video = mainPlayer.querySelector('video');
 				video.currentTime = time;
 				video.play();
 				e.stopPropagation();
 				e.preventDefault();
 
-				if (videoIsOutOfView && !ytTweaks.mainPlayer.className.includes('yttw-sticky-player')) {
-					ytTweaks.mainPlayer.classList.add('yttw-sticky-player');
+				if (videoIsOutOfView && !mainPlayer.className.includes('yttw-sticky-player')) {
+					mainPlayer.classList.add('yttw-sticky-player');
 					window.dispatchEvent(new Event('orientationchange'));
 				}
 			}
 		}
 
 		if (settings.pinUnpinHotkey) {
-			ytTweaks.listenForHotkeys();
-
 			ytTweaks.getHotkeys()[settings.pinUnpinHotkey] = function () {
-				ytTweaks.mainPlayer.classList.toggle('yttw-sticky-player');
+				mainPlayer.classList.toggle('yttw-sticky-player');
 				window.dispatchEvent(new Event('orientationchange'));
 			}
 		}
@@ -1885,7 +1994,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 		if (settings.whereToShowTime == 'tabTitle') {
 			main = function () {
-				HTMLElement.prototype.addEventListener.call(ytTweaks.mainPlayer, 'timeupdate', updateTimeLeft, true);
+				HTMLElement.prototype.addEventListener.call(mainPlayer, 'timeupdate', updateTimeLeft, true);
 			}
 
 			document.addEventListener('loadstart', handler, true);
@@ -1910,7 +2019,7 @@ ytTweaks.tweaks.push(function (settings) {
 				span.style = 'color: #ddd';
 				span.classList.add('yttw-rem-time');
 
-				const cTime = ytTweaks.mainPlayer.querySelector('.ytp-chrome-bottom .ytp-time-current');
+				const cTime = mainPlayer.querySelector('.ytp-chrome-bottom .ytp-time-current');
 
 				currTimeChanged.observe(cTime, {
 					childList: true
@@ -1925,13 +2034,13 @@ ytTweaks.tweaks.push(function (settings) {
 
 			function handleCurrTimeChange() {
 				if (!listener) {
-					HTMLElement.prototype.addEventListener.call(ytTweaks.mainPlayer, 'timeupdate', updateTimeLeft, true);
+					HTMLElement.prototype.addEventListener.call(mainPlayer, 'timeupdate', updateTimeLeft, true);
 					listener = 1;
 				}
 
 				clearTimeout(timeoutId);
 				timeoutId = setTimeout(function () {
-					HTMLElement.prototype.removeEventListener.call(ytTweaks.mainPlayer, 'timeupdate', updateTimeLeft, true);
+					HTMLElement.prototype.removeEventListener.call(mainPlayer, 'timeupdate', updateTimeLeft, true);
 					listener = 0;
 				}, 5000);
 			}
@@ -1959,7 +2068,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		function handler() {
-			if ((ytTweaks.mainPlayer || (ytTweaks.mainPlayer = document.getElementById('movie_player')))) {
+			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
 				document.removeEventListener('loadstart', handler, true);
 				main();
 			}
@@ -1968,7 +2077,7 @@ ytTweaks.tweaks.push(function (settings) {
 		ytTweaks.videoRemTime = {
 			storageChanged: function () {
 				document.removeEventListener('loadstart', handler, true);
-				HTMLElement.prototype.removeEventListener.call(ytTweaks.mainPlayer, 'timeupdate', updateTimeLeft, true);
+				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'timeupdate', updateTimeLeft, true);
 				span?.remove();
 				currTimeChanged?.disconnect();
 			}
@@ -2028,21 +2137,21 @@ ytTweaks.tweaks.push(function (settings) {
 		let style;
 
 		function main() {
-			if ((ytTweaks.mainPlayer || (ytTweaks.mainPlayer = document.getElementById('movie_player')))) {
+			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
 				document.removeEventListener('loadstart', main, true);
-				style = getComputedStyle(ytTweaks.mainPlayer);
-				HTMLElement.prototype.addEventListener.call(ytTweaks.mainPlayer, 'timeupdate', updateVideoData, true);
+				style = getComputedStyle(mainPlayer);
+				HTMLElement.prototype.addEventListener.call(mainPlayer, 'timeupdate', updateVideoData, true);
 			}
 		}
 
 		function updateVideoData() {
-			if (style.cursor == 'none') ytTweaks.mainPlayer.updateVideoData();
+			if (style.cursor == 'none') mainPlayer.updateVideoData();
 		}
 
 		ytTweaks.alwaysShowProgBar = {
 			storageChanged: function () {
 				document.removeEventListener('loadstart', main, true);
-				HTMLElement.prototype.removeEventListener.call(ytTweaks.mainPlayer, 'timeupdate', updateVideoData, true);
+				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'timeupdate', updateVideoData, true);
 			}
 		};
 	}
@@ -2187,13 +2296,13 @@ ytTweaks.tweaks.push(function (settings) {
 		document.addEventListener('loadstart', main, true);
 
 		function main() {
-			if ((ytTweaks.mainPlayer || (ytTweaks.mainPlayer = document.getElementById('movie_player')))) {
+			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
 				document.removeEventListener('loadstart', main, true);
 
-				ytTweaks.mainPlayer.classList.add('yttw-no-controls');
-				HTMLElement.prototype.addEventListener.call(ytTweaks.mainPlayer, 'mousemove', showControlsTemporarily);
-				HTMLElement.prototype.addEventListener.call(ytTweaks.mainPlayer, 'mouseleave', hideControls);
-				HTMLElement.prototype.addEventListener.call(ytTweaks.mainPlayer, 'keyup', handleKeyup);
+				mainPlayer.classList.add('yttw-no-controls');
+				HTMLElement.prototype.addEventListener.call(mainPlayer, 'mousemove', showControlsTemporarily);
+				HTMLElement.prototype.addEventListener.call(mainPlayer, 'mouseleave', hideControls);
+				HTMLElement.prototype.addEventListener.call(mainPlayer, 'keyup', handleKeyup);
 			}
 		}
 
@@ -2202,11 +2311,11 @@ ytTweaks.tweaks.push(function (settings) {
 			if (canRun) {
 				canRun = false;
 				clearTimeout(timeoutId);
-				ytTweaks.mainPlayer.classList.remove('yttw-no-controls');
+				mainPlayer.classList.remove('yttw-no-controls');
 				timeoutId = setTimeout(function () {
 					canRun = true;
 					timeoutId = setTimeout(function () {
-						ytTweaks.mainPlayer.classList.add('yttw-no-controls');
+						mainPlayer.classList.add('yttw-no-controls');
 					}, 2000);
 				}, 1000);
 			};
@@ -2214,7 +2323,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 		function hideControls() {
 			canRun = true;
-			ytTweaks.mainPlayer.classList.add('yttw-no-controls');
+			mainPlayer.classList.add('yttw-no-controls');
 		}
 
 		function handleKeyup(e) {
@@ -2228,10 +2337,10 @@ ytTweaks.tweaks.push(function (settings) {
 		ytTweaks.hideControlsOnPause = {
 			storageChanged: function () {
 				document.removeEventListener('loadstart', main, true);
-				HTMLElement.prototype.removeEventListener.call(ytTweaks.mainPlayer, 'mousemove', showControlsTemporarily);
-				HTMLElement.prototype.removeEventListener.call(ytTweaks.mainPlayer, 'mouseleave', hideControls);
-				HTMLElement.prototype.removeEventListener.call(ytTweaks.mainPlayer, 'keyup', handleKeyup);
-				ytTweaks.mainPlayer?.classList.remove('yttw-no-controls');
+				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'mousemove', showControlsTemporarily);
+				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'mouseleave', hideControls);
+				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'keyup', handleKeyup);
+				mainPlayer?.classList.remove('yttw-no-controls');
 			}
 		};
 	}
@@ -2242,11 +2351,7 @@ ytTweaks.tweaks.push(function (settings) {
     }
     `;
 
-	// Hotkeys
-
 	if (settings.increaseQualityHotkey || settings.decreaseQualityHotkey || settings.highestQualityHotkey || settings.lowestQualityHotkey) {
-		ytTweaks.listenForHotkeys();
-
 		const qualities = {
 			auto: 0,
 			tiny: 1,
@@ -2352,8 +2457,6 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.increaseSpeedHotkeys || settings.decreaseSpeedHotkeys || settings.resetSpeedHotkey || settings.customSpeedHotkeys) {
-		ytTweaks.listenForHotkeys();
-
 		if (settings.increaseSpeedHotkeys) {
 			for (const p in settings.increaseSpeedHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
@@ -2405,8 +2508,6 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.increaseVolHotkeys || settings.decreaseVolHotkeys) {
-		ytTweaks.listenForHotkeys();
-
 		if (settings.increaseVolHotkeys) {
 			for (const p in settings.increaseVolHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
@@ -2447,8 +2548,6 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.seekFhotkeys || settings.seekBhotkeys) {
-		ytTweaks.listenForHotkeys();
-
 		if (settings.seekFhotkeys) {
 			for (const p in settings.seekFhotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
@@ -2492,8 +2591,6 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.undoSeekHotkey) {
-		ytTweaks.listenForHotkeys();
-
 		let undoStack, redoStack, currPage;
 
 		const ogDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'currentTime');
@@ -2630,8 +2727,6 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.toggleLoopHotkey) {
-		ytTweaks.listenForHotkeys();
-
 		const loopOnIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3.5 13L3.29592 12.0476C2.62895 8.93509 5.00172 6 8.18494 6H19M19 6L16 9M19 6L16 3M20.5 11L20.7041 11.9524C21.3711 15.0649 18.9983 18 15.8151 18H5M5 18L8 15M5 18L8 21' stroke='%234fff75' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E";
 		const loopOffIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3.5 13L3.29592 12.0476C2.62895 8.93509 5.00172 6 8.18494 6H19M19 6L16 9M19 6L16 3M20.5 11L20.7041 11.9524C21.3711 15.0649 18.9983 18 15.8151 18H5M5 18L8 15M5 18L8 21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E";
 
@@ -2641,4 +2736,77 @@ ytTweaks.tweaks.push(function (settings) {
 			showFeedback('', video.loop ? loopOnIcon : loopOffIcon);
 		}
 	}
+
+	if (settings.zoomInHotkeys || settings.zoomOutHotkeys) {
+		if (settings.zoomInHotkeys) {
+			for (const p in settings.zoomInHotkeys) {
+				ytTweaks.getHotkeys()[p] = function () {
+					zoomBy(settings.zoomInHotkeys[p]);
+				}
+			}
+		}
+
+		if (settings.zoomOutHotkeys) {
+			for (const p in settings.zoomOutHotkeys) {
+				ytTweaks.getHotkeys()[p] = function () {
+					zoomBy(-settings.zoomOutHotkeys[p]);
+				}
+			}
+		}
+
+		function zoomBy(num) {
+			getPlayerAndVideo();
+
+			const scale = Math.max(videoZoom.getScale() + num, 1);
+			const translate = videoZoom.getTranslate();
+
+			videoZoom.set(scale, { x: Math.abs(translate.x) + (0.5 * video.clientWidth), y: Math.abs(translate.y) + (0.5 * video.clientHeight) });
+		}
+	}
+
+	if (settings.moveZoomedAreaRightHotkeys || settings.moveZoomedAreaLeftHotkeys || settings.moveZoomedAreaUpHotkeys || settings.moveZoomedAreaDownHotkeys) {
+		if (settings.moveZoomedAreaRightHotkeys) {
+			for (const p in settings.moveZoomedAreaRightHotkeys) {
+				ytTweaks.getHotkeys()[p] = function () {
+					moveBy(-settings.moveZoomedAreaRightHotkeys[p], true);
+				}
+			}
+		}
+
+		if (settings.moveZoomedAreaLeftHotkeys) {
+			for (const p in settings.moveZoomedAreaLeftHotkeys) {
+				ytTweaks.getHotkeys()[p] = function () {
+					moveBy(settings.moveZoomedAreaLeftHotkeys[p], true);
+				}
+			}
+		}
+
+		if (settings.moveZoomedAreaUpHotkeys) {
+			for (const p in settings.moveZoomedAreaUpHotkeys) {
+				ytTweaks.getHotkeys()[p] = function () {
+					moveBy(settings.moveZoomedAreaUpHotkeys[p]);
+				}
+			}
+		}
+
+		if (settings.moveZoomedAreaDownHotkeys) {
+			for (const p in settings.moveZoomedAreaDownHotkeys) {
+				ytTweaks.getHotkeys()[p] = function () {
+					moveBy(-settings.moveZoomedAreaDownHotkeys[p]);
+				}
+			}
+		}
+
+		function moveBy(px, xAxis) {
+			getPlayerAndVideo();
+
+			const translate = videoZoom.getTranslate();
+
+			xAxis ? translate.x += px : translate.y += px;
+			videoZoom.correctPosition(videoZoom.getScale(), translate);
+
+			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
+		}
+	}
 });
+})();

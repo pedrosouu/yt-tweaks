@@ -116,8 +116,6 @@ ytTweaks.tweaks.push(function (settings) {
         if (settings.autoSidebarComments) ytTweaks.sheet.textContent += strg;
 
         if (settings.toggleSidebarCommentsHotkey) {
-            ytTweaks.listenForHotkeys();
-
             ytTweaks.getHotkeys()[settings.toggleSidebarCommentsHotkey] = function () {
                 if (ytTweaks.sheet.textContent.includes(strg)) {
                     ytTweaks.sheet.textContent = ytTweaks.sheet.textContent.replace(strg, '');
@@ -311,8 +309,6 @@ ytTweaks.tweaks.push(function (settings) {
     // Hotkeys
 
     if (settings.likeUnlikeHotkey || settings.dislikeUndislikeHotkey) {
-        ytTweaks.listenForHotkeys();
-
         if (settings.likeUnlikeHotkey) {
             ytTweaks.getHotkeys()[settings.likeUnlikeHotkey] = function () {
                 let like = getButton('like');
@@ -337,7 +333,6 @@ ytTweaks.tweaks.push(function (settings) {
     }
 
     if (settings.redToShortsHotkey) {
-        ytTweaks.listenForHotkeys();
         let button;
 
         ytTweaks.getHotkeys()[settings.redToShortsHotkey] = function () {
