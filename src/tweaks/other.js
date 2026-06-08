@@ -1,14 +1,23 @@
 ytTweaks.tweaks.push(function (settings) {
     if (settings.showFullVideoTitles) ytTweaks.sheet.textContent += `
-    h3 a[href^="/watch"] span,
-    h3 a[href^="/watch"],
-    a[href^="/watch"] + * h3,
-    h3 a[href^="/shorts"] span,
-    h3 a[href^="/shorts"],
-    a[href^="/shorts"] + * h3,
-    #video-title {
+    h3 a:is([href^="/watch"], [href^="/shorts"]) :is(span, yt-formatted-string),
+    h3 a:is([href^="/watch"], [href^="/shorts"]),
+    a:is([href^="/watch"], [href^="/shorts"]) + * h3 {
       -webkit-line-clamp: initial !important;
       max-height: initial !important;
+      white-space: normal !important;
+    }
+    `;
+
+    if (settings.showFullInfoBelowVideoTitle) ytTweaks.sheet.textContent += `
+    a[href^="/watch"] + * h3 + * > * > div {
+      display: block;
+    }
+
+    a[href^="/watch"] + * h3 + * :is(span, yt-formatted-string) {
+      -webkit-line-clamp: initial !important;
+      max-height: initial !important;
+      white-space: normal !important;
     }
     `;
 

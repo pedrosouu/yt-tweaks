@@ -100,8 +100,6 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.redToHomeHotkey) {
-        ytTweaks.listenForHotkeys();
-
         ytTweaks.getHotkeys()[settings.redToHomeHotkey] = function () {
             document.querySelector('ytd-app').handleNavigate({
                 command: {
