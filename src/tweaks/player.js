@@ -2221,49 +2221,19 @@ ytTweaks.tweaks.push(function (settings) {
 			case 'lightSaber':
 				let color = settings.progBarColor || 'hsl(204, 100%, 50%)';
 				ytTweaks.sheet.textContent += `
+				.ytp-progress-list,
+				.ytProgressBarLineProgressBarLineRounded {
+				  overflow: initial !important;
+				}
+
 				${progressBar} {
-				  box-shadow: 0px 0px 8px 2px ${color} !important;
-				  background: linear-gradient(to top, ${color} 0%, rgba(254, 254, 254, 1) 30%, rgba(254, 254, 254, 1) 0%, rgba(254, 254, 254, 1) 60%, ${color} 100%) !important;
+				  box-shadow: 0 0 9px 3px  ${color} !important;
+				  background: #fff2f2 !important;
 				}
 		
 				${scrubber} {
-				  box-shadow: 0px 0px 8px 2px ${color} !important;
-				  background: radial-gradient(rgba(254, 254, 254, 1), rgba(254, 254, 254, 1), ${color}) !important;
-				}
-		
-				.ytp-settings-menu .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox {
-				  box-shadow: 0 0 9px 3px ${color} !important;
-				  background: white !important;
-				}
-		
-				.ytp-menuitem[aria-checked=true] .ytp-menuitem-toggle-checkbox::after {
-				  background: white !important;
-				}
-		
-				.ytp-volume-slider-handle {
-				  box-shadow: 0 0 9px 3px ${color} !important;
-				  background: radial-gradient(rgba(254, 254, 254, 1), rgba(254, 254, 254, 1), ${color}) !important;
-				}
-		
-				.ytp-chrome-controls .ytp-button[aria-pressed=true]:after {
-				  background: linear-gradient(to top, ${color} 0%, rgba(254, 254, 254, 1) 30%, rgba(254, 254, 254, 1) 0%, rgba(254, 254, 254, 1) 60%, ${color} 100%) !important;
-				  box-shadow: 0 0 9px 3px ${color} !important;
-				}
-		
-				.ytp-volume-slider-handle:before {
-				  box-shadow: 0px 0px 8px 2px ${color} !important;
-				  background: linear-gradient(to top, ${color} 0%, rgba(254, 254, 254, 1) 30%, rgba(254, 254, 254, 1) 0%, rgba(254, 254, 254, 1) 60%, ${color} 100%) !important;
-				  z-index: -117; 
-				}
-		
-				.ytp-autonav-toggle-button[aria-checked=true]:after {
-				  background-color: ${color} !important;
-				  box-shadow: 0px 0px 8px 2px ${color} !important;   
-				  }
-		
-				.ytp-live-badge[disabled]::before {
-				  background: radial-gradient(rgba(254, 254, 254, 1), rgba(254, 254, 254, 1), ${color}) !important;
-				  box-shadow: 0 0 9px 3px ${color} !important;
+				  box-shadow: 0 0 9px 3px  ${color} !important;
+				  background: #fff2f2 !important;
 				}
 				`;
 		}
