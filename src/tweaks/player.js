@@ -675,7 +675,7 @@ ytTweaks.tweaks.push(function (settings) {
 				}, toggleMuteModifier, toggleMuteAction);
 			}
 
-			if (zoomOnScroll && cancelZoomAction && videoZoom.getScale(video = e.currentTarget.video) != 1) {
+			if (zoomOnScroll && cancelZoomAction && e.currentTarget.video.dragMode) {
 				runFunction(e, {
 					func: adjustZoom,
 					arg: true
@@ -1363,8 +1363,8 @@ ytTweaks.tweaks.push(function (settings) {
 				video.style.translate = video.style.transformOrigin = '';
 				video.style.rotate = r + 'deg';
 
-				if (video.clientWidth > video.clientHeight && Math.abs(r) / 90 % 2 == 1) video.style.scale = video.clientHeight / video.clientWidth;
-				else if (Math.abs(r) / 90 % 2 == 1) video.style.scale = video.clientWidth / video.clientHeight;
+				if (video.clientWidth > player.clientHeight && Math.abs(r) / 90 % 2 == 1) video.style.scale = player.clientHeight / video.clientWidth;
+				else if (video.clientHeight > player.clientWidth && Math.abs(r) / 90 % 2 == 1) video.style.scale = player.clientWidth / video.clientHeight;
 				else video.style.scale = '';
 			}
 		}();
