@@ -1,11 +1,11 @@
 import { saveSettings, handlePopupDisplay } from '/options/options.js';
 export { getSelectMenu };
 
-let selectMenu, popupTrigger, timeoutId;
+let selectMenu, trigger, timeoutId;
 let strg = '';
 
 function getSelectMenu(button) {
-    popupTrigger = button;
+    trigger = button;
 
     selectMenu = button.lastElementChild.cloneNode(true);
     selectMenu.addEventListener('click', function (e) {
@@ -28,12 +28,12 @@ function getSelectMenu(button) {
 function handleSelection(option) {
     if (option == selectMenu) return;
 
-    popupTrigger.children[0].textContent = option.textContent;
+    trigger.children[0].textContent = option.textContent;
 
-    popupTrigger.querySelector('.selected')?.classList.remove('selected');
-    popupTrigger.querySelector(`[value="${option.getAttribute('value')}"]`).classList.add('selected');
+    trigger.querySelector('.selected')?.classList.remove('selected');
+    trigger.querySelector(`[value="${option.getAttribute('value')}"]`).classList.add('selected');
 
-    saveSettings({ [popupTrigger.id]: option.getAttribute('value') }, popupTrigger);
+    saveSettings({ [trigger.id]: option.getAttribute('value') }, trigger);
     handlePopupDisplay();
 }
 
@@ -116,7 +116,7 @@ function handleKeyboardNavOpen(e) {
 
 function handleKeyboardNavClosed(e) {
     selectMenu = document.activeElement.lastElementChild;
-    popupTrigger = document.activeElement;
+    trigger = document.activeElement;
     const selectedOption = selectMenu.querySelector('.selected') || selectMenu.children[0];
 
     if (e.key.includes('Arrow')) {

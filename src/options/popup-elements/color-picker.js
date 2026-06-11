@@ -1,9 +1,11 @@
 import { saveSettings } from '/options/options.js';
 export { getColorPicker };
 
-let colorPicker, hsl;
+let colorPicker, hsl, trigger;
 
 function getColorPicker(button) {
+    trigger = button;
+
     colorPicker = document.createElement('div');
     colorPicker.id = 'colorPicker';
     colorPicker.setAttribute('tabindex', '-1');
@@ -32,8 +34,9 @@ function getColorPicker(button) {
     colorPicker.addEventListener('input', function (e) {
         e.stopPropagation();
         updateUI(e.target);
-        saveSetting(button);
     });
+
+    colorPicker.addEventListener('change', saveSetting);
 
     updateUI({ value: button.style.getPropertyValue('--selectedColor') });
     return colorPicker;
@@ -55,15 +58,16 @@ function updateUI(obj) {
         }
     }
 
+    trigger.style.setProperty('--selectedColor', `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, ${hsl[3]})`);
+
     colorPicker.children[1].style.setProperty('--trackColor', `linear-gradient(to right, hsl(${hsl[0]}, 0%, ${hsl[2]}%), hsl(${hsl[0]}, 100%, ${hsl[2]}%))`);
     colorPicker.children[2].style.setProperty('--trackColor', `linear-gradient(to right, hsl(0, 0%, 0%), hsl(${hsl[0]}, ${hsl[1]}%, 50%), hsla(0, 0%, 100%))`);
     colorPicker.children[3].style.setProperty('--trackColor', `linear-gradient(to right, hsla(0, 0%, 0%, 0), hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`);
     colorPicker.lastElementChild.value = `${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, ${hsl[3]}`;
 }
 
-function saveSetting(button) {
+function saveSetting() {
     if (!hsl.length) return;
-    button.value = `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, ${hsl[3]})`;
-    button.style.setProperty('--selectedColor', `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, ${hsl[3]})`);
-    saveSettings({ [button.id]: button.value });
+    trigger.value = `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, ${hsl[3]})`;
+    saveSettings({ [trigger.id]: trigger.value });
 }

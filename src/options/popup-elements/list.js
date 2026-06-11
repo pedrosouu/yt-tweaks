@@ -2,10 +2,10 @@ import { saveSettings } from '/options/options.js';
 
 export { getList, listUpdated };
 
-let list, listType, popupTrigger;
+let list, listType, trigger;
 
 function getList(button) {
-    popupTrigger = button;
+    trigger = button;
     listType = button.attributes.listType?.value;
 
     list = document.createElement('div');
@@ -48,11 +48,11 @@ function getList(button) {
 }
 
 function restoreList() {
-    if (listType?.includes('+')) for (const key in popupTrigger.value) {
-        addItem(document.createElement('div'), key, popupTrigger.value[key]);
+    if (listType?.includes('+')) for (const key in trigger.value) {
+        addItem(document.createElement('div'), key, trigger.value[key]);
     }
 
-    else for (const value of popupTrigger.value) {
+    else for (const value of trigger.value) {
         addItem(document.createElement('div'), value);
     }
 
@@ -74,7 +74,7 @@ function addItem(item, value1, value2) {
 }
 
 function listUpdated() {
-    Object.defineProperty(popupTrigger, 'value', {
+    Object.defineProperty(trigger, 'value', {
         value: listType?.includes('+') ? {} : [],
         configurable: true
     });
@@ -84,13 +84,13 @@ function listUpdated() {
 
     if (listType?.includes('+')) {
         for (const item of items) {
-            if (item.children[0].value) popupTrigger.value[item.children[0].value] = item.children[1].valueAsNumber || '';
+            if (item.children[0].value) trigger.value[item.children[0].value] = item.children[1].valueAsNumber || '';
         }
     }
 
     else {
         for (const item of items) {
-            if (item.children[0].value) popupTrigger.value.push(item.children[0].value);
+            if (item.children[0].value) trigger.value.push(item.children[0].value);
         }
     }
 
@@ -99,7 +99,7 @@ function listUpdated() {
         list.scrollTo({ top: list.scrollHeight });
     }
 
-    saveSettings({ [popupTrigger.id]: Object.keys(popupTrigger.value).length ? popupTrigger.value : ''});
+    saveSettings({ [trigger.id]: Object.keys(trigger.value).length ? trigger.value : ''});
 }
 
 function handleSearch(e) {
@@ -118,11 +118,11 @@ function getNumberInput(value) {
     const number = document.createElement('input');
     number.classList.add('button', 'list');
     number.type = 'number';
-    number.placeholder = popupTrigger.getAttribute('number-placeholder') ?? '';
-    number.title = popupTrigger.getAttribute('number-title') ?? '';
-    number.min = popupTrigger.getAttribute('number-min') ?? '';
-    number.step = popupTrigger.getAttribute('number-step') ?? '';
-    number.value = value ?? popupTrigger.getAttribute('number-value') ?? '';
+    number.placeholder = trigger.getAttribute('number-placeholder') ?? '';
+    number.title = trigger.getAttribute('number-title') ?? '';
+    number.min = trigger.getAttribute('number-min') ?? '';
+    number.step = trigger.getAttribute('number-step') ?? '';
+    number.value = value ?? trigger.getAttribute('number-value') ?? '';
 
     return number;
 }
@@ -132,8 +132,8 @@ function getTextInput(value) {
     text.classList.add('button', 'list');
     text.type = 'text';
     text.spellcheck = false;
-    text.placeholder = popupTrigger.getAttribute('text-placeholder') ?? '';
-    text.title = popupTrigger.getAttribute('text-title') ?? '';
+    text.placeholder = trigger.getAttribute('text-placeholder') ?? '';
+    text.title = trigger.getAttribute('text-title') ?? '';
     if (value) text.value = value;
 
     return text;
