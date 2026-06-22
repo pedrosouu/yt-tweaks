@@ -24,11 +24,7 @@ ytTweaks.tweaks.push(function (settings) {
     if (settings.scrollUpButton) {
         const buttonColor = settings.scrollUpBtnColor || '#f1f1f1';
         const svgColor = settings.scrollUpBtnSvgColor || '#0f0f0f';
-        ytTweaks.sheet.textContent += `
-        html {
-          height: 100vh;
-        }
-  
+        ytTweaks.sheet.textContent += `  
         #yttw-scroll-up-button {
           display: inline-block;
           background-color: ${buttonColor};
@@ -45,7 +41,8 @@ ytTweaks.tweaks.push(function (settings) {
           z-index: 9999;
           cursor: pointer;
           transition: opacity 0.2s ease-in, visibility 0.2s;
-          box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 4px 32px 0px rgba(0, 0, 0, 0.3);
+          ${settings.scrollUpButton == 'Centered' ? 'left: 50%; transform: translateX(-50%);' : settings.scrollUpButton == 'On the right' ? 'right: 10px;' : 'left: 10px;'}
         }
   
         #yttw-scroll-up-button.show {
@@ -85,51 +82,29 @@ ytTweaks.tweaks.push(function (settings) {
         }
         `;
 
-        switch (settings.scrollUpButton) {
-            case 'On the right':
-                ytTweaks.sheet.textContent += `
-                #yttw-scroll-up-button {
-                  right: 10px;
-                }
-                `;
-                break;
-
-            case 'On the left':
-                ytTweaks.sheet.textContent += `
-                #yttw-scroll-up-button {
-                  left: 10px;
-                }
-                `;
-                break;
-
-            case 'Centered':
-                ytTweaks.sheet.textContent += `
-                #yttw-scroll-up-button {
-                  left: 50%;
-                  transform: translateX(-50%);
-                }
-                `;
-        }
-
         const button = document.createElement('div');
         button.id = 'yttw-scroll-up-button';
         button.insertAdjacentHTML('afterbegin', '<svg viewBox="0 0 24 24" height="24px" width="24px"><polygon points="19.35,11.5 11.5,3.65 3.65,11.5 4.35,12.21 11,5.56 11,20 12,20 12,5.56 18.65,12.21"></polygon></svg>');
         document.documentElement.appendChild(button);
-        const userScrolled = new IntersectionObserver(function (entries) {
-            entries[0].isIntersecting ? button.classList.remove('show') : button.classList.add('show');
-        });
-        userScrolled.observe(document.documentElement);
-        button.addEventListener('click', scrollToTop);
-        function scrollToTop() {
+
+        document.addEventListener('scrollend', toggleButton);
+        button.addEventListener('click', function() {
             window.scrollTo({
                 top: 0,
             });
+        });
+
+        toggleButton();
+
+        function toggleButton() {
+            if (scrollY >= window.innerHeight) button.classList.add('show');
+            else if (scrollY < window.innerHeight) button.classList.remove('show');
         }
 
         ytTweaks.scrollUpButton = {
             storageChanged: function () {
                 button.remove();
-                userScrolled.disconnect();
+                document.removeEventListener('scrollend', toggleButton);
             }
         };
     }
