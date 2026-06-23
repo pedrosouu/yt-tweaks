@@ -1383,6 +1383,13 @@ ytTweaks.tweaks.push(function (settings) {
 				video.style.scale = maintainMirrorEffect(player.clientWidth / video.clientHeight);
 			}
 
+			else if (video.clientWidth < player.clientHeight && Math.abs(r) / 90 % 2) {
+				if (video.clientHeight * player.clientHeight / video.clientWidth > player.clientWidth) {
+					video.style.scale = maintainMirrorEffect(player.clientWidth / video.clientHeight);
+				}
+				else video.style.scale = maintainMirrorEffect(player.clientHeight / video.clientWidth);
+			}
+
 			else video.style.scale = maintainMirrorEffect(1);
 
 			function maintainMirrorEffect(x) {
