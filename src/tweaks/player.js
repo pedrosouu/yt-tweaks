@@ -1375,15 +1375,15 @@ ytTweaks.tweaks.push(function (settings) {
 			video.style.translate = video.style.transformOrigin = '';
 			video.style.rotate = r + 'deg';
 
-			if (video.clientWidth > player.clientHeight && Math.abs(r) / 90 % 2) {
+			if (r / 90 % 2 && video.clientWidth > player.clientHeight) {
 				video.style.scale = maintainMirrorEffect(player.clientHeight / video.clientWidth);
 			}
 
-			else if (video.clientHeight > player.clientWidth && Math.abs(r) / 90 % 2) {
+			else if (r / 90 % 2 && video.clientHeight > player.clientWidth) {
 				video.style.scale = maintainMirrorEffect(player.clientWidth / video.clientHeight);
 			}
 
-			else if (video.clientWidth < player.clientHeight && Math.abs(r) / 90 % 2) {
+			else if (r / 90 % 2 && video.clientWidth < player.clientHeight) {
 				if (video.clientHeight * player.clientHeight / video.clientWidth > player.clientWidth) {
 					video.style.scale = maintainMirrorEffect(player.clientWidth / video.clientHeight);
 				}
