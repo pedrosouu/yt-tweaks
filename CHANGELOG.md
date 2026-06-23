@@ -8,4 +8,4 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 ## v2026.6.11
 ### Fixed
 - Lightsaber progress bar
-- Rotate video: Improved video scale calculation
+- Rotate video: Incorrect scaling down of some videos

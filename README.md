@@ -3,15 +3,15 @@
 
 A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Video paused. Continue watching?', changing the number of videos per row and more!
 
-## Install
-[![Chrome Web Store](./images/cws-banner.png)](https://chromewebstore.google.com/detail/yt-tweaks/oeakphpfoaeggagmgphfejmfjbhjfhhh)
 [![Firefox Addons](./images/firefox-addons-banner.png)](https://addons.mozilla.org/en-US/firefox/addon/youtube-tweaks/)
-[![Edge Addons](./images/edge-addons-banner.png)](https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh) 
+[![Chrome Web Store](./images/cws-banner.png)](https://chromewebstore.google.com/detail/yt-tweaks/oeakphpfoaeggagmgphfejmfjbhjfhhh)
+[![Edge Addons](./images/edge-addons-banner.png)](https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh)
 
 ## Features
 - Change the number of videos per row / Change the size of thumbnails
 - Video grid: Hide profile pictures/Decrease font size
 - Show full video titles
+- Show full channel name and upload time
 - Hide Shorts, Mixes, watched videos, upcoming videos and live streams
 - Hide irrelevant search results (For you, People also watched, Previously watched etc.)
 - Search results in Grid view
@@ -23,7 +23,7 @@ A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Vid
 - Homepage: Hide topic bar and Latest YouTube posts
 - Auto-expand comments
 - Show comments in sidebar
-- Like/dislike shortcuts
+- Like/dislike hotkeys
 - Auto-expand video description
 - Default video quality / Auto HD/4k/8k
 - Default video speed
@@ -34,8 +34,8 @@ A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Vid
 - Volume boost
 - Mono audio
 - Force original audio track
-- Video screenshot button/hotkey
-- Flip videos horizontally/vertically / Mirror videos
+- Video screenshot
+- Zoom/flip/mirror/rotate video
 - Pause the previous video when another starts playing
 - Disable 'Video paused. Continue watching?'
 - Disable auto-play next video in playlists
@@ -45,17 +45,15 @@ A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Vid
 - Show video remaining time
 - Hide video controls on pause
 - Always show progress bar
-- Live chat next to video in full screen mode
 - Fullscreen Theater mode
-- Ambient mode on Theater mode
 - Nyan cat progress bar
 - Bring the red subscribe button back
 - Watch page: Allow opening channels from the sidebar
 - Watch page: Hide end cards and buttons Share, Download, Clip, Thanks and Save
 - Left sidebar: Hide Shorts button, Explore and More from YouTube
-- Navigation shortcuts (Home, Subscriptions, Shorts)
-- Video playback shortcuts (Seek, undo seek, change volume, speed and quality, toggle loop)
-- Scroll to top shortcut
+- Navigation hotkeys (Home, Subscriptions, Shorts)
+- Video playback hotkeys (Seek, undo seek, change volume, speed and quality, toggle loop)
+- Scroll to top hotkey
 - Show back to top button
 - Over 100 YouTube themes
 - Custom CSS/JavaScript
