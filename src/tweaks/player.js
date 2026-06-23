@@ -1256,23 +1256,23 @@ ytTweaks.tweaks.push(function (settings) {
 		const flipVertOffIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 13H21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.2 4H8.16146C7.63431 3.99998 7.17955 3.99997 6.80497 4.03057C6.40963 4.06287 6.01641 4.13419 5.63803 4.32698C5.07354 4.6146 4.6146 5.07354 4.32698 5.63803C4.13419 6.01641 4.06287 6.40963 4.03057 6.80497C3.99997 7.17954 3.99998 7.63431 4 8.16146V8.2V10H6V8.2C6 7.62345 6.00078 7.25117 6.02393 6.96784C6.04612 6.69617 6.0838 6.59545 6.10899 6.54601C6.20487 6.35785 6.35785 6.20487 6.54601 6.10899C6.59545 6.0838 6.69617 6.04612 6.96784 6.02393C7.25117 6.00078 7.62345 6 8.2 6H15.8C16.3766 6 16.7488 6.00078 17.0322 6.02393C17.3038 6.04612 17.4045 6.0838 17.454 6.10899C17.6422 6.20487 17.7951 6.35785 17.891 6.54601C17.9162 6.59545 17.9539 6.69617 17.9761 6.96784C17.9992 7.25117 18 7.62345 18 8.2V10H20V8.2V8.16148C20 7.63432 20 7.17955 19.9694 6.80497C19.9371 6.40963 19.8658 6.01641 19.673 5.63803C19.3854 5.07354 18.9265 4.6146 18.362 4.32698C17.9836 4.13419 17.5904 4.06287 17.195 4.03057C16.8205 3.99997 16.3657 3.99998 15.8385 4H15.8H8.2ZM20 12H18V15.8C18 16.3766 17.9992 16.7488 17.9761 17.0322C17.9539 17.3038 17.9162 17.4045 17.891 17.454C17.7951 17.6422 17.6422 17.7951 17.454 17.891C17.4045 17.9162 17.3038 17.9539 17.0322 17.9761C16.7488 17.9992 16.3766 18 15.8 18H8.2C7.62345 18 7.25117 17.9992 6.96784 17.9761C6.69617 17.9539 6.59545 17.9162 6.54601 17.891C6.35785 17.7951 6.20487 17.6422 6.10899 17.454C6.0838 17.4045 6.04612 17.3038 6.02393 17.0322C6.00078 16.7488 6 16.3766 6 15.8V12H4V15.8V15.8385C3.99998 16.3657 3.99997 16.8205 4.03057 17.195C4.06287 17.5904 4.13419 17.9836 4.32698 18.362C4.6146 18.9265 5.07354 19.3854 5.63803 19.673C6.01641 19.8658 6.40963 19.9371 6.80497 19.9694C7.17955 20 7.63432 20 8.16148 20H8.2H15.8H15.8385C16.3657 20 16.8205 20 17.195 19.9694C17.5904 19.9371 17.9836 19.8658 18.362 19.673C18.9265 19.3854 19.3854 18.9265 19.673 18.362C19.8658 17.9836 19.9371 17.5904 19.9694 17.195C20 16.8205 20 16.3657 20 15.8385V15.8V12Z' fill='%23fff'/%3E%3C/svg%3E";
 		const flipVertOnIcon = "data:image/svg+xml,%3Csvg xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none' version='1.1' id='svg2' sodipodi:docname='flip-horizontal-1-svgrepo-com (1).svg' inkscape:version='1.4 (86a8ad7, 2024-10-11)'%3E%3Cpath d='M3 13H21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' id='path1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.2 4H8.16146C7.63431 3.99998 7.17955 3.99997 6.80497 4.03057C6.40963 4.06287 6.01641 4.13419 5.63803 4.32698C5.07354 4.6146 4.6146 5.07354 4.32698 5.63803C4.13419 6.01641 4.06287 6.40963 4.03057 6.80497C3.99997 7.17954 3.99998 7.63431 4 8.16146V8.2V10H6V8.2C6 7.62345 6.00078 7.25117 6.02393 6.96784C6.04612 6.69617 6.0838 6.59545 6.10899 6.54601C6.20487 6.35785 6.35785 6.20487 6.54601 6.10899C6.59545 6.0838 6.69617 6.04612 6.96784 6.02393C7.25117 6.00078 7.62345 6 8.2 6H15.8C16.3766 6 16.7488 6.00078 17.0322 6.02393C17.3038 6.04612 17.4045 6.0838 17.454 6.10899C17.6422 6.20487 17.7951 6.35785 17.891 6.54601C17.9162 6.59545 17.9539 6.69617 17.9761 6.96784C17.9992 7.25117 18 7.62345 18 8.2V10H20V8.2V8.16148C20 7.63432 20 7.17955 19.9694 6.80497C19.9371 6.40963 19.8658 6.01641 19.673 5.63803C19.3854 5.07354 18.9265 4.6146 18.362 4.32698C17.9836 4.13419 17.5904 4.06287 17.195 4.03057C16.8205 3.99997 16.3657 3.99998 15.8385 4H15.8H8.2ZM20 12H18V15.8C18 16.3766 17.9992 16.7488 17.9761 17.0322C17.9539 17.3038 17.9162 17.4045 17.891 17.454C17.7951 17.6422 17.6422 17.7951 17.454 17.891C17.4045 17.9162 17.3038 17.9539 17.0322 17.9761C16.7488 17.9992 16.3766 18 15.8 18H8.2C7.62345 18 7.25117 17.9992 6.96784 17.9761C6.69617 17.9539 6.59545 17.9162 6.54601 17.891C6.35785 17.7951 6.20487 17.6422 6.10899 17.454C6.0838 17.4045 6.04612 17.3038 6.02393 17.0322C6.00078 16.7488 6 16.3766 6 15.8V12H4V15.8V15.8385C3.99998 16.3657 3.99997 16.8205 4.03057 17.195C4.06287 17.5904 4.13419 17.9836 4.32698 18.362C4.6146 18.9265 5.07354 19.3854 5.63803 19.673C6.01641 19.8658 6.40963 19.9371 6.80497 19.9694C7.17955 20 7.63432 20 8.16148 20H8.2H15.8H15.8385C16.3657 20 16.8205 20 17.195 19.9694C17.5904 19.9371 17.9836 19.8658 18.362 19.673C18.9265 19.3854 19.3854 18.9265 19.673 18.362C19.8658 17.9836 19.9371 17.5904 19.9694 17.195C20 16.8205 20 16.3657 20 15.8385V15.8V12Z' fill='%23fff' id='path2'/%3E%3Crect style='fill:%23fff;stroke-width:0.0466197' id='rect2' width='14.014849' height='4.3531132' x='4.9771729' y='5.6468191' rx='0'/%3E%3Crect style='fill:%23fff;stroke-width:0.0526548' id='rect2-0' width='14.014849' height='5.5531135' x='5.1161733' y='12.935942' rx='0'/%3E%3Crect style='fill:%23fff;stroke-width:0.04686' id='rect3' width='2.6039784' height='1.3019892' x='7.20434' y='7.3779387'/%3E%3C/svg%3E";
 
-		const h = document.createElement('img');
-		const v = document.createElement('img');
-		h.style = v.style = 'display: block; margin: auto; height: 60%';
-		h.src = flipHorOffIcon;
-		v.src = flipVertOffIcon;
+		const flipHor = document.createElement('img');
+		const flipVert = document.createElement('img');
+		flipHor.style = flipVert.style = 'display: block; margin: auto; height: 60%';
+		flipHor.src = flipHorOffIcon;
+		flipVert.src = flipVertOffIcon;
 
 		const flipHorButton = document.createElement('button');
 		const flipVerButton = document.createElement('button');
 
 		flipHorButton.classList.add('ytp-button');
-		flipHorButton.appendChild(h);
+		flipHorButton.appendChild(flipHor);
 		flipHorButton.addEventListener('click', function (e) {
 			flipVideo(true, e)
 		});
 
 		flipVerButton.classList.add('ytp-button');
-		flipVerButton.appendChild(v);
+		flipVerButton.appendChild(flipVert);
 		flipVerButton.addEventListener('click', function (e) {
 			flipVideo(false, e);
 		});
@@ -1301,21 +1301,23 @@ ytTweaks.tweaks.push(function (settings) {
 			getPlayerAndVideo();
 			video.style.transition = 'scale 0.25s';
 			video.style.translate = video.style.transformOrigin = '';
+			const s = video.style.scale.match(/\d*\.?\d+/)?.[0] || 1;
+			const invert = parseInt(video.style.rotate || 0) / 90 % 2;
 
 			if (horizontally) {
-				const horFlipped = h.src == flipHorOnIcon;
-				const vertFlipped = v.src == flipVertOnIcon;
+				const horFlipped = flipHor.src == flipHorOnIcon;
+				const vertFlipped = flipVert.src == flipVertOnIcon;
 
-				video.style.scale = horFlipped ? vertFlipped ? '1 -1' : '' : vertFlipped ? '-1' : '-1 1';
-				h.src = horFlipped ? flipHorOffIcon : flipHorOnIcon;
-				if (!e) showFeedback('', h.src);
+				video.style.scale = horFlipped ? vertFlipped ? invert ? `${-s} ${s}` : `${s} ${-s}` : s : vertFlipped ? -s : invert ? `${s} ${-s}` : `${-s} ${s}`;
+				flipHor.src = horFlipped ? flipHorOffIcon : flipHorOnIcon;
+				if (!e) showFeedback('', flipHor.src);
 			} else {
-				const horFlipped = h.src == flipHorOnIcon;
-				const vertFlipped = v.src == flipVertOnIcon;
+				const horFlipped = flipHor.src == flipHorOnIcon;
+				const vertFlipped = flipVert.src == flipVertOnIcon;
 
-				video.style.scale = vertFlipped ? horFlipped ? '-1 1' : '' : horFlipped ? '-1' : '1 -1';
-				v.src = vertFlipped ? flipVertOffIcon : flipVertOnIcon;
-				if (!e) showFeedback('', v.src);
+				video.style.scale = vertFlipped ? horFlipped ? invert ? `${s} ${-s}` : `${-s} ${s}` : s : horFlipped ? -s : invert ? `${-s} ${s}` : `${s} ${-s}`;
+				flipVert.src = vertFlipped ? flipVertOffIcon : flipVertOnIcon;
+				if (!e) showFeedback('', flipVert.src);
 			}
 		}
 
@@ -1352,23 +1354,6 @@ ytTweaks.tweaks.push(function (settings) {
 			rotate();
 		});
 
-		const rotate = function () {
-			let r = 0;
-			return function (clockwise) {
-				getPlayerAndVideo();
-
-				clockwise ? r += 90 : r -= 90;
-
-				video.style.transition = 'rotate 0.25s, scale 0.25s';
-				video.style.translate = video.style.transformOrigin = '';
-				video.style.rotate = r + 'deg';
-
-				if (video.clientWidth > player.clientHeight && Math.abs(r) / 90 % 2 == 1) video.style.scale = player.clientHeight / video.clientWidth;
-				else if (video.clientHeight > player.clientWidth && Math.abs(r) / 90 % 2 == 1) video.style.scale = player.clientWidth / video.clientHeight;
-				else video.style.scale = '';
-			}
-		}();
-
 		if (settings.rotateAcwButton) addButtonToPlayer(rotateAcwButton);
 		if (settings.rotateButton) addButtonToPlayer(rotateButton);
 
@@ -1380,6 +1365,34 @@ ytTweaks.tweaks.push(function (settings) {
 
 		if (settings.rotateAcwHotkey) {
 			ytTweaks.getHotkeys()[settings.rotateAcwHotkey] = rotate;
+		}
+
+		function rotate(clockwise) {
+			getPlayerAndVideo();
+
+			const r = parseInt(video.style.rotate || 0) + (clockwise ? 90 : -90);
+			video.style.transition = 'rotate 0.25s, scale 0.25s';
+			video.style.translate = video.style.transformOrigin = '';
+			video.style.rotate = r + 'deg';
+
+			if (video.clientWidth > player.clientHeight && Math.abs(r) / 90 % 2) {
+				video.style.scale = maintainMirrorEffect(player.clientHeight / video.clientWidth);
+			}
+
+			else if (video.clientHeight > player.clientWidth && Math.abs(r) / 90 % 2) {
+				video.style.scale = maintainMirrorEffect(player.clientWidth / video.clientHeight);
+			}
+
+			else video.style.scale = maintainMirrorEffect(1);
+
+			function maintainMirrorEffect(x) {
+				const s = video.style.scale.match(/\-?\d*\.?\d+/g)?.reverse() || [1];
+
+				s[0] = s[0] < 0 ? -x : x;
+				s[1] = (s[1] || s[0]) < 0 ? -x : x;
+
+				return `${s[0]} ${s[1]}`;
+			}
 		}
 
 		ytTweaks.rotateVideo = {
