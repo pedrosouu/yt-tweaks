@@ -11,6 +11,10 @@ ytTweaks.tweaks.push(function (settings) {
     ytd-app:not([scrolling]) {
       --ytd-masthead-height: var(--ytd-toolbar-height) !important;
     }
+
+    #frosted-glass.with-chipbar.ytd-app {
+      height: 92px;
+    }
   
     .ytd-masthead:is(#container, #background),
     #header.ytd-app,
@@ -24,12 +28,12 @@ ytTweaks.tweaks.push(function (settings) {
   
     yt-searchbox,
     .ytd-searchbox:is(#search-form, #search-icon-legacy),
-    #masthead .yt-spec-button-shape-next--overlay {
+    #masthead .ytSpecButtonShapeNextHost {
       height: 30px !important;
     }
   
     yt-icon-button:is(.ytd-topbar-menu-button-renderer, .ytd-masthead, .ytd-notification-topbar-button-renderer),
-    #masthead .yt-spec-button-shape-next--icon-only-default,
+    #masthead .ytSpecButtonShapeNextIconOnlyDefault,
     #guide-button.ytd-app,
     .ytSearchboxComponentClearButton {
       width: 30px !important;
