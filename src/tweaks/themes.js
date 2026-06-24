@@ -1745,6 +1745,9 @@ ytTweaks.tweaks.push(function (settings) {
           --t7f4f2c6d54836ce0: rgba(${btn}, ${btnOpacity || '0.10'}) !important;
           --td8562cdc203bc683: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
           --t416e5931fc464589: rgba(${btn}, ${btnHoverOpacity || '0.20'}) !important;
+          --t4fb0f67b251e1a42: rgb(${btn}) !important;
+          --t8cdc9846a76caf1f: ${filledBtnHover} !important;
+          --t617db776af0de196: ${filledBtnHover} !important;
           --t7d8b8e5ee291aec0: rgba(${white || black || bg}, 0.10) !important;
           --tb7d74bb3291c951d: rgba(${white || black || bg}, 0.20) !important;
           --t441a0e44e495381a: rgba(${white || black || bg}, 0.20) !important;
