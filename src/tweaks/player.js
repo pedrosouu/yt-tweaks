@@ -272,7 +272,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 		const qualitiesArray = Object.keys(qualities);
 
-		let availableQualities, preferredQuality;
+		let availableQualities, preferredQuality, qualitySetByCode;
 		const fallback = settings.vqFallback;
 
 		try {
@@ -288,6 +288,7 @@ ytTweaks.tweaks.push(function (settings) {
 			player = e.target.parentElement.parentElement;
 			if (!player.className.includes('unstarted-mode')) return;
 
+			qualitySetByCode = true;
 			availableQualities = player.getAvailableQualityLevels();
 
 			if (availableQualities.includes(preferredQuality)) {
@@ -319,6 +320,8 @@ ytTweaks.tweaks.push(function (settings) {
 					}
 				}
 			}
+
+			qualitySetByCode = false;
 		}
 
 		ytTweaks.videoQuality = {
@@ -327,7 +330,7 @@ ytTweaks.tweaks.push(function (settings) {
 				delete ytTweaks.videoQuality;
 			},
 			handleManuallySetQuality: function (arg) {
-				if (arg[0] == 'yt-player-quality') {
+				if (arg[0] == 'yt-player-quality' && !qualitySetByCode) {
 					preferredQuality = qualities2[JSON.parse(JSON.parse(arg[1]).data).quality];
 					sessionStorage.setItem('yttwVideoQuality', preferredQuality);
 				}
