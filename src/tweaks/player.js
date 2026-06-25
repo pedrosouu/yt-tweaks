@@ -304,7 +304,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 			else {
 				if (fallback == 'highest') {
-					for (let i = qualities[preferredQuality] + 1; i >= 0; i++) {
+					for (let i = qualities[preferredQuality] + 1; i < qualitiesArray.length; i++) {
 						if (availableQualities.includes(qualitiesArray[i])) {
 							player.setPlaybackQualityRange(qualitiesArray[i]);
 							break;
@@ -394,7 +394,7 @@ ytTweaks.tweaks.push(function (settings) {
 				}
 			}
 		}
-		// User has the storage API disabled //
+		// User has the storage API disabled
 		catch {
 			setSpeed = function (e) {
 				video = e.target;
