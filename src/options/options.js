@@ -22,12 +22,12 @@ await load(chrome.runtime.getURL('options/tabs/user-settings.html'), document.ge
 
 function load(url, element) {
     return fetch(url)
-        .then(data => {
+        .then(function (data) {
             return data.text();
         })
-        .then(data => {
+        .then(function (data) {
             element?.insertAdjacentHTML('afterbegin', data);
-        })
+        });
 }
 
 let timeoutId;

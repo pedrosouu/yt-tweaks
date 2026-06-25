@@ -27,8 +27,6 @@ ytTweaks.tweaks.push(function (settings) {
         ) {
             display: none !important;
         }`;
-
-        document.documentElement.classList.add('yttw-grid-fix');
     }
 
     if (settings.dimWatchVideos) {
