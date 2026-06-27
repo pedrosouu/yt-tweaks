@@ -47,33 +47,33 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.autoSidebarComments || settings.toggleSidebarCommentsHotkey) {
-        const sidebarComments = '[target-id="engagement-panel-comments-section"]';
+        const sidebarComments = '#secondary.ytd-watch-flexy [target-id="engagement-panel-comments-section"]';
 
         ytTweaks.sheet.textContent += `
         [collapsed]:not([hidden]) + #panels {
           --yttw-collapsed-playlist-pannel: 84px;
         }
         
-        .yttw-sidebar-comments ytd-watch-flexy:not([is-single-column]) ${sidebarComments} {
+        html.yttw-sidebar-comments ytd-watch-flexy:not([is-single-column]) ${sidebarComments} {
           display: var(--yttw-sc-hide, flex) !important;
           z-index: 201;
           border: none;
           ${settings.scUsePlayerHeight ? '' : `height: calc(${settings.scHeight ?? 100}vh - var(--ytd-margin-3x) - var(--ytd-toolbar-height) - var(--yttw-collapsed-playlist-pannel, 0px)) !important;`}
         }
 
-        ytd-watch-flexy ${sidebarComments} #contents.ytd-item-section-renderer {
+        ${sidebarComments} #contents.ytd-item-section-renderer {
           overflow: scroll !important;
           padding-left: 0px !important;
           padding-right: 0px !important;
         }
 
-        ytd-watch-flexy ${sidebarComments} :is(#header, #content, ytd-comments-header-renderer) {
+        ${sidebarComments} :is(#header, #subheader, #content, ytd-comments-header-renderer) {
           background: none !important;
           padding-left: 0px !important;
           padding-right: 0px !important;
         }
 
-        ytd-watch-flexy ${sidebarComments} #visibility-button {
+        ${sidebarComments} #visibility-button {
           display: none;
         }
     
