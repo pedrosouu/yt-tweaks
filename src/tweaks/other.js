@@ -10,7 +10,7 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.showFullInfoBelowVideoTitle) ytTweaks.sheet.textContent += `
-    a[href^="/watch"] + * h3 + * > * > div {
+    a[href^="/watch"] + * h3 + * > * > div:not(:nth-child(3)) {
       display: block;
     }
 
