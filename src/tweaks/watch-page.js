@@ -47,81 +47,46 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.autoSidebarComments || settings.toggleSidebarCommentsHotkey) {
-        const strg = `
-        ytd-watch-flexy {
-          --yttw-sidebar-comments-height: ${settings.scUsePlayerHeight ? 'var(--ytd-watch-flexy-panel-max-height)' : `calc(${settings.scHeight ?? 100}vh - var(--ytd-margin-6x) - var(--ytd-toolbar-height));`};
-        }
-    
-        #below.ytd-watch-flexy {
-          position: relative;
-        }
-    
-        ytd-watch-flexy[is-two-columns_] #comments {
-          position: absolute;
-          width: var(--ytd-watch-flexy-sidebar-width);
-          height: var(--yttw-sidebar-comments-height);
-          overflow: auto;
-        }
-      
-        ytd-watch-flexy[is-two-columns_] #comments::-webkit-scrollbar {
-          width: 16px;
-        }
-      
-        ytd-watch-flexy[is-two-columns_] #comments::-webkit-scrollbar-thumb {
-          height: 56px;
-          border-radius: 8px;
-          border: 4px solid transparent;
-          background-clip: content-box;
-          background-color: var(--yt-spec-text-secondary);
-        }
-      
-        ytd-watch-flexy[is-two-columns_] #comments::-webkit-scrollbar-thumb:hover {
-          background-color: var(--yt-spec-icon-disabled);
-        }
-      
-        ytd-watch-flexy[is-two-columns_][default-layout] #comments {
-          top: calc(0px - var(--ytd-watch-flexy-panel-max-height) - var(--ytd-margin-3x));
-        }
-      
-        ytd-watch-flexy[is-two-columns_]:not([default-layout]) #comments {
-          top: var(--ytd-margin-3x);
-        }
-      
-        ytd-watch-flexy[is-two-columns_]:has(#comments:not([hidden])) {
-          --yttw-sc-margin: calc(var(--yttw-sidebar-comments-height) + var(--ytd-margin-6x));
-        }
-    
-        ytd-watch-flexy[is-two-columns_]:has(:is(ytd-live-chat-frame:not([collapsed]), ytd-engagement-panel-section-list-renderer[visibility=ENGAGEMENT_PANEL_VISIBILITY_EXPANDED][target-id="engagement-panel-searchable-transcript"])) {
-          --yttw-sc-hide: none;
-          --yttw-sc-margin: 0 !important;
-        }
-      
-        #comments {
-          display: var(--yttw-sc-hide);
-        }
-      
-        #secondary.ytd-watch-flexy {
-          margin-top: var(--yttw-sc-margin) !important;
-        }
-        
-        body[dir=ltr] ytd-watch-flexy[is-two-columns_] #comments {
-          right: calc(0px - var(--ytd-watch-flexy-sidebar-width) - var(--ytd-margin-6x));
-        }
-        
-        body[dir=rtl] ytd-watch-flexy[is-two-columns_] #comments {
-          left: calc(0px - var(--ytd-watch-flexy-sidebar-width) - var(--ytd-margin-6x));
-        }
-        `
+        const sidebarComments = '[target-id="engagement-panel-comments-section"]';
 
-        if (settings.autoSidebarComments) ytTweaks.sheet.textContent += strg;
+        ytTweaks.sheet.textContent += `
+        [collapsed]:not([hidden]) + #panels {
+          --yttw-collapsed-playlist-pannel: 84px;
+        }
+        
+        .yttw-sidebar-comments ytd-watch-flexy:not([is-single-column]) ${sidebarComments} {
+          display: var(--yttw-sc-hide, flex) !important;
+          z-index: 201;
+          border: none;
+          ${settings.scUsePlayerHeight ? '' : `height: calc(${settings.scHeight ?? 100}vh - var(--ytd-margin-3x) - var(--ytd-toolbar-height) - var(--yttw-collapsed-playlist-pannel, 0px)) !important;`}
+        }
+
+        ytd-watch-flexy ${sidebarComments} #contents.ytd-item-section-renderer {
+          overflow: scroll !important;
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+        }
+
+        ytd-watch-flexy ${sidebarComments} :is(#header, #content, ytd-comments-header-renderer) {
+          background: none !important;
+          padding-left: 0px !important;
+          padding-right: 0px !important;
+        }
+
+        ytd-watch-flexy ${sidebarComments} #visibility-button {
+          display: none;
+        }
+    
+        ytd-watch-flexy:has(:is(ytd-live-chat-frame:not([collapsed]))) {
+          --yttw-sc-hide: none;
+        }
+        `;
+
+        if (settings.autoSidebarComments) document.documentElement.classList.add('yttw-sidebar-comments');
 
         if (settings.toggleSidebarCommentsHotkey) {
             ytTweaks.getHotkeys()[settings.toggleSidebarCommentsHotkey] = function () {
-                if (ytTweaks.sheet.textContent.includes(strg)) {
-                    ytTweaks.sheet.textContent = ytTweaks.sheet.textContent.replace(strg, '');
-                }
-
-                else ytTweaks.sheet.textContent += strg
+                document.documentElement.classList.toggle('yttw-sidebar-comments');
             }
         }
     }
