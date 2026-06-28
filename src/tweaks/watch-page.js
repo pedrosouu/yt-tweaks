@@ -67,13 +67,13 @@ ytTweaks.tweaks.push(function (settings) {
           padding-right: 0px !important;
         }
 
-        ${sidebarComments} :is(#header, #subheader, #content, ytd-comments-header-renderer) {
+        ${sidebarComments} :is(#header.ytd-engagement-panel-title-header-renderer, #subheader.ytd-engagement-panel-title-header-renderer, #content.ytd-engagement-panel-section-list-renderer, ytd-comments-header-renderer[engagement-panel]) {
           background: none !important;
           padding-left: 0px !important;
           padding-right: 0px !important;
         }
 
-        ${sidebarComments} #visibility-button {
+        ${sidebarComments} #visibility-button.ytd-engagement-panel-title-header-renderer {
           display: none;
         }
     
