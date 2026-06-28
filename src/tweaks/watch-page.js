@@ -55,22 +55,28 @@ ytTweaks.tweaks.push(function (settings) {
         }
         
         html.yttw-sidebar-comments ytd-watch-flexy:not([is-single-column]) ${sidebarComments} {
-          display: var(--yttw-sc-hide, flex) !important;
+          display: var(--yttw-sc-hide, flex);
           z-index: 201;
           border: none;
           ${settings.scUsePlayerHeight ? '' : `height: calc(${settings.scHeight ?? 100}vh - var(--ytd-margin-3x) - var(--ytd-toolbar-height) - var(--yttw-collapsed-playlist-pannel, 0px)) !important;`}
         }
 
         ${sidebarComments} #contents.ytd-item-section-renderer {
-          overflow: scroll !important;
-          padding-left: 0px !important;
-          padding-right: 0px !important;
+          overflow: scroll;
+          padding-left: 0px;
+          padding-right: 0px;
         }
 
-        ${sidebarComments} :is(#header.ytd-engagement-panel-title-header-renderer, #subheader.ytd-engagement-panel-title-header-renderer, #content.ytd-engagement-panel-section-list-renderer, ytd-comments-header-renderer[engagement-panel]) {
-          background: none !important;
-          padding-left: 0px !important;
-          padding-right: 0px !important;
+        ${sidebarComments} :is(#content.ytd-engagement-panel-section-list-renderer, ytd-comments-header-renderer[engagement-panel]) {
+          background: none;
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+
+        ${sidebarComments} :is(#header, #subheader, #title-container).ytd-engagement-panel-title-header-renderer {
+          background: none;
+          padding: 0px;
+		  margin: 0px;
         }
 
         ${sidebarComments} #visibility-button.ytd-engagement-panel-title-header-renderer {
