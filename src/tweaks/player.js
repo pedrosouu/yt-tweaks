@@ -1474,6 +1474,8 @@ ytTweaks.tweaks.push(function (settings) {
 
 		function pauseVideo(e) {
 			video.pause();
+			document.exitPictureInPicture?.();
+
 			if (!settings.autoResume) return;
 			autoPaused = true;
 			resumeStack.tabWithAudioPlaying = e.data.tabId;
@@ -1972,6 +1974,24 @@ ytTweaks.tweaks.push(function (settings) {
 				buttons[1].remove();
 			}
 		};
+	}
+
+	if (settings.autoPipOnTabChange) {
+		try {
+			navigator.mediaSession.setActionHandler('enterpictureinpicture', async function () {
+				getPlayerAndVideo();
+				await video.requestPictureInPicture();
+				if (video.paused) document.exitPictureInPicture();
+			});
+		} catch { }
+	}
+
+	if (settings.togglePipHotkey) {
+		ytTweaks.getHotkeys()[settings.togglePipHotkey] = function () {
+			getPlayerAndVideo();
+			if (document.pictureInPictureElement) document.exitPictureInPicture();
+			else video.requestPictureInPicture();
+		}
 	}
 
 	if (settings.fullscreenTheaterMode) {

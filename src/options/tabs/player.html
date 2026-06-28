@@ -265,19 +265,22 @@
   </label>
 </section>
 <section>
-  <h4>Sticky player</h4>
-  <label>
+  <h4>Sticky player & Picture-in-Picture</h4>
+  <label section="header">
+    <h4>Sticky player</h4>
+  </label>
+  <label section="content">
     <span>Activate when scrolling down</span>
     <input type="checkbox" id="pinOnScroll">
   </label>
-  <label>
+  <label section="content">
     <span>Activate/deactivate</span>
     <button class="keyBinder openPopup" placeholder="Set hotkey" id="pinUnpinHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
-  <label>
+  <label section="content">
     <span>Size</span>
     <button class="selectMenu openPopup rotableArrow" id="pinnedVideoSize">
       <span>480x270</span>
@@ -298,7 +301,7 @@
       </ul>
     </button>
   </label>
-  <label>
+  <label section="content">
     <span>Position</span>
     <button class="selectMenu openPopup rotableArrow" id="pinnedVideoPosition">
       <span>Bottom right</span>
@@ -314,7 +317,7 @@
       </ul>
     </button>
   </label>
-  <div class="expandable">
+  <div class="expandable" section="content">
     <div class="expandable" matcher="Top">
       <label>
         <span>Below header</span>
@@ -322,17 +325,31 @@
       </label>
     </div>
   </div>
-  <label>
+  <label section="content">
     <span>Floating (px)</span>
     <input type="number" id="floatingPinnedVideo" min="0" value="10">
     <button class="numInputBtn minus iconButton"></button>
     <button class="numInputBtn plus iconButton"></button>
   </label>
-  <label>
+  <label section="content">
     <span>Rounded corners (px)</span>
     <input type="number" id="pinnedVideoRoundCorners" min="0" value="12">
     <button class="numInputBtn minus iconButton"></button>
     <button class="numInputBtn plus iconButton"></button>
+  </label>
+  <label section="header">
+    <h4>Picture-in-Picture <span class="subLabel">Note: These features are not compatible with Firefox.</span></h4>
+  </label>
+  <label section="content">
+    <span>Auto PiP on tab change</span></span>
+    <input type="checkbox" id="autoPipOnTabChange">
+  </label>
+  <label section="content">
+    <span>Toggle PiP</span>
+    <button class="keyBinder openPopup" placeholder="Set hotkey" id="togglePipHotkey">
+    </button>
+    <button class="removeSetting">
+    </button>
   </label>
 </section>
 <section>
@@ -342,14 +359,14 @@
     <input type="checkbox" id="seekOnScroll">
   </label>
   <div class="expandable">
-    <label title="Negative number = reversed mouse wheel direction">
+    <label>
       <span>Forward (seconds)</span>
       <input type="number" id="seekOnScrollFtime" step="1" value="5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
-    <label title="Negative number = reversed mouse wheel direction">
-      <span>Backward (seconds)</span>
+    <label>
+      <span>Backward (seconds) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
       <input type="number" id="seekOnScrollBtime" step="1" value="5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
@@ -431,8 +448,8 @@
     <input type="checkbox" id="changeSpeedOnScroll">
   </label>
   <div class="expandable">
-    <label title="Negative number = reversed mouse wheel direction">
-      <span>Step (x)</span>
+    <label>
+      <span>Step (x) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
       <input type="number" id="speedChangePerScroll" step="0.01" value="0.05">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
@@ -540,8 +557,8 @@
     <input type="checkbox" id="changeVolOnScroll">
   </label>
   <div class="expandable">
-    <label title="Negative number = reversed mouse wheel direction">
-      <span>Step (%)</span>
+    <label>
+      <span>Step (%) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
       <input type="number" id="volChangePerScroll" step="1" value="5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
@@ -708,8 +725,8 @@
     <input type="checkbox" id="zoomOnScroll">
   </label>
   <div class="expandable">
-    <label title="Negative number = reversed mouse wheel direction">
-      <span>Step (x)</span>
+    <label>
+      <span>Step (x) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
       <input type="number" id="zoomChangePerScroll" step="0.1" value="0.5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
@@ -796,7 +813,7 @@
       <span>Hotkeys</span>
     </button>
   </label>
-    <label>
+  <label>
     <span>Move zoomed area down</span>
     <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
       number-step="10" id="moveZoomedAreaDownHotkeys">
