@@ -1791,6 +1791,29 @@ ytTweaks.tweaks.push(function (settings) {
 		};
 	}
 
+	if (settings.disableShortsLooping) {
+		const ogDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'loop');
+
+		Object.defineProperty(HTMLVideoElement.prototype, 'loop', {
+			set: function (value) {
+				if (location.pathname.includes('shorts')) return;
+				ogDescriptor.set.call(this, value);
+			},
+			get: ogDescriptor.get,
+			configurable: true
+		});
+
+		ytTweaks.disableShortsLooping = {
+			storageChanged: function () {
+				Object.defineProperty(HTMLVideoElement.prototype, 'loop', {
+					set: ogDescriptor.set,
+					get: ogDescriptor.get,
+					configurable: true
+				});
+			}
+		};
+	}
+
 	if (settings.pinOnScroll || settings.pinUnpinHotkey) {
 		const size = settings.pinnedVideoSize?.match(/\d+/g) || [480, 270];
 		const gap = settings.floatingPinnedVideo ?? 10;
