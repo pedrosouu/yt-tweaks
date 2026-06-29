@@ -9,9 +9,11 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 ## New features
 - Auto PiP on tab change
 - Toggle PiP hotkey
+- Disable Shorts looping
 
 ## Fixed
 - Sidebar comments: Fixes and improvements
+- Size of buttons in watch page when hiding their labels
 
 ## v2026.6.24
 ## Fixed

@@ -273,7 +273,7 @@ ytTweaks.tweaks.push(function (settings) {
   
     #top-level-buttons-computed yt-button-view-model .ytSpecButtonShapeNextSizeM,
     #flexible-item-buttons .ytSpecButtonShapeNextSizeM {
-      padding: 0 6px;
+      padding: 0 8px;
     }
     `;
 
