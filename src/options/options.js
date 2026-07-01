@@ -20,6 +20,8 @@ await load(chrome.runtime.getURL('options/tabs/other.html'), document.getElement
 await load(chrome.runtime.getURL('options/tabs/custom-code.html'), document.getElementById('custom-code'));
 await load(chrome.runtime.getURL('options/tabs/user-settings.html'), document.getElementById('user-settings'));
 
+document.documentElement.setAttribute('pip-api', window.PictureInPictureWindow != undefined);
+
 function load(url, element) {
     return fetch(url)
         .then(function (data) {

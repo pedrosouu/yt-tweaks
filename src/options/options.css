@@ -68,6 +68,7 @@
     opacity: 1;
 }
 
+[pip-api="false"] .pip-api,
 .hidden {
     display: none !important;
 }
@@ -344,6 +345,7 @@ label[section="header"] {
     align-items: center;
 }
 
+[section="header"] + label,
 section>label:is(:first-of-type, .tprBorder) {
     border-top: 1px solid transparent;
 }
