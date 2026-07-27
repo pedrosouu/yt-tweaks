@@ -204,6 +204,23 @@ ytTweaks.tweaks.push(function (settings) {
     }       
     `;
 
+    if (settings.redToWatchLaterHotkey) {
+        ytTweaks.getHotkeys()[settings.redToWatchLaterHotkey] = function () {
+            document.querySelector('ytd-app').handleNavigate({
+                command: {
+                    "commandMetadata": {
+                        "webCommandMetadata": {
+                            "url": "/playlist?list=WL",
+                            "webPageType": "WEB_PAGE_TYPE_PLAYLIST",
+                            "rootVe": 3854,
+                            "apiUrl": "/youtubei/v1/browse"
+                        }
+                    }
+                }
+            });
+        }
+    }
+
     if (settings.customCss) ytTweaks.sheet.textContent += settings.customCss;
 
     if (settings.customJs && !ytTweaks.script) {
