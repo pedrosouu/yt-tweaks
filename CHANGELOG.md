@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
+## v2026.7.27
+## New features
+- Disable auto-opening of live chat
+- Set a hotkey to navigate to Watch Later page
+
 ## v2026.7.15
 ## Changed
 - Options menu: Added global search back

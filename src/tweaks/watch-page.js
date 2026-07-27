@@ -45,6 +45,31 @@ ytTweaks.tweaks.push(function (settings) {
       --ytd-expander-max-lines: none !important;
     }
     `;
+    
+    if (settings.disableAutoOpeningOfLiveChat) {
+        listenForYtChatCollapsedChanged();
+
+        function autoCollapse(e) {
+            e.target.setCollapsedState({
+                setLiveChatCollapsedStateAction: {
+                    collapsed: true
+                }
+            });
+
+            document.addEventListener('yt-navigate-finish', listenForYtChatCollapsedChanged, { once: true });
+        }
+
+        function listenForYtChatCollapsedChanged() {
+            document.addEventListener('yt-chat-collapsed-changed', autoCollapse, { once: true });
+        }
+
+        ytTweaks.disableAutoOpeningOfLiveChat = {
+            storageChanged: function () {
+                document.removeEventListener('yt-chat-collapsed-changed', autoCollapse);
+                document.removeEventListener('yt-navigate-finish', listenForYtChatCollapsedChanged);
+            }
+        };
+    }
 
     if (settings.defaultSortingOfComments) {
         document.addEventListener('yt-action', sort, true);

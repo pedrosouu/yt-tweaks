@@ -84,7 +84,7 @@ function listUpdated() {
 
     if (listType?.includes('+')) {
         for (const item of items) {
-            if (item.children[0].value) trigger.value[item.children[0].value] = item.children[1].valueAsNumber || '';
+            if (item.children[0].value) trigger.value[item.children[0].value] = item.children[1].valueAsNumber || item.children[1].value;
         }
     }
 
@@ -134,7 +134,7 @@ function getTextInput(value) {
     text.spellcheck = false;
     text.placeholder = trigger.getAttribute('text-placeholder') ?? '';
     text.title = trigger.getAttribute('text-title') ?? '';
-    if (value) text.value = value;
+    text.value = value ?? trigger.getAttribute('text-value') ?? '';
 
     return text;
 }
