@@ -45,29 +45,35 @@ ytTweaks.tweaks.push(function (settings) {
       --ytd-expander-max-lines: none !important;
     }
     `;
-    
+
     if (settings.disableAutoOpeningOfLiveChat) {
-        listenForYtChatCollapsedChanged();
+        let chatStateChangedByUser;
 
-        function autoCollapse(e) {
-            e.target.setCollapsedState({
-                setLiveChatCollapsedStateAction: {
-                    collapsed: true
-                }
-            });
+        document.addEventListener('yt-action', updateFlag, true);
+        document.addEventListener('yt-chat-collapsed-changed', closeChat);
 
-            document.addEventListener('yt-navigate-finish', listenForYtChatCollapsedChanged, { once: true });
+        function closeChat(e) {
+            if (chatStateChangedByUser) chatStateChangedByUser = false;
+            else {
+                e.target.setCollapsedState({
+                    setLiveChatCollapsedStateAction: {
+                        collapsed: true,
+                    },
+                });
+            }
         }
 
-        function listenForYtChatCollapsedChanged() {
-            document.addEventListener('yt-chat-collapsed-changed', autoCollapse, { once: true });
+        function updateFlag(e) {
+            if (e.detail.actionName == 'yt-set-live-chat-collapsed-state-action') {
+                chatStateChangedByUser = true;
+            }
         }
 
         ytTweaks.disableAutoOpeningOfLiveChat = {
             storageChanged: function () {
-                document.removeEventListener('yt-chat-collapsed-changed', autoCollapse);
-                document.removeEventListener('yt-navigate-finish', listenForYtChatCollapsedChanged);
-            }
+                document.removeEventListener('yt-action', updateFlag, true);
+                document.removeEventListener('yt-chat-collapsed-changed', closeChat);
+            },
         };
     }
 
