@@ -22,8 +22,9 @@ A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Vid
 - YouTube logo: Redirect to Subscriptions
 - Homepage: Hide topic bar and Latest YouTube posts
 - Auto-expand comments
-- Show comments in sidebar
+- Disable auto-opening of live chat
 - Comments sorted by newest by default
+- Show comments in sidebar
 - Like/dislike hotkeys
 - Auto-expand video description
 - Default video quality / Auto HD/4k/8k
