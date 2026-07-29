@@ -47,25 +47,27 @@ ytTweaks.tweaks.push(function (settings) {
     `;
 
     if (settings.disableAutoOpeningOfLiveChat) {
-        let chatStateChangedByUser;
+        let stop;
 
         document.addEventListener('yt-action', updateFlag, true);
         document.addEventListener('yt-chat-collapsed-changed', closeChat);
 
         function closeChat(e) {
-            if (chatStateChangedByUser) chatStateChangedByUser = false;
-            else {
+            if (stop) return;
+            requestAnimationFrame(function () {
                 e.target.setCollapsedState({
                     setLiveChatCollapsedStateAction: {
                         collapsed: true,
                     },
                 });
-            }
+            });
         }
-
         function updateFlag(e) {
-            if (e.detail.actionName == 'yt-set-live-chat-collapsed-state-action') {
-                chatStateChangedByUser = true;
+            if (e.detail.actionName == 'yt-set-live-chat-collapsed-state-action' && !stop) {
+                stop = true;
+                document.addEventListener('yt-navigate-start', function() {
+                    stop = false;
+                }, {once: true});
             }
         }
 
