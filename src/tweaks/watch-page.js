@@ -402,6 +402,27 @@ ytTweaks.tweaks.push(function (settings) {
         }
     }
 
+    if (settings.toggleTranscriptHotkey) {
+        if (settings.toggleTranscriptHotkey) {
+            ytTweaks.getHotkeys()[settings.toggleTranscriptHotkey] = toggle;
+
+            function toggle() {
+                const hide = document.querySelector('[target-id="PAmodern_transcript_view"][visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]');
+
+                document.querySelector('ytd-app').resolveCommand({
+                    [(hide ? 'hide' : 'show') + 'EngagementPanelEndpoint']: {
+                        identifier: {
+                            tag: 'PAmodern_transcript_view',
+                        },
+                        globalConfiguration: {
+                            params: btoa(`ª\t\x0F\n\v${getPostId('video')}\x18\x02`),
+                        },
+                    },
+                });
+            }
+        }
+    }
+
     if (settings.redToShortsHotkey) {
         let button;
 

@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Calendar Versioning](https://calver.org/).
 
+## v2026.7.30
+## New feature
+- Set a hotkey to toggle the video's transcript
+
+## Fixed
+- Fix not showing newest comments by default when accessing the URL of a comment
+
 ## v2026.7.27
 ## New features
 - Disable auto-opening of live chat
