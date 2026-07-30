@@ -87,6 +87,6 @@ ytTweaks.tweaks.push(function (settings) {
                     }
                 }
             });
-        }
+        };
     }
 });

@@ -2,28 +2,28 @@
 let mainPlayer, player, video;
 
 function getPlayerAndVideo() {
-	if (!player?.clientWidth || !video?.clientWidth) {
-		for (const el of document.querySelectorAll('video')) {
-			if (el.clientWidth) {
-				video = el;
-				player = el.parentElement.parentElement;
-				break;
-			}
-		}
-	}
+    if (!player?.clientWidth || !video?.clientWidth) {
+        for (const el of document.querySelectorAll('video')) {
+            if (el.clientWidth) {
+                video = el;
+                player = el.parentElement.parentElement;
+                break;
+            }
+        }
+    }
 }
 
 const showFeedback = function () {
-	let osd, timeoutId;
+    let osd, timeoutId;
 
-	return function (strg, icon, timeoutTime) {
-		if (!osd) {
-			osd = document.createElement('div');
-			osd.id = 'yttw-feedback';
-			const style = document.createElement('style');
-			document.documentElement.appendChild(style);
+    return function (strg, icon, timeoutTime) {
+        if (!osd) {
+            osd = document.createElement('div');
+            osd.id = 'yttw-feedback';
+            const style = document.createElement('style');
+            document.documentElement.appendChild(style);
 
-			style.textContent = `
+            style.textContent = `
 				#yttw-feedback {
 				  pointer-events: none;
 				  color: rgb(255, 255, 255);
@@ -57,192 +57,186 @@ const showFeedback = function () {
 				  background-position: center center;
 				  background-size: cover;
 				}`;
-		}
+        }
 
-		osd.textContent = strg;
+        osd.textContent = strg;
 
-		if (icon) {
-			osd.style.setProperty('--icon', `url("${icon}")`);
-			osd.classList.add('showIcon');
-		} else {
-			osd.classList.remove('showIcon');
-		}
+        if (icon) {
+            osd.style.setProperty('--icon', `url("${icon}")`);
+            osd.classList.add('showIcon');
+        } else {
+            osd.classList.remove('showIcon');
+        }
 
-		if (osd.parentElement != player) {
-			player.appendChild(osd);
-		}
+        if (osd.parentElement != player) {
+            player.appendChild(osd);
+        }
 
-		osd.classList.add('show');
+        osd.classList.add('show');
 
-		clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
 
-		timeoutId = setTimeout(function () {
-			osd.classList.remove('show');
-		}, timeoutTime || 1000);
-	}
+        timeoutId = setTimeout(function () {
+            osd.classList.remove('show');
+        }, timeoutTime || 1000);
+    };
 }();
 
 function formatSecToDDHHMMSS(time) {
-	let days, hours, min, sec;
+    let days, hours, min, sec;
 
-	days = Math.floor(time / 86400);
-	hours = Math.floor((time - (days * 86400)) / 3600);
-	min = Math.floor((time - (days * 86400) - (hours * 3600)) / 60);
-	sec = Math.floor(time - (days * 86400) - (hours * 3600) - (min * 60));
+    days = Math.floor(time / 86400);
+    hours = Math.floor((time - days * 86400) / 3600);
+    min = Math.floor((time - days * 86400 - hours * 3600) / 60);
+    sec = Math.floor(time - days * 86400 - hours * 3600 - min * 60);
 
-	return (
-		days ?
-			days + (hours < 10 ? ':0' + hours : ':' + hours) + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
-			hours ?
-				hours + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) :
-				min + (sec < 10 ? ':0' + sec : ':' + sec)
-	);
+    return days ? days + (hours < 10 ? ':0' + hours : ':' + hours) + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) : hours ? hours + (min < 10 ? ':0' + min : ':' + min) + (sec < 10 ? ':0' + sec : ':' + sec) : min + (sec < 10 ? ':0' + sec : ':' + sec);
 }
 
-const videoZoom = function() {
-	let mousedownX, mousedownY, dragged;
+const videoZoom = function () {
+    let mousedownX, mousedownY, dragged;
 
-	function drag(e) {
-		if (e.buttons == 1) {
-			dragged = true;
-			video.style['transition-duration'] = '0s';
+    function drag(e) {
+        if (e.buttons == 1) {
+            dragged = true;
+            video.style['transition-duration'] = '0s';
 
-			const translate = videoZoom.getTranslate();
-			translate.x += e.x - mousedownX;
-			translate.y += e.y - mousedownY;
-			videoZoom.correctPosition(videoZoom.getScale(), translate);
+            const translate = videoZoom.getTranslate();
+            translate.x += e.x - mousedownX;
+            translate.y += e.y - mousedownY;
+            videoZoom.correctPosition(videoZoom.getScale(), translate);
 
-			mousedownX = e.x;
-			mousedownY = e.y;
+            mousedownX = e.x;
+            mousedownY = e.y;
 
-			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
-		}
-	}
+            video.style.translate = `${(translate.x / video.clientWidth) * 100}% ${(translate.y / video.clientHeight) * 100}%`;
+        }
+    }
 
-	function toggleDragMode(boolean) {
-		video.dragMode = boolean;
-		method = boolean ? 'addEventListener' : 'removeEventListener';
+    function toggleDragMode(boolean) {
+        video.dragMode = boolean;
+        method = boolean ? 'addEventListener' : 'removeEventListener';
 
-		video[method]('pointermove', drag);
-		video[method]('pointerdown', lmbPressed);
-		document[method]('click', dragStopped, true);
-	}
+        video[method]('pointermove', drag);
+        video[method]('pointerdown', lmbPressed);
+        document[method]('click', dragStopped, true);
+    }
 
-	function lmbPressed(e) {
-		if (e.button == 0) {
-			video.setPointerCapture(e.pointerId);
-			mousedownX = e.x;
-			mousedownY = e.y;
-		}
-	}
+    function lmbPressed(e) {
+        if (e.button == 0) {
+            video.setPointerCapture(e.pointerId);
+            mousedownX = e.x;
+            mousedownY = e.y;
+        }
+    }
 
-	function dragStopped(e) {
-		if (dragged) {
-			dragged = false;
+    function dragStopped(e) {
+        if (dragged) {
+            dragged = false;
 
-			video.style['transition-duration'] = '0.3s';
+            video.style['transition-duration'] = '0.3s';
 
-			e.preventDefault(e);
-			e.stopImmediatePropagation();
-		}
-	}
+            e.preventDefault(e);
+            e.stopImmediatePropagation();
+        }
+    }
 
-	return {
-		set(scale, origin) {
-			const width = video.clientWidth * videoZoom.getScale();
-			const height = video.clientHeight * videoZoom.getScale();
+    return {
+        set(scale, origin) {
+            const width = video.clientWidth * videoZoom.getScale();
+            const height = video.clientHeight * videoZoom.getScale();
 
-			const originRelativeX = origin.x / width;
-			const originRelativeY = origin.y / height;
+            const originRelativeX = origin.x / width;
+            const originRelativeY = origin.y / height;
 
-			const translate = videoZoom.getTranslate();
-			translate.x = +(translate.x - originRelativeX * (video.clientWidth * scale - width)).toFixed(4);
-			translate.y = +(translate.y - originRelativeY * (video.clientHeight * scale - height)).toFixed(4);
-			videoZoom.correctPosition(scale, translate);
+            const translate = videoZoom.getTranslate();
+            translate.x = +(translate.x - originRelativeX * (video.clientWidth * scale - width)).toFixed(4);
+            translate.y = +(translate.y - originRelativeY * (video.clientHeight * scale - height)).toFixed(4);
+            videoZoom.correctPosition(scale, translate);
 
-			video.style.rotate = '';
-			video.style['transition-duration'] = '0.3s';
-			video.style['transition-property'] = 'translate, scale';
-			video.style.transformOrigin = '0 0';
-			video.style.translate = `${translate.x / video.clientWidth * 100}% ${translate.y / video.clientHeight * 100}%`;
-			video.style.scale = scale;
+            video.style.rotate = '';
+            video.style['transition-duration'] = '0.3s';
+            video.style['transition-property'] = 'translate, scale';
+            video.style.transformOrigin = '0 0';
+            video.style.translate = `${(translate.x / video.clientWidth) * 100}% ${(translate.y / video.clientHeight) * 100}%`;
+            video.style.scale = scale;
 
-			if (scale == 1) toggleDragMode(false);
-			else if (!video.dragMode) toggleDragMode(true);
-		},
-		correctPosition(scale, translate) {
-			if (translate.x > 0) {
-				translate.x = 0;
-			}
-			if (translate.y > 0) {
-				translate.y = 0;
-			}
-			if (translate.x + video.clientWidth * scale < video.clientWidth) {
-				translate.x += +(video.clientWidth - (translate.x + video.clientWidth * scale)).toFixed(4);
-			}
-			if (translate.y + video.clientHeight * scale < video.clientHeight) {
-				translate.y += +(video.clientHeight - (translate.y + video.clientHeight * scale)).toFixed(4);
-			}
-		},
-		getTranslate() {
-			const translate = video.style.translate.match(/\-?\d*\.?\d+/g) || [0, 0];
-			return {
-				x: +translate[0] / 100 * video.clientWidth,
-				y: (+translate[1] || 0) / 100 * video.clientHeight
-			};
-		},
-		getScale() {
-			return +video.style.scale || 1;
-		},
-		getPosition() {
-			const rect = player.getBoundingClientRect();
-			const ogX = rect.x + (player.clientWidth - video.clientWidth) / 2;
-			const ogY = rect.y + (player.clientHeight - video.clientHeight) / 2;
-			const translate = videoZoom.getTranslate();
+            if (scale == 1) toggleDragMode(false);
+            else if (!video.dragMode) toggleDragMode(true);
+        },
+        correctPosition(scale, translate) {
+            if (translate.x > 0) {
+                translate.x = 0;
+            }
+            if (translate.y > 0) {
+                translate.y = 0;
+            }
+            if (translate.x + video.clientWidth * scale < video.clientWidth) {
+                translate.x += +(video.clientWidth - (translate.x + video.clientWidth * scale)).toFixed(4);
+            }
+            if (translate.y + video.clientHeight * scale < video.clientHeight) {
+                translate.y += +(video.clientHeight - (translate.y + video.clientHeight * scale)).toFixed(4);
+            }
+        },
+        getTranslate() {
+            const translate = video.style.translate.match(/\-?\d*\.?\d+/g) || [0, 0];
+            return {
+                x: (+translate[0] / 100) * video.clientWidth,
+                y: ((+translate[1] || 0) / 100) * video.clientHeight,
+            };
+        },
+        getScale() {
+            return +video.style.scale || 1;
+        },
+        getPosition() {
+            const rect = player.getBoundingClientRect();
+            const ogX = rect.x + (player.clientWidth - video.clientWidth) / 2;
+            const ogY = rect.y + (player.clientHeight - video.clientHeight) / 2;
+            const translate = videoZoom.getTranslate();
 
-			return {
-				x: ogX + translate.x,
-				y: ogY + translate.y
-			};
-		}
-	}
+            return {
+                x: ogX + translate.x,
+                y: ogY + translate.y,
+            };
+        },
+    };
 }();
 
 function overwriteStorageSetItem() {
-	overwriteStorageSetItem = ytTweaks.noop;
+    overwriteStorageSetItem = ytTweaks.noop;
 
-	const store = Storage.prototype.setItem;
+    const store = Storage.prototype.setItem;
 
-	Storage.prototype.setItem = function () {
-		ytTweaks.videoQuality?.handleManuallySetQuality(arguments);
-		ytTweaks.videoSpeed?.handleManuallySetSpeed(arguments);
-		ytTweaks.perChannelVideoSpeed?.handleManuallySetSpeed(arguments);
+    Storage.prototype.setItem = function () {
+        ytTweaks.videoQuality?.handleManuallySetQuality(arguments);
+        ytTweaks.videoSpeed?.handleManuallySetSpeed(arguments);
+        ytTweaks.perChannelVideoSpeed?.handleManuallySetSpeed(arguments);
 
-		store.apply(this, arguments);
-	}
+        store.apply(this, arguments);
+    };
 }
 
-const addButtonToPlayer = function() {
-	let fragment;
+const addButtonToPlayer = function () {
+    let fragment;
 
-	return function(button) {
-		if (!fragment) {
-			fragment = document.createDocumentFragment();
-			document.addEventListener('loadstart', insert, true);
+    return function (button) {
+        if (!fragment) {
+            fragment = document.createDocumentFragment();
+            document.addEventListener('loadstart', insert, true);
 
-			function insert() {
-				if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
-					document.removeEventListener('loadstart', insert, true);
-					mainPlayer.querySelector('.ytp-right-controls').prepend(fragment);
-					fragment = '';
-				}
-			}
-		}
+            function insert() {
+                if (mainPlayer || (mainPlayer = document.getElementById('movie_player'))) {
+                    document.removeEventListener('loadstart', insert, true);
+                    mainPlayer.querySelector('.ytp-right-controls').prepend(fragment);
+                    fragment = '';
+                }
+            }
+        }
 
-		fragment.append(button);
-	}
+        fragment.append(button);
+    };
 }();
-
+	
 ytTweaks.tweaks.push(function (settings) {
 	if (settings.videoQuality) {
 		const qualities = {
@@ -899,7 +893,7 @@ ytTweaks.tweaks.push(function (settings) {
 		document.addEventListener('loadstart', main, true);
 
 		function main() {
-			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
+			if (mainPlayer || (mainPlayer = document.getElementById('movie_player'))) {
 				document.removeEventListener('loadstart', main, true);
 
 				if (mainPlayer.matches(':hover')) { showBackdrop(); };
@@ -1071,35 +1065,35 @@ ytTweaks.tweaks.push(function (settings) {
 		};
 	}
 
-	if (settings.forceOgAudio) {
-		let tracks, videoMetadata;
-		document.addEventListener('playing', setOgAudio, true);
+    if (settings.forceOgAudio) {
+        let tracks, href;
+        document.addEventListener('playing', setOgAudio, true);
 
-		function setOgAudio(e) {
-			if (navigator.mediaSession.metadata == videoMetadata) return;
-			videoMetadata = navigator.mediaSession.metadata;
+        function setOgAudio(e) {
+            if (href == location.href) return;
+            href = location.href;
 
-			player = e.target.parentElement.parentElement;
-			tracks = player.getAvailableAudioTracks();
+            player = e.target.parentElement.parentElement;
+            tracks = player.getAvailableAudioTracks();
 
-			if (!tracks.length || atob(player.getAudioTrack().id.replace(/.*;/g, '')).includes('original')) {
-				return;
-			}
+            if (!tracks.length || atob(player.getAudioTrack().id.replace(/.*;/g, '')).includes('original')) {
+                return;
+            }
 
-			for (const p of tracks) {
-				if (atob(p.id.replace(/.*;/g, '')).includes('original')) {
-					player.setAudioTrack(p);
-					break;
-				}
-			}
-		}
+            for (const p of tracks) {
+                if (atob(p.id.replace(/.*;/g, '')).includes('original')) {
+                    player.setAudioTrack(p);
+                    break;
+                }
+            }
+        }
 
-		ytTweaks.forceOgAudio = {
-			storageChanged: function () {
-				document.removeEventListener('playing', setOgAudio, true);
-			}
-		};
-	}
+        ytTweaks.forceOgAudio = {
+            storageChanged: function () {
+                document.removeEventListener('playing', setOgAudio, true);
+            },
+        };
+    }
 
 	if (settings.snapshotButton || settings.snapshotToFileHotkey || settings.snapshotToClipHotkey || settings.snapshotToFileAndClipHotkey) {
 		const format = settings.snapshotFormat || 'png';
@@ -1293,7 +1287,7 @@ ytTweaks.tweaks.push(function (settings) {
 		if (settings.flipHorizontallyHotkey) {
 			ytTweaks.getHotkeys()[settings.flipHorizontallyHotkey] = function () {
 				flipVideo(true);
-			}
+			};
 		}
 
 		if (settings.flipVerticallyHotkey) {
@@ -1430,7 +1424,7 @@ ytTweaks.tweaks.push(function (settings) {
 			HTMLVideoElement.prototype.removeAttribute = function (attr) {
 				if (attr == 'src') videoStopped();
 				return HTMLElement.prototype.removeAttribute.call(this, attr);
-			}
+			};
 		}
 
 		bc.addEventListener('message', function (e) {
@@ -1933,7 +1927,7 @@ ytTweaks.tweaks.push(function (settings) {
 		document.addEventListener('yt-player-updated', main);
 
 		function main() {
-			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
+			if (mainPlayer || (mainPlayer = document.getElementById('movie_player'))) {
 				document.removeEventListener('yt-player-updated', main);
 
 				mainPlayer.append(...buttons);
@@ -1985,7 +1979,7 @@ ytTweaks.tweaks.push(function (settings) {
 			ytTweaks.getHotkeys()[settings.pinUnpinHotkey] = function () {
 				mainPlayer.classList.toggle('yttw-sticky-player');
 				window.dispatchEvent(new Event('orientationchange'));
-			}
+			};
 		}
 
 		ytTweaks.pinVideoOnScroll = {
@@ -2014,7 +2008,7 @@ ytTweaks.tweaks.push(function (settings) {
 			getPlayerAndVideo();
 			if (document.pictureInPictureElement) document.exitPictureInPicture();
 			else video.requestPictureInPicture();
-		}
+		};
 	}
 
 	if (settings.fullscreenTheaterMode) {
@@ -2061,23 +2055,23 @@ ytTweaks.tweaks.push(function (settings) {
 		if (settings.whereToShowTime == 'tabTitle') {
 			main = function () {
 				HTMLElement.prototype.addEventListener.call(mainPlayer, 'timeupdate', updateTimeLeft, true);
-			}
+			};
 
 			document.addEventListener('loadstart', handler, true);
 
 			if (settings.timeFormat == 'left%') {
 				updateTimeLeft = function (e) {
 					if (e.target.currentTime) document.title = `${Math.floor(100 / (e.target.duration / e.target.playbackRate) * (e.target.duration - e.target.currentTime) / e.target.playbackRate)}% • ${navigator.mediaSession.metadata.title}`;
-				}
+				};
 			} else if (settings.timeFormat == 'left+left%') {
 				updateTimeLeft = function (e) {
 					const totalSecLeft = (e.target.duration - e.target.currentTime) / e.target.playbackRate || 0;
 					if (e.target.currentTime) document.title = `${formatSecToDDHHMMSS(totalSecLeft)} (${Math.floor(100 / (e.target.duration / e.target.playbackRate) * totalSecLeft)}%) • ${navigator.mediaSession.metadata.title}`;
-				}
+				};
 			} else {
 				updateTimeLeft = function (e) {
 					if (e.target.currentTime) document.title = `${formatSecToDDHHMMSS((e.target.duration - e.target.currentTime) / e.target.playbackRate)} • ${navigator.mediaSession.metadata.title}`;
-				}
+				};
 			}
 		} else {
 			main = function () {
@@ -2114,16 +2108,16 @@ ytTweaks.tweaks.push(function (settings) {
 			if (settings.timeFormat == 'left%') {
 				updateTimeLeft = function (e) {
 					span.textContent = ` • ${Math.floor((100 / (e.target.duration / e.target.playbackRate) || 0) * (e.target.duration - e.target.currentTime) / e.target.playbackRate || 0)}%`;
-				}
+				};
 			} else if (settings.timeFormat == 'left+left%') {
 				updateTimeLeft = function (e) {
 					const totalSecLeft = (e.target.duration - e.target.currentTime) / e.target.playbackRate || 0;
 					span.textContent = ` • ${formatSecToDDHHMMSS(totalSecLeft)} (${Math.floor((100 / (e.target.duration / e.target.playbackRate) || 0) * totalSecLeft)}%)`;
-				}
+				};
 			} else {
 				updateTimeLeft = function (e) {
 					span.textContent = ` • ${formatSecToDDHHMMSS((e.target.duration - e.target.currentTime) / e.target.playbackRate || 0)}`;
-				}
+				};
 			}
 
 			ytTweaks.sheet.textContent += `
@@ -2134,7 +2128,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		function handler() {
-			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
+			if (mainPlayer || (mainPlayer = document.getElementById('movie_player'))) {
 				document.removeEventListener('loadstart', handler, true);
 				main();
 			}
@@ -2203,7 +2197,7 @@ ytTweaks.tweaks.push(function (settings) {
 		let style;
 
 		function main() {
-			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
+			if (mainPlayer || (mainPlayer = document.getElementById('movie_player'))) {
 				document.removeEventListener('loadstart', main, true);
 				style = getComputedStyle(mainPlayer);
 				HTMLElement.prototype.addEventListener.call(mainPlayer, 'timeupdate', updateVideoData, true);
@@ -2332,7 +2326,7 @@ ytTweaks.tweaks.push(function (settings) {
 		document.addEventListener('loadstart', main, true);
 
 		function main() {
-			if ((mainPlayer || (mainPlayer = document.getElementById('movie_player')))) {
+			if (mainPlayer || (mainPlayer = document.getElementById('movie_player'))) {
 				document.removeEventListener('loadstart', main, true);
 
 				mainPlayer.classList.add('yttw-no-controls');
@@ -2421,7 +2415,7 @@ ytTweaks.tweaks.push(function (settings) {
 				const currQuality = player.getPlaybackQuality();
 				const newQuality = getNewQuality(currQuality, qualities2[qualities[currQuality] + 1][0], player.getAvailableQualityLevels(), 'nextHigher');
 				setQuality(newQuality);
-			}
+			};
 		}
 
 		if (settings.decreaseQualityHotkey) {
@@ -2431,21 +2425,21 @@ ytTweaks.tweaks.push(function (settings) {
 				const currQuality = player.getPlaybackQuality();
 				const newQuality = getNewQuality(currQuality, qualities2[qualities[currQuality] - 1][0], player.getAvailableQualityLevels(), 'nextLower');
 				setQuality(newQuality);
-			}
+			};
 		}
 
 		if (settings.highestQualityHotkey) {
 			ytTweaks.getHotkeys()[settings.highestQualityHotkey] = function () {
 				getPlayerAndVideo();
 				setQuality(player.getAvailableQualityLevels()[0]);
-			}
+			};
 		}
 
 		if (settings.lowestQualityHotkey) {
 			ytTweaks.getHotkeys()[settings.lowestQualityHotkey] = function () {
 				getPlayerAndVideo();
 				setQuality(player.getAvailableQualityLevels()[player.getAvailableQualityLevels().length - 2]);
-			}
+			};
 		}
 
 		function getNewQuality(currQuality, quality, availableQualities, fallback) {
@@ -2517,7 +2511,7 @@ ytTweaks.tweaks.push(function (settings) {
 			ytTweaks.getHotkeys()[settings.resetSpeedHotkey] = function () {
 				getPlayerAndVideo();
 				setSpeed(normalSpeed);
-			}
+			};
 		}
 
 		if (settings.customSpeedHotkeys) {
@@ -2649,7 +2643,7 @@ ytTweaks.tweaks.push(function (settings) {
 			redoStack.unshift(video.currentTime);
 			ogDescriptor.set.call(video, undoStack[0]);
 			undoStack.shift();
-		}
+		};
 
 		if (settings.redoSeekHotkey) ytTweaks.getHotkeys()[settings.redoSeekHotkey] = function () {
 			clearStacks();
@@ -2657,7 +2651,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 			video.currentTime = redoStack[0];
 			redoStack.shift();
-		}
+		};
 
 		function clearStacks() {
 			if (currPage != location.href) {
@@ -2770,7 +2764,7 @@ ytTweaks.tweaks.push(function (settings) {
 			getPlayerAndVideo();
 			video.loop = !video.loop;
 			showFeedback('', video.loop ? loopOnIcon : loopOffIcon);
-		}
+		};
 	}
 
 	if (settings.zoomInHotkeys || settings.zoomOutHotkeys) {
@@ -2778,7 +2772,7 @@ ytTweaks.tweaks.push(function (settings) {
 			for (const p in settings.zoomInHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
 					zoomBy(settings.zoomInHotkeys[p]);
-				}
+				};
 			}
 		}
 
@@ -2786,7 +2780,7 @@ ytTweaks.tweaks.push(function (settings) {
 			for (const p in settings.zoomOutHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
 					zoomBy(-settings.zoomOutHotkeys[p]);
-				}
+				};
 			}
 		}
 
@@ -2805,7 +2799,7 @@ ytTweaks.tweaks.push(function (settings) {
 			for (const p in settings.moveZoomedAreaRightHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
 					moveBy(-settings.moveZoomedAreaRightHotkeys[p], true);
-				}
+				};
 			}
 		}
 
@@ -2813,7 +2807,7 @@ ytTweaks.tweaks.push(function (settings) {
 			for (const p in settings.moveZoomedAreaLeftHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
 					moveBy(settings.moveZoomedAreaLeftHotkeys[p], true);
-				}
+				};
 			}
 		}
 
@@ -2821,7 +2815,7 @@ ytTweaks.tweaks.push(function (settings) {
 			for (const p in settings.moveZoomedAreaUpHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
 					moveBy(settings.moveZoomedAreaUpHotkeys[p]);
-				}
+				};
 			}
 		}
 
@@ -2829,7 +2823,7 @@ ytTweaks.tweaks.push(function (settings) {
 			for (const p in settings.moveZoomedAreaDownHotkeys) {
 				ytTweaks.getHotkeys()[p] = function () {
 					moveBy(-settings.moveZoomedAreaDownHotkeys[p]);
-				}
+				};
 			}
 		}
 
