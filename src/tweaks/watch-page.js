@@ -1,3 +1,17 @@
+(function() {
+function getPostId(type) {
+    switch (type) {
+        case 'video':
+            return location.pathname.includes('/live/') ? location.pathname.replace('/live/', '') : new URLSearchParams(location.search).get('v');
+        case 'short':
+            return location.pathname.replace('/shorts/', '');
+        case 'post':
+            return location.pathname.replace('/post/', '');
+        case 'highlightedComment':
+            return new URLSearchParams(location.search).get('lc')?.split('.');
+    }
+}
+
 ytTweaks.tweaks.push(function (settings) {
     if (settings.videoDescription) {
         if (settings.videoDescription == 'Minimalist') ytTweaks.sheet.textContent += `
@@ -17,12 +31,12 @@ ytTweaks.tweaks.push(function (settings) {
                     new MutationObserver(function () {
                         desc = document.querySelector('div#description');
                         if (desc) {
-                            desc.click()
+                            desc.click();
                             this.disconnect();
                         }
                     }).observe(e.target, {
                         childList: true,
-                        subtree: true
+                        subtree: true,
                     });
                 }
             }
@@ -35,7 +49,7 @@ ytTweaks.tweaks.push(function (settings) {
                 storageChanged: function () {
                     document.removeEventListener('yt-player-updated', expand);
                     document.removeEventListener('yt-text-inline-expander-expanded-changed', expand2);
-                }
+                },
             };
         }
     }
@@ -62,12 +76,13 @@ ytTweaks.tweaks.push(function (settings) {
                 });
             });
         }
+
         function updateFlag(e) {
             if (e.detail.actionName == 'yt-set-live-chat-collapsed-state-action' && !stop) {
                 stop = true;
-                document.addEventListener('yt-navigate-start', function() {
+                document.addEventListener('yt-navigate-start', function () {
                     stop = false;
-                }, {once: true});
+                }, { once: true });
             }
         }
 
@@ -81,35 +96,52 @@ ytTweaks.tweaks.push(function (settings) {
 
     if (settings.defaultSortingOfComments) {
         document.addEventListener('yt-action', sort, true);
+        let data;
 
         function sort(e) {
             if (e.detail.actionName == 'yt-service-request' && e.detail.args[0].tagName == 'YTD-CONTINUATION-ITEM-RENDERER' && !e.detail.args[0].previousElementSibling) {
-                const data = atob(e.detail.args[1].continuationCommand.token.replace('%3D', '').replace(/.*-/, ''));
+                data = atob(e.detail.args[1].continuationCommand.token.replace(/-/g, '+').replace(/_/g, '/').replace(/%3D/g, ''));
 
                 if (data.includes('comments-section')) {
-                    const videoId = location.pathname.includes('/live/') ?
-                        location.pathname.replace('/live/', '') :
-                        new URLSearchParams(location.search).get('v');
-
-                    e.detail.args[1].continuationCommand.token = data.includes('engagement-panel') ?
-                        btoa(`\x12\r\x12\v${videoId}\x18\x0628"\x11"\v${videoId}0\x01x\x020\x01B!engagement-panel-comments-section`) :
-                        btoa(`\x12\r\x12\v${videoId}\x18\x062%"\x11"\v${videoId}0\x01x\x02B\x10comments-section`);
+                    e.detail.args[1].continuationCommand.token = getNewDataWatchPage(getPostId('video'), getPostId('highlightedComment'));
                 }
-
+                
                 else if (data.includes('FEcomment_shorts_web_top_level')) {
-                    e.detail.args[1].continuationCommand.token = '4qmFsgJ-' + btoa(`\x12\x1EFEcomment_shorts_web_top_level\x1A\\${btoa(`ª\x03B"\x14"\v${location.pathname.replace('/shorts/', '')}0\x01x\x02È\x01\x000\x01B(shorts-engagement-panel-comments-section`)}`);
-                }
-
+                    e.detail.args[1].continuationCommand.token = getNewDataShortsPage(getPostId('short'));
+                } 
+                
                 else if (data.includes('FEcomment_post_detail_page_web_top_level')) {
-                    e.detail.args[1].continuationCommand.token = btoa(`â©\x85²\x02¹\x01\x12(FEcomment_post_detail_page_web_top_level\x1A\x8C\x01${btoa(`\x12\x05postsª\x03_"I0\x01x\x02È\x01\x00ê\x01$${location.pathname.replace('/post/', '')}ò\x01\x18UCETjsiWHrAHyADOih7ACwHw8\x01B\x10comments-section`).replace('/', '_')}`);
+                    e.detail.args[1].continuationCommand.token = getNewDataPostPage(getPostId('post'), getPostId('highlightedComment'));
                 }
             }
+        }
+
+        function getNewDataWatchPage(videoId, highlightedCommentId) {
+            if (data.includes('engagement-panel')) {
+                if (highlightedCommentId?.length == 1) return btoa(`\x12\r\x12\v${videoId}\x18\x062U"."\v${videoId}0\x01x\x02\x82\x01\x1A${highlightedCommentId[0]}0\x01B!engagement-panel-comments-section`);
+                else if (highlightedCommentId?.length == 2) return btoa(`\x12\r\x12\v${videoId}\x18\x062\x89\x01"b"\v${videoId}0\x01x\x02\x82\x011${highlightedCommentId.join('.')}ª\x02\x1A${highlightedCommentId[0]}0\x01B!engagement-panel-comments-section`);
+                return btoa(`\x12\r\x12\v${videoId}\x18\x0628"\x11"\v${videoId}0\x01x\x020\x01B!engagement-panel-comments-section`);
+            }
+
+            if (highlightedCommentId?.length == 1) return btoa(`\x12\r\x12\v${videoId}\x18\x062B"."\v${videoId}0\x01x\x02\x82\x01\x1A${highlightedCommentId}B\x10comments-section`);
+            else if (highlightedCommentId?.length == 2) return btoa(`\x12\r\x12\v${videoId}\x18\x062Y"E"\v${videoId}0\x01x\x02\x82\x011${highlightedCommentId.join('.')}B\x10comments-section`);
+            return btoa(`\x12\r\x12\v${videoId}\x18\x062%"\x11"\v${videoId}0\x01x\x02B\x10comments-section`);
+        }          
+        
+        function getNewDataShortsPage(shortId) {
+            return '4qmFsgJ-' + btoa(`\x12\x1EFEcomment_shorts_web_top_level\x1A\\${btoa(`ª\x03B"\x14"\v${shortId}0\x01x\x02È\x01\x000\x01B(shorts-engagement-panel-comments-section`)}`);
+        }
+
+        function getNewDataPostPage(postId, highlightedCommentId) {
+            if (highlightedCommentId?.length == 1) return '4qmFsgL_' + btoa(`\x02\x12(FEcomment_post_detail_page_web_top_level\x1AÒ\x02${btoa(`\x12\x05postsª\x03x"d0\x01\x82\x01\x1A${highlightedCommentId}Ø\x01\x01ê\x01$${postId}ò\x01\x18UCH_7doiCkWeq0v3ycWE5lDwB\x10comments-sectionÂ\x03v\x12\x18UCH_7doiCkWeq0v3ycWE5lDw\x1A$${postId}B\x1A${highlightedCommentId}Z\x18UCH_7doiCkWeq0v3ycWE5lDw`).replace(/\//g, '_').replace(/=/g, '') + '%3D'}`);
+            else if (highlightedCommentId?.length == 2) return '4qmFsgK_' + btoa(`\x03\x12(FEcomment_post_detail_page_web_top_level\x1A\x92\x03${btoa(`\x12\x05postsª\x03\x8F\x01"{0\x01\x82\x011${highlightedCommentId.join('.')}Ø\x01\x01ê\x01$${postId}ò\x01\x18UCa8W2_uf81Ew6gYuw0VPSeAB\x10comments-sectionÂ\x03\x8D\x01\x12\x18UCa8W2_uf81Ew6gYuw0VPSeA\x1A$${postId}B1${highlightedCommentId.join('.')}Z\x18UCa8W2_uf81Ew6gYuw0VPSeA`).replace(/\//g, '_').replace(/=/g, '') + '%3D'}`);
+            return btoa(`â©\x85²\x02¹\x01\x12(FEcomment_post_detail_page_web_top_level\x1A\x8C\x01${btoa(`\x12\x05postsª\x03_"I0\x01x\x02È\x01\x00ê\x01$${postId}ò\x01\x18UCETjsiWHrAHyADOih7ACwHw8\x01B\x10comments-section`).replace(/\//g, '_')}`);
         }
 
         ytTweaks.defaultSortingOfComments = {
             storageChanged: function () {
                 document.removeEventListener('yt-action', sort, true);
-            }
+            },
         };
     }
 
@@ -162,7 +194,7 @@ ytTweaks.tweaks.push(function (settings) {
         if (settings.toggleSidebarCommentsHotkey) {
             ytTweaks.getHotkeys()[settings.toggleSidebarCommentsHotkey] = function () {
                 document.documentElement.classList.toggle('yttw-sidebar-comments');
-            }
+            };
         }
     }
 
@@ -215,7 +247,7 @@ ytTweaks.tweaks.push(function (settings) {
                 e.stopPropagation();
                 e.preventDefault();
                 document.querySelector('ytd-app').handleNavigate({
-                    command: command
+                    command: command,
                 });
             }
         }
@@ -225,7 +257,7 @@ ytTweaks.tweaks.push(function (settings) {
                 document.removeEventListener('yt-player-updated', main);
                 sidebar?.removeEventListener('mouseenter', fixChannelLink, true);
                 sidebar?.removeEventListener('click', redirectToChannel, true);
-            }
+            },
         };
     }
 
@@ -346,8 +378,6 @@ ytTweaks.tweaks.push(function (settings) {
     }
     `;
 
-    // Hotkeys
-
     if (settings.likeUnlikeHotkey || settings.dislikeUndislikeHotkey) {
         if (settings.likeUnlikeHotkey) {
             ytTweaks.getHotkeys()[settings.likeUnlikeHotkey] = function () {
@@ -355,7 +385,7 @@ ytTweaks.tweaks.push(function (settings) {
                 if (!like?.clientWidth && !document.fullscreenElement) return;
 
                 like.click();
-            }
+            };
         }
 
         if (settings.dislikeUndislikeHotkey) {
@@ -364,7 +394,7 @@ ytTweaks.tweaks.push(function (settings) {
                 if (!dislike?.clientWidth && !document.fullscreenElement) return;
 
                 dislike.click();
-            }
+            };
         }
 
         function getButton(type) {
@@ -379,10 +409,18 @@ ytTweaks.tweaks.push(function (settings) {
             if (!button?.isConnected) {
                 button = document.createElement('ytd-guide-entry-renderer');
                 button.style.display = 'none';
-                button.data = { "icon": { "iconType": "TAB_SHORTS_CAIRO" }, "trackingParams": "CIQBEJyBCRgBIhMImp2OiM6EjAMVZcdJBx3zpwNP", "formattedTitle": { "simpleText": "Shorts" }, "accessibility": { "accessibilityData": { "label": "Shorts" } }, "serviceEndpoint": { "clickTrackingParams": "CIQBEJyBCRgBIhMImp2OiM6EjAMVZcdJBx3zpwNPmgECCDo=", "commandMetadata": { "webCommandMetadata": { "url": "/shorts/", "webPageType": "WEB_PAGE_TYPE_SHORTS", "rootVe": 37414 } }, "reelWatchEndpoint": { "playerParams": "8AEBuAQPkAcC", "overlay": { "reelPlayerOverlayRenderer": { "style": "REEL_PLAYER_OVERLAY_STYLE_SHORTS", "trackingParams": "CIUBELC1BCITCJqdjojOhIwDFWXHSQcd86cDTw==", "reelPlayerNavigationModel": "REEL_PLAYER_NAVIGATION_MODEL_UNSPECIFIED" } }, "params": "CA8%3D", "sequenceProvider": "REEL_WATCH_SEQUENCE_PROVIDER_RPC", "inputType": "REEL_WATCH_INPUT_TYPE_SEEDLESS", "updateKey": "EhhTSE9SVFNfU0VFRExFU1NfRU5EUE9JTlQg5gEoAQ%3D%3D", "loggingContext": { "vssLoggingContext": { "serializedContextData": "CgIIDA%3D%3D" }, "qoeLoggingContext": { "serializedContextData": "CgIIDA%3D%3D" } }, "ustreamerConfig": "CAw=" } }, "isPrimary": true }
+                button.data = {
+                    icon: { iconType: 'TAB_SHORTS_CAIRO' },
+                    trackingParams: 'CIQBEJyBCRgBIhMImp2OiM6EjAMVZcdJBx3zpwNP',
+                    formattedTitle: { simpleText: 'Shorts' },
+                    accessibility: { accessibilityData: { label: 'Shorts' } },
+                    serviceEndpoint: { clickTrackingParams: 'CIQBEJyBCRgBIhMImp2OiM6EjAMVZcdJBx3zpwNPmgECCDo=', commandMetadata: { webCommandMetadata: { url: '/shorts/', webPageType: 'WEB_PAGE_TYPE_SHORTS', rootVe: 37414 } }, reelWatchEndpoint: { playerParams: '8AEBuAQPkAcC', overlay: { reelPlayerOverlayRenderer: { style: 'REEL_PLAYER_OVERLAY_STYLE_SHORTS', trackingParams: 'CIUBELC1BCITCJqdjojOhIwDFWXHSQcd86cDTw==', reelPlayerNavigationModel: 'REEL_PLAYER_NAVIGATION_MODEL_UNSPECIFIED' } }, params: 'CA8%3D', sequenceProvider: 'REEL_WATCH_SEQUENCE_PROVIDER_RPC', inputType: 'REEL_WATCH_INPUT_TYPE_SEEDLESS', updateKey: 'EhhTSE9SVFNfU0VFRExFU1NfRU5EUE9JTlQg5gEoAQ%3D%3D', loggingContext: { vssLoggingContext: { serializedContextData: 'CgIIDA%3D%3D' }, qoeLoggingContext: { serializedContextData: 'CgIIDA%3D%3D' } }, ustreamerConfig: 'CAw=' } },
+                    isPrimary: true,
+                };
                 document.querySelector('ytd-app')?.appendChild(button);
             }
             button.click();
-        }
+        };
     }
 });
+})();
