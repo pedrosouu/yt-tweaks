@@ -2,9 +2,9 @@
     position: absolute;
     background: var(--btn-bg);
     width: max-content;
-    max-width: calc(100% - 48px);
-    max-height: calc(100vh - 24px);
-    padding: 12px;
+    max-width: calc(100% - var(--spacing-4x) * 10);
+    max-height: calc(100vh - var(--spacing-4x));
+    padding: var(--spacing-2x);
     right: 24px;
     border-radius: 12px;
     border: 1px solid var(--btn-hover-bg);
@@ -48,12 +48,12 @@ button.selectMenu>ul {
 }
 
 ul {
-    padding: 6px !important;
+    padding: var(--spacing-1x) !important;
 }
 
 li {
     position: relative;
-    padding: 6px 12px;
+    padding: var(--spacing-1x) var(--spacing-2x);
     border-radius: 10px;
     transition: .15s;
     cursor: pointer;
@@ -75,7 +75,7 @@ li.focused::before {
 
 /* COLOR PICKER */
 #colorPicker {
-    padding: 12px;
+    padding: var(--spacing-2x);
     padding-top: 6px;
 }
 
@@ -200,7 +200,7 @@ search.list {
 
 .listItems {
     display: grid;
-    gap: 12px;
+    gap:  var(--spacing-2x);
     width: 100%;
 }
 
@@ -209,7 +209,7 @@ search.list {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    gap: 12px;
+    gap: var(--spacing-2x);
 }
 
 .listItem > :first-child {
@@ -227,7 +227,7 @@ input.list {
 /* SETTINGS IMPORTER */
 #importer {
     display: grid;    
-    gap: 12px;
+    gap: var(--spacing-2x);
 }
 
 /* CLOSE BUTTON */

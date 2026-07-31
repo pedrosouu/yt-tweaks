@@ -95,7 +95,7 @@ body {
     font-family: 'Roboto';
     background-color: var(--main-bg);
     color: var(--text);
-    width: 600;
+    width: 600px;
     min-width: 100%;
     min-height: 600px;
     font-size: .9rem;
@@ -313,7 +313,7 @@ input[type="text"]:placeholder-shown+.clearSearch {
 
 section {
     background: var(--btn-bg);
-    margin-top: 56px;
+    margin-top: calc(20px + var(--spacing-2x) + var(--spacing-4x));
     border-radius: 12px;
     overflow: clip;
 }
@@ -329,7 +329,7 @@ label>h4 {
 
 section>h4 {
     position: absolute;
-    margin-top: -32px;
+    margin-top: calc(0px - 20px - var(--spacing-2x));
 }
 
 label>h4 {
