@@ -1,17 +1,3 @@
-(function() {
-function getPostId(type) {
-    switch (type) {
-        case 'video':
-            return location.pathname.includes('/live/') ? location.pathname.replace('/live/', '') : new URLSearchParams(location.search).get('v');
-        case 'short':
-            return location.pathname.replace('/shorts/', '');
-        case 'post':
-            return location.pathname.replace('/post/', '');
-        case 'highlightedComment':
-            return new URLSearchParams(location.search).get('lc')?.split('.');
-    }
-}
-
 ytTweaks.tweaks.push(function (settings) {
     if (settings.videoDescription) {
         if (settings.videoDescription == 'Minimalist') ytTweaks.sheet.textContent += `
@@ -96,46 +82,34 @@ ytTweaks.tweaks.push(function (settings) {
 
     if (settings.defaultSortingOfComments) {
         document.addEventListener('yt-action', sort, true);
-        let data;
 
         function sort(e) {
             if (e.detail.actionName == 'yt-service-request' && e.detail.args[0].tagName == 'YTD-CONTINUATION-ITEM-RENDERER' && !e.detail.args[0].previousElementSibling) {
-                data = atob(e.detail.args[1].continuationCommand.token.replace(/-/g, '+').replace(/_/g, '/').replace(/%3D/g, ''));
+                let decodedData = atob(base64URLtoBase64(e.detail.args[1].continuationCommand.token));
+                if (!decodedData.includes('comment')) return;
+                let encodedData = decodedData.match(/EgVw.*|qgNC.*/g)?.[0];
 
-                if (data.includes('comments-section')) {
-                    e.detail.args[1].continuationCommand.token = getNewDataWatchPage(getPostId('video'), getPostId('highlightedComment'));
+                const array = decodedData.split('\x02');
+                if (array[array.length - 1].includes('Ug') && !array[array.length - 1].includes(new URLSearchParams(location.search).get('lc'))) {
+                    decodedData = decodedData.replace(/.0\x01B!engagement-panel-comments-section/g, '?0\x01B!engagement-panel-comments-section');
                 }
-                
-                else if (data.includes('FEcomment_shorts_web_top_level')) {
-                    e.detail.args[1].continuationCommand.token = getNewDataShortsPage(getPostId('short'));
-                } 
-                
-                else if (data.includes('FEcomment_post_detail_page_web_top_level')) {
-                    e.detail.args[1].continuationCommand.token = getNewDataPostPage(getPostId('post'), getPostId('highlightedComment'));
+
+                if (encodedData) {
+                    const decodedData2 = atob(base64URLtoBase64(encodedData));
+                    const newEncodedData = base64toBase64URL(btoa(decodedData2.replace('\x00', '\x01')));
+                    e.detail.args[1].continuationCommand.token = base64toBase64URL(btoa(decodedData.replace(encodedData, newEncodedData)));
+                } else {
+                    e.detail.args[1].continuationCommand.token = base64toBase64URL(btoa(decodedData.replace('\x00', '\x01')));
                 }
             }
         }
 
-        function getNewDataWatchPage(videoId, highlightedCommentId) {
-            if (data.includes('engagement-panel')) {
-                if (highlightedCommentId?.length == 1) return btoa(`\x12\r\x12\v${videoId}\x18\x062U"."\v${videoId}0\x01x\x02\x82\x01\x1A${highlightedCommentId[0]}0\x01B!engagement-panel-comments-section`);
-                else if (highlightedCommentId?.length == 2) return btoa(`\x12\r\x12\v${videoId}\x18\x062\x89\x01"b"\v${videoId}0\x01x\x02\x82\x011${highlightedCommentId.join('.')}ª\x02\x1A${highlightedCommentId[0]}0\x01B!engagement-panel-comments-section`);
-                return btoa(`\x12\r\x12\v${videoId}\x18\x0628"\x11"\v${videoId}0\x01x\x020\x01B!engagement-panel-comments-section`);
-            }
-
-            if (highlightedCommentId?.length == 1) return btoa(`\x12\r\x12\v${videoId}\x18\x062B"."\v${videoId}0\x01x\x02\x82\x01\x1A${highlightedCommentId}B\x10comments-section`);
-            else if (highlightedCommentId?.length == 2) return btoa(`\x12\r\x12\v${videoId}\x18\x062Y"E"\v${videoId}0\x01x\x02\x82\x011${highlightedCommentId.join('.')}B\x10comments-section`);
-            return btoa(`\x12\r\x12\v${videoId}\x18\x062%"\x11"\v${videoId}0\x01x\x02B\x10comments-section`);
-        }          
-        
-        function getNewDataShortsPage(shortId) {
-            return '4qmFsgJ-' + btoa(`\x12\x1EFEcomment_shorts_web_top_level\x1A\\${btoa(`ª\x03B"\x14"\v${shortId}0\x01x\x02È\x01\x000\x01B(shorts-engagement-panel-comments-section`)}`);
+        function base64URLtoBase64(stg) {
+            return stg.replace(/-/g, '+').replace(/_/g, '/').replace(/%3D/g, '=');
         }
 
-        function getNewDataPostPage(postId, highlightedCommentId) {
-            if (highlightedCommentId?.length == 1) return '4qmFsgL_' + btoa(`\x02\x12(FEcomment_post_detail_page_web_top_level\x1AÒ\x02${btoa(`\x12\x05postsª\x03x"d0\x01\x82\x01\x1A${highlightedCommentId}Ø\x01\x01ê\x01$${postId}ò\x01\x18UCH_7doiCkWeq0v3ycWE5lDwB\x10comments-sectionÂ\x03v\x12\x18UCH_7doiCkWeq0v3ycWE5lDw\x1A$${postId}B\x1A${highlightedCommentId}Z\x18UCH_7doiCkWeq0v3ycWE5lDw`).replace(/\//g, '_').replace(/=/g, '') + '%3D'}`);
-            else if (highlightedCommentId?.length == 2) return '4qmFsgK_' + btoa(`\x03\x12(FEcomment_post_detail_page_web_top_level\x1A\x92\x03${btoa(`\x12\x05postsª\x03\x8F\x01"{0\x01\x82\x011${highlightedCommentId.join('.')}Ø\x01\x01ê\x01$${postId}ò\x01\x18UCa8W2_uf81Ew6gYuw0VPSeAB\x10comments-sectionÂ\x03\x8D\x01\x12\x18UCa8W2_uf81Ew6gYuw0VPSeA\x1A$${postId}B1${highlightedCommentId.join('.')}Z\x18UCa8W2_uf81Ew6gYuw0VPSeA`).replace(/\//g, '_').replace(/=/g, '') + '%3D'}`);
-            return btoa(`â©\x85²\x02¹\x01\x12(FEcomment_post_detail_page_web_top_level\x1A\x8C\x01${btoa(`\x12\x05postsª\x03_"I0\x01x\x02È\x01\x00ê\x01$${postId}ò\x01\x18UCETjsiWHrAHyADOih7ACwHw8\x01B\x10comments-section`).replace(/\//g, '_')}`);
+        function base64toBase64URL(stg) {
+            return stg.replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '%3D');
         }
 
         ytTweaks.defaultSortingOfComments = {
@@ -403,24 +377,24 @@ ytTweaks.tweaks.push(function (settings) {
     }
 
     if (settings.toggleTranscriptHotkey) {
-        if (settings.toggleTranscriptHotkey) {
-            ytTweaks.getHotkeys()[settings.toggleTranscriptHotkey] = toggle;
+        ytTweaks.getHotkeys()[settings.toggleTranscriptHotkey] = function () {
+            const hide = document.querySelector('[target-id="PAmodern_transcript_view"][visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]');
 
-            function toggle() {
-                const hide = document.querySelector('[target-id="PAmodern_transcript_view"][visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"]');
-
-                document.querySelector('ytd-app').resolveCommand({
-                    [(hide ? 'hide' : 'show') + 'EngagementPanelEndpoint']: {
-                        identifier: {
-                            tag: 'PAmodern_transcript_view',
-                        },
-                        globalConfiguration: {
-                            params: btoa(`ª\t\x0F\n\v${getPostId('video')}\x18\x02`),
-                        },
+            document.querySelector('ytd-app').resolveCommand({
+                [(hide ? 'hide' : 'show') + 'EngagementPanelEndpoint']: {
+                    identifier: {
+                        tag: 'PAmodern_transcript_view',
                     },
-                });
+                    globalConfiguration: {
+                        params: btoa(`ª\t\x0F\n\v${getVideoId()}\x18\x02`),
+                    },
+                },
+            });
+
+            function getVideoId() {
+                return location.pathname.includes('/shorts/') ? location.pathname.replace('/shorts/', '') : location.pathname.includes('/live/') ? location.pathname.replace('/live/', '') : new URLSearchParams(location.search).get('v');
             }
-        }
+        };
     }
 
     if (settings.redToShortsHotkey) {
@@ -444,4 +418,3 @@ ytTweaks.tweaks.push(function (settings) {
         };
     }
 });
-})();
