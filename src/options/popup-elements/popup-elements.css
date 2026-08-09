@@ -5,8 +5,8 @@
     max-width: calc(100% - var(--spacing-4x) * 10);
     max-height: calc(100vh - var(--spacing-4x));
     padding: var(--spacing-2x);
-    right: 24px;
-    border-radius: 12px;
+    right: var(--spacing-4x);
+    border-radius: var(--radius);
     border: 1px solid var(--btn-hover-bg);
     box-shadow: 0 4px 32px 0 var(--shadow-color);
     box-sizing: border-box;
@@ -48,12 +48,12 @@ button.selectMenu>ul {
 }
 
 ul {
-    padding: var(--spacing-1x) !important;
+    padding: var(--spacing) !important;
 }
 
 li {
     position: relative;
-    padding: var(--spacing-1x) var(--spacing-2x);
+    padding: var(--spacing) var(--spacing-2x);
     border-radius: 10px;
     transition: .15s;
     cursor: pointer;
@@ -70,7 +70,7 @@ li.focused::before {
     transform: translateY(-50%);
     left: 0px;
     height: calc(100% - 15px);
-    border-radius: 12px;
+    border-radius: var(--radius);
 }
 
 /* COLOR PICKER */

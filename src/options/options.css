@@ -12,9 +12,10 @@
     --navbar-width: 180px;
     --btn-height: 34px;
     --label-btn-height: 30px;
-    --spacing-1x: 6px;
+    --spacing: 6px;
     --spacing-2x: 12px;
     --spacing-4x: 24px;
+    --radius: 12px;
     --main-bg: #efefef;
     --text: rgba(0, 0, 0, 0.87);
     --secondary-text: rgba(0, 0, 0, 0.55);
@@ -141,7 +142,7 @@ search {
 }
 
 .search {
-    padding-left: calc(27px + var(--spacing-1x)) !important;
+    padding-left: calc(27px + var(--spacing)) !important;
 }
 
 .searchIcon {
@@ -225,7 +226,7 @@ html:not(.searchMode) .tabHeading.selected {
 button,
 .button {
     position: relative;
-    gap: var(--spacing-1x);
+    gap: var(--spacing);
     height: var(--btn-height);
     min-width: var(--btn-height);
     transition: background .15s;
@@ -251,7 +252,7 @@ button,
 
 .button,
 button:not(label> :nth-child(2), .removeSetting) {
-    padding: var(--spacing-1x) var(--spacing-2x);
+    padding: var(--spacing) var(--spacing-2x);
 }
 
 label :is(button, input) {
@@ -301,7 +302,7 @@ label.open {
 
 label:has(:focus-visible:nth-child(2)) {
     outline-offset: -2px;
-    border-radius: 12px;
+    border-radius: var(--radius);
     background-color: var(--btn-bg) !important;
     outline: 2px solid var(--accent);
 }
@@ -314,7 +315,7 @@ input[type="text"]:placeholder-shown+.clearSearch {
 section {
     background: var(--btn-bg);
     margin-top: calc(20px + var(--spacing-2x) + var(--spacing-4x));
-    border-radius: 12px;
+    border-radius: var(--radius);
     overflow: clip;
 }
 
@@ -338,9 +339,9 @@ label>h4 {
 
 label {
     min-height: calc(var(--label-btn-height) + var(--spacing-2x));
-    padding: var(--spacing-1x) var(--spacing-2x);
+    padding: var(--spacing) var(--spacing-2x);
     display: flex;
-    gap: var(--spacing-1x);
+    gap: var(--spacing);
     cursor: pointer;
     transition: background .15s;
     border-top: 1px solid var(--btn-hover-bg);
@@ -364,7 +365,7 @@ section>label:is(:first-of-type, .tprBorder) {
 
 label>span {
     flex-grow: 1;
-    margin-right: var(--spacing-1x);
+    margin-right: var(--spacing);
     min-width: 0;
     overflow-wrap: break-word;
 }
@@ -374,11 +375,11 @@ label> :is(input, button) {
 }
 
 .expandable label {
-    padding-left: 36px;
+    padding-left: calc(var(--spacing-4x) + var(--spacing-2x));
 }
 
 .expandable .expandable:not([matcher]) label {
-    padding-left: 71px !important;
+    padding-left: calc(var(--spacing-4x) * 3) !important;
 }
 
 .subLabel {
@@ -386,7 +387,7 @@ label> :is(input, button) {
     font-size: .85rem;
     color: var(--secondary-text);
     margin: 0;
-    margin-top: var(--spacing-1x);
+    margin-top: var(--spacing);
 }
 
 [type="number"] {
@@ -417,7 +418,7 @@ label> :is(input, button) {
 }
 
 .minus {
-    margin: 0 var(--spacing-1x);
+    margin: 0 var(--spacing);
 }
 
 .plus {

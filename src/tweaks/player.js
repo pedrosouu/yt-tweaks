@@ -75,7 +75,6 @@ const showFeedback = function () {
         osd.classList.add('show');
 
         clearTimeout(timeoutId);
-
         timeoutId = setTimeout(function () {
             osd.classList.remove('show');
         }, timeoutTime || 1000);
@@ -209,8 +208,7 @@ function overwriteStorageSetItem() {
 
     Storage.prototype.setItem = function () {
         ytTweaks.videoQuality?.handleManuallySetQuality(arguments);
-        ytTweaks.videoSpeed?.handleManuallySetSpeed(arguments);
-        ytTweaks.perChannelVideoSpeed?.handleManuallySetSpeed(arguments);
+		ytTweaks.videoSpeed?.handleManuallySetSpeed(arguments);
 
         store.apply(this, arguments);
     };
@@ -332,42 +330,7 @@ ytTweaks.tweaks.push(function (settings) {
 		};
 	}
 
-	if (settings.videoSpeed && !(settings.channelSpeedButton || settings.setChannelSpeedHotkey || settings.perChannelSpeeds)) {
-		document.addEventListener('loadstart', setSpeed, true);
-
-		let preferredSpeed;
-
-		try {
-			preferredSpeed = +sessionStorage.getItem('yttwGlobalSpeed');
-			overwriteStorageSetItem();
-		} catch { }
-
-		if (!preferredSpeed) preferredSpeed = settings.vsSpeed ?? 1.5;
-
-		function setSpeed(e) {
-			player = e.target.parentElement.parentElement;
-			if (player.className.includes('ad-showing') || !player.className.includes('unstarted-mode')) return;
-
-			player.setPlaybackRate(preferredSpeed);
-			e.target.playbackRate = preferredSpeed;
-		}
-
-		ytTweaks.videoSpeed = {
-			storageChanged: function () {
-				document.removeEventListener('loadstart', setSpeed, true);
-				delete ytTweaks.videoSpeed;
-			},
-
-			handleManuallySetSpeed: function (arg) {
-				if (arg[0] == 'yt-player-playback-rate') {
-					preferredSpeed = +JSON.parse(arg[1]).data;
-					sessionStorage.setItem('yttwGlobalSpeed', preferredSpeed);
-				}
-			}
-		};
-	}
-
-	else if (settings.channelSpeedButton || settings.setChannelSpeedHotkey || settings.perChannelSpeeds) {
+	if (settings.videoSpeed || settings.channelSpeedButton || settings.setChannelSpeedHotkey || settings.perChannelSpeeds) {
 		let author, setSpeed, lastSpeedSet, globalSpeed, speeds;
 
 		try {
@@ -457,12 +420,12 @@ ytTweaks.tweaks.push(function (settings) {
 			ytTweaks.getHotkeys()[settings.setChannelSpeedHotkey] = handleSpeedSetting;
 		}
 
-		ytTweaks.perChannelVideoSpeed = {
+		ytTweaks.videoSpeed = {
 			storageChanged: function () {
 				document.removeEventListener('loadstart', setSpeed, true);
 				speedButton.removeEventListener('click', handleSpeedSetting);
 				speedButton.remove();
-				delete ytTweaks.perChannelVideoSpeed;
+				delete ytTweaks.videoSpeed;
 			},
 			handleManuallySetSpeed: function (arg) {
 				if (arg[0] == 'yt-player-playback-rate') {
@@ -547,7 +510,7 @@ ytTweaks.tweaks.push(function (settings) {
 			}
 		}
 
-		function runFunction(e, data, modifier, clickAction) {
+		function runFunction(e, func, modifier, clickAction) {
 			if (!modifier) {
 				if (e.target.parentElement != e.currentTarget && e.target != e.currentTarget.video && e.target != e.currentTarget) return;
 				if (e.target.tagName == 'BUTTON') return;
@@ -579,10 +542,10 @@ ytTweaks.tweaks.push(function (settings) {
 
 			// Touchpad scroll = small deltaX/deltaY
 			if (Math.abs(e.deltaX) <= 5 && Math.abs(e.deltaY) <= 5) {
-				data.funcThrottle(e, data.arg);
+				func.throttle(e);
 			}
 
-			else data.func(e, data.arg);
+			else func(e, clickAction);
 		}
 
 		const ogDescriptor = Object.getOwnPropertyDescriptor(HTMLMediaElement.prototype, 'playbackRate');
@@ -622,33 +585,10 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		function handleWheel(e) {
-			if (changeSpeedOnScroll) {
-				runFunction(e, {
-					func: adjustSpeed,
-					funcThrottle: adjustSpeedThrottle
-				}, changeSpeedModifier);
-			}
-
-			if (changeVolOnScroll) {
-				runFunction(e, {
-					func: adjustVolume,
-					funcThrottle: adjustVolumeThrottle
-				}, changeVolModifier);
-			}
-
-			if (seekOnScroll) {
-				runFunction(e, {
-					func: adjustTime,
-					funcThrottle: adjustTimeThrottle
-				}, seekModifier);			
-			}
-
-			if (zoomOnScroll) {
-				runFunction(e, {
-					func: adjustZoom,
-					funcThrottle: adjustZoomThrottle
-				}, zoomModifier);
-			}
+			if (changeSpeedOnScroll) runFunction(e, adjustSpeed, changeSpeedModifier);
+			if (changeVolOnScroll) runFunction(e, adjustVolume, changeVolModifier);
+			if (seekOnScroll) runFunction(e, adjustTime, seekModifier);
+			if (zoomOnScroll) runFunction(e, adjustZoom, zoomModifier);
 		}
 
 		function handleClick(e) {
@@ -659,24 +599,15 @@ ytTweaks.tweaks.push(function (settings) {
 			}
 
 			if (changeSpeedOnScroll && resetSpeedAction) {
-				runFunction(e, {
-					func: adjustSpeed,
-					arg: true
-				}, resetSpeedModifier, resetSpeedAction);
+				runFunction(e, adjustSpeed, resetSpeedModifier, resetSpeedAction);
 			}
 
 			if (changeVolOnScroll && toggleMuteAction) {
-				runFunction(e, {
-					func: adjustVolume,
-					arg: true
-				}, toggleMuteModifier, toggleMuteAction);
+				runFunction(e, adjustVolume, toggleMuteModifier, toggleMuteAction);
 			}
 
 			if (zoomOnScroll && cancelZoomAction && e.currentTarget.video.dragMode) {
-				runFunction(e, {
-					func: adjustZoom,
-					arg: true
-				}, cancelZoomModifier, cancelZoomAction);
+				runFunction(e, adjustZoom, cancelZoomModifier, cancelZoomAction);
 			}
 		}
 
@@ -819,10 +750,10 @@ ytTweaks.tweaks.push(function (settings) {
 		}();
 
 		let throttleWait = 200;
-		let adjustSpeedThrottle = throttle(adjustSpeed);
-		let adjustVolumeThrottle = throttle(adjustVolume);
-		let adjustTimeThrottle = throttle(adjustTime);
-		let adjustZoomThrottle = throttle(adjustZoom);
+		adjustSpeed.throttle = throttle(adjustSpeed);
+		adjustVolume.throttle = throttle(adjustVolume);
+		adjustTime.throttle = throttle(adjustTime);
+		adjustZoom.throttle = throttle(adjustZoom);
 
 		function throttle(func) {
 			let isWaiting;
@@ -1157,74 +1088,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 				context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-				if (subtitles) {
-					const captions = player.querySelectorAll('.ytp-caption-segment');
-					const videoRect = video.getBoundingClientRect();
-
-					let outsideBottom = 0;
-					let outsideTop = 0;
-					let outsideLeft = 0
-					let outsideRight = 0;
-
-					for (const caption of captions) {
-						if (caption.clientWidth > video.clientWidth) {
-							caption.style.width = video.clientWidth + 'px';
-							caption.style.boxSizing = 'border-box';
-						}
-
-						const capRect = caption.getBoundingClientRect();
-
-						const num = videoRect.y + video.clientHeight - (capRect.y + caption.clientHeight);
-						const num2 = capRect.y - videoRect.y;
-						const num3 = capRect.x - videoRect.x;
-						const num4 = videoRect.x + video.clientWidth - (capRect.x + caption.clientWidth);
-
-						if (num < 0 && !(outsideBottom < num)) outsideBottom = num;
-						if (num2 < 0 && !(outsideTop < num2)) outsideTop = num2;
-						if (num3 < 0 && !(outsideLeft < num3)) outsideLeft = num3;
-						if (num4 < 0 && !(outsideRight < num4)) outsideRight = num4;
-					}
-
-					for (const caption of captions) {
-						const scaleX = video.videoWidth / video.clientWidth;
-						const capRect = caption.getBoundingClientRect();
-						const fontSize = +caption.style.fontSize.replace('px', '') * scaleX;
-						const y = (capRect.y - videoRect.y + (outsideBottom ? outsideBottom : Math.abs(outsideTop))) * scaleX;
-						const x = (capRect.x - videoRect.x + (outsideRight ? outsideRight : Math.abs(outsideLeft))) * scaleX;
-
-						const width = caption.clientWidth * scaleX;
-						const height = caption.clientHeight * scaleX;
-
-						context.fillStyle = caption.style.backgroundColor;
-						context.fillRect(x, y, width, height);
-
-						context.font = fontSize + 'px ' + caption.style.fontFamily;
-						context.fillStyle = caption.style.color;
-						context.textBaseline = 'middle';
-						context.textAlign = "center";
-
-						const whiteSpace = /\s/g.test(caption.textContent) ? ' ' : '';
-						const words = whiteSpace ? caption.textContent.split(' ') : [...caption.textContent];
-						const lines = [words[0]];
-
-						for (let i = 0; i < words.length - 1; i++) {
-							if (context.measureText(lines[lines.length - 1] + whiteSpace + words[i + 1]).width > width) {
-								lines.push(words[i + 1]);
-							}
-
-							else lines[lines.length - 1] += whiteSpace + words[i + 1];
-						}
-
-						for (let i = 0; i < lines.length; i++) {
-							context.fillText(lines[i], x + (width / 2), y + (height / lines.length) / 2 + height / lines.length * i);
-						}
-					}
-
-					for (const caption of captions) {
-						caption.style.width = '';
-						caption.style.boxSizing = '';
-					}
-				}
+				if (subtitles) includeSubtitles();
 
 				if (saveToFile) canvas.toBlob(function (blob) {
 					a.href = URL.createObjectURL(blob);
@@ -1237,6 +1101,75 @@ ytTweaks.tweaks.push(function (settings) {
 						new ClipboardItem({ 'image/png': blob })
 					]);
 				}, 'image/png', quality);
+			}
+
+			function includeSubtitles() {
+				const captions = player.querySelectorAll('.ytp-caption-segment');
+				const videoRect = video.getBoundingClientRect();
+
+				let outsideBottom = 0;
+				let outsideTop = 0;
+				let outsideLeft = 0
+				let outsideRight = 0;
+
+				for (const caption of captions) {
+					if (caption.clientWidth > video.clientWidth) {
+						caption.style.width = video.clientWidth + 'px';
+						caption.style.boxSizing = 'border-box';
+					}
+
+					const capRect = caption.getBoundingClientRect();
+
+					const num = videoRect.y + video.clientHeight - (capRect.y + caption.clientHeight);
+					const num2 = capRect.y - videoRect.y;
+					const num3 = capRect.x - videoRect.x;
+					const num4 = videoRect.x + video.clientWidth - (capRect.x + caption.clientWidth);
+
+					if (num < 0 && !(outsideBottom < num)) outsideBottom = num;
+					if (num2 < 0 && !(outsideTop < num2)) outsideTop = num2;
+					if (num3 < 0 && !(outsideLeft < num3)) outsideLeft = num3;
+					if (num4 < 0 && !(outsideRight < num4)) outsideRight = num4;
+				}
+
+				for (const caption of captions) {
+					const scaleX = video.videoWidth / video.clientWidth;
+					const capRect = caption.getBoundingClientRect();
+					const fontSize = +caption.style.fontSize.replace('px', '') * scaleX;
+					const y = (capRect.y - videoRect.y + (outsideBottom ? outsideBottom : Math.abs(outsideTop))) * scaleX;
+					const x = (capRect.x - videoRect.x + (outsideRight ? outsideRight : Math.abs(outsideLeft))) * scaleX;
+
+					const width = caption.clientWidth * scaleX;
+					const height = caption.clientHeight * scaleX;
+
+					context.fillStyle = caption.style.backgroundColor;
+					context.fillRect(x, y, width, height);
+
+					context.font = fontSize + 'px ' + caption.style.fontFamily;
+					context.fillStyle = caption.style.color;
+					context.textBaseline = 'middle';
+					context.textAlign = 'center';
+
+					const whiteSpace = /\s/g.test(caption.textContent) ? ' ' : '';
+					const words = whiteSpace ? caption.textContent.split(' ') : [...caption.textContent];
+					const lines = [words[0]];
+
+					for (let i = 0; i < words.length - 1; i++) {
+						if (context.measureText(lines[lines.length - 1] + whiteSpace + words[i + 1]).width > width) {
+							lines.push(words[i + 1]);
+						}
+
+						else lines[lines.length - 1] += whiteSpace + words[i + 1];
+					}
+
+					for (let i = 0; i < lines.length; i++) {
+						context.fillText(lines[i], x + (width / 2), y + (height / lines.length) / 2 + height / lines.length * i);
+					}
+				}
+
+				for (const caption of captions) {
+					caption.style.width = '';
+					caption.style.boxSizing = '';
+				}
 			}
 		}();
 
@@ -2668,64 +2601,59 @@ ytTweaks.tweaks.push(function (settings) {
 		let timeoutId;
 		let num = '';
 
-		ytTweaks.numbersThenKey = {
-			main: function (e) {
-				getPlayerAndVideo();
-				if (!video?.clientWidth) return;
+		function main(e) {
+			getPlayerAndVideo();
+			if (!video?.clientWidth) return;
 
-				if (e.key != ' ' && !isNaN(e.key)) {
-					e.stopImmediatePropagation();
-					timeout();
+			if (e.key != ' ' && !isNaN(e.key)) {
+				e.stopImmediatePropagation();
+				timeout();
 
-					num += e.key;
-					showFeedback(num, '', 2000);
-				}
-
-				if (!num) return;
-
-				else if (settings.numbersThenEnter && e.key == 'Enter') {
-					showFeedback(formatSecToDDHHMMSS(convertToSeconds(num)) + ' (' + (convertToSeconds(num) - video.currentTime > 0 ? '+' : '-') + formatSecToDDHHMMSS(Math.abs(convertToSeconds(num) - video.currentTime)) + ')');
-					seek(e, convertToSeconds(num));
-				}
-
-				else if (settings.numbersThenArrowKey && (e.key == 'ArrowRight' || e.key == 'ArrowLeft')) {
-					showFeedback((e.key == 'ArrowRight' ? '+' : '-') + formatSecToDDHHMMSS(convertToSeconds(num)));
-					seek(e, video.currentTime + (e.key == 'ArrowRight' ? convertToSeconds(num) : -convertToSeconds(num)));
-				}
-
-				else if (settings.numbersThenShift && e.key == 'Shift') {
-					let formattedRate;
-					if (num[0] == '0') formattedRate = +num.replace('0', '0.');
-					else formattedRate = +num >= 100 ? +num / 100 : +num;
-
-					if (formattedRate > 16) formattedRate = 16;
-					else if (formattedRate < 0.08) formattedRate = 1;
-
-					player.setPlaybackRate(formattedRate);
-					video.playbackRate = formattedRate;
-					showFeedback(formattedRate + 'x');
-					num = '';
-
-					try {
-						sessionStorage.setItem('yt-player-playback-rate', JSON.stringify({
-							data: formattedRate + '',
-							creation: Date.now()
-						}))
-					} catch { }
-				}
-
-				else if (e.key == 'Backspace') {
-					timeout();
-					num = num.slice(0, -1);
-					showFeedback(num, '', 2000);
-				}
-
-				return true;
-			},
-			storageChanged: function () {
-				delete ytTweaks.numbersThenKey;
+				num += e.key;
+				showFeedback(num, '', 2000);
 			}
-		};
+
+			if (!num) return;
+
+			else if (settings.numbersThenEnter && e.key == 'Enter') {
+				showFeedback(formatSecToDDHHMMSS(convertToSeconds(num)) + ' (' + (convertToSeconds(num) - video.currentTime > 0 ? '+' : '-') + formatSecToDDHHMMSS(Math.abs(convertToSeconds(num) - video.currentTime)) + ')');
+				seek(e, convertToSeconds(num));
+			}
+
+			else if (settings.numbersThenArrowKey && (e.key == 'ArrowRight' || e.key == 'ArrowLeft')) {
+				showFeedback((e.key == 'ArrowRight' ? '+' : '-') + formatSecToDDHHMMSS(convertToSeconds(num)));
+				seek(e, video.currentTime + (e.key == 'ArrowRight' ? convertToSeconds(num) : -convertToSeconds(num)));
+			}
+
+			else if (settings.numbersThenShift && e.key == 'Shift') {
+				let formattedRate;
+				if (num[0] == '0') formattedRate = +num.replace('0', '0.');
+				else formattedRate = +num >= 100 ? +num / 100 : +num;
+
+				if (formattedRate > 16) formattedRate = 16;
+				else if (formattedRate < 0.08) formattedRate = 1;
+
+				player.setPlaybackRate(formattedRate);
+				video.playbackRate = formattedRate;
+				showFeedback(formattedRate + 'x');
+				num = '';
+
+				try {
+					sessionStorage.setItem('yt-player-playback-rate', JSON.stringify({
+						data: formattedRate + '',
+						creation: Date.now()
+					}))
+				} catch { }
+			}
+
+			else if (e.key == 'Backspace') {
+				timeout();
+				num = num.slice(0, -1);
+				showFeedback(num, '', 2000);
+			}
+
+			return true;
+		}
 
 		function timeout() {
 			clearTimeout(timeoutId);
@@ -2754,6 +2682,13 @@ ytTweaks.tweaks.push(function (settings) {
 
 			return sec;
 		}
+
+		ytTweaks.numbersThenKey = {
+			main: main,
+			storageChanged: function () {
+				delete ytTweaks.numbersThenKey;
+			}
+		};
 	}
 
 	if (settings.toggleLoopHotkey) {

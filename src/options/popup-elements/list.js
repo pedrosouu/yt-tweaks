@@ -48,14 +48,7 @@ function getList(button) {
 }
 
 function restoreList() {
-    if (listType?.includes('+')) for (const key in trigger.value) {
-        addItem(document.createElement('div'), key, trigger.value[key]);
-    }
-
-    else for (const value of trigger.value) {
-        addItem(document.createElement('div'), value);
-    }
-
+    for (const key in trigger.value) addItem(document.createElement('div'), key, trigger.value[key]);
     addItem(document.createElement('div'));
 }
 
@@ -66,7 +59,7 @@ function addItem(item, value1, value2) {
 
     else if (listType == 'hotkey+number') item.append(getSetHotkeyBtn(value1), getNumberInput(value2));
 
-    else item.appendChild(getTextInput(value1));
+    else item.appendChild(getTextInput(value2));
 
     item.insertAdjacentHTML('beforeend', `<button class="tinted delete iconButton" title="Delete"></button>`);
 
@@ -82,16 +75,9 @@ function listUpdated() {
     const itemsContainer = list.lastElementChild;
     const items = itemsContainer.querySelectorAll('.listItem');
 
-    if (listType?.includes('+')) {
-        for (const item of items) {
-            if (item.children[0].value) trigger.value[item.children[0].value] = item.children[1].valueAsNumber || item.children[1].value;
-        }
-    }
-
-    else {
-        for (const item of items) {
-            if (item.children[0].value) trigger.value.push(item.children[0].value);
-        }
+    for (const item of items) if (item.children[0].value) {
+        if (listType?.includes('+')) trigger.value[item.children[0].value] = item.children[1].valueAsNumber || item.children[1].value;
+        else trigger.value.push(item.children[0].value);
     }
 
     if (items[items.length - 1]?.children[0].value || !items.length) {
@@ -99,7 +85,7 @@ function listUpdated() {
         list.scrollTo({ top: list.scrollHeight });
     }
 
-    saveSettings({ [trigger.id]: Object.keys(trigger.value).length ? trigger.value : ''});
+    saveSettings({ [trigger.id]: Object.keys(trigger.value).length ? trigger.value : '' });
 }
 
 function handleSearch(e) {

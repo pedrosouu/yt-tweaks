@@ -44,23 +44,28 @@ document.addEventListener('keydown', function (e) {
             handleSelection(selectMenu.querySelector('.focused'));
         } else {
             if (e.key == 'Tab' || e.key == 'Dead') return;
-            handleKeyboardNavOpen(e);
+            handleKeyboardNav(e);
         }
     }
     else if (document.activeElement.matches('.selectMenu')) {
         if (e.key == 'Tab' || e.key == 'Enter' || e.key == 'Dead') return;
-        handleKeyboardNavClosed(e);
+        handleKeyboardNav(e, true);
     }
 });
 
-function handleKeyboardNavOpen(e) {
-    const focusedOption = selectMenu.querySelector('.focused');
+function handleKeyboardNav(e, closedMenu) {
+    if (closedMenu) {
+        selectMenu = document.activeElement.lastElementChild;
+        trigger = document.activeElement;
+    }
+
+    const focusedOption = closedMenu ? selectMenu.querySelector('.selected') || selectMenu.children[0] : selectMenu.querySelector('.focused');
 
     if (e.key.includes('Arrow')) {
         e.preventDefault();
         let sibling = (e.key == 'ArrowDown' || e.key == 'ArrowRight') ? 'nextElementSibling' : 'previousElementSibling';
         if (focusedOption[sibling]) {
-            addFocusToOption(focusedOption, focusedOption[sibling]);
+            closedMenu ? handleSelection(focusedOption[sibling]) : addFocusToOption(focusedOption, focusedOption[sibling]);
         }
     } else {
         strg += e.key.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
@@ -72,13 +77,13 @@ function handleKeyboardNavOpen(e) {
 
         for (const option of selectMenu.children) {
             if ((focusedOption.compareDocumentPosition(option) == 4 || strg.length > 1 && option == focusedOption) && option.textContent.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().startsWith(strg)) {
-                addFocusToOption(focusedOption, option);
+                closedMenu ? handleSelection(option) : addFocusToOption(focusedOption, option);
                 break;
-            } 
+            }
             else if (!option.nextElementSibling) {
                 for (const option of selectMenu.children) {
                     if (option.textContent.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().startsWith(strg)) {
-                        addFocusToOption(focusedOption, option);
+                        closedMenu ? handleSelection(option) : addFocusToOption(focusedOption, option);
                         break;
                     }
                 }
@@ -86,7 +91,7 @@ function handleKeyboardNavOpen(e) {
         }
 
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(function() {
+        timeoutId = setTimeout(function () {
             strg = '';
         }, 500);
     }
@@ -111,44 +116,5 @@ function handleKeyboardNavOpen(e) {
                 top: selectMenu.scrollTop - (element.offsetHeight + selectMenu.children[0].offsetTop - (selectMenu.clientHeight - (yInverted - scrollBottom)))
             });
         }
-    }
-}
-
-function handleKeyboardNavClosed(e) {
-    selectMenu = document.activeElement.lastElementChild;
-    trigger = document.activeElement;
-    const selectedOption = selectMenu.querySelector('.selected') || selectMenu.children[0];
-
-    if (e.key.includes('Arrow')) {
-        e.preventDefault();
-        let sibling = (e.key == 'ArrowDown' || e.key == 'ArrowRight') ? 'nextElementSibling' : 'previousElementSibling';
-        if (selectedOption[sibling]) handleSelection(selectedOption[sibling]);
-    } else {
-        strg += e.key.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
-        if (strg[0] == ' ') {
-            strg = '';
-            return;
-        } else e.preventDefault();
-        if (strg[0] == strg[1]) strg = strg[0];
-
-        for (const option of selectMenu.children) {
-            if ((selectedOption.compareDocumentPosition(option) == 4 || strg.length > 1 && option == selectedOption) && option.textContent.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().startsWith(strg)) {
-                handleSelection(option);
-                break;
-            } 
-            else if (!option.nextElementSibling) {
-                for (const option of selectMenu.children) {
-                    if (option.textContent.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().startsWith(strg)) {
-                        handleSelection(option);
-                        break;
-                    }
-                }
-            }
-        }
-
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(function() {
-            strg = '';
-        }, 500);
     }
 }
