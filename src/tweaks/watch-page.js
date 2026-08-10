@@ -80,6 +80,18 @@ ytTweaks.tweaks.push(function (settings) {
         };
     }
 
+    if (settings.defaultLiveChatView && location.pathname.includes('chat')) {
+        if (document.readyState == 'loading') {
+            document.addEventListener('yt-live-chat-popup-config', setView, { once: true });
+        } else {
+            setView();
+        }
+
+        function setView() {
+            document.querySelectorAll('yt-reload-continuation')[1].trigger();
+        }
+    }
+
     if (settings.defaultSortingOfComments) {
         document.addEventListener('yt-action', sort, true);
 
