@@ -1881,12 +1881,15 @@ ytTweaks.tweaks.push(function (settings) {
 					window.dispatchEvent(new Event('orientationchange'));
 					videoIsOutOfView = 0;
 				} else {
-					if (enableOnScroll && navigator.mediaSession.playbackState == 'playing') {
+					videoIsOutOfView = 1;
+
+					if (enableOnScroll) {
+						const video = mainPlayer.querySelector('video');
+						if (video.paused || video.currentTime == video.duration) return;
+
 						mainPlayer.classList.add('yttw-sticky-player');
 						window.dispatchEvent(new Event('orientationchange'));
 					}
-
-					videoIsOutOfView = 1;
 				}
 			}
 		}
