@@ -23,6 +23,7 @@ A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Vid
 - Homepage: Hide topic bar and Latest YouTube posts
 - Auto-expand comments
 - Disable auto-opening of live chat
+- Use 'Live chat' by default instead of 'Top chat' in live stream/replay
 - Comments sorted by newest by default
 - Show comments in sidebar
 - Like/dislike hotkeys
