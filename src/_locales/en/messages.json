@@ -1,0 +1,773 @@
+{
+    "locale_dir": {
+        "message": "ltr"
+    },
+    "extension_description": {
+        "message": "A collection of tweaks for hiding Shorts, changing the number of videos per row and more!"
+    },
+    "search": {
+        "message": "Search"
+    },
+    "donate": {
+        "message": "Donate"
+    },
+    "rate": {
+        "message": "Rate"
+    },
+    "video_grid": {
+        "message": "Video grid"
+    },
+    "homepage": {
+        "message": "Homepage"
+    },
+    "subscriptions_page": {
+        "message": "Subscriptions page"
+    },
+    "channel_page": {
+        "message": "Channel page"
+    },
+    "video_player": {
+        "message": "Video player"
+    },
+    "watch_page": {
+        "message": "Watch page"
+    },
+    "search_page": {
+        "message": "Search page"
+    },
+    "header_bar": {
+        "message": "Header bar"
+    },
+    "left_sidebar": {
+        "message": "Left sidebar"
+    },
+    "youtube_themes": {
+        "message": "YouTube themes"
+    },
+    "other": {
+        "message": "Other"
+    },
+    "custom_code": {
+        "message": "Custom code"
+    },
+    "export_import_settings": {
+        "message": "Export/import settings"
+    },
+    "export_settings": {
+        "message": "Export"
+    },
+    "import_settings": {
+        "message": "Import"
+    },
+    "export_settings_feedback": {
+        "message": "Setings copied to clipboard!"
+    },
+    "import_settings_instruction": {
+        "message": "Paste your setings here"
+    },
+    "videos_tab": {
+        "message": "Videos tab"
+    },
+    "default_to_videos_tab": {
+        "message": "Default to Videos tab"
+    },
+    "home_tab": {
+        "message": "Home tab"
+    },
+    "navigate_to_homepage": {
+        "message": "Navigate to Homepage"
+    },
+    "navigate_to_subs_page": {
+        "message": "Navigate to Subscriptions page"
+    },
+    "navigate_to_shorts_page": {
+        "message": "Navigate to Shorts page"
+    },
+    "set_hotkey": {
+        "message": "Set hotkey"
+    },
+    "hotkeys": {
+        "message": "Hotkeys"
+    },
+    "key_binder_instruction": {
+        "message": "Press a key or combination for "
+    },
+    "off": {
+        "message": "Off"
+    },
+    "default": {
+        "message": "Default"
+    },
+    "disable": {
+        "message": "Disable"
+    },
+    "hide": {
+        "message": "Hide"
+    },
+    "dim": {
+        "message": "Dim"
+    },
+    "opacity": {
+        "message": "Opacity"
+    },
+    "blur": {
+        "message": "Blur"
+    },
+    "videos": {
+        "message": "Videos"
+    },
+    "shorts": {
+        "message": "Shorts"
+    },
+    "mixes": {
+        "message": "Mixes"
+    },
+    "live_streams": {
+        "message": "Live streams"
+    },
+    "current_live_streams": {
+        "message": "Current"
+    },
+    "completed_live_streams": {
+        "message": "Completed"
+    },
+    "both_live_streams": {
+        "message": "Both"
+    },
+    "upcoming_videos": {
+        "message": "Upcoming videos"
+    },
+    "watched_videos": {
+        "message": "Watched videos"
+    },
+    "watched_percentage": {
+        "message": "Watched %: "
+    },
+    "topic_bar": {
+        "message": "Topic bar"
+    },
+    "latest_yt_Posts": {
+        "message": "'Latest YouTube Posts'"
+    },
+    "posts": {
+        "message": "Posts"
+    },
+    "items_per_row": {
+        "message": "Number of items per row"
+    },
+    "items_per_row_option_sub_label": {
+        "message": "Control how many videos, shorts and posts appear per row."
+    },
+    "max_num_of_cols": {
+        "message": "Maximum number of columns"
+    },
+    "min_col_width": {
+        "message": "Minimum column width "
+    },
+    "hide_profile_pictures": {
+        "message": "Hide profile pictures"
+    },
+    "decrease_font_size": {
+        "message": "Decrease font size"
+    },
+    "theater_mode": {
+        "message": "Theater mode"
+    },
+    "player_height": {
+        "message": "Player height"
+    },
+    "theater_mode_player_height_option_sub_label": {
+        "message": "Set how much vertical space the player takes up in Theater mode."
+    },
+    "height": {
+        "message": "Height"
+    },
+    "auto_hide_header": {
+        "message": "Auto-hide header"
+    },
+    "video_focus": {
+        "message": "Video focus"
+    },
+    "video_focus_option_sub_label": {
+        "message": "Darkens everything around the player except the chat when hovering it."
+    },
+    "show_video_rem_time": {
+        "message": "Show video remaining time"
+    },
+    "where": {
+        "message": "Where?"
+    },
+    "tab_title": {
+        "message": "Tab title"
+    },
+    "format": {
+        "message": "Format"
+    },
+    "pause_previous_video": {
+        "message": "Pause the previous video when another starts playing"
+    },
+    "automatic_resume": {
+        "message": "Automatic resume"
+    },
+    "auto_scroll_shorts": {
+        "message": "Auto-scroll Shorts"
+    },
+    "auto_scroll_shorts_option_sub_label": {
+        "message": "Autoplays the next short when the first has finished."
+    },
+    "toggle_loop": {
+        "message": "Toggle loop"
+    },
+    "video_paused_continue_watching": {
+        "message": "'Video paused. Continue watching?'"
+    },
+    "automatic_dubbing": {
+        "message": "Automatic dubbing"
+    },
+    "auto_play_in_playlists": {
+        "message": "Auto-play in playlists"
+    },
+    "number_keys_shortcuts": {
+        "message": "Number keys shortcuts"
+    },
+    "top_row": {
+        "message": "Top row"
+    },
+    "numpad": {
+        "message": "Numpad"
+    },
+    "shorts_looping": {
+        "message": "Shorts looping"
+    },
+    "progress_bar": {
+        "message": "Progress bar"
+    },
+    "always_show_progress_bar": {
+        "message": "Always show progress bar"
+    },
+    "pinned_to_the_bottom": {
+        "message": "Pinned to the bottom"
+    },
+    "outside_the_player": {
+        "message": "Outside the player"
+    },
+    "custom_progress_bar": {
+        "message": "Custom progress bar"
+    },
+    "solid_color": {
+        "message": "Solid color"
+    },
+    "color": {
+        "message": "Color"
+    },
+    "lightsaber": {
+        "message": "LightSaber"
+    },
+    "video_snapshot": {
+        "message": "Video snapshot"
+    },
+    "quality": {
+        "message": "Quality"
+    },
+    "include_subtitles": {
+        "message": "Include subtitles/captions"
+    },
+    "snapshot_button": {
+        "message": "Snapshot button"
+    },
+    "save_method_left_click": {
+        "message": "Save method (Left-click)"
+    },
+    "save_method_right_click": {
+        "message": "Save method (Right-click)"
+    },
+    "file": {
+        "message": "File"
+    },
+    "clipboard": {
+        "message": "Clipboard"
+    },
+    "file_and_clipboard": {
+        "message": "File and clipboard"
+    },
+    "snapshot_to_file": {
+        "message": "Snapshot to file"
+    },
+    "snapshot_to_clipboard": {
+        "message": "Snapshot to clipboard"
+    },
+    "snapshot_to_file_and_clipboard": {
+        "message": "Snapshot to file and clipboard"
+    },
+    "sticky_player": {
+        "message": "Sticky player"
+    },
+    "picture_in_picture": {
+        "message": "Picture-in-Picture"
+    },
+    "sticky_player_and_picture_in_picture": {
+        "message": "Sticky player & Picture-in-Picture"
+    },
+    "activate_on_scroll": {
+        "message": "Activate when scrolling down"
+    },
+    "activate_deactivate": {
+        "message": "Activate/deactivate"
+    },
+    "size": {
+        "message": "Size"
+    },
+    "position": {
+        "message": "Position"
+    },
+    "bottom_right": {
+        "message": "Bottom right"
+    },
+    "bottom_center": {
+        "message": "Bottom center"
+    },
+    "bottom_left": {
+        "message": "Bottom left"
+    },
+    "center_right": {
+        "message": "Center right"
+    },
+    "center_left": {
+        "message": "Center left"
+    },
+    "top_right": {
+        "message": "Top right"
+    },
+    "top_center": {
+        "message": "Top center"
+    },
+    "top_left": {
+        "message": "Top left"
+    },
+    "below_the_header": {
+        "message": "Below the header"
+    },
+    "floating": {
+        "message": "Floating"
+    },
+    "rounded_corners": {
+        "message": "Rounded corners"
+    },
+    "auto_picture_in_picture_on_tab_change": {
+        "message": "Auto PiP on tab change"
+    },
+    "toggle_picture_in_picture": {
+        "message": "Toggle PiP"
+    },
+    "video_seeking": {
+        "message": "Video seeking"
+    },
+    "seek_video_by_scrolling_over_player": {
+        "message": "Seek by scrolling over player"
+    },
+    "forward_time": {
+        "message": "Forward"
+    },
+    "backward_time": {
+        "message": "Backward"
+    },
+    "seconds": {
+        "message": "Seconds"
+    },
+    "require_holding_key": {
+        "message": "Require holding"
+    },
+    "nothing": {
+        "message": "Nothing"
+    },
+    "lmb": {
+        "message": "Left mouse button"
+    },
+    "rmb": {
+        "message": "Right mouse button"
+    },
+    "mouse_wheel_dir_tip": {
+        "message": "Negative number = reversed mouse wheel direction"
+    },
+    "seek_video_forward": {
+        "message": "Seek forward"
+    },
+    "seek_video_backward": {
+        "message": "Seek backward"
+    },
+    "undo_video_seek": {
+        "message": "Undo seek"
+    },
+    "redo_video_seek": {
+        "message": "Redo seek"
+    },
+    "numbers_then_enter": {
+        "message": "Type a number and press Enter to seek to that time"
+    },
+    "numbers_then_enter_option_sub_label": {
+        "message": "E.g. 1 + 3 + 0 + Enter will seek to 1 minute and 30 seconds."
+    },
+    "numbers_then_arrow_key": {
+        "message": "Type a number and press left/right arrow key to seek by that amount of time"
+    },
+    "numbers_then_arrow_key_option_sub_label": {
+        "message": "E.g. 1 + 5 + right arrow key will seek forward by 15 seconds."
+    },
+    "numbers_then_shift": {
+        "message": "Type a number and press Shift to set speed to that number"
+    },
+    "numbers_then_shift_option_sub_label": {
+        "message": "E.g. 1 + 2 + 5 + Shift will set speed to 1.25x."
+    },
+    "step": {
+        "message": "Step"
+    },
+    "video_speed": {
+        "message": "Video speed"
+    },
+    "default_video_speed": {
+        "message": "Default video speed"
+    },
+    "speed": {
+        "message": "Speed"
+    },
+    "scroll_speed_over_player": {
+        "message": "Scroll speed over player"
+    },
+    "increase_speed": {
+        "message": "Increase speed"
+    },
+    "decrease_speed": {
+        "message": "Decrease speed"
+    },
+    "normal_speed": {
+        "message": "Normal speed"
+    },
+    "custom_speed": {
+        "message": "Custom speed"
+    },
+    "return_to_normal_speed": {
+        "message": "Return to normal speed"
+    },
+    "saved_per_channel_speeds": {
+        "message": "Saved per-channel speeds"
+    },
+    "channel_speed_button": {
+        "message": "Channel speed button"
+    },
+    "set_channel_speed": {
+        "message": "Set channel speed"
+    },
+    "left_click": {
+        "message": "Left-click"
+    },
+    "right_click": {
+        "message": "Right-click"
+    },
+    "middle_click": {
+        "message": "Middle-click"
+    },
+    "exact_match": {
+        "message": "Exact, case-sensitive match"
+    },
+    "channel_name": {
+        "message": "Channel name"
+    },
+    "video_audio": {
+        "message": "Video audio"
+    },
+    "scroll_volume_over_player": {
+        "message": "Scroll volume over player"
+    },
+    "toggle_mute": {
+        "message": "Toggle mute/unmute"
+    },
+    "increase_video_volume": {
+        "message": "Increase volume"
+    },
+    "decrease_video_volume": {
+        "message": "Decrease volume"
+    },
+    "volume_booster_level": {
+        "message": "Volume booster level"
+    },
+    "toggle_volume_boost_with_mouse": {
+        "message": "Toggle volume boost by right clicking the volume button"
+    },
+    "toggle_volume_boost": {
+        "message": "Toggle volume boost"
+    },
+    "auto_boost_volume": {
+        "message": "Automatically boost the volume"
+    },
+    "mono_audio_button": {
+        "message": "Mono audio button"
+    },
+    "toggle_mono_audio": {
+        "message": "Toggle mono audio"
+    },
+    "auto_turn_mono_audio_on": {
+        "message": "Automatically turn mono audio on"
+    },
+    "video_quality": {
+        "message": "Video quality"
+    },
+    "default_video_quality": {
+        "message": "Default video quality"
+    },
+    "fallback": {
+        "message": "Fallback"
+    },
+    "next_high_video_quality": {
+        "message": "Next highest quality"
+    },
+    "next_low_video_quality": {
+        "message": "Next lowest quality"
+    },
+    "increase_video_quality": {
+        "message": "Increase quality"
+    },
+    "decrease_video_quality": {
+        "message": "Decrease quality"
+    },
+    "highest_video_quality": {
+        "message": "Highest quality"
+    },
+    "lowest_video_quality": {
+        "message": "Lowest quality"
+    },
+    "zoom_flip_rotate_video": {
+        "message": "Zoom / Flip / Rotate video"
+    },
+    "zoom_by_scrolling_over_player": {
+        "message": "Zoom in/out by scrolling over player"
+    },
+    "zoom_to_cursor": {
+        "message": "Follow mouse cursor"
+    },
+    "cancel_zoom": {
+        "message": "Cancel zoom"
+    },
+    "zoom_in": {
+        "message": "Zoom in"
+    },
+    "zoom_out": {
+        "message": "Zoom out"
+    },
+    "move_zoomed_area_right": {
+        "message": "Move zoomed area right"
+    },
+    "move_zoomed_area_left": {
+        "message": "Move zoomed area left"
+    },
+    "move_zoomed_area_up": {
+        "message": "Move zoomed area up"
+    },
+    "move_zoomed_area_down": {
+        "message": "Move zoomed area down"
+    },
+    "flip_video_horizontally_button": {
+        "message": "Flip horizontally button"
+    },
+    "flip_video_vertically_button": {
+        "message": "Flip vertically button"
+    },
+    "flip_video_horizontally": {
+        "message": "Flip horizontally"
+    },
+    "flip_video_vertically": {
+        "message": "Flip vertically"
+    },
+    "rotate_video_clockwise_button": {
+        "message": "Rotate clockwise button"
+    },
+    "rotate_video_anti_clockwise_button": {
+        "message": "Rotate anti-clockwise button"
+    },
+    "rotate_video_clockwise": {
+        "message": "Rotate clockwise"
+    },
+    "rotate_video_anti_clockwise": {
+        "message": "Rotate anti-clockwise"
+    },
+    "video_end_cards": {
+        "message": "End cards"
+    },
+    "hide_video_controls_on_pause_seek": {
+        "message": "Video controls on pause/seek"
+    },
+    "show_video_end_cards_on_hover_pause": {
+        "message": "Show on hover/pause"
+    },
+    "video_description": {
+        "message": "Video description"
+    },
+    "minimalist_video_description": {
+        "message": "Minimalist"
+    },
+    "expanded_video_description": {
+        "message": "Expanded"
+    },
+    "clickable_channel_names": {
+        "message": "Clickable channel names in the sidebar"
+    },
+    "toggle_video_transcript": {
+        "message": "Toggle transcript"
+    },
+    "toggle_like": {
+        "message": "Toggle like"
+    },
+    "toggle_dislike": {
+        "message": "Toggle dislike"
+    },
+    "live_chat": {
+        "message": "Live chat"
+    },
+    "disable_auto_opening_live_chat": {
+        "message": "Disable auto-opening live chat"
+    },
+    "default_view": {
+        "message": "Default view"
+    },
+    "live_chat_view_top_chat": {
+        "message": "Top chat"
+    },
+    "live_chat_view_live_chat": {
+        "message": "Live chat"
+    },
+    "comments_section": {
+        "message": "Comments section"
+    },
+    "auto_expand_long_comments": {
+        "message": "Auto-expand long comments"
+    },
+    "default_sorting_of_comments": {
+        "message": "Default sorting of comments"
+    },
+    "comments_sorting_top": {
+        "message": "Top"
+    },
+    "comments_sorting_newest": {
+        "message": "Newest"
+    },
+    "sidebar": {
+        "message": "Sidebar"
+    },
+    "show_comments_section": {
+        "message": "Show comments section"
+    },
+    "toggle_comments_section": {
+        "message": "Toggle comments section"
+    },
+    "use_player_height": {
+        "message": "Use player height"
+    },
+    "hide_header": {
+        "message": "Hide header"
+    },
+    "hide_comment_field": {
+        "message": "Hide comment field"
+    },
+    "share_button": {
+        "message": "Share button"
+    },
+    "download_button": {
+        "message": "Download button"
+    },
+    "clip_button": {
+        "message": "Clip button"
+    },
+    "thanks_button": {
+        "message": "Thanks button"
+    },
+    "save_button": {
+        "message": "Save button"
+    },
+    "button_labels": {
+        "message": "Button labels"
+    },
+    "show_search_results_as_a_grid": {
+        "message": "Search results as a grid"
+    },
+    "hide_right_sidebar": {
+        "message": "Hide right sidebar"
+    },
+    "irrelevant_search_results": {
+        "message": "Irrelevant search results"
+    },
+    "hide_irrelevant_search_results_option_sub_label": {
+        "message": "For you, People also watched, Watch again..."
+    },
+    "compact_header": {
+        "message": "Compact header bar"
+    },
+    "make_yt_logo_redirect_to_another_page": {
+        "message": "Make logo redirect to another page"
+    },
+    "page": {
+        "message": "Page"
+    },
+    "open_a_yt_page": {
+        "message": "Open a YouTube page"
+    },
+    "open_in_new_tab_button_in_search_box": {
+        "message": "Add 'Open in new tab' button to search box"
+    },
+    "compact_left_sidebar": {
+        "message": "Compact left sidebar"
+    },
+    "shorts_button": {
+        "message": "Shorts button"
+    },
+    "explore_section": {
+        "message": "'Explore' section"
+    },
+    "more_from_yt_section": {
+        "message": "'More from YouTube' section"
+    },
+    "dark_theme": {
+        "message": "Dark theme"
+    },
+    "light_theme": {
+        "message": "Light theme"
+    },
+    "use_theme_in_light_mode": {
+        "message": "Use this theme in light mode"
+    },
+    "navigate_to_wl_page": {
+        "message": "Navigate to Watch Later page"
+    },
+    "more_animations": {
+        "message": "More animations"
+    },
+    "red_subscribe_button": {
+        "message": "Red subscribe button"
+    },
+    "video_metadata": {
+        "message": "Video metadata"
+    },
+    "show_full_video_title": {
+        "message": "Show full title"
+    },
+    "show_full_channel_name_and_upload_time": {
+        "message": "Show full channel name and upload time"
+    },
+    "back_to_top": {
+        "message": "Back to top"
+    },
+    "show_back_to_top_button": {
+        "message": "Show back to top button"
+    },
+    "icon": {
+        "message": "Icon"
+    },
+    "scroll_back_to_top": {
+        "message": "Scroll back to top"
+    },
+    "delete": {
+        "message": "Delete"
+    },
+    "close": {
+        "message": "Close"
+    }
+}

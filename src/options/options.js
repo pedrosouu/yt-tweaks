@@ -2,9 +2,15 @@ import { getSelectMenu } from '/options/popup-elements/select-menu.js';
 import { getColorPicker } from '/options/popup-elements/color-picker.js';
 import { getKeyBinder } from '/options/popup-elements/key-binder.js';
 import { getList } from '/options/popup-elements/list.js';
-import { getSettingsImporter } from '/options/popup-elements/settings-importer.js';
 
-export { handlePopupDisplay, saveSettings, exportSettings, openPopup };
+export { handlePopupDisplay, saveSettings, openPopup };
+
+document.body.dir = chrome.i18n.getMessage('locale_dir');
+showLocalizedText(document);
+
+try {
+    navigator.mediaSession.setActionHandler('enterpictureinpicture', function () {});
+} catch { document.body.classList.add('autoPipUnsupported') }
 
 await load(chrome.runtime.getURL('options/tabs/video-grid.html'), document.getElementById('video-grid'));
 await load(chrome.runtime.getURL('options/tabs/homepage.html'), document.getElementById('homepage'));
@@ -20,8 +26,6 @@ await load(chrome.runtime.getURL('options/tabs/other.html'), document.getElement
 await load(chrome.runtime.getURL('options/tabs/custom-code.html'), document.getElementById('custom-code'));
 await load(chrome.runtime.getURL('options/tabs/user-settings.html'), document.getElementById('user-settings'));
 
-document.documentElement.setAttribute('pip-api', window.PictureInPictureWindow != undefined);
-
 function load(url, element) {
     return fetch(url)
         .then(function (data) {
@@ -29,11 +33,39 @@ function load(url, element) {
         })
         .then(function (data) {
             element?.insertAdjacentHTML('afterbegin', data);
+            showLocalizedText(element);
         });
 }
 
 let timeoutId;
 const openPopup = [];
+
+function showLocalizedText(ancestor) {
+    let msg;
+
+    for (const el of ancestor.querySelectorAll(':is([data-text], [placeholder], [number-title], [text-title], [text-placeholder])')) {
+        if (el.attributes['data-text']) {
+            msg = chrome.i18n.getMessage(el.getAttribute('data-text'));
+            if (msg) el.prepend(document.createTextNode(msg));
+        }
+        if (el.attributes.placeholder) {
+            msg = chrome.i18n.getMessage(el.getAttribute('placeholder'));
+            if (msg) el.setAttribute('placeholder', msg);
+        }
+        if (el.attributes['number-title']) {
+            msg = chrome.i18n.getMessage(el.getAttribute('number-title'));
+            if (msg) el.setAttribute('number-title', msg);
+        }
+        if (el.attributes['text-title']) {
+            msg = chrome.i18n.getMessage(el.getAttribute('text-title'));
+            if (msg) el.setAttribute('text-title', msg);
+        }
+        if (el.attributes['text-placeholder']) {
+            msg = chrome.i18n.getMessage(el.getAttribute('text-placeholder'));
+            if (msg) el.setAttribute('text-placeholder', msg);
+        }
+    }
+}
 
 chrome.storage.local.get().then(function (settings) {
     for (const key in settings) {
@@ -44,17 +76,13 @@ chrome.storage.local.get().then(function (settings) {
 document.addEventListener('click', function (e) {
     let button;
 
-    if (button = e.target.closest('.tabHeading')) {
-        handleTabClick(button);
+    if (openPopup.length && !openPopup[openPopup.length - 1].contains(e.target) || e.target.closest('.close')) {
+        e.preventDefault();
+        handlePopupDisplay();
     }
 
     else if (button = e.target.closest('.removeSetting')) {
         removeSettingBtnClicked(button);
-    }
-
-    else if (openPopup.length && !openPopup[openPopup.length - 1].contains(e.target) || e.target.closest('.close')) {
-        e.preventDefault();
-        handlePopupDisplay();
     }
 
     else if (button = e.target.closest('.openPopup')) {
@@ -72,15 +100,20 @@ document.addEventListener('click', function (e) {
     else if (button = e.target.closest('.export')) {
         exportSettings(button);
     }
+
+    else if (button = e.target.closest('.tabHeading')) {
+        handleTabClick(button);
+    }
 });
 
 document.addEventListener('input', function (e) {
     if (e.target.matches('.search')) handleSearch(e.target);
+    else if (e.target.matches('.import')) importSettings(e.target);
     else saveSettings(0, 0, e);
 });
 
-document.addEventListener('focus', function handler() {
-    if (openPopup.length && !document.activeElement.closest('.popup')) {
+document.addEventListener('focus', function(e) {
+    if (openPopup.length && e.target.matches(':focus-visible') && !e.target.closest('.popup')) {
         openPopup[openPopup.length - 1].label.children[1].focus();
         handlePopupDisplay();
     }
@@ -168,9 +201,6 @@ function handlePopupDisplay(button) {
         case 'list':
             showPopup(getList(button), button, true);
             break;
-
-        case 'import':
-            showPopup(getSettingsImporter(button), button);
     }
 }
 
@@ -200,6 +230,8 @@ function showPopup(popup, button, centered) {
         } else {
             popup.style.top = `${button.offsetTop + button.offsetHeight}px`;
         }
+
+        popup.style.left = document.body.dir == 'rtl' ? button.offsetLeft : button.offsetLeft - popup.clientWidth + button.clientWidth;
     }
 
     if (popup.hasAttribute('tabindex')) {
@@ -277,18 +309,26 @@ function handleTabClick(button) {
     document.querySelector(`.tabContent:nth-child(${[...button.parentElement.children].indexOf(button) + 1}`).classList.remove('hidden');
 
     clearSearchBar(document.querySelector('.search'));
+    scrollTo({top: 0, behavior: 'instant'});
 }
 
 function exportSettings(button) {
     chrome.storage.local.get().then(function (data) {
         navigator.clipboard.writeText(JSON.stringify(data));
 
-        button.previousElementSibling.textContent = 'Settings copied to clipboard!';
+        button.ogTextContent = button.ogTextContent || button.previousElementSibling.textContent;
+        button.previousElementSibling.textContent = chrome.i18n.getMessage('export_settings_feedback');
 
         setTimeout(function () {
-            button.previousElementSibling.textContent = 'Export';
+            button.previousElementSibling.textContent = button.ogTextContent;
         }, 3000)
     });
+}
+
+async function importSettings(input) {
+    const data = JSON.parse(input.value);
+    await saveSettings(data);
+    location.reload();
 }
 
 function handleSearch(input) {

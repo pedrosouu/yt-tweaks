@@ -12,9 +12,9 @@ function getList(button) {
     list.id = 'list';
     list.setAttribute('tabindex', '-1');
     list.insertAdjacentHTML('afterbegin', `
-    <button class="close" title="Close"></button>
+    <button class="close" title="${chrome.i18n.getMessage('close')}"></button>
       <search class="list">
-        <input class="search button" placeholder="Search" type="text">
+        <input class="search button" placeholder="${chrome.i18n.getMessage('search')}" type="text">
         <svg class="clearSearch" viewBox="0 0 24 24">
           <path d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z"></path>
         </svg>
@@ -61,7 +61,7 @@ function addItem(item, value1, value2) {
 
     else item.appendChild(getTextInput(value2));
 
-    item.insertAdjacentHTML('beforeend', `<button class="tinted delete iconButton" title="Delete"></button>`);
+    item.insertAdjacentHTML('beforeend', `<button class="tinted delete iconButton" title="${chrome.i18n.getMessage('delete')}"></button>`);
 
     list.lastElementChild.appendChild(item);
 }
@@ -128,7 +128,7 @@ function getTextInput(value) {
 function getSetHotkeyBtn(value) {
     const button = document.createElement('button');
     button.classList.add('keyBinder', 'openPopup');
-    button.setAttribute('placeholder', 'Set hotkey');
+    button.setAttribute('placeholder', chrome.i18n.getMessage('set_hotkey'));
     if (value) button.value = value;
 
     return button;

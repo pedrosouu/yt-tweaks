@@ -1,84 +1,84 @@
 <section>
   <label>
-    <span>Navigate to Watch Later page</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="redToWatchLaterHotkey">
+    <span data-text="navigate_to_wl_page"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="redToWatchLaterHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>More animations</span>
+    <span data-text="more_animations"></span>
     <input type="checkbox" id="moreAnimations">
   </label>
   <div class="expandable">
     <label>
-      <span>Speed (seconds)</span>
+      <span data-text="speed"> (<span data-text="seconds"></span>)</span>
       <input type="number" id="maAnimationsSpeed" min="0" step="0.01" value="0.75">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
   </div>
   <label>
-    <span>Red subscribe button</span>
+    <span data-text="red_subscribe_button"></span>
     <input type="checkbox" id="redSubscribeButton">
   </label>
 </section>
 <section>
-  <h4>Video metadata</h4>
+  <h4 data-text="video_metadata"></h4>
   <label>
-    <span>Show full title</span>
+    <span data-text="show_full_video_title"></span>
     <input type="checkbox" id="showFullVideoTitles">
   </label>
   <label>
-    <span>Show full channel name and upload time</span>
+    <span data-text="show_full_channel_name_and_upload_time"></span>
     <input type="checkbox" id="showFullInfoBelowVideoTitle">
   </label>
 </section>
 <section>
-  <h4>Back to the top</h4>
+  <h4 data-text="back_to_top"></h4>
   <label>
-    <span>Show back to top button</span>
+    <span data-text="show_back_to_top_button"></span>
     <button class="selectMenu openPopup rotableArrow" id="scrollUpButton">
-      <span>Off</span>
+      <span data-text="off"></span>
       <ul>
-        <li value>Off</li>
-        <li value="On the right">On the right</li>
-        <li value="On the left">On the left</li>
-        <li value="Centered">Centered</li>
+        <li value data-text="off"></li>
+        <li value="On the right" data-text="bottom_right"></li>
+        <li value="On the left" data-text="bottom_left"></li>
+        <li value="Centered" data-text="bottom_center"></li>
       </ul>
     </button>
   </label>
   <div class="expandable">
     <label>
-      <span>Button color</span>
+      <span data-text="color"></span>
       <button class="colorPicker openPopup" id="scrollUpBtnColor" style="--selectedColor: hsla(0, 0%, 95%, 1);">
         <div class="checker"></div>
         <div class="selectedColor"></div>
       </button>
     </label>
     <label>
-      <span>Arrow color</span>
+      <span data-text="icon"></span>
       <button class="colorPicker openPopup" id="scrollUpBtnSvgColor" style="--selectedColor: hsla(0, 0%, 6%, 1);">
         <div class="checker"></div>
         <div class="selectedColor"></div>
       </button>
     </label>
     <label>
-      <span>Button size (px)</span>
+      <span data-text="size"> (px)</span>
       <input type="number" id="scrollUpBtnWidth" value="36">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Rounded corners (px)</span>
+      <span data-text="rounded_corners"> (px)</span>
       <input type="number" id="scrollUpBtnRoundCorners" min="0" value="18">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
   </div>
   <label>
-    <span>Scroll back to top</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="scrollToTopHotkey">
+    <span data-text="scroll_back_to_top"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="scrollToTopHotkey">
     </button>
     <button class="removeSetting">
     </button>

@@ -5,7 +5,6 @@
     max-width: calc(100% - var(--spacing-4x) * 10);
     max-height: calc(100vh - var(--spacing-4x));
     padding: var(--spacing-2x);
-    right: var(--spacing-4x);
     border-radius: var(--radius);
     border: 1px solid var(--btn-hover-bg);
     box-shadow: 0 4px 32px 0 var(--shadow-color);
@@ -37,7 +36,6 @@ button.selectMenu {
 }
 
 button.selectMenu>span {
-    max-width: 114px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -59,18 +57,8 @@ li {
     cursor: pointer;
 }
 
-li.focused::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 7px;
-    left: 12px;
-    border-left: 3px solid var(--accent);
-    top: 50%;
-    transform: translateY(-50%);
-    left: 0px;
-    height: calc(100% - 15px);
-    border-radius: var(--radius);
+li:is(:hover, .focused) {
+    background: var(--btn-hover-bg);
 }
 
 /* COLOR PICKER */
@@ -81,15 +69,14 @@ li.focused::before {
 
 button.colorPicker {
     position: relative;
-    width: 30px;
-    outline-offset: 2px !important;
+    min-width: auto;
 }
 
 .selectedColor {
     position: absolute;
     top: 0;
     box-sizing: border-box;
-    width: 100%;
+    width: var(--btn-height);
     height: 100%;
     background: var(--selectedColor);
     border-radius: 50%;
@@ -110,7 +97,7 @@ button.colorPicker {
     border: none;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAAAAABzHgM7AAAAF0lEQVR42mM4Awb/wYCBYg6EgghRzAEAWDWBGQVyKPMAAAAASUVORK5CYII=) !important;
     height: 100%;
-    width: 100%;
+    width: var(--btn-height);
     border-radius: 50%;
 }
 
@@ -222,12 +209,6 @@ search.list {
 
 input.list {
     text-align: center;
-}
-
-/* SETTINGS IMPORTER */
-#importer {
-    display: grid;    
-    gap: var(--spacing-2x);
 }
 
 /* CLOSE BUTTON */

@@ -72,7 +72,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         function setCustomPage(e) {
-            if (e.detail.endpoint && confirm(`Make logo redirect to this page? (${e.detail.endpoint?.commandMetadata?.webCommandMetadata?.url})`)) {
+          if (e.detail.endpoint && confirm(`https://www.youtube.com/ --> https://www.youtube.com${e.detail.endpoint?.commandMetadata?.webCommandMetadata?.url}`)) {
                 document.removeEventListener('yt-navigate-finish', setCustomPage);
 
                 command = e.detail.endpoint;

@@ -1,0 +1,770 @@
+{
+    "locale_dir": {
+        "message": "ltr"
+    },
+    "extension_description": {
+        "message": "Uma coleção de mods para o YouTube, como ocultar Shorts, mudar o número de videos por linha e mais!"
+    },
+    "search": {
+        "message": "Pesquisar"
+    },
+    "donate": {
+        "message": "Doar"
+    },
+    "rate": {
+        "message": "Avaliar"
+    },
+    "video_grid": {
+        "message": "Grelha de videos"
+    },
+    "homepage": {
+        "message": "Página inicial"
+    },
+    "subscriptions_page": {
+        "message": "Página de inscrições"
+    },
+    "channel_page": {
+        "message": "Páginas de canais"
+    },
+    "video_player": {
+        "message": "Player de vídeo"
+    },
+    "watch_page": {
+        "message": "Página de exibição de vídeos"
+    },
+    "search_page": {
+        "message": "Página de pesquisa"
+    },
+    "header_bar": {
+        "message": "Cabeçalho"
+    },
+    "left_sidebar": {
+        "message": "Barra lateral esquerda"
+    },
+    "youtube_themes": {
+        "message": "Temas"
+    },
+    "other": {
+        "message": "Outro"
+    },
+    "custom_code": {
+        "message": "Código personalizado"
+    },
+    "export_import_settings": {
+        "message": "Exportar/importar configurações"
+    },
+    "export_settings": {
+        "message": "Exportar"
+    },
+    "import_settings": {
+        "message": "Importar"
+    },
+    "export_settings_feedback": {
+        "message": "Copiado para a área de transferência!"
+    },
+    "import_settings_instruction": {
+        "message": "Cole suas configurações aqui"
+    },
+    "videos_tab": {
+        "message": "Aba Vídeos"
+    },
+    "default_to_videos_tab": {
+        "message": "Aba Vídeos como aba padrão" 
+    },
+    "home_tab": {
+        "message": "Aba Início"
+    },
+    "navigate_to_homepage": {
+        "message": "Ir para a página inicial"
+    },
+    "navigate_to_subs_page": {
+        "message": "Ir para a página de inscrições"
+    },
+    "navigate_to_shorts_page": {
+        "message": "Ir para a página de Shorts"
+    },
+    "set_hotkey": {
+        "message": "Definir atalho"
+    },
+    "hotkeys": {
+        "message": "Atalhos"
+    },
+    "key_binder_instruction": {
+        "message": "Pressione uma tecla ou combinação para "
+    },
+    "off": {
+        "message": "Desativado"
+    },
+    "default": {
+        "message": "Padrão"
+    },
+    "disable": {
+        "message": "Desativar"
+    },
+    "hide": {
+        "message": "Ocultar"
+    },
+    "dim": {
+        "message": "Ofuscar"
+    },
+    "opacity": {
+        "message": "Opacidade"
+    },
+    "blur": {
+        "message": "Blur"
+    },
+    "videos": {
+        "message": "Videos"
+    },
+    "shorts": {
+        "message": "Shorts"
+    },
+    "mixes": {
+        "message": "Mixes"
+    },
+    "live_streams": {
+        "message": "Lives"
+    },
+    "current_live_streams": {
+        "message": "Em curso"
+    },
+    "completed_live_streams": {
+        "message": "Encerradas"
+    },
+    "both_live_streams": {
+        "message": "Ambas"
+    },
+    "upcoming_videos": {
+        "message": "Estreias"
+    },
+    "watched_videos": {
+        "message": "Videos assistidos"
+    },
+    "watched_percentage": {
+        "message": "% assistida: "
+    },
+    "topic_bar": {
+        "message": "Barra de tópicos"
+    },
+    "latest_yt_Posts": {
+        "message": "'Postagens mais recentes do YouTube'"
+    },
+    "posts": {
+        "message": "Postagens"
+    },
+    "items_per_row": {
+        "message": "Número de itens por linha"
+    },
+    "items_per_row_option_sub_label": {
+        "message": "Mude o número de vídeos, shorts e postagens mostrados por linha."
+    },
+    "max_num_of_cols": {
+        "message": "Número máximo de colunas"
+    },
+    "min_col_width": {
+        "message": "Largura mínima das colunas "
+    },
+    "hide_profile_pictures": {
+        "message": "Ocultar fotos de perfil"
+    },
+    "decrease_font_size": {
+        "message": "Diminuir o texto"
+    },
+    "theater_mode": {
+        "message": "Modo Teatro"
+    },
+    "player_height": {
+        "message": "Altura do player"
+    },
+    "theater_mode_player_height_option_sub_label": {
+        "message": "Defina o espaço vertical ocupado pelo player no modo teatro."
+    },
+    "height": {
+        "message": "Altura"
+    },
+    "auto_hide_header": {
+        "message": "Ocultar automaticamente o cabeçalho"
+    },
+    "video_focus": {
+        "message": "Modo foco"
+    },
+    "video_focus_option_sub_label": {
+        "message": "Escurece a página ao passar o mouse sobre o player"
+    },
+    "show_video_rem_time": {
+        "message": "Mostrar tempo restante do vídeo"
+    },
+    "where": {
+        "message": "Onde?"
+    },
+    "tab_title": {
+        "message": "Título da aba"
+    },
+    "format": {
+        "message": "Formato"
+    },
+    "pause_previous_video": {
+        "message": "Pausar vídeo anterior quando outro iniciar"
+    },
+    "automatic_resume": {
+        "message": "Resumo automático"
+    },
+    "auto_scroll_shorts": {
+        "message": "Avançar pro próximo Short automaticamente"
+    },
+    "auto_scroll_shorts_option_sub_label": {
+        "message": "Abre o Short seguinte após o atual acabar."
+    },
+    "toggle_loop": {
+        "message": "Ativar/desativar loop"
+    },
+    "video_paused_continue_watching": {
+        "message": "'Vídeo pausado. Continuar assistindo?'"
+    },
+    "automatic_dubbing": {
+        "message": "Dublagem automática"
+    },
+    "auto_play_in_playlists": {
+        "message": "Reprodução automática em playlists"
+    },
+    "number_keys_shortcuts": {
+        "message": "Atalhos das teclas númericas"
+    },
+    "top_row": {
+        "message": "Teclado númerico superior"
+    },
+    "numpad": {
+        "message": "Teclado númerico"
+    },
+    "shorts_looping": {
+        "message": "Shorts em loop"
+    },
+    "progress_bar": {
+        "message": "Barra de progresso"
+    },
+    "always_show_progress_bar": {
+        "message": "Barra de progresso persistente"
+    },
+    "pinned_to_the_bottom": {
+        "message": "Fixada"
+    },
+    "outside_the_player": {
+        "message": "Fora do player"
+    },
+    "custom_progress_bar": {
+        "message": "Barra de progresso personalizada"
+    },
+    "solid_color": {
+        "message": "Cor sólida"
+    },
+    "color": {
+        "message": "Cor"
+    },
+    "lightsaber": {
+        "message": "Sabre de luz"
+    },
+    "video_snapshot": {
+        "message": "Captura de imagem do vídeo"
+    },
+    "quality": {
+        "message": "Qualidade"
+    },
+    "include_subtitles": {
+        "message": "Incluir legendas"
+    },
+    "snapshot_button": {
+        "message": "Botão de captura"
+    },
+    "save_method_left_click": {
+        "message": "Como salvar (Clique esquerdo)"
+    },
+    "save_method_right_click": {
+        "message": "Como salvar (Clique direito)"
+    },
+    "file": {
+        "message": "Arquivo"
+    },
+    "clipboard": {
+        "message": "Área de transferência"
+    },
+    "file_and_clipboard": {
+        "message": "Ambos"
+    },
+    "snapshot_to_file": {
+        "message": "Capturar e salvar em arquivo"
+    },
+    "snapshot_to_clipboard": {
+        "message": "Capturar e salvar na área de transferência"
+    },
+    "snapshot_to_file_and_clipboard": {
+        "message": "Capturar e salvar em arquivo e área de transferência"
+    },
+    "sticky_player": {
+        "message": "Miniplayer"
+    },
+    "picture_in_picture": {
+        "message": "Picture-in-Picture"
+    },
+    "sticky_player_and_picture_in_picture": {
+        "message": "Miniplayer e Picture-in-Picture"
+    },
+    "activate_on_scroll": {
+        "message": "Ativar ao descer na página"
+    },
+    "activate_deactivate": {
+        "message": "Ativar/desativar"
+    },
+    "size": {
+        "message": "Tamanho"
+    },
+    "position": {
+        "message": "Posição"
+    },
+    "bottom_right": {
+        "message": "Canto direito inferior"
+    },
+    "bottom_center": {
+        "message": "Centro inferior"
+    },
+    "bottom_left": {
+        "message": "Canto esquerdo inferior"
+    },
+    "center_right": {
+        "message": "Centro direito"
+    },
+    "center_left": {
+        "message": "Centro esquerdo"
+    },
+    "top_right": {
+        "message": "Canto direito superior"
+    },
+    "top_center": {
+        "message": "Centro superior"
+    },
+    "top_left": {
+        "message": "Canto esquerdo superior"
+    },
+    "below_the_header": {
+        "message": "Embaixo do cabeçalho"
+    },
+    "floating": {
+        "message": "Flutuante"
+    },
+    "rounded_corners": {
+        "message": "Cantos arrendados"
+    },
+    "auto_picture_in_picture_on_tab_change": {
+        "message": "PiP automático ao trocar de aba"
+    },
+    "toggle_picture_in_picture": {
+        "message": "Ativar/desativar PiP"
+    },
+    "video_seeking": {
+        "message": "Voltar/avançar no vídeo"
+    },
+    "seek_video_by_scrolling_over_player": {
+        "message": "Usar o scroll do mouse sobre o player para voltar/avançar"
+    },
+    "forward_time": {
+        "message": "Avanço"
+    },
+    "backward_time": {
+        "message": "Retrocesso"
+    },
+    "seconds": {
+        "message": "Segundos"
+    },
+    "require_holding_key": {
+        "message": "Necessário pressionar"
+    },
+    "nothing": {
+        "message": "Nada"
+    },
+    "lmb": {
+        "message": "Botão esquerdo do mouse"
+    },
+    "rmb": {
+        "message": "Botão direito do mouse"
+    },
+    "mouse_wheel_dir_tip": {
+        "message": "Número negativo = rolagem do mouse invertida"
+    },
+    "seek_video_forward": {
+        "message": "Avançar"
+    },
+    "seek_video_backward": {
+        "message": "Voltar"
+    },
+    "undo_video_seek": {
+        "message": "Anular avanço/retrocesso"
+    },
+    "redo_video_seek": {
+        "message": "Refazer avanço/retrocesso"
+    },
+    "numbers_then_enter": {
+        "message": "Digitar um número e apertar Enter para ir para esse ponto do vídeo"
+    },
+    "numbers_then_enter_option_sub_label": {
+        "message": "Por exemplo, aperte 1 + 3 + 0 + Enter para ir para 1:30."
+    },
+    "numbers_then_arrow_key": {
+        "message": "Digitar um número e apertar a seta para direita/esquerda para avançar/voltar essa quantidade de tempo"
+    },
+    "numbers_then_arrow_key_option_sub_label": {
+        "message": "Por exemplo, aperte 1 + 5 + seta para direita para avançar 15 segundos."
+    },
+    "numbers_then_shift": {
+        "message": "Digitar um número e apertar Shift para colocar a velocidade nesse número"
+    },
+    "numbers_then_shift_option_sub_label": {
+        "message": "Por exemplo, aperte 1 + 2 + 5 + Shift para colocar a velocidade em 1.25x."
+    },
+    "step": {
+        "message": "Intervalo"
+    },
+    "video_speed": {
+        "message": "Velocidade do video"
+    },
+    "default_video_speed": {
+        "message": "Velocidade padrão"
+    },
+    "speed": {
+        "message": "Velocidade"
+    },
+    "scroll_speed_over_player": {
+        "message": "Usar o scroll do mouse sobre o player para mudar a velocidade"
+    },
+    "increase_speed": {
+        "message": "Aumentar velocidade"
+    },
+    "decrease_speed": {
+        "message": "Diminuir velocidade"
+    },
+    "normal_speed": {
+        "message": "Velocidade normal"
+    },
+    "custom_speed": {
+        "message": "Velocidade personalizada"
+    },
+    "saved_per_channel_speeds": {
+        "message": "Velocidades por canal salvas"
+    },
+    "channel_speed_button": {
+        "message": "Botão para definir velocidade do canal"
+    },
+    "set_channel_speed": {
+        "message": "Definir velocidade do canal"
+    },
+    "left_click": {
+        "message": "Clique esquerdo"
+    },
+    "right_click": {
+        "message": "Clique direito"
+    },
+    "middle_click": {
+        "message": "Clique do meio"
+    },
+    "exact_match": {
+        "message": "Valor é sensível a letras maiúsculas/minúsculas"
+    },
+    "channel_name": {
+        "message": "Nome do canal"
+    },
+    "video_audio": {
+        "message": "Áudio do vídeo"
+    },
+    "scroll_volume_over_player": {
+        "message": "Usar o scroll do mouse sobre o player para mudar volume"
+    },
+    "toggle_mute": {
+        "message": "Mutar/desmutar"
+    },
+    "increase_video_volume": {
+        "message": "Aumentar volume"
+    },
+    "decrease_video_volume": {
+        "message": "Diminuir volume"
+    },
+    "volume_booster_level": {
+        "message": "Quantidade de boost"
+    },
+    "toggle_volume_boost_with_mouse": {
+        "message": "Ativar/desativar boost clicando com o botão direito no botão de volume"
+    },
+    "toggle_volume_boost": {
+        "message": "Ativar/desativar boost"
+    },
+    "auto_boost_volume": {
+        "message": "Dar boost no volume automaticamente"
+    },
+    "mono_audio_button": {
+        "message": "Botão de áudio mono"
+    },
+    "toggle_mono_audio": {
+        "message": "Ativar/desativar áudio mono"
+    },
+    "auto_turn_mono_audio_on": {
+        "message": "Ativar áudio mono automaticamente"
+    },
+    "video_quality": {
+        "message": "Qualidade do vídeo"
+    },
+    "default_video_quality": {
+        "message": "Qualidade de vídeo padrão"
+    },
+    "fallback": {
+        "message": "Se tiver indisponível, escolher"
+    },
+    "next_high_video_quality": {
+        "message": "A mais próxima acima desta"
+    },
+    "next_low_video_quality": {
+        "message": "A mais próxima abaixo desta"
+    },
+    "increase_video_quality": {
+        "message": "Aumentar qualidade"
+    },
+    "decrease_video_quality": {
+        "message": "Diminuir qualidade"
+    },
+    "highest_video_quality": {
+        "message": "Qualidade mais alta"
+    },
+    "lowest_video_quality": {
+        "message": "Qualidade mais baixa"
+    },
+    "zoom_flip_rotate_video": {
+        "message": "Dar zoom / espelhar / rotacionar video"
+    },
+    "zoom_by_scrolling_over_player": {
+        "message": "Usar o scroll do mouse sobre o player para aumentar/diminuir zoom"
+    },
+    "zoom_to_cursor": {
+        "message": "Seguir o cursor do mouse"
+    },
+    "cancel_zoom": {
+        "message": "Cancelar zoom"
+    },
+    "zoom_in": {
+        "message": "Aumentar zoom"
+    },
+    "zoom_out": {
+        "message": "Diminuir zoom"
+    },
+    "move_zoomed_area_right": {
+        "message": "Mover área ampliada para direita"
+    },
+    "move_zoomed_area_left": {
+        "message": "Mover área ampliada para esquerda"
+    },
+    "move_zoomed_area_up": {
+        "message": "Mover área ampliada para cima"
+    },
+    "move_zoomed_area_down": {
+        "message": "Mover área ampliada para baixo"
+    },
+    "flip_video_horizontally_button": {
+        "message": "Botão de espelhar horizontalmente"
+    },
+    "flip_video_vertically_button": {
+        "message": "Botão de espelhar verticalmente"
+    },
+    "flip_video_horizontally": {
+        "message": "Espelhar horizontalmente"
+    },
+    "flip_video_vertically": {
+        "message": "Espelhar verticalmente"
+    },
+    "rotate_video_clockwise_button": {
+        "message": "Botão de rotacionar no sentido horário"
+    },
+    "rotate_video_anti_clockwise_button": {
+        "message": "Botão de rotacionar no sentido anti-horário"
+    },
+    "rotate_video_clockwise": {
+        "message": "Rotacionar no sentido horário"
+    },
+    "rotate_video_anti_clockwise": {
+        "message": "Rotacionar no sentido anti-horário"
+    },
+    "video_end_cards": {
+        "message": "Telas finais"
+    },
+    "hide_video_controls_on_pause_seek": {
+        "message": "Controles do vídeo ao pausar ou avançar/voltar no vídeo"
+    },
+    "show_video_end_cards_on_hover_pause": {
+        "message": "Mostrar ao pausar ou passar mouse sobre o vídeo"
+    },
+    "video_description": {
+        "message": "Descrição do vídeo"
+    },
+    "minimalist_video_description": {
+        "message": "Minimalista"
+    },
+    "expanded_video_description": {
+        "message": "Expandida"
+    },
+    "clickable_channel_names": {
+        "message": "Tornar nome dos canais na barra lateral clicáveis"
+    },
+    "toggle_video_transcript": {
+        "message": "Ativar/desativar transcrição"
+    },
+    "toggle_like": {
+        "message": "Dar/tirar like"
+    },
+    "toggle_dislike": {
+        "message": "Dar/tirar dislike"
+    },
+    "live_chat": {
+        "message": "Chat ao vivo"
+    },
+    "disable_auto_opening_live_chat": {
+        "message": "Chat desativado por padrão"
+    },
+    "default_view": {
+        "message": "Visualização padrão"
+    },
+    "live_chat_view_top_chat": {
+        "message": "Principais mensagens do chat"
+    },
+    "live_chat_view_live_chat": {
+        "message": "Chat ao vivo"
+    },
+    "comments_section": {
+        "message": "Caixa de comentários"
+    },
+    "auto_expand_long_comments": {
+        "message": "Sempre mostrar os comentários inteiros"
+    },
+    "default_sorting_of_comments": {
+        "message": "Ordem padrão dos comentários"
+    },
+    "comments_sorting_top": {
+        "message": "Principais"
+    },
+    "comments_sorting_newest": {
+        "message": "Mais recentes"
+    },
+    "sidebar": {
+        "message": "Barra lateral"
+    },
+    "show_comments_section": {
+        "message": "Mostrar caixa de comentários"
+    },
+    "toggle_comments_section": {
+        "message": "Ativar/desativar caixa de comentários"
+    },
+    "use_player_height": {
+        "message": "Usar altura do player"
+    },
+    "hide_header": {
+        "message": "Ocultar cabeçalho "
+    },
+    "hide_comment_field": {
+        "message": "Ocultar campo de comentário"
+    },
+    "share_button": {
+        "message": "Botão Compartilhar"
+    },
+    "download_button": {
+        "message": "Botão Download"
+    },
+    "clip_button": {
+        "message": "Botão Clipe"
+    },
+    "thanks_button": {
+        "message": "Botão Mostre seu apoio..."
+    },
+    "save_button": {
+        "message": "Botão Salvar"
+    },
+    "button_labels": {
+        "message": "Rótulo dos botões"
+    },
+    "show_search_results_as_a_grid": {
+        "message": "Resultados em forma de grelha"
+    },
+    "hide_right_sidebar": {
+        "message": "Ocultar barra lateral"
+    },
+    "irrelevant_search_results": {
+        "message": "Resultados irrelevante"
+    },
+    "hide_irrelevant_search_results_option_sub_label": {
+        "message": "Novos canais para você, As pessoas também pesquisam, Assistir novamente..."
+    },
+    "compact_header": {
+        "message": "Cabeçalho compacto"
+    },
+    "make_yt_logo_redirect_to_another_page": {
+        "message": "Associar outra página ao logo do YouTube"
+    },
+    "page": {
+        "message": "Página"
+    },
+    "open_a_yt_page": {
+        "message": "Abra um página do YouTube"
+    },
+    "open_in_new_tab_button_in_search_box": {
+        "message": "Adicionar botão 'Abrir em nova aba' na caixa de pesquisa"
+    },
+    "compact_left_sidebar": {
+        "message": "Barra lateral esquerda compacta"
+    },
+    "shorts_button": {
+        "message": "Botão Shorts"
+    },
+    "explore_section": {
+        "message": "Seção 'Explorar'"
+    },
+    "more_from_yt_section": {
+        "message": "Seção 'Mais do YouTube'"
+    },
+    "dark_theme": {
+        "message": "Tema escuro"
+    },
+    "light_theme": {
+        "message": "Tema claro"
+    },
+    "use_theme_in_light_mode": {
+        "message": "Usar tema no modo claro"
+    },
+    "navigate_to_wl_page": {
+        "message": "Ir para página Assistir mais tarde"
+    },
+    "more_animations": {
+        "message": "Mais animações"
+    },
+    "red_subscribe_button": {
+        "message": "Botão de increver-se vermelho"
+    },
+    "video_metadata": {
+        "message": "Metadado do vídeo"
+    },
+    "show_full_video_title": {
+        "message": "Mostrar título inteiro"
+    },
+    "show_full_channel_name_and_upload_time": {
+        "message": "Mostrar nome do canal e data de publicação inteiros"
+    },
+    "back_to_top": {
+        "message": "Voltar pro topo"
+    },
+    "show_back_to_top_button": {
+        "message": "Mostrar botão de voltar pro topo"
+    },
+    "icon": {
+        "message": "Ícone"
+    },
+    "scroll_back_to_top": {
+        "message": "Voltar pro topo"
+    },
+    "delete": {
+        "message": "Remover"
+    },
+    "close": {
+        "message": "Fechar"
+    }
+}

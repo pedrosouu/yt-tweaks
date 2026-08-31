@@ -9,9 +9,8 @@
 
 :root {
     --accent: #5294e2;
-    --navbar-width: 180px;
+    --navbar-width: 168px;
     --btn-height: 34px;
-    --label-btn-height: 30px;
     --spacing: 6px;
     --spacing-2x: 12px;
     --spacing-4x: 24px;
@@ -26,6 +25,17 @@
     --btn-active-bg: #cfcfcf;
     --trash-can: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='14px' height='24px' viewBox='4 4 24 24' version='1.1' style='fill:rgb(255, 95, 95);fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;'%3E%3Cpath d='M11,4.5l10,0c0.828,-0 1.5,-0.672 1.5,-1.5c-0,-0.828 -0.672,-1.5 -1.5,-1.5l-10,0c-0.828,-0 -1.5,0.672 -1.5,1.5c-0,0.828 0.672,1.5 1.5,1.5Z'%3E%3C/path%3E%3Cpath d='M5,9.5l0,16.5c0,2.761 2.239,5 5,5l12,0c2.761,0 5,-2.239 5,-5l0,-16.5l1.645,0c0.748,-0 1.355,-0.672 1.355,-1.5c-0,-0.828 -0.607,-1.5 -1.355,-1.5l-25.29,0c-0.748,-0 -1.355,0.672 -1.355,1.5c-0,0.828 0.607,1.5 1.355,1.5l1.645,0Zm7,3.5l0,12c-0,0.552 0.448,1 1,1c0.552,0 1,-0.448 1,-1l0,-12c-0,-0.552 -0.448,-1 -1,-1c-0.552,0 -1,0.448 -1,1Zm6,-0l0,12c0,0.552 0.448,1 1,1c0.552,-0 1,-0.448 1,-1l0,-12c0,-0.552 -0.448,-1 -1,-1c-0.552,-0 -1,0.448 -1,1Z'%3E%3C/path%3E%3C/svg%3E");
     --rotable-arrow: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='rotableArrow' viewBox='0 0 24 24'%3E%3Cpath style='fill:rgba(0, 0, 0, 0.87);' d='m11.35 14.25-2.575-2.6q-.45-.45-.213-1.013t.863-.562h5.15q.625 0 .863.562.237.563-.188 1.013l-2.6 2.6q-.15.125-.312.2-.163.075-.338.075t-.337-.075-.313-.2'%3E%3C/path%3E%3C/svg%3E");
+    padding: var(--spacing-2x);
+    padding-top: calc(var(--btn-height) + var(--spacing-2x));
+    box-sizing: border-box;
+    min-width: 600px;
+    min-height: 600px;
+    max-width: 617px;
+    overflow-wrap: break-word;
+}
+
+section {
+    --btn-height: 30px;
 }
 
 :is(.popup, label) :is(button, input) {
@@ -69,7 +79,7 @@
     opacity: 1;
 }
 
-[pip-api="false"] .pip-api,
+.autoPipUnsupported .autoPip,
 .hidden {
     display: none !important;
 }
@@ -85,30 +95,18 @@ h4 {
     margin-block: 0;
 }
 
-svg {
-    display: block;
-    margin: auto;
-    fill: inherit;
-}
-
 body {
     position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
     font-family: 'Roboto';
     background-color: var(--main-bg);
     color: var(--text);
-    width: 600px;
-    min-width: 100%;
-    min-height: 600px;
     font-size: .9rem;
     font-weight: 400;
     line-height: 1.25rem;
     margin: 0;
-    box-sizing: border-box;
-    padding: calc(var(--btn-height) + var(--spacing-2x)) var(--spacing-2x) var(--spacing-2x) 0px;
-}
-
-:root {
-    scrollbar-gutter: stable;
+    gap: var(--spacing-4x);
 }
 
 :root, 
@@ -121,19 +119,20 @@ div,
 header {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     gap: 12px;
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1;
-    padding: var(--spacing-2x);
     box-sizing: border-box;
     background: var(--main-bg);
+    padding: var(--spacing-2x);
 }
 
 search {
     position: relative;
-    width: calc(var(--navbar-width) - var(--spacing-2x));
+    width: var(--navbar-width);
 }
 
 #buttons {
@@ -141,8 +140,12 @@ search {
     gap: var(--spacing-2x);
 }
 
-.search {
+[dir="ltr"] .search {
     padding-left: calc(27px + var(--spacing)) !important;
+}
+
+[dir="rtl"] .search {
+    padding-right: calc(27px + var(--spacing)) !important;
 }
 
 .searchIcon {
@@ -154,6 +157,7 @@ search {
     width: 15px;
     height: 100%;
     pointer-events: none;
+    margin: 0;
 }
 
 .clearSearch {
@@ -167,20 +171,29 @@ search {
     height: 100%;
 }
 
+[dir="rtl"] :is(.clearSearch, .searchIcon) {
+    left: 0px;
+    right: 12px;
+}
+
 .clearSearch:hover {
     opacity: .75;
 }
 
 main {
-    padding-left: calc(var(--navbar-width) + var(--spacing-4x));
+    min-width: 0;
 }
 
 #navigation {
+    width: calc(var(--navbar-width));
+    padding-top: var(--spacing-4x);
+}
+
+#navigation > div {
     position: fixed;
     width: var(--navbar-width);
+    overflow:auto;
     height: calc(100% - (var(--btn-height) + var(--spacing-2x)) - var(--spacing-4x) - var(--spacing-2x));
-    overflow: auto;
-    padding-top: var(--spacing-4x);
 }
 
 .expandable {
@@ -205,14 +218,12 @@ main {
     background: none;
     width: 100%;
     justify-content: initial;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-radius: 12px;
 }
 
 html:not(.searchMode) .tabHeading.selected {
-    color: #fff;
     font-weight: 500;
-    background: var(--accent) !important;
+    background: var(--btn-hover-bg) !important;
 }
 
 .searchMode .tabContent {
@@ -255,13 +266,12 @@ button:not(label> :nth-child(2), .removeSetting) {
     padding: var(--spacing) var(--spacing-2x);
 }
 
-label :is(button, input) {
-    height: var(--label-btn-height) !important;
-    min-width: var(--label-btn-height);
-}
-
 .iconButton {
     border-radius: 50%;
+}
+
+button.icon {
+    min-width: auto !important;
 }
 
 button.filled {
@@ -281,16 +291,20 @@ button.tinted {
     outline-color: rgb(var(--btn-bg));
 }
 
-label > :nth-child(2),
+label > :nth-child(2) {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    outline: none !important;
+    background-color: initial !important;
+    min-width: 120px;
+}
+
 .removeSetting {
     background-color: initial !important;
 }
 
-label > :nth-child(2) {
-    outline: none !important;
-}
-
-:is(button:not(label > :nth-child(2), .removeSetting), .button, li):is(:hover, .focused):not(:focus-visible),
+:is(button:not(label > :nth-child(2), .removeSetting), .button):hover:not(:focus-visible),
 label:hover {
     background-color: var(--btn-hover-bg);
 }
@@ -325,7 +339,7 @@ section:has(> label:first-child) {
 
 section>h4,
 label>h4 {
-    padding-left: var(--spacing-2x);
+    padding: 0 var(--spacing-2x);
 }
 
 section>h4 {
@@ -338,10 +352,10 @@ label>h4 {
 }
 
 label {
-    min-height: calc(var(--label-btn-height) + var(--spacing-2x));
+    min-height: calc(var(--btn-height) + var(--spacing-2x));
     padding: var(--spacing) var(--spacing-2x);
     display: flex;
-    gap: var(--spacing);
+    gap: var(--spacing-2x);
     cursor: pointer;
     transition: background .15s;
     border-top: 1px solid var(--btn-hover-bg);
@@ -354,7 +368,6 @@ label[section="header"] {
     align-items: center;
 }
 
-[section="header"] + label,
 section>label:is(:first-of-type, .tprBorder) {
     border-top: 1px solid transparent;
 }
@@ -364,22 +377,27 @@ section>label:is(:first-of-type, .tprBorder) {
 }
 
 label>span {
-    flex-grow: 1;
-    margin-right: var(--spacing);
     min-width: 0;
-    overflow-wrap: break-word;
 }
 
 label> :is(input, button) {
     flex-shrink: 0;
 }
 
-.expandable label {
+[dir="ltr"] .expandable label {
     padding-left: calc(var(--spacing-4x) + var(--spacing-2x));
 }
 
-.expandable .expandable:not([matcher]) label {
+[dir="ltr"] .expandable .expandable:not([matcher]) label {
     padding-left: calc(var(--spacing-4x) * 3) !important;
+}
+
+[dir="rtl"] .expandable label {
+    padding-right: calc(var(--spacing-4x) + var(--spacing-2x));
+}
+
+[dir="rtl"] .expandable .expandable:not([matcher]) label {
+    padding-right: calc(var(--spacing-4x) * 3) !important;
 }
 
 .subLabel {
@@ -390,12 +408,13 @@ label> :is(input, button) {
     margin-top: var(--spacing);
 }
 
-[type="number"] {
+input[type="number"] {
     font-family: inherit;
     font-size: inherit;
     border: none;
     height: var(--btn-height);
     width: 32px;
+    min-width: 32px;
     color: inherit;
     text-align: end;
     padding: 0;
@@ -403,7 +422,7 @@ label> :is(input, button) {
     -moz-appearance: textfield;
 }
 
-[type="number"]::-webkit-inner-spin-button {
+input[type="number"]::-webkit-inner-spin-button {
     appearance: none;
 }
 
@@ -417,33 +436,23 @@ label> :is(input, button) {
     background: var(--text);
 }
 
-.minus {
-    margin: 0 var(--spacing);
-}
-
-.plus {
-    margin: 0;
-}
-
 .plus::after {
     transform: rotate(90deg);
 }
 
-[type="checkbox"] {
+input[type="checkbox"] {
     appearance: none;
     -webkit-tap-highlight-color: transparent;
     position: relative;
-    width: 37.5px;
+    min-width: auto;
     height: 24px !important;
     cursor: pointer;
-    margin: calc((var(--label-btn-height) - 24px)/2) 0px;
-    outline-offset: -2px;
-    border-radius: 100px;
+    margin: calc((var(--btn-height) - 24px)/2) 0px;
 }
 
-[type="checkbox"]:after {
+input[type="checkbox"]:after {
     content: '';
-    width: 100%;
+    width: 37.5px;
     height: 100%;
     display: inline-block;
     border-radius: 100px;
@@ -452,64 +461,46 @@ label> :is(input, button) {
     transition: background-color .15s;
 }
 
-[type="checkbox"]:checked:after {
-    background: #42d6aa;
+input[type="checkbox"]:checked:after {
+    background: #59d642;
 }
 
-[type="checkbox"]:before {
+input[type="checkbox"]:before {
     content: '';
     height: 18px;
+    width: 18px;
+    transform: translateX(-15.75px);
     display: block;
     position: absolute;
-    left: 3px;
     top: 3px;
     border-radius: 9px;
     background: #fff;
     box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 2px 3px 0 rgba(0, 0, 0, .2);
-    animation: knob-left 0.25s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
+    transition: transform 0.15s;
 }
 
-[type="checkbox"]:checked:before {
-    animation: knob-right 0.25s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
+[dir="rtl"] input[type="checkbox"]:checked:before {
+    transform: translateX(3px);
 }
 
-@keyframes knob-left {
-    0% {
-        left: initial;
-        right: 3px;
-        width: 18px;
-    } 50% {
-        width: calc(100% - 6px);
-    }
-    100% {
-        width: 18px;
-    }
+[dir="rtl"] input[type="checkbox"]:before {
+    transform: translateX(16.75px);
 }
 
-@keyframes knob-right {
-    0% {
-        width: 18px;
-    } 
-    50% {
-        width: calc(100% - 6px);
-    }
-    100% {
-        left: initial;
-        right: 3px;
-        width: 18px
-    }
+input[type="checkbox"]:checked:before {
+    transform: translateX(-3px);
 }
 
-input[type="text"] {
-    width: 100%;
+[type="text"] {
     cursor: text;
+    width: 100%;
+    border: none;
+    font-size: inherit;
+    padding: 0;
+    color: inherit;
 }
 
-input[type="text"]:invalid {
+[type="text"]:invalid {
     color: rgb(var(--red));
 }
 
@@ -517,7 +508,7 @@ input[type="text"]:invalid {
     content: "";
     background-image: var(--rotable-arrow);
     background-repeat: no-repeat;
-    width: 24px;
+    min-width: 24px;
     height: 24px;
     transition: transform 0.15s ease-in-out;
 }
@@ -532,7 +523,6 @@ button[placeholder]:is(:not([value]), [value=""])::before {
 
 button[placeholder]::before {
     content: attr(value);
-    max-width: 140px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -568,18 +558,4 @@ textarea {
     field-sizing: content;
     box-sizing: border-box;
     outline: none;
-}
-
-.textEditor {
-    background: var(--btn-bg);
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    right: 0px;
-    overflow: hidden;
-    position: fixed;
-    top: 0px !important;
-    border: none;
-    border-radius: 0;
-    max-height: initial;
 }

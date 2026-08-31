@@ -1,59 +1,56 @@
 <section>
   <label>
-    <span>Theater mode: Player height <span class="subLabel">Set how much vertical space the player takes up in
-        Theater
-        mode.</span></span>
+    <span data-text="theater_mode">: <span data-text="player_height"></span><span class="subLabel" data-text="theater_mode_player_height_option_sub_label"></span></span>
     <input type="checkbox" id="fullscreenTheaterMode">
   </label>
   <div class="expandable">
     <label>
-      <span>Height (%)</span>
+      <span data-text="height"> (%)</span>
       <input type="number" id="ftmHeight" min="0" max="100" step="1" value="100">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Auto-hide header</span>
+      <span data-text="auto_hide_header"></span>
       <input type="checkbox" checked id="ftmAutoHideHeader">
     </label>
   </div>
   <label>
-    <span>Video focus <span class="subLabel">Darkens everything around the player except the chat when hovering
-        it.</span>
+    <span data-text="video_focus"><span class="subLabel" data-text="video_focus_option_sub_label"></span>
     </span>
     <input type="checkbox" id="videoFocus">
   </label>
   <div class="expandable">
     <label>
-      <span>Opacity</span>
+      <span data-text="opacity"></span>
       <input type="number" id="vfOpacity" min="0" max="1" step="0.01" value="0.9">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Blur (px)</span>
+      <span data-text="blur"> (px)</span>
       <input type="number" id="vfBlur" min="0" value="0">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
   </div>
   <label>
-    <span>Show video remaining time</span>
+    <span data-text="show_video_rem_time"></span>
     <input type="checkbox" id="videoRemTime">
   </label>
   <div class="expandable">
     <label>
-      <span>Where?</span>
+      <span data-text="where"></span>
       <button class="selectMenu openPopup rotableArrow" id="whereToShowTime">
-        <span>Player</span>
+        <span data-text="video_player"></span>
         <ul>
-          <li value="player">Player</li>
-          <li value="tabTitle">Tab title</li>
+          <li value="player" data-text="video_player"></li>
+          <li value="tabTitle" data-text="tab_title"></li>
         </ul>
       </button>
     </label>
     <label>
-      <span>Format</span>
+      <span data-text="format"></span>
       <button class="selectMenu openPopup rotableArrow" id="timeFormat">
         <span>23:06</span>
         <ul>
@@ -65,53 +62,52 @@
     </label>
   </div>
   <label>
-    <span>Pause the previous video when another starts playing</span>
+    <span data-text="pause_previous_video"></span>
     <input type="checkbox" id="playOneVideoAtAtime">
   </label>
   <div class="expandable">
     <label>
-      <span>Automatic resume</span>
+      <span data-text="automatic_resume"></span>
       <input type="checkbox" id="autoResume">
     </label>
   </div>
   <label>
-    <span>Auto-scroll Shorts <span class="subLabel">Autoplays the next short when the first has
-        finished.</span></span>
+    <span data-text="auto_scroll_shorts"><span class="subLabel" data-text="auto_scroll_shorts_option_sub_label"></span></span>
     <input type="checkbox" id="autoScrollShorts">
   </label>
   <label>
-    <span>Toggle loop</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleLoopHotkey">
+    <span data-text="toggle_loop"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleLoopHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
 </section>
 <section>
-  <h4>Disable</h4>
+  <h4 data-text="disable"></h4>
   <label>
-    <span>'Video paused. Continue watching?'</span>
+    <span data-text="video_paused_continue_watching"></span>
     <input type="checkbox" id="disableAutoPause">
   </label>
   <label>
-    <span>Automatic dubbing</span>
+    <span data-text="automatic_dubbing"></span>
     <input type="checkbox" id="forceOgAudio">
   </label>
   <label>
-    <span>Auto-play in playlists</span>
+    <span data-text="auto_play_in_playlists"></span>
     <input type="checkbox" id="disablePlAutoPlay">
   </label>
   <label>
-    <span>Number keys shortcuts</span>
+    <span data-text="number_keys_shortcuts"></span>
     <input type="checkbox" id="disableNumHotkeys">
   </label>
   <div class="expandable">
     <label>
-      <span>Top row</span>
+      <span data-text="top_row"></span>
       <button class="selectMenu openPopup rotableArrow" id="dnhTopRow">
         <span>0-9</span>
         <ul>
-          <li value>Off</li>
+          <li value data-text="off"></li>
           <li value="0-9" class="selected">0-9</li>
           <li value="1-9">1-9</li>
           <li value="0">0</li>
@@ -119,11 +115,11 @@
       </button>
     </label>
     <label>
-      <span>Numpad</span>
+      <span data-text="numpad"></span>
       <button class="selectMenu openPopup rotableArrow" id="dnhNumpad">
         <span>0-9</span>
         <ul>
-          <li value>Off</li>
+          <li value data-text="off"></li>
           <li value="0-9" class="selected">0-9</li>
           <li value="1-9">1-9</li>
           <li value="0">0</li>
@@ -140,49 +136,49 @@
     </label>
   </div>
   <label>
-    <span>Shorts looping</span>
+    <span data-text="shorts_looping"></span>
     <input type="checkbox" id="disableShortsLooping">
   </label>
 </section>
 <section>
-  <h4>Progress bar</h4>
+  <h4 data-text="progress_bar"></h4>
   <label>
-    <span>Always show progress bar</span>
+    <span data-text="always_show_progress_bar"></span>
     <input type="checkbox" id="alwaysShowProgBar">
   </label>
   <div class="expandable">
     <label>
-      <span>Pinned to the bottom</span>
+      <span data-text="pinned_to_the_bottom"></span>
       <input type="checkbox" id="keepProgBarAtBottom">
     </label>
     <label>
-      <span>Outside the player</span>
+      <span data-text="outside_the_player"></span>
       <input type="checkbox" id="showProgBarOutsidePlayer">
     </label>
     <label>
-      <span>Opacity</span>
+      <span data-text="opacity"></span>
       <input type="number" id="progBarOpacity" step="0.01" min="0" max="1" value="1">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
   </div>
   <label>
-    <span>Custom progress bar</span>
+    <span data-text="custom_progress_bar"></span>
     <button class="selectMenu openPopup rotableArrow" id="customProgBar">
-      <span>Off</span>
+      <span data-text="off"></span>
       <ul>
-        <li value>Off</li>
-        <li value="solidColor">Solid color</li>
+        <li value data-text="off"></li>
+        <li value="solidColor" data-text="solid_color"></li>
         <li value="nyanCat">Nyan cat</li>
         <li value="pacMan">Pac-Man</li>
-        <li value="lightSaber">Lightsaber</li>
+        <li value="lightSaber" data-text="lightsaber"></li>
       </ul>
     </button>
   </label>
   <div class="expandable">
     <div class="expandable" matcher="solidColor|lightSaber">
       <label>
-        <span>Color</span>
+        <span data-text="color"></span>
         <button class="colorPicker openPopup" id="progBarColor" style="--selectedColor: hsla(204, 100%, 50%, 1);">
           <div class="checker"></div>
           <div class="selectedColor"></div>
@@ -192,9 +188,9 @@
   </div>
 </section>
 <section>
-  <h4>Video snapshot</h4>
+  <h4 data-text="video_snapshot"></h4>
   <label>
-    <span>Snapshot format</span>
+    <span data-text="format"></span>
     <button class="selectMenu openPopup rotableArrow" id="snapshotFormat">
       <span>PNG</span>
       <ul>
@@ -207,7 +203,7 @@
   <div class="expandable">
     <div class="expandable" matcher="jpeg|webp">
       <label>
-        <span>Snapshot quality</span>
+        <span data-text="quality"></span>
         <input type="number" id="snapshotQuality" min="0" max="1" step="0.1" value="1">
         <button class="numInputBtn minus iconButton"></button>
         <button class="numInputBtn plus iconButton"></button>
@@ -215,77 +211,77 @@
     </div>
   </div>
   <label>
-    <span>Include subtitles/captions</span>
+    <span data-text="include_subtitles"></span>
     <input type="checkbox" id="snapshotWithSubtitles">
   </label>
   <label>
-    <span>Snapshot button</span>
+    <span data-text="snapshot_button"></span>
     <input type="checkbox" id="snapshotButton">
   </label>
   <div class="expandable">
     <label>
-      <span>Save method (Left-click)</span>
+      <span data-text="save_method_left_click"></span>
       <button class="selectMenu openPopup rotableArrow" id="snapshotButtonSaveMethod">
-        <span>File</span>
+        <span data-text="file"></span>
         <ul>
-          <li value="file">File</li>
-          <li value="clipboard">Clipboard</li>
-          <li value="both">File and clipboard</li>
+          <li value="file" data-text="file"></li>
+          <li value="clipboard" data-text="clipboard"></li>
+          <li value="both" data-text="file_and_clipboard"></li>
         </ul>
       </button>
     </label>
     <label>
-      <span>Save method (Right-click)</span>
+      <span data-text="save_method_right_click"></span>
       <button class="selectMenu openPopup rotableArrow" id="snapshotButtonSaveMethodRc">
-        <span>Clipboard</span>
+        <span data-text="clipboard"></span>
         <ul>
-          <li value="file">File</li>
-          <li value="clipboard" class="selected">Clipboard</li>
-          <li value="both">File and clipboard</li>
+          <li value="file" data-text="file"></li>
+          <li value="clipboard" data-text="clipboard"></li>
+          <li value="both" data-text="file_and_clipboard"></li>
         </ul>
       </button>
     </label>
   </div>
   <label>
-    <span>Snapshot to file</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="snapshotToFileHotkey">
+    <span data-text="snapshot_to_file"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="snapshotToFileHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Snapshot to clipboard</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="snapshotToClipHotkey">
+    <span data-text="snapshot_to_clipboard"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="snapshotToClipHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Snapshot to file and clipboard</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="snapshotToFileAndClipHotkey">
+    <span data-text="snapshot_to_file_and_clipboard"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="snapshotToFileAndClipHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
 </section>
 <section>
-  <h4>Sticky player <span class="pip-api">& Picture-in-Picture</span></h4>
-  <label section="header" class="pip-api">
-    <h4>Sticky player</h4>
+  <h4 data-text="sticky_player_and_picture_in_picture"></h4>
+  <label section="header">
+    <h4 data-text="sticky_player"></h4>
   </label>
   <label section="content">
-    <span>Activate when scrolling down</span>
+    <span data-text="activate_on_scroll"></span>
     <input type="checkbox" id="pinOnScroll">
   </label>
   <label section="content">
-    <span>Activate/deactivate</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="pinUnpinHotkey">
+    <span data-text="activate_deactivate"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="pinUnpinHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label section="content">
-    <span>Size</span>
+    <span data-text="size"></span>
     <button class="selectMenu openPopup rotableArrow" id="pinnedVideoSize">
       <span>480x270</span>
       <ul>
@@ -306,83 +302,83 @@
     </button>
   </label>
   <label section="content">
-    <span>Position</span>
+    <span data-text="position"></span>
     <button class="selectMenu openPopup rotableArrow" id="pinnedVideoPosition">
-      <span>Bottom right</span>
+      <span data-text="bottom_right"></span>
       <ul>
-        <li value="Bottom right">Bottom right</li>
-        <li value="Bottom center">Bottom center</li>
-        <li value="Bottom left">Bottom left</li>
-        <li value="Center right">Center right</li>
-        <li value="Center left">Center left</li>
-        <li value="Top right">Top right</li>
-        <li value="Top center">Top center</li>
-        <li value="Top left">Top left</li>
+        <li value="Bottom right" data-text="bottom_right"></li>
+        <li value="Bottom center" data-text="bottom_center"></li>
+        <li value="Bottom left" data-text="bottom_left"></li>
+        <li value="Center right" data-text="center_right"></li>
+        <li value="Center left" data-text="center_left"></li>
+        <li value="Top right" data-text="top_right"></li>
+        <li value="Top center" data-text="top_center"></li>
+        <li value="Top left" data-text="top_left"></li>
       </ul>
     </button>
   </label>
   <div class="expandable">
     <div class="expandable" matcher="Top">
       <label section="content">
-        <span>Below header</span>
+        <span data-text="below_the_header"></span>
         <input type="checkbox" id="pinnedVideoBelowHeader">
       </label>
     </div>
   </div>
   <label section="content">
-    <span>Floating (px)</span>
+    <span data-text="floating"> (px)</span>
     <input type="number" id="floatingPinnedVideo" min="0" value="10">
     <button class="numInputBtn minus iconButton"></button>
     <button class="numInputBtn plus iconButton"></button>
   </label>
   <label section="content">
-    <span>Rounded corners (px)</span>
+    <span data-text="rounded_corners"> (px)</span>
     <input type="number" id="pinnedVideoRoundCorners" min="0" value="12">
     <button class="numInputBtn minus iconButton"></button>
     <button class="numInputBtn plus iconButton"></button>
   </label>
-  <label section="header" class="pip-api">
-    <h4>Picture-in-Picture</h4>
+  <label section="header">
+    <h4 data-text="picture_in_picture"></h4>
   </label>
-  <label section="content" class="pip-api">
-    <span>Auto PiP on tab change <span class="subLabel">Note: Not yet compatible with Firefox!</span></span></span>
+  <label section="content" class="autoPip">
+    <span data-text="auto_picture_in_picture_on_tab_change"></span>
     <input type="checkbox" id="autoPipOnTabChange">
   </label>
-  <label section="content" class="pip-api">
-    <span>Toggle PiP</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="togglePipHotkey">
+  <label section="content">
+    <span data-text="toggle_picture_in_picture"><span class="subLabel">Firefox >= 153</span></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="togglePipHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
 </section>
 <section>
-  <h4>Video seeking</h4>
+  <h4 data-text="video_seeking"></h4>
   <label>
-    <span>Seek by scrolling over player</span>
+    <span data-text="seek_video_by_scrolling_over_player"></span>
     <input type="checkbox" id="seekOnScroll">
   </label>
   <div class="expandable">
     <label>
-      <span>Forward (seconds)</span>
+      <span data-text="forward_time"> (<span data-text="seconds"></span>)</span>
       <input type="number" id="seekOnScrollFtime" step="1" value="5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Backward (seconds) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
+      <span data-text="backward_time"> (<span data-text="seconds"></span>)<span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
       <input type="number" id="seekOnScrollBtime" step="1" value="5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Require holding</span>
+      <span data-text="require_holding_key"></span>
       <button class="selectMenu openPopup rotableArrow" id="seekOnScrollModifier">
-        <span>Nothing</span>
+        <span data-text="nothing"></span>
         <ul>
-          <li value>Nothing</li>
-          <li value="1">Left mouse button</li>
-          <li value="2">Right mouse button</li>
+          <li value data-text="nothing"></li>
+          <li value="1" data-text="lmb"></li>
+          <li value="2" data-text="rmb"></li>
           <li value="ctrlKey">Ctrl</li>
           <li value="shiftKey">Shift</li>
           <li value="altKey">Alt</li>
@@ -392,80 +388,77 @@
     </label>
   </div>
   <label>
-    <span>Seek forward</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0"
+    <span data-text="seek_video_forward"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="seconds" number-min="0"
       number-step="1" id="seekFhotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Seek backward</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="Seconds" number-min="0"
+    <span data-text="seek_video_backward"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="seconds" number-min="0"
       number-step="1" id="seekBhotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Undo seek</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="undoSeekHotkey">
+    <span data-text="undo_video_seek"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="undoSeekHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <div class="expandable">
     <label>
-      <span>Redo seek</span>
-      <button class="keyBinder openPopup" placeholder="Set hotkey" id="redoSeekHotkey">
+      <span data-text="redo_video_seek"></span>
+      <button class="keyBinder openPopup" placeholder="set_hotkey" id="redoSeekHotkey">
       </button>
       <button class="removeSetting">
       </button>
     </label>
   </div>
   <label>
-    <span>Type a number and press Enter to seek to that time<span class="subLabel">E.g. 1 + 3 + 0 + Enter will seek
-        to
-        1 minute and 30 seconds.</span></span>
+    <span data-text="numbers_then_enter"><span class="subLabel" data-text="numbers_then_enter_option_sub_label"></span></span>
     <input type="checkbox" id="numbersThenEnter">
   </label>
   <label>
-    <span>Type a number and press left/right arrow key to seek by that amount of time<span class="subLabel">E.g. 1
-        + 5 + right arrow key will seek forward by 15 seconds.</span></span>
+    <span data-text="numbers_then_arrow_key"><span class="subLabel" data-text="numbers_then_arrow_key_option_sub_label"></span></span>
     <input type="checkbox" id="numbersThenArrowKey">
   </label>
 </section>
 <section>
-  <h4>Video speed</h4>
+  <h4 data-text="video_speed"></h4>
   <label>
-    <span>Default video speed</span>
+    <span data-text="default_video_speed"></span>
     <input type="checkbox" id="videoSpeed">
   </label>
   <div class="expandable">
     <label>
-      <span>Speed</span>
+      <span data-text="speed"></span>
       <input type="number" id="vsSpeed" min="0" value="1.5" step="0.05">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
   </div>
   <label>
-    <span>Scroll speed over player</span>
+    <span data-text="scroll_speed_over_player"></span>
     <input type="checkbox" id="changeSpeedOnScroll">
   </label>
   <div class="expandable">
     <label>
-      <span>Step (x) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
+      <span data-text="step"> (x) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
       <input type="number" id="speedChangePerScroll" step="0.01" value="0.05">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Require holding</span>
+      <span data-text="require_holding_key"></span>
       <button class="selectMenu openPopup rotableArrow" id="changeSpeedOnScrollModifier">
-        <span>Nothing</span>
+        <span data-text="nothing"></span>
         <ul>
-          <li value>Nothing</li>
-          <li value="1">Left mouse button</li>
-          <li value="2">Right mouse button</li>
+          <li value data-text="nothing"></li>
+          <li value="1" data-text="lmb"></li>
+          <li value="2" data-text="rmb"></li>
           <li value="ctrlKey">Ctrl</li>
           <li value="shiftKey">Shift</li>
           <li value="altKey">Alt</li>
@@ -473,26 +466,26 @@
       </button>
     </label>
     <label>
-      <span>Return to normal speed</span>
+      <span data-text="normal_speed"></span>
       <button class="selectMenu openPopup rotableArrow" id="resetSpeedOnPlayerClick">
-        <span>Off</span>
+        <span data-text="off"></span>
         <ul>
-          <li value>Off</li>
-          <li value="leftClick">Left-click</li>
-          <li value="rightClick">Right-click</li>
-          <li value="middleClick">Middle-click</li>
+          <li value data-text="off"></li>
+          <li value="leftClick" data-text="left_click"></li>
+          <li value="rightClick" data-text="right_click"></li>
+          <li value="middleClick" data-text="middle_click"></li>
         </ul>
       </button>
     </label>
     <div class="expandable">
       <label>
-        <span>Require holding</span>
+        <span data-text="require_holding_key"></span>
         <button class="selectMenu openPopup rotableArrow" id="resetSpeedOnPlayerClickModifier">
-          <span>Nothing</span>
+          <span data-text="nothing"></span>
           <ul>
-            <li value>Nothing</li>
-            <li value="1">Left mouse button</li>
-            <li value="2">Right mouse button</li>
+            <li value data-text="nothing"></li>
+            <li value="1" data-text="lmb"></li>
+            <li value="2" data-text="rmb"></li>
             <li value="ctrlKey">Ctrl</li>
             <li value="shiftKey">Shift</li>
             <li value="altKey">Alt</li>
@@ -502,79 +495,77 @@
     </div>
   </div>
   <label>
-    <span>Type a number and press Shift to set speed to that number<span class="subLabel">E.g. 1 + 2 + 5 + Shift
-        will set speed to
-        1.25x.</span></span>
+    <span data-text="numbers_then_shift"><span class="subLabel" data-text="numbers_then_shift_option_sub_label"></span></span>
     <input type="checkbox" id="numbersThenShift">
   </label>
   <label>
-    <span>Increase speed</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change"
+    <span data-text="increase_speed"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="step"
       number-min="0" number-step="0.05" id="increaseSpeedHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Decrease speed</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="Step change"
+    <span data-text="decrease_speed"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="step"
       number-min="0" number-step="0.05" id="decreaseSpeedHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Normal speed</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="resetSpeedHotkey">
+    <span data-text="normal_speed"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="resetSpeedHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Custom speed</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="Speed" number-min="0"
+    <span data-text="custom_speed"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="speed" number-min="0"
       number-step="0.05" id="customSpeedHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Saved per-channel speeds</span>
-    <button class="list openPopup" listType="text+number" enablesearch number-placeholder="1.5" number-title="Speed"
-      number-min="0" number-step="0.05" text-placeholder="Channel name" text-title="Exact, case-sensitive match"
+    <span data-text="saved_per_channel_speeds"></span>
+    <button class="list openPopup" listType="text+number" enablesearch number-placeholder="1.5" number-title="speed"
+      number-min="0" number-step="0.05" text-placeholder="channel_name" text-title="exact_match"
       id="perChannelSpeeds">
     </button>
   </label>
   <label>
-    <span>Channel speed button</span>
+    <span data-text="channel_speed_button"></span>
     <input type="checkbox" id="channelSpeedButton">
   </label>
   <label>
-    <span>Set channel speed</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="setChannelSpeedHotkey">
+    <span data-text="set_channel_speed"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="setChannelSpeedHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
 </section>
 <section>
-  <h4>Video audio</h4>
+  <h4 data-text="video_audio"></h4>
   <label>
-    <span>Scroll volume over player</span>
+    <span data-text="scroll_volume_over_player"></span>
     <input type="checkbox" id="changeVolOnScroll">
   </label>
   <div class="expandable">
     <label>
-      <span>Step (%) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
+      <span data-text="step"> (%) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
       <input type="number" id="volChangePerScroll" step="1" value="5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Require holding</span>
+      <span data-text="require_holding_key"></span>
       <button class="selectMenu openPopup rotableArrow" id="changeVolOnScrollModifier">
-        <span>Nothing</span>
+        <span data-text="nothing"></span>
         <ul>
-          <li value>Nothing</li>
-          <li value="1">Left mouse button</li>
-          <li value="2">Right mouse button</li>
+          <li value data-text="nothing"></li>
+          <li value="1" data-text="lmb"></li>
+          <li value="2" data-text="rmb"></li>
           <li value="ctrlKey">Ctrl</li>
           <li value="shiftKey">Shift</li>
           <li value="altKey">Alt</li>
@@ -582,26 +573,26 @@
       </button>
     </label>
     <label>
-      <span>Toggle mute/unmute</span>
+      <span data-text="toggle_mute"></span>
       <button class="selectMenu openPopup rotableArrow" id="toggleMuteOnPlayerClick">
-        <span>Off</span>
+        <span data-text="off"></span>
         <ul>
-          <li value>Off</li>
-          <li value="leftClick">Left-click</li>
-          <li value="rightClick">Right-click</li>
-          <li value="middleClick">Middle-click</li>
+          <li value data-text="off"></li>
+          <li value="leftClick" data-text="left_click"></li>
+          <li value="rightClick" data-text="right_click"></li>
+          <li value="middleClick" data-text="middle_click"></li>
         </ul>
       </button>
     </label>
     <div class="expandable">
       <label>
-        <span>Require holding</span>
+        <span data-text="require_holding_key"></span>
         <button class="selectMenu openPopup rotableArrow" id="toggleMuteOnPlayerClickModifier">
-          <span>Nothing</span>
+          <span data-text="nothing"></span>
           <ul>
-            <li value>Nothing</li>
-            <li value="1">Left mouse button</li>
-            <li value="2">Right mouse button</li>
+            <li value data-text="nothing"></li>
+            <li value="1" data-text="lmb"></li>
+            <li value="2" data-text="rmb"></li>
             <li value="ctrlKey">Ctrl</li>
             <li value="shiftKey">Shift</li>
             <li value="altKey">Alt</li>
@@ -611,64 +602,64 @@
     </div>
   </div>
   <label>
-    <span>Increase volume</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change" number-min="0"
+    <span data-text="increase_video_volume"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="step" number-min="0"
       number-step="1" id="increaseVolHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Decrease volume</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="Step change" number-min="0"
+    <span data-text="decrease_video_volume"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="step" number-min="0"
       number-step="1" id="decreaseVolHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Volume booster level (x)</span>
+    <span data-text="volume_booster_level"> (x)</span>
     <input type="number" id="boostingLevel" step="1" value="2" min="2">
     <button class="numInputBtn minus iconButton"></button>
     <button class="numInputBtn plus iconButton"></button>
   </label>
   <label>
-    <span>Toggle volume boost by right clicking the volume button</span>
+    <span data-text="toggle_volume_boost_with_mouse"></span>
     <input type="checkbox" id="toggleVolBoost">
   </label>
   <label>
-    <span>Toggle volume boost</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleVolBoostHotkey">
+    <span data-text="toggle_volume_boost"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleVolBoostHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Automatically boost the volume</span>
+    <span data-text="auto_boost_volume"></span>
     <input type="checkbox" id="autoVolumeBoost">
   </label>
   <label>
-    <span>Mono audio button</span>
+    <span data-text="mono_audio_button"></span>
     <input type="checkbox" id="monoAudioButton">
   </label>
   <label>
-    <span>Toggle mono audio</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="toggleMonoAudioHotkey">
+    <span data-text="toggle_mono_audio"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleMonoAudioHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Automatically turn mono audio on</span>
+    <span data-text="auto_turn_mono_audio_on"></span>
     <input type="checkbox" id="autoMono">
   </label>
 </section>
 <section>
-  <h4>Video quality</h4>
+  <h4 data-text="video_quality"></h4>
   <label>
-    <span>Default video quality</span>
+    <span data-text="default_video_quality"></span>
     <button class="selectMenu openPopup rotableArrow" id="videoQuality">
-      <span>Off</span>
+      <span data-text="off"></span>
       <ul>
-        <li value>Off</li>
+        <li value data-text="off"></li>
         <li value="highres">4320p (8K)</li>
         <li value="hd2160">2160p (4K)</li>
         <li value="hd1440">1440p (HD)</li>
@@ -683,69 +674,69 @@
   </label>
   <div class="expandable">
     <label>
-      <span>Fallback to <span class="subLabel">If the target quality isn't available.</span></span>
+      <span data-text="fallback"></span>
       <button class="selectMenu openPopup rotableArrow" id="vqFallback">
-        <span>Next lowest quality</span>
+        <span data-text="next_low_video_quality"></span>
         <ul>
-          <li value="highest">Next highest quality</li>
-          <li value="lowest" class="selected">Next lowest quality</li>
+          <li value="highest" data-text="next_high_video_quality"></li>
+          <li value="lowest" class="selected" data-text="next_low_video_quality"></li>
         </ul>
       </button>
     </label>
   </div>
   <label>
-    <span>Increase quality</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="increaseQualityHotkey">
+    <span data-text="increase_video_quality"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="increaseQualityHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Decrease quality</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="decreaseQualityHotkey">
+    <span data-text="decrease_video_quality"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="decreaseQualityHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Highest quality</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="highestQualityHotkey">
+    <span data-text="highest_video_quality"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="highestQualityHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Lowest quality</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="lowestQualityHotkey">
+    <span data-text="lowest_video_quality"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="lowestQualityHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
 </section>
 <section>
-  <h4>Zoom / Flip / Rotate video</h4>
+  <h4 data-text="zoom_flip_rotate_video"></h4>
   <label>
-    <span>Zoom in/out by scrolling over player</span>
+    <span data-text="zoom_by_scrolling_over_player"></span>
     <input type="checkbox" id="zoomOnScroll">
   </label>
   <div class="expandable">
     <label>
-      <span>Step (x) <span class="subLabel">Negative number = reversed mouse wheel direction</span></span>
+      <span data-text="step"> (x) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
       <input type="number" id="zoomChangePerScroll" step="0.1" value="0.5">
       <button class="numInputBtn minus iconButton"></button>
       <button class="numInputBtn plus iconButton"></button>
     </label>
     <label>
-      <span>Follow mouse cursor</span>
+      <span data-text="zoom_to_cursor"></span>
       <input type="checkbox" checked id="zoomToCursor">
     </label>
     <label>
-      <span>Require holding</span>
+      <span data-text="require_holding_key"></span>
       <button class="selectMenu openPopup rotableArrow" id="zoomOnScrollModifier">
-        <span>Nothing</span>
+        <span data-text="nothing"></span>
         <ul>
-          <li value>Nothing</li>
-          <li value="2">Right mouse button</li>
+          <li value data-text="nothing"></li>
+          <li value="2" data-text="rmb"></li>
           <li value="ctrlKey">Ctrl</li>
           <li value="shiftKey">Shift</li>
           <li value="altKey">Alt</li>
@@ -753,26 +744,26 @@
       </button>
     </label>
     <label>
-      <span>Cancel zoom</span>
+      <span data-text="cancel_zoom"></span>
       <button class="selectMenu openPopup rotableArrow" id="cancelZoomOnPlayerClick">
-        <span>Off</span>
+        <span data-text="off"></span>
         <ul>
-          <li value>Off</li>
-          <li value="leftClick">Left-click</li>
-          <li value="rightClick">Right-click</li>
-          <li value="middleClick">Middle-click</li>
+          <li value data-text="off"></li>
+          <li value="leftClick" data-text="left_click"></li>
+          <li value="rightClick" data-text="right_click"></li>
+          <li value="middleClick" data-text="middle_click"></li>
         </ul>
       </button>
     </label>
     <div class="expandable">
       <label>
-        <span>Require holding</span>
+        <span data-text="require_holding_key"></span>
         <button class="selectMenu openPopup rotableArrow" id="cancelZoomOnPlayerClickModifier">
-          <span>Nothing</span>
+          <span data-text="nothing"></span>
           <ul>
-            <li value>Nothing</li>
-            <li value="1">Left mouse button</li>
-            <li value="2">Right mouse button</li>
+            <li value data-text="nothing"></li>
+            <li value="1" data-text="lmb"></li>
+            <li value="2" data-text="rmb"></li>
             <li value="ctrlKey">Ctrl</li>
             <li value="shiftKey">Shift</li>
             <li value="altKey">Alt</li>
@@ -783,107 +774,107 @@
     </label>
   </div>
   <label>
-    <span>Zoom in</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="Zoom factor" number-min="0"
+    <span data-text="zoom_in"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="step" number-min="0"
       number-step="0.10" id="zoomInHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Zoom out</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="Zoom factor" number-min="0"
+    <span data-text="zoom_out"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="step" number-min="0"
       number-step="0.10" id="zoomOutHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Move zoomed area right</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+    <span data-text="move_zoomed_area_right"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaRightHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Move zoomed area left</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+    <span data-text="move_zoomed_area_left"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaLeftHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Move zoomed area up</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+    <span data-text="move_zoomed_area_up"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaUpHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Move zoomed area down</span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="Pixels" number-min="0"
+    <span data-text="move_zoomed_area_down"></span>
+    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaDownHotkeys">
-      <span>Hotkeys</span>
+      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
-    <span>Flip horizontally button</span>
+    <span data-text="flip_video_horizontally_button"></span>
     <input type="checkbox" id="flipHorizontallyButton">
   </label>
   <label>
-    <span>Flip vertically button</span>
+    <span data-text="flip_video_vertically_button"></span>
     <input type="checkbox" id="flipVerticallyButton">
   </label>
   <label>
-    <span>Flip horizontally</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="flipHorizontallyHotkey">
+    <span data-text="flip_video_horizontally"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="flipHorizontallyHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Flip vertically</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="flipVerticallyHotkey">
+    <span data-text="flip_video_vertically"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="flipVerticallyHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Rotate clockwise button</span>
+    <span data-text="rotate_video_clockwise_button"></span>
     <input type="checkbox" id="rotateButton">
   </label>
   <label>
-    <span>Rotate anti-clockwise button</span>
+    <span data-text="rotate_video_anti_clockwise_button"></span>
     <input type="checkbox" id="rotateAcwButton">
   </label>
   <label>
-    <span>Rotate clockwise</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="rotateHotkey">
+    <span data-text="rotate_video_clockwise"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="rotateHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
   <label>
-    <span>Rotate anti-clockwise</span>
-    <button class="keyBinder openPopup" placeholder="Set hotkey" id="rotateAcwHotkey">
+    <span data-text="rotate_video_anti_clockwise"></span>
+    <button class="keyBinder openPopup" placeholder="set_hotkey" id="rotateAcwHotkey">
     </button>
     <button class="removeSetting">
     </button>
   </label>
 </section>
 <section>
-  <h4>Hide</h4>
+  <h4 data-text="hide"></h4>
   <label>
-    <span>End cards</span>
+    <span data-text="video_end_cards"></span>
     <button class="selectMenu openPopup rotableArrow" id="hideEndCards">
-      <span>Off</span>
+      <span data-text="default"></span>
       <ul>
-        <li value>Default</li>
-        <li value="hide">Hide</li>
-        <li value="autoHide">Show on hover/pause</li>
+        <li value data-text="default"></li>
+        <li value="hide" data-text="hide"></li>
+        <li value="autoHide" data-text="show_video_end_cards_on_hover_pause"></li>
       </ul>
     </button>
   </label>
   <label>
-    <span>Video controls on pause/seek</span>
+    <span data-text="hide_video_controls_on_pause_seek"></span>
     <input type="checkbox" id="hideControlsOnPause">
   </label>
 </section>

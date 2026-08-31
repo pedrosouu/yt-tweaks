@@ -11,7 +11,7 @@ function getColorPicker(button) {
     colorPicker.setAttribute('tabindex', '-1');
 
     colorPicker.insertAdjacentHTML('afterbegin', `
-    <div style="--trackColor: linear-gradient(to right, hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(0, 100%, 50%))">
+    <div style="--trackColor: linear-gradient(to right, ${document.body.dir == 'ltr' ? 'hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(0, 100%, 50%)' : 'hsl(0, 100%, 50%), hsl(300, 100%, 50%), hsl(240, 100%, 50%), hsl(180, 100%, 50%), hsl(120, 100%, 50%), hsl(60, 100%, 50%), hsl(0, 100%, 50%)'})">
       <div class="gradient"></div>
       <input min="0" max="360" type="range">
     </div>
@@ -60,9 +60,9 @@ function updateUI(obj) {
 
     trigger.style.setProperty('--selectedColor', `hsla(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, ${hsl[3]})`);
 
-    colorPicker.children[1].style.setProperty('--trackColor', `linear-gradient(to right, hsl(${hsl[0]}, 0%, ${hsl[2]}%), hsl(${hsl[0]}, 100%, ${hsl[2]}%))`);
-    colorPicker.children[2].style.setProperty('--trackColor', `linear-gradient(to right, hsl(0, 0%, 0%), hsl(${hsl[0]}, ${hsl[1]}%, 50%), hsla(0, 0%, 100%))`);
-    colorPicker.children[3].style.setProperty('--trackColor', `linear-gradient(to right, hsla(0, 0%, 0%, 0), hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`);
+    colorPicker.children[1].style.setProperty('--trackColor', `linear-gradient(to right, ${document.body.dir == 'rtl' ? `hsl(${hsl[0]}, 100%, ${hsl[2]}%), hsl(${hsl[0]}, 0%, ${hsl[2]}%)` : `hsl(${hsl[0]}, 0%, ${hsl[2]}%), hsl(${hsl[0]}, 100%, ${hsl[2]}%)`}`);
+    colorPicker.children[2].style.setProperty('--trackColor', `linear-gradient(to right, ${document.body.dir == 'rtl' ? `hsla(0, 0%, 100%), hsl(${hsl[0]}, ${hsl[1]}%, 50%), hsl(0, 0%, 0%)` : `hsl(0, 0%, 0%), hsl(${hsl[0]}, ${hsl[1]}%, 50%), hsla(0, 0%, 100%))`}`);
+    colorPicker.children[3].style.setProperty('--trackColor', `linear-gradient(to right, ${document.body.dir == 'rtl' ? `hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%), hsla(0, 0%, 0%, 0)` : `hsla(0, 0%, 0%, 0), hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`}`);
     colorPicker.lastElementChild.value = `${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%, ${hsl[3]}`;
 }
 

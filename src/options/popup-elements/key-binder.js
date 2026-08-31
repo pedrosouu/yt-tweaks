@@ -11,7 +11,7 @@ function getKeyBinder(button) {
 
     const h4 = document.createElement('h4');
     keyBinder = document.createElement('div');
-    keyBinder.textContent = 'Press a key or combination for ';
+    keyBinder.textContent = chrome.i18n.getMessage('key_binder_instruction');
     h4.textContent = openPopup.length ? openPopup[0].label.children[0].childNodes[0].textContent : button.previousElementSibling.childNodes[0].textContent;
     keyBinder.id = 'keyBinder';
     keyBinder.setAttribute('tabindex', '0');
