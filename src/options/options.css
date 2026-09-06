@@ -31,7 +31,11 @@
     min-width: 600px;
     min-height: 600px;
     max-width: 617px;
-    overflow-wrap: break-word;
+    overflow-wrap: anywhere;
+}
+
+input {
+    text-overflow: ellipsis;
 }
 
 section {
@@ -213,15 +217,12 @@ main {
 
 .tabHeading {
     display: block;
-    min-height: var(--btn-height);
-    height: auto;
     background: none;
     width: 100%;
-    justify-content: initial;
     border-radius: 12px;
 }
 
-html:not(.searchMode) .tabHeading.selected {
+html:not(.searchMode) .tabHeading[aria-selected] {
     font-weight: 500;
     background: var(--btn-hover-bg) !important;
 }
@@ -238,7 +239,7 @@ button,
 .button {
     position: relative;
     gap: var(--spacing);
-    height: var(--btn-height);
+    min-height: var(--btn-height);
     min-width: var(--btn-height);
     transition: background .15s;
     display: flex;
@@ -256,7 +257,7 @@ button,
     line-height: inherit;
     line-height: inherit;
     cursor: pointer;
-    border-radius: 100px;
+    border-radius: calc(var(--btn-height) / 2);
     padding: initial;
     text-decoration: none;
 }
@@ -264,10 +265,6 @@ button,
 .button,
 button:not(label> :nth-child(2), .removeSetting) {
     padding: var(--spacing) var(--spacing-2x);
-}
-
-.iconButton {
-    border-radius: 50%;
 }
 
 button.icon {
@@ -355,6 +352,7 @@ label {
     min-height: calc(var(--btn-height) + var(--spacing-2x));
     padding: var(--spacing) var(--spacing-2x);
     display: flex;
+    align-items: center;
     gap: var(--spacing-2x);
     cursor: pointer;
     transition: background .15s;
@@ -412,7 +410,6 @@ input[type="number"] {
     font-family: inherit;
     font-size: inherit;
     border: none;
-    height: var(--btn-height);
     width: 32px;
     min-width: 32px;
     color: inherit;
@@ -523,9 +520,6 @@ button[placeholder]:is(:not([value]), [value=""])::before {
 
 button[placeholder]::before {
     content: attr(value);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 button[placeholder]:is(:not([value]), [value=""]) + .removeSetting {

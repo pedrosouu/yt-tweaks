@@ -61,22 +61,27 @@ ytTweaks.tweaks.push(function (settings) {
 
         document.addEventListener('yt-navigate-finish', function () {
             logo = document.querySelector('a#logo');
+            logo.href = command?.commandMetadata.webCommandMetadata.url || settings.ylspPage;
             logo.addEventListener('click', redirect);
-            if (command) logo.href = command.commandMetadata.webCommandMetadata.url;
         }, { once: true });
 
-        if (settings.ylspPage == '') {
-            document.addEventListener('yt-navigate-finish', setCustomPage);
-        } else {
-            command = settings.ylspPage ? settings.ylspPage : { "commandMetadata": { "webCommandMetadata": { "url": "/feed/subscriptions", "webPageType": "WEB_PAGE_TYPE_BROWSE", "rootVe": 96368, "apiUrl": "/youtubei/v1/browse" } } };
+        if (settings.ylspPage == undefined) {
+            command = { "commandMetadata": { "webCommandMetadata": { "url": "/feed/subscriptions", "webPageType": "WEB_PAGE_TYPE_BROWSE", "rootVe": 96368, "apiUrl": "/youtubei/v1/browse" } } };
         }
 
-        function setCustomPage(e) {
-          if (e.detail.endpoint && confirm(`https://www.youtube.com/ --> https://www.youtube.com${e.detail.endpoint?.commandMetadata?.webCommandMetadata?.url}`)) {
-                document.removeEventListener('yt-navigate-finish', setCustomPage);
+        else if (typeof settings.ylspPage == 'object') {
+            command = settings.ylspPage;
+        }
+
+        else if (settings.ylspPage.includes('www.youtube.com')) {
+            document.addEventListener('yt-navigate-finish', getCommand);
+        }
+
+        function getCommand(e) {
+            if (location.href == settings.ylspPage && e.detail.endpoint) {
+                document.removeEventListener('yt-navigate-finish', getCommand);
 
                 command = e.detail.endpoint;
-                logo.href = command.commandMetadata.webCommandMetadata.url;
                 document.dispatchEvent(new CustomEvent('yttwSaveSetting', {
                     detail: {
                         ylspPage: e.detail.endpoint
@@ -87,13 +92,14 @@ ytTweaks.tweaks.push(function (settings) {
 
         function redirect(e) {
             e.stopImmediatePropagation();
+            if (!command) return;
             e.preventDefault();
             document.querySelector('ytd-app').handleNavigate({ command: command });
         }
 
         ytTweaks.ytLogoSubsPage = {
             storageChanged: function () {
-                document.removeEventListener('yt-navigate-finish', setCustomPage);
+                document.removeEventListener('yt-navigate-finish', getCommand);
                 logo?.removeEventListener('click', redirect);
                 if (logo) logo.href = '/';
             }
@@ -125,6 +131,7 @@ ytTweaks.tweaks.push(function (settings) {
 
         let input;
         let div = document.createElement('div');
+        div.role = 'button';
         div.style = 'visibility: hidden;';
         div.setAttribute('tabindex', '0');
         div.id = 'yttw-new-tab-button';
@@ -139,6 +146,11 @@ ytTweaks.tweaks.push(function (settings) {
             if (e.code == "Space" || e.code == "Enter") {
                 openInNewTab();
             }
+        });
+
+        ytTweaks.getMessage('open_in_new_tab').then(function (strg) {
+            div.title = strg;
+            div.setAttribute('aria-label', strg);
         });
 
         function openInNewTab() {

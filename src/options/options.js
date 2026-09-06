@@ -5,11 +5,12 @@ import { getList } from '/options/popup-elements/list.js';
 
 export { handlePopupDisplay, saveSettings, openPopup };
 
+document.documentElement.lang = chrome.i18n.getMessage('locale_lang');
 document.body.dir = chrome.i18n.getMessage('locale_dir');
 showLocalizedText(document);
 
 try {
-    navigator.mediaSession.setActionHandler('enterpictureinpicture', function () {});
+    navigator.mediaSession.setActionHandler('enterpictureinpicture', function () { });
 } catch { document.body.classList.add('autoPipUnsupported') }
 
 await load(chrome.runtime.getURL('options/tabs/video-grid.html'), document.getElementById('video-grid'));
@@ -43,10 +44,18 @@ const openPopup = [];
 function showLocalizedText(ancestor) {
     let msg;
 
-    for (const el of ancestor.querySelectorAll(':is([data-text], [placeholder], [number-title], [text-title], [text-placeholder])')) {
+    for (const el of ancestor.querySelectorAll(':is([data-text], [title], [aria-label], [placeholder], [number-title], [text-title], [text-placeholder])')) {
         if (el.attributes['data-text']) {
             msg = chrome.i18n.getMessage(el.getAttribute('data-text'));
             if (msg) el.prepend(document.createTextNode(msg));
+        }
+        if (el.attributes.title) {
+            msg = chrome.i18n.getMessage(el.getAttribute('title'));
+            if (msg) el.setAttribute('title', msg);
+        }
+        if (el.attributes['aria-label']) {
+            msg = chrome.i18n.getMessage(el.getAttribute('aria-label'));
+            if (msg) el.setAttribute('aria-label', msg);
         }
         if (el.attributes.placeholder) {
             msg = chrome.i18n.getMessage(el.getAttribute('placeholder'));
@@ -156,8 +165,8 @@ function restoreSetting(button, key, data) {
         case 'selectMenu':
             const selectedOption = button.querySelector(`[value="${data[key]}"]`);
             button.children[0].textContent = selectedOption?.textContent;
-            button.querySelector('.selected')?.classList.remove('selected');
-            selectedOption?.classList.add('selected');
+            button.querySelector('[aria-selected="true"]')?.removeAttribute('aria-selected');
+            selectedOption?.setAttribute('aria-selected', true);
             break;
 
         case 'colorPicker':
@@ -236,7 +245,7 @@ function showPopup(popup, button, centered) {
 
     if (popup.hasAttribute('tabindex')) {
         popup.addEventListener('transitionend', function () {
-            popup.focus();
+            popup.focus({ focusVisible: false });
         }, { once: true });
     }
 }
@@ -302,8 +311,8 @@ function removeSettingBtnClicked(button) {
 }
 
 function handleTabClick(button) {
-    button.parentElement.querySelector('.selected').classList.remove('selected');
-    button.classList.add('selected');
+    button.parentElement.querySelector('[aria-selected]').removeAttribute('aria-selected');
+    button.setAttribute('aria-selected', true);
 
     document.querySelector('.tabContent:not(.hidden)').classList.add('hidden');
     document.querySelector(`.tabContent:nth-child(${[...button.parentElement.children].indexOf(button) + 1}`).classList.remove('hidden');

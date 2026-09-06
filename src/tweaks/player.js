@@ -217,7 +217,7 @@ function overwriteStorageSetItem() {
 const addButtonToPlayer = function () {
     let fragment;
 
-    return function (button) {
+    return function (button, icon) {
         if (!fragment) {
             fragment = document.createDocumentFragment();
             document.addEventListener('loadstart', insert, true);
@@ -230,6 +230,13 @@ const addButtonToPlayer = function () {
                 }
             }
         }
+
+		const img = document.createElement('img');
+		img.style = 'display: block; margin: auto; height: 60%';
+		img.src = icon;
+		button.classList.add('ytp-button');
+		button.style['vertical-align'] = 'top';
+		button.appendChild(img);
 
         fragment.append(button);
     };
@@ -385,16 +392,14 @@ ytTweaks.tweaks.push(function (settings) {
 
 		document.addEventListener('loadstart', setSpeed, true);
 
-		const img = document.createElement('img');
-		img.style = 'display: block; margin: auto; height: 60%';
-		img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 1c1.44 0 2.87.28 4.21.83a11 11 0 0 1 3.45 2.27l-1.81 1.05A9 9 0 0 0 3 12a9 9 0 0 0 18-.00l-.01-.44a8.99 8.99 0 0 0-.14-1.20l1.81-1.05A11.00 11.00 0 0 1 10.51 22.9 11 11 0 0 1 12 1Zm7.08 6.25-7.96 3.25a1.74 1.74 0 1 0 1.73 2.99l6.8-5.26a.57.57 0 0 0-.56-.98Z'/%3E%3C/svg%3E";
-
 		const speedButton = document.createElement('button');
 		speedButton.addEventListener('click', handleSpeedSetting);
-		speedButton.classList.add('ytp-button');
-		speedButton.style = 'vertical-align: top';
-		speedButton.appendChild(img);
-		if (settings.channelSpeedButton) addButtonToPlayer(speedButton);
+		ytTweaks.getMessage('set_channel_speed').then(function (strg) {
+			speedButton.title = strg;
+			speedButton.setAttribute('aria-label', strg);
+		});
+
+		if (settings.channelSpeedButton) addButtonToPlayer(speedButton, "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='%23fff'%3E%3Cpath d='M12 1c1.44 0 2.87.28 4.21.83a11 11 0 0 1 3.45 2.27l-1.81 1.05A9 9 0 0 0 3 12a9 9 0 0 0 18-.00l-.01-.44a8.99 8.99 0 0 0-.14-1.20l1.81-1.05A11.00 11.00 0 0 1 10.51 22.9 11 11 0 0 1 12 1Zm7.08 6.25-7.96 3.25a1.74 1.74 0 1 0 1.73 2.99l6.8-5.26a.57.57 0 0 0-.56-.98Z'/%3E%3C/svg%3E");
 
 		function handleSpeedSetting(e) {
 			let speed = +prompt(author, speeds[author] || '')?.replace(',', '.');
@@ -926,22 +931,22 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.monoAudioButton || settings.toggleMonoAudioHotkey) {
-		const monoOffIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' fill='%23000000' width='24' height='24' viewBox='0 0 20.867935 20.867937' version='1.1' id='svg1' xml:space='preserve'%3E%3Cdefs id='defs1'/%3E%3Ctext xml:space='preserve' style='font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2507px;font-family:Corbel;-inkscape-font-specification:Corbel;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:%23ffffff;fill-opacity:1;stroke:%23ffffff;stroke-width:0.3;stroke-dasharray:none;stroke-opacity:1' x='4.7291713' y='15.029335' id='text10' transform='scale(1.025579,0.97505897)'%3E%3Ctspan id='tspan10' style='font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Corbel;-inkscape-font-specification:Corbel;fill:%23ffffff;fill-opacity:1;stroke:%23ffffff;stroke-width:0.3;stroke-dasharray:none;stroke-opacity:1' x='4.7291713' y='15.029335'%3EM%3C/tspan%3E%3C/text%3E%3Cellipse style='fill:none;fill-opacity:1;stroke:%23ffffff;stroke-width:1.51524;stroke-dasharray:none;stroke-opacity:1' id='path11' cx='10.433968' cy='10.433969' rx='9.6763477' ry='9.6763487'/%3E%3C/svg%3E";
-		const monoOnIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' fill='%23000000' width='24' height='24' viewBox='0 0 20.867935 20.867937' version='1.1' id='svg1' xml:space='preserve'%3E%3Cdefs id='defs1'/%3E%3Cpath id='path12' d='M 10.433613,0 C 4.6800652,-2.6162365e-7 -2.6162359e-7,4.6800648 0,10.433613 c 4.162193e-7,5.753548 4.6800657,10.433556 10.433613,10.433555 5.753547,0 10.433555,-4.680008 10.433555,-10.433555 C 20.867169,4.6800653 16.18716,4.1621939e-7 10.433613,0 Z M 5.5925976,5.8484765 h 2.2014258 l 2.1893555,5.0009765 c 0.1369871,0.313539 0.2989421,0.742203 0.4507031,1.125469 0.153863,-0.389105 0.330122,-0.856994 0.450703,-1.125469 l 2.189356,-5.0009765 h 2.199375 v 9.1715625 h -1.85086 v -4.446797 c 0,-0.377428 0.02656,-0.8583215 0.03609,-1.2721288 -0.0602,0.1390175 -0.127429,0.3244704 -0.186328,0.4551563 v 0.00193 L 10.938867,15.020098 H 9.9292968 L 7.5936914,9.7563281 h 0.00199 C 7.5328118,9.6154312 7.4702406,9.4431128 7.4074218,9.2973632 c 0.00964,0.4169571 0.036035,0.8891648 0.036035,1.2759378 v 4.446797 H 5.5925976 Z' style='fill:%23ffffff'/%3E%3C/svg%3E";
+		const offIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' fill='%23000000' width='24' height='24' viewBox='0 0 20.867935 20.867937' version='1.1' id='svg1' xml:space='preserve'%3E%3Cdefs id='defs1'/%3E%3Ctext xml:space='preserve' style='font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.2507px;font-family:Corbel;-inkscape-font-specification:Corbel;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:%23ffffff;fill-opacity:1;stroke:%23ffffff;stroke-width:0.3;stroke-dasharray:none;stroke-opacity:1' x='4.7291713' y='15.029335' id='text10' transform='scale(1.025579,0.97505897)'%3E%3Ctspan id='tspan10' style='font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Corbel;-inkscape-font-specification:Corbel;fill:%23ffffff;fill-opacity:1;stroke:%23ffffff;stroke-width:0.3;stroke-dasharray:none;stroke-opacity:1' x='4.7291713' y='15.029335'%3EM%3C/tspan%3E%3C/text%3E%3Cellipse style='fill:none;fill-opacity:1;stroke:%23ffffff;stroke-width:1.51524;stroke-dasharray:none;stroke-opacity:1' id='path11' cx='10.433968' cy='10.433969' rx='9.6763477' ry='9.6763487'/%3E%3C/svg%3E";
+		const onIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' fill='%23000000' width='24' height='24' viewBox='0 0 20.867935 20.867937' version='1.1' id='svg1' xml:space='preserve'%3E%3Cdefs id='defs1'/%3E%3Cpath id='path12' d='M 10.433613,0 C 4.6800652,-2.6162365e-7 -2.6162359e-7,4.6800648 0,10.433613 c 4.162193e-7,5.753548 4.6800657,10.433556 10.433613,10.433555 5.753547,0 10.433555,-4.680008 10.433555,-10.433555 C 20.867169,4.6800653 16.18716,4.1621939e-7 10.433613,0 Z M 5.5925976,5.8484765 h 2.2014258 l 2.1893555,5.0009765 c 0.1369871,0.313539 0.2989421,0.742203 0.4507031,1.125469 0.153863,-0.389105 0.330122,-0.856994 0.450703,-1.125469 l 2.189356,-5.0009765 h 2.199375 v 9.1715625 h -1.85086 v -4.446797 c 0,-0.377428 0.02656,-0.8583215 0.03609,-1.2721288 -0.0602,0.1390175 -0.127429,0.3244704 -0.186328,0.4551563 v 0.00193 L 10.938867,15.020098 H 9.9292968 L 7.5936914,9.7563281 h 0.00199 C 7.5328118,9.6154312 7.4702406,9.4431128 7.4074218,9.2973632 c 0.00964,0.4169571 0.036035,0.8891648 0.036035,1.2759378 v 4.446797 H 5.5925976 Z' style='fill:%23ffffff'/%3E%3C/svg%3E";
 
-		const img = document.createElement('img');
-		img.style = 'display: block; margin: auto; height: 60%';
-		img.src = monoOffIcon;
-
-		const monoButton = document.createElement('button');
-		monoButton.classList.add('ytp-button');
-		monoButton.style = 'vertical-align: top';
-		monoButton.appendChild(img);
-		monoButton.addEventListener('click', toggleMonoAudio);
+		const button = document.createElement('button');
+		button.role = 'switch';
+		button.addEventListener('click', toggleMonoAudio);
+		ytTweaks.getMessage('toggle_mono_audio').then(function (strg) {
+			button.title = strg;
+			button.setAttribute('aria-label', strg);
+		});
 
 		if (settings.autoMono) document.addEventListener('loadstart', autoEnableMono, true);
 
-		if (settings.monoAudioButton) addButtonToPlayer(monoButton);
+		if (settings.monoAudioButton) {
+			addButtonToPlayer(button, offIcon);
+		}
 
 		if (settings.toggleMonoAudioHotkey) {
 			ytTweaks.getHotkeys()[settings.toggleMonoAudioHotkey] = toggleMonoAudio;
@@ -955,13 +960,15 @@ ytTweaks.tweaks.push(function (settings) {
 
 			if (video.audioCtx.destination.channelCount == 1) {
 				video.audioCtx.destination.channelCount = video.audioCtx.destination.maxChannelCount;
-				if (!e) showFeedback('', monoOffIcon);
-				img.src = monoOffIcon;
+				if (!e) showFeedback('', offIcon);
+				button.children[0].src = offIcon;
+				button.removeAttribute('aria-checked');
 				autoEnableMono.canRun = false;
 			} else {
 				video.audioCtx.destination.channelCount = 1
-				if (!e) showFeedback('', monoOnIcon);
-				img.src = monoOnIcon;
+				if (!e) showFeedback('', onIcon);
+				button.children[0].src = onIcon;
+				button.setAttribute('aria-checked', true);
 				autoEnableMono.canRun = true;
 			}
 		}
@@ -972,7 +979,8 @@ ytTweaks.tweaks.push(function (settings) {
 			video = e.target;
 			setupMonoAudio();
 			video.audioCtx.destination.channelCount = 1;
-			img.src = monoOnIcon;
+			button.children[0].src = onIcon;
+			button.setAttribute('aria-checked', true);
 		}
 
 		function setupMonoAudio() {
@@ -986,8 +994,8 @@ ytTweaks.tweaks.push(function (settings) {
 		ytTweaks.monoAudio = {
 			storageChanged: function () {
 				document.removeEventListener('loadstart', autoEnableMono, true);
-				monoButton.removeEventListener('click', toggleMonoAudio);
-				monoButton.remove();
+				button.removeEventListener('click', toggleMonoAudio);
+				button.remove();
 
 				for (const video of document.querySelectorAll('video')) {
 					if (video.audioCtx) video.audioCtx.destination.channelCount = video.audioCtx.destination.maxChannelCount;
@@ -1033,16 +1041,15 @@ ytTweaks.tweaks.push(function (settings) {
 		const buttonSaveMethodRc = settings.snapshotButtonSaveMethodRc || 'clipboard';
 		const subtitles = settings.snapshotWithSubtitles;
 
-		const img = document.createElement('img');
-		img.style = 'display: block; margin: auto; height: 60%';
-		img.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 15 15' fill='none'%3E%3Cpath d='M7 1.5L2 1.5M14.5 12.5L14.5 4.5C14.5 3.94772 14.0523 3.5 13.5 3.5L1.5 3.5C0.947717 3.5 0.500001 3.94772 0.500001 4.5L0.5 12.5C0.5 13.0523 0.947716 13.5 1.5 13.5L13.5 13.5C14.0523 13.5 14.5 13.0523 14.5 12.5ZM9.5 10.5C8.39543 10.5 7.5 9.60457 7.5 8.5C7.5 7.39543 8.39543 6.5 9.5 6.5C10.6046 6.5 11.5 7.39543 11.5 8.5C11.5 9.60457 10.6046 10.5 9.5 10.5Z' stroke='%23fff'/%3E%3C/svg%3E";
+		const button = document.createElement('button');
+		const icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 15 15' fill='none'%3E%3Cpath d='M7 1.5L2 1.5M14.5 12.5L14.5 4.5C14.5 3.94772 14.0523 3.5 13.5 3.5L1.5 3.5C0.947717 3.5 0.500001 3.94772 0.500001 4.5L0.5 12.5C0.5 13.0523 0.947716 13.5 1.5 13.5L13.5 13.5C14.0523 13.5 14.5 13.0523 14.5 12.5ZM9.5 10.5C8.39543 10.5 7.5 9.60457 7.5 8.5C7.5 7.39543 8.39543 6.5 9.5 6.5C10.6046 6.5 11.5 7.39543 11.5 8.5C11.5 9.60457 10.6046 10.5 9.5 10.5Z' stroke='%23fff'/%3E%3C/svg%3E";
+		button.addEventListener('click', snapshotButtonClicked);
+		button.addEventListener('contextmenu', snapshotButtonClicked);
 
-		const snapshotButton = document.createElement('button');
-		snapshotButton.classList.add('ytp-button');
-		snapshotButton.style = 'vertical-align: top';
-		snapshotButton.appendChild(img);
-		snapshotButton.addEventListener('click', snapshotButtonClicked);
-		snapshotButton.addEventListener('contextmenu', snapshotButtonClicked);
+		ytTweaks.getMessage('video_snapshot').then(function (strg) {
+			button.title = strg;
+			button.setAttribute('aria-label', strg);
+		});
 
 		function snapshotButtonClicked(e) {
 			e.preventDefault();
@@ -1054,7 +1061,7 @@ ytTweaks.tweaks.push(function (settings) {
 			else takeSnapshot(true, true);
 		}
 
-		if (settings.snapshotButton) addButtonToPlayer(snapshotButton);
+		if (settings.snapshotButton) addButtonToPlayer(button, icon);
 
 		if (settings.snapshotToFileHotkey) {
 			ytTweaks.getHotkeys()[settings.snapshotToFileHotkey] = function () {
@@ -1081,7 +1088,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 			return function (saveToFile, saveToClip) {
 				getPlayerAndVideo();
-				showFeedback('', img.src);
+				showFeedback('', icon);
 
 				canvas.width = video.videoWidth;
 				canvas.height = video.videoHeight;
@@ -1175,7 +1182,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 		ytTweaks.videoSnapshot = {
 			storageChanged: function () {
-				snapshotButton.remove();
+				button.remove();
 			},
 		};
 	}
@@ -1186,35 +1193,35 @@ ytTweaks.tweaks.push(function (settings) {
 		const flipVertOffIcon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none'%3E%3Cpath d='M3 13H21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.2 4H8.16146C7.63431 3.99998 7.17955 3.99997 6.80497 4.03057C6.40963 4.06287 6.01641 4.13419 5.63803 4.32698C5.07354 4.6146 4.6146 5.07354 4.32698 5.63803C4.13419 6.01641 4.06287 6.40963 4.03057 6.80497C3.99997 7.17954 3.99998 7.63431 4 8.16146V8.2V10H6V8.2C6 7.62345 6.00078 7.25117 6.02393 6.96784C6.04612 6.69617 6.0838 6.59545 6.10899 6.54601C6.20487 6.35785 6.35785 6.20487 6.54601 6.10899C6.59545 6.0838 6.69617 6.04612 6.96784 6.02393C7.25117 6.00078 7.62345 6 8.2 6H15.8C16.3766 6 16.7488 6.00078 17.0322 6.02393C17.3038 6.04612 17.4045 6.0838 17.454 6.10899C17.6422 6.20487 17.7951 6.35785 17.891 6.54601C17.9162 6.59545 17.9539 6.69617 17.9761 6.96784C17.9992 7.25117 18 7.62345 18 8.2V10H20V8.2V8.16148C20 7.63432 20 7.17955 19.9694 6.80497C19.9371 6.40963 19.8658 6.01641 19.673 5.63803C19.3854 5.07354 18.9265 4.6146 18.362 4.32698C17.9836 4.13419 17.5904 4.06287 17.195 4.03057C16.8205 3.99997 16.3657 3.99998 15.8385 4H15.8H8.2ZM20 12H18V15.8C18 16.3766 17.9992 16.7488 17.9761 17.0322C17.9539 17.3038 17.9162 17.4045 17.891 17.454C17.7951 17.6422 17.6422 17.7951 17.454 17.891C17.4045 17.9162 17.3038 17.9539 17.0322 17.9761C16.7488 17.9992 16.3766 18 15.8 18H8.2C7.62345 18 7.25117 17.9992 6.96784 17.9761C6.69617 17.9539 6.59545 17.9162 6.54601 17.891C6.35785 17.7951 6.20487 17.6422 6.10899 17.454C6.0838 17.4045 6.04612 17.3038 6.02393 17.0322C6.00078 16.7488 6 16.3766 6 15.8V12H4V15.8V15.8385C3.99998 16.3657 3.99997 16.8205 4.03057 17.195C4.06287 17.5904 4.13419 17.9836 4.32698 18.362C4.6146 18.9265 5.07354 19.3854 5.63803 19.673C6.01641 19.8658 6.40963 19.9371 6.80497 19.9694C7.17955 20 7.63432 20 8.16148 20H8.2H15.8H15.8385C16.3657 20 16.8205 20 17.195 19.9694C17.5904 19.9371 17.9836 19.8658 18.362 19.673C18.9265 19.3854 19.3854 18.9265 19.673 18.362C19.8658 17.9836 19.9371 17.5904 19.9694 17.195C20 16.8205 20 16.3657 20 15.8385V15.8V12Z' fill='%23fff'/%3E%3C/svg%3E";
 		const flipVertOnIcon = "data:image/svg+xml,%3Csvg xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24' fill='none' version='1.1' id='svg2' sodipodi:docname='flip-horizontal-1-svgrepo-com (1).svg' inkscape:version='1.4 (86a8ad7, 2024-10-11)'%3E%3Cpath d='M3 13H21' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' id='path1'/%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M8.2 4H8.16146C7.63431 3.99998 7.17955 3.99997 6.80497 4.03057C6.40963 4.06287 6.01641 4.13419 5.63803 4.32698C5.07354 4.6146 4.6146 5.07354 4.32698 5.63803C4.13419 6.01641 4.06287 6.40963 4.03057 6.80497C3.99997 7.17954 3.99998 7.63431 4 8.16146V8.2V10H6V8.2C6 7.62345 6.00078 7.25117 6.02393 6.96784C6.04612 6.69617 6.0838 6.59545 6.10899 6.54601C6.20487 6.35785 6.35785 6.20487 6.54601 6.10899C6.59545 6.0838 6.69617 6.04612 6.96784 6.02393C7.25117 6.00078 7.62345 6 8.2 6H15.8C16.3766 6 16.7488 6.00078 17.0322 6.02393C17.3038 6.04612 17.4045 6.0838 17.454 6.10899C17.6422 6.20487 17.7951 6.35785 17.891 6.54601C17.9162 6.59545 17.9539 6.69617 17.9761 6.96784C17.9992 7.25117 18 7.62345 18 8.2V10H20V8.2V8.16148C20 7.63432 20 7.17955 19.9694 6.80497C19.9371 6.40963 19.8658 6.01641 19.673 5.63803C19.3854 5.07354 18.9265 4.6146 18.362 4.32698C17.9836 4.13419 17.5904 4.06287 17.195 4.03057C16.8205 3.99997 16.3657 3.99998 15.8385 4H15.8H8.2ZM20 12H18V15.8C18 16.3766 17.9992 16.7488 17.9761 17.0322C17.9539 17.3038 17.9162 17.4045 17.891 17.454C17.7951 17.6422 17.6422 17.7951 17.454 17.891C17.4045 17.9162 17.3038 17.9539 17.0322 17.9761C16.7488 17.9992 16.3766 18 15.8 18H8.2C7.62345 18 7.25117 17.9992 6.96784 17.9761C6.69617 17.9539 6.59545 17.9162 6.54601 17.891C6.35785 17.7951 6.20487 17.6422 6.10899 17.454C6.0838 17.4045 6.04612 17.3038 6.02393 17.0322C6.00078 16.7488 6 16.3766 6 15.8V12H4V15.8V15.8385C3.99998 16.3657 3.99997 16.8205 4.03057 17.195C4.06287 17.5904 4.13419 17.9836 4.32698 18.362C4.6146 18.9265 5.07354 19.3854 5.63803 19.673C6.01641 19.8658 6.40963 19.9371 6.80497 19.9694C7.17955 20 7.63432 20 8.16148 20H8.2H15.8H15.8385C16.3657 20 16.8205 20 17.195 19.9694C17.5904 19.9371 17.9836 19.8658 18.362 19.673C18.9265 19.3854 19.3854 18.9265 19.673 18.362C19.8658 17.9836 19.9371 17.5904 19.9694 17.195C20 16.8205 20 16.3657 20 15.8385V15.8V12Z' fill='%23fff' id='path2'/%3E%3Crect style='fill:%23fff;stroke-width:0.0466197' id='rect2' width='14.014849' height='4.3531132' x='4.9771729' y='5.6468191' rx='0'/%3E%3Crect style='fill:%23fff;stroke-width:0.0526548' id='rect2-0' width='14.014849' height='5.5531135' x='5.1161733' y='12.935942' rx='0'/%3E%3Crect style='fill:%23fff;stroke-width:0.04686' id='rect3' width='2.6039784' height='1.3019892' x='7.20434' y='7.3779387'/%3E%3C/svg%3E";
 
-		const flipHor = document.createElement('img');
-		const flipVert = document.createElement('img');
-		flipHor.style = flipVert.style = 'display: block; margin: auto; height: 60%';
-		flipHor.src = flipHorOffIcon;
-		flipVert.src = flipVertOffIcon;
-
 		const flipHorButton = document.createElement('button');
 		const flipVerButton = document.createElement('button');
+		flipHorButton.role = 'switch';
+		flipVerButton.role = 'switch';
 
-		flipHorButton.classList.add('ytp-button');
-		flipHorButton.appendChild(flipHor);
+		ytTweaks.getMessage('flip_video_horizontally').then(function (strg) {
+			flipHorButton.title = strg;
+			flipHorButton.setAttribute('aria-label', strg);
+		});
+
+		ytTweaks.getMessage('flip_video_vertically').then(function (strg) {
+			flipVerButton.title = strg;
+			flipVerButton.setAttribute('aria-label', strg);
+		});
+
 		flipHorButton.addEventListener('click', function (e) {
 			flipVideo(true, e)
 		});
 
-		flipVerButton.classList.add('ytp-button');
-		flipVerButton.appendChild(flipVert);
 		flipVerButton.addEventListener('click', function (e) {
 			flipVideo(false, e);
 		});
 
-		flipHorButton.style = flipVerButton.style = 'vertical-align: top';
-
 		if (settings.flipHorizontallyButton) {
-			addButtonToPlayer(flipHorButton);
+			addButtonToPlayer(flipHorButton, flipHorOffIcon);
 		}
 
 		if (settings.flipVerticallyButton) {
-			addButtonToPlayer(flipVerButton);
+			addButtonToPlayer(flipVerButton, flipVertOffIcon);
 		}
 
 		if (settings.flipHorizontallyHotkey) {
@@ -1229,25 +1236,25 @@ ytTweaks.tweaks.push(function (settings) {
 
 		function flipVideo(horizontally, e) {
 			getPlayerAndVideo();
+
 			video.style.transition = 'scale 0.25s';
 			video.style.translate = video.style.transformOrigin = '';
 			const s = video.style.scale.match(/\d*\.?\d+/)?.[0] || 1;
 			const invert = parseInt(video.style.rotate || 0) / 90 % 2;
 
+			const horFlipped = flipHorButton.getAttribute('aria-checked') == 'true';
+			const vertFlipped = flipVerButton.getAttribute('aria-checked') == 'true';
+
 			if (horizontally) {
-				const horFlipped = flipHor.src == flipHorOnIcon;
-				const vertFlipped = flipVert.src == flipVertOnIcon;
-
 				video.style.scale = horFlipped ? vertFlipped ? invert ? `${-s} ${s}` : `${s} ${-s}` : s : vertFlipped ? -s : invert ? `${s} ${-s}` : `${-s} ${s}`;
-				flipHor.src = horFlipped ? flipHorOffIcon : flipHorOnIcon;
-				if (!e) showFeedback('', flipHor.src);
+				flipHorButton.children[0].src = horFlipped ? flipHorOffIcon : flipHorOnIcon;
+				flipHorButton.setAttribute('aria-checked', !horFlipped);
+				if (!e) showFeedback('', flipHorButton.children[0].src);
 			} else {
-				const horFlipped = flipHor.src == flipHorOnIcon;
-				const vertFlipped = flipVert.src == flipVertOnIcon;
-
 				video.style.scale = vertFlipped ? horFlipped ? invert ? `${s} ${-s}` : `${-s} ${s}` : s : horFlipped ? -s : invert ? `${-s} ${s}` : `${s} ${-s}`;
-				flipVert.src = vertFlipped ? flipVertOffIcon : flipVertOnIcon;
-				if (!e) showFeedback('', flipVert.src);
+				flipVerButton.children[0].src = vertFlipped ? flipVertOffIcon : flipVertOnIcon;
+				flipVerButton.setAttribute('aria-checked', !vertFlipped);
+				if (!e) showFeedback('', flipVerButton.children[0].src);
 			}
 		}
 
@@ -1260,32 +1267,31 @@ ytTweaks.tweaks.push(function (settings) {
 	}
 
 	if (settings.rotateButton || settings.rotateAcwButton || settings.rotateHotkey || settings.rotateAcwHotkey) {
-		const clockwise = document.createElement('img');
-		clockwise.style = 'display: block; margin: auto; height: 60%;';
-		clockwise.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'%3E%3Cpath d='M21.37,5.07a1,1,0,0,0-1.3.56l-1,2.45A9,9,0,1,0,17.75,18a1,1,0,0,0-.09-1.41,1,1,0,0,0-1.41.09,7,7,0,1,1,1.2-7.33L14.37,8.07a1,1,0,1,0-.74,1.86l5,2A1,1,0,0,0,19,12a1,1,0,0,0,.93-.63l2-5A1,1,0,0,0,21.37,5.07Z' style='fill: %23fff'/%3E%3C/svg%3E";
+		const icon = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24px' height='24px' viewBox='0 0 24 24'%3E%3Cpath d='M21.37,5.07a1,1,0,0,0-1.3.56l-1,2.45A9,9,0,1,0,17.75,18a1,1,0,0,0-.09-1.41,1,1,0,0,0-1.41.09,7,7,0,1,1,1.2-7.33L14.37,8.07a1,1,0,1,0-.74,1.86l5,2A1,1,0,0,0,19,12a1,1,0,0,0,.93-.63l2-5A1,1,0,0,0,21.37,5.07Z' style='fill: %23fff'/%3E%3C/svg%3E";
 
 		const rotateButton = document.createElement('button');
-		rotateButton.classList.add('ytp-button');
-		rotateButton.style = 'vertical-align: top';
-		rotateButton.appendChild(clockwise);
 		rotateButton.addEventListener('click', function () {
 			rotate(true);
 		});
 
-		const antiClockwise = document.createElement('img');
-		antiClockwise.style = clockwise.attributes.style.value + 'scale: -1 1;';
-		antiClockwise.src = clockwise.src;
-
 		const rotateAcwButton = document.createElement('button');
-		rotateAcwButton.classList.add('ytp-button');
-		rotateAcwButton.style = 'vertical-align: top';
-		rotateAcwButton.appendChild(antiClockwise);
+		rotateAcwButton.style.scale = '-1 1';
 		rotateAcwButton.addEventListener('click', function () {
 			rotate();
 		});
 
-		if (settings.rotateAcwButton) addButtonToPlayer(rotateAcwButton);
-		if (settings.rotateButton) addButtonToPlayer(rotateButton);
+		ytTweaks.getMessage('rotate_video_clockwise').then(function (strg) {
+			rotateButton.title = strg;
+			rotateButton.setAttribute('aria-label', strg);
+		});
+
+		ytTweaks.getMessage('rotate_video_anti_clockwise').then(function (strg) {
+			rotateAcwButton.title = strg;
+			rotateAcwButton.setAttribute('aria-label', strg);
+		});
+
+		if (settings.rotateAcwButton) addButtonToPlayer(rotateAcwButton, icon);
+		if (settings.rotateButton) addButtonToPlayer(rotateButton, icon);
 
 		if (settings.rotateHotkey) {
 			ytTweaks.getHotkeys()[settings.rotateHotkey] = function () {
@@ -1510,24 +1516,26 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 		input.checked = +autoPlay ? true : false;
 		autoPlay = input.checked;
-		label.title = `Auto-play is ${autoPlay ? 'on' : 'off'}`;
 		label.insertAdjacentHTML('beforeend', `
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
 			  <path d="M8 17.1783V6.82167C8 6.03258 8.87115 5.55437 9.53688 5.97801L17.6742 11.1563C18.2917 11.5493 18.2917 12.4507 17.6742 12.8437L9.53688 18.022C8.87115 18.4456 8 17.9674 8 17.1783Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
 			</svg>
 			`);
+		
+		ytTweaks.getMessage('toggle_auto_play').then(function (strg) {
+			label.title = strg;
+			input.setAttribute('aria-label', strg);
+		});
 
 		input.addEventListener('change', function (e) {
 			if (e.target.checked) {
 				autoPlay = 1;
 				toggleAutoPlay(true);
-				label.title = `Auto-play is on`;
 				localStorage.setItem("playlistAutoPlay", 1);
 
 			} else {
 				autoPlay = 0;
 				toggleAutoPlay(false);
-				label.title = `Auto-play is off`;
 				localStorage.setItem("playlistAutoPlay", 0);
 			}
 		});
@@ -1660,18 +1668,20 @@ ytTweaks.tweaks.push(function (settings) {
 		input.checked = +autoPlay ? true : false;
 		input.id = 'yttw-shorts-autoplay-button';
 		autoPlay = input.checked;
-		label.title = `Auto-play is ${autoPlay ? 'on' : 'off'}`;
+
+		ytTweaks.getMessage('toggle_auto_play').then(function (strg) {
+			label.title = strg;
+			input.setAttribute('aria-label', strg);
+		});
 
 		let el, el2;
 
 		input.addEventListener('change', function (e) {
 			if (e.target.checked) {
 				autoPlay = 1;
-				label.title = 'Auto-play is on';
 				localStorage.setItem("shortsAutoPlay", 1);
 			} else {
 				autoPlay = 0;
-				label.title = 'Auto-play is off';
 				localStorage.setItem("shortsAutoPlay", 0);
 			}
 		});

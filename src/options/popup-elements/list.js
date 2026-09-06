@@ -12,7 +12,7 @@ function getList(button) {
     list.id = 'list';
     list.setAttribute('tabindex', '-1');
     list.insertAdjacentHTML('afterbegin', `
-    <button class="close" title="${chrome.i18n.getMessage('close')}"></button>
+    <button class="close" title="${chrome.i18n.getMessage('close')}" aria-label="${chrome.i18n.getMessage('close')}"></button>
       <search class="list">
         <input class="search button" placeholder="${chrome.i18n.getMessage('search')}" type="text">
         <svg class="clearSearch" viewBox="0 0 24 24">
@@ -61,7 +61,7 @@ function addItem(item, value1, value2) {
 
     else item.appendChild(getTextInput(value2));
 
-    item.insertAdjacentHTML('beforeend', `<button class="tinted delete iconButton" title="${chrome.i18n.getMessage('delete')}"></button>`);
+    item.insertAdjacentHTML('beforeend', `<button class="tinted delete iconButton" title="${chrome.i18n.getMessage('delete')}" aria-label="${chrome.i18n.getMessage('delete')}"></button>`);
 
     list.lastElementChild.appendChild(item);
 }

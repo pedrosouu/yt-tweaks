@@ -1,4 +1,7 @@
 {
+    "locale_lang": {
+        "message": "pt-BR"
+    },
     "locale_dir": {
         "message": "ltr"
     },
@@ -151,6 +154,9 @@
     },
     "posts": {
         "message": "Postagens"
+    },
+    "toggle_auto_play": {
+        "message": "Ativar/desativar reprodução automática"
     },
     "items_per_row": {
         "message": "Número de itens por linha"
@@ -709,6 +715,9 @@
     },
     "open_in_new_tab_button_in_search_box": {
         "message": "Adicionar botão 'Abrir em nova aba' na caixa de pesquisa"
+    },
+    "open_in_new_tab": {
+        "message": "Abrir em nova aba"
     },
     "compact_left_sidebar": {
         "message": "Barra lateral esquerda compacta"

@@ -1,4 +1,7 @@
 {
+    "locale_lang": {
+        "message": "en"
+    },
     "locale_dir": {
         "message": "ltr"
     },
@@ -151,6 +154,9 @@
     },
     "posts": {
         "message": "Posts"
+    },
+    "toggle_auto_play": {
+        "message": "Toggle auto-play"
     },
     "items_per_row": {
         "message": "Number of items per row"
@@ -712,6 +718,9 @@
     },
     "open_in_new_tab_button_in_search_box": {
         "message": "Add 'Open in new tab' button to search box"
+    },
+    "open_in_new_tab": {
+        "message": "Open in a new tab"
     },
     "compact_left_sidebar": {
         "message": "Compact left sidebar"

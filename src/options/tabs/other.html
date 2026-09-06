@@ -3,8 +3,6 @@
     <span data-text="navigate_to_wl_page"></span>
     <button class="keyBinder openPopup" placeholder="set_hotkey" id="redToWatchLaterHotkey">
     </button>
-    <button class="removeSetting">
-    </button>
   </label>
   <label>
     <span data-text="more_animations"></span>
@@ -14,8 +12,8 @@
     <label>
       <span data-text="speed"> (<span data-text="seconds"></span>)</span>
       <input type="number" id="maAnimationsSpeed" min="0" step="0.01" value="0.75">
-      <button class="numInputBtn minus iconButton"></button>
-      <button class="numInputBtn plus iconButton"></button>
+      <button class="numInputBtn minus"></button>
+      <button class="numInputBtn plus"></button>
     </label>
   </div>
   <label>
@@ -38,13 +36,13 @@
   <h4 data-text="back_to_top"></h4>
   <label>
     <span data-text="show_back_to_top_button"></span>
-    <button class="selectMenu openPopup rotableArrow" id="scrollUpButton">
+    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="scrollUpButton">
       <span data-text="off"></span>
-      <ul>
-        <li value data-text="off"></li>
-        <li value="On the right" data-text="bottom_right"></li>
-        <li value="On the left" data-text="bottom_left"></li>
-        <li value="Centered" data-text="bottom_center"></li>
+      <ul role="listbox">
+        <li role="option" value data-text="off"></li>
+        <li role="option" value="On the right" data-text="bottom_right"></li>
+        <li role="option" value="On the left" data-text="bottom_left"></li>
+        <li role="option" value="Centered" data-text="bottom_center"></li>
       </ul>
     </button>
   </label>
@@ -66,21 +64,21 @@
     <label>
       <span data-text="size"> (px)</span>
       <input type="number" id="scrollUpBtnWidth" value="36">
-      <button class="numInputBtn minus iconButton"></button>
-      <button class="numInputBtn plus iconButton"></button>
+      <button class="numInputBtn minus"></button>
+      <button class="numInputBtn plus"></button>
     </label>
     <label>
       <span data-text="rounded_corners"> (px)</span>
       <input type="number" id="scrollUpBtnRoundCorners" min="0" value="18">
-      <button class="numInputBtn minus iconButton"></button>
-      <button class="numInputBtn plus iconButton"></button>
+      <button class="numInputBtn minus"></button>
+      <button class="numInputBtn plus"></button>
     </label>
   </div>
   <label>
     <span data-text="scroll_back_to_top"></span>
     <button class="keyBinder openPopup" placeholder="set_hotkey" id="scrollToTopHotkey">
     </button>
-    <button class="removeSetting">
+    <button class="removeSetting" title="delete" aria-label="delete">
     </button>
   </label>
 </section>

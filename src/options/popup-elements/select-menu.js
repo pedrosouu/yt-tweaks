@@ -8,19 +8,24 @@ function getSelectMenu(button) {
     trigger = button;
 
     selectMenu = button.lastElementChild.cloneNode(true);
+    const selectedOption = selectMenu.querySelector('[aria-selected="true"]') || selectMenu.children[0];
+    selectedOption.classList.add('focused');
+    selectedOption.setAttribute('tabindex', -1);
+
     selectMenu.addEventListener('click', function (e) {
         e.stopPropagation();
         handleSelection(e.target);
     });
 
-    const selectedOption = selectMenu.querySelector('.selected') || selectMenu.children[0];
-    selectedOption.classList.add('focused');
-
-    requestAnimationFrame(function () {
+    selectMenu.addEventListener('transitionstart', function () {
         selectMenu.scrollTo({
             top: selectedOption.offsetTop - selectMenu.clientHeight + selectedOption.offsetHeight + selectMenu.children[0].offsetTop
         });
-    });
+    }, { once: true });
+
+    selectMenu.addEventListener('transitionend', function () {
+        selectedOption.focus({ focusVisible: false });
+    }, { once: true });
 
     return selectMenu;
 }
@@ -28,13 +33,13 @@ function getSelectMenu(button) {
 function handleSelection(option) {
     if (option == selectMenu) return;
 
-    trigger.children[0].textContent = option.textContent;
-
-    trigger.querySelector('.selected')?.classList.remove('selected');
-    trigger.querySelector(`[value="${option.getAttribute('value')}"]`).classList.add('selected');
-
     saveSettings({ [trigger.id]: option.getAttribute('value') }, trigger);
     handlePopupDisplay();
+
+    trigger.children[0].textContent = option.textContent;
+    trigger.querySelector('[aria-selected="true"]')?.removeAttribute('aria-selected');
+    trigger.querySelector(`[value="${option.getAttribute('value')}"]`).setAttribute('aria-selected', true);
+    trigger.focus();
 }
 
 document.addEventListener('keydown', function (e) {
@@ -59,7 +64,7 @@ function handleKeyboardNav(e, closedMenu) {
         trigger = document.activeElement;
     }
 
-    const focusedOption = closedMenu ? selectMenu.querySelector('.selected') || selectMenu.children[0] : selectMenu.querySelector('.focused');
+    const focusedOption = closedMenu ? selectMenu.querySelector('[aria-selected="true"]') || selectMenu.children[0] : selectMenu.querySelector('.focused');
 
     if (e.key.includes('Arrow')) {
         e.preventDefault();

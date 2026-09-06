@@ -17,3 +17,9 @@ async function handleStorageChange(changes) {
         detail: function (data) { try { return cloneInto(data, window) } catch { return data } }({ changes: changes, settings: await chrome.storage.local.get() })
     }));
 }
+
+document.addEventListener('yttwMessageRequest', async function (e) {
+    document.dispatchEvent(new CustomEvent(e.detail, {
+        detail: await chrome.i18n.getMessage(e.detail)
+    }));
+});

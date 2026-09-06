@@ -45,6 +45,17 @@ ytTweaks = {
             pressedKeys = [];
         });
     },
+    getMessage(key) {
+        return new Promise(function (resolve, reject) {
+            document.dispatchEvent(new CustomEvent('yttwMessageRequest', {
+                detail: key
+            }));
+
+            document.addEventListener(key, function handler(e) {
+                resolve(e.detail);
+            }, {once: true});
+        });
+    },
     hideStreamedVideos() {
         ytTweaks.hideStreamedVideos = ytTweaks.noop;
 

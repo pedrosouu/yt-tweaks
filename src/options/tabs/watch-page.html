@@ -1,12 +1,12 @@
 <section>
   <label>
     <span data-text="video_description"></span>
-    <button class="selectMenu openPopup rotableArrow" id="videoDescription">
+    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="videoDescription">
       <span data-text="default"></span>
-      <ul>
-        <li value data-text="default"></li>
-        <li value="Minimalist" data-text="minimalist_video_description"></li>
-        <li value="Expanded" data-text="expanded_video_description"></li>
+      <ul role="listbox">
+        <li role="option" value data-text="default"></li>
+        <li role="option" value="Minimalist" data-text="minimalist_video_description"></li>
+        <li role="option" value="Expanded" data-text="expanded_video_description"></li>
       </ul>
     </button>
   </label>
@@ -21,27 +21,28 @@
     <span data-text="navigate_to_shorts_page"></span>
     <button class="keyBinder openPopup" placeholder="set_hotkey" id="redToShortsHotkey">
     </button>
-    <button class="removeSetting">
+    <button class="removeSetting" title="delete" aria-label="delete">
     </button>
   </label>
   <label>
     <span data-text="toggle_video_transcript"></span>
     <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleTranscriptHotkey">
-    <button class="removeSetting">
+    </button>
+    <button class="removeSetting" title="delete" aria-label="delete">
     </button>
   </label>
   <label>
     <span data-text="toggle_like"></span>
     <button class="keyBinder openPopup" placeholder="set_hotkey" id="likeUnlikeHotkey">
     </button>
-    <button class="removeSetting">
+    <button class="removeSetting" title="delete" aria-label="delete">
     </button>
   </label>
   <label>
     <span data-text="toggle_dislike"></span>
     <button class="keyBinder openPopup" placeholder="set_hotkey" id="dislikeUndislikeHotkey">
     </button>
-    <button class="removeSetting">
+    <button class="removeSetting" title="delete" aria-label="delete">
     </button>
   </label>
 </section>
@@ -53,11 +54,11 @@
   </label>
   <label>
     <span data-text="default_view"></span>
-    <button class="selectMenu openPopup rotableArrow" id="defaultLiveChatView">
+    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="defaultLiveChatView">
       <span data-text="live_chat_view_top_chat"></span>
-      <ul>
-        <li value data-text="live_chat_view_top_chat"></li>
-        <li value="liveChat" data-text="live_chat_view_live_chat"></li>
+      <ul role="listbox">
+        <li role="option" value data-text="live_chat_view_top_chat"></li>
+        <li role="option" value="liveChat" data-text="live_chat_view_live_chat"></li>
       </ul>
     </button>
   </label>
@@ -70,11 +71,11 @@
   </label>
   <label>
     <span data-text="default_sorting_of_comments"></span>
-    <button class="selectMenu openPopup rotableArrow" id="defaultSortingOfComments">
+    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="defaultSortingOfComments">
       <span data-text="comments_sorting_top"></span>
-      <ul>
-        <li value data-text="comments_sorting_top"></li>
-        <li value="newest" data-text="comments_sorting_newest"></li>
+      <ul role="listbox">
+        <li role="option" value data-text="comments_sorting_top"></li>
+        <li role="option" value="newest" data-text="comments_sorting_newest"></li>
       </ul>
     </button>
   </label>
@@ -89,14 +90,14 @@
     <span data-text="toggle_comments_section"></span>
     <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleSidebarCommentsHotkey">
     </button>
-    <button class="removeSetting">
+    <button class="removeSetting" title="delete" aria-label="delete">
     </button>
   </label>
   <label section="content">
     <span data-text="height"> (%)</span>
     <input type="number" id="scHeight" min="0" max="100" step="1" value="100">
-    <button class="numInputBtn minus iconButton"></button>
-    <button class="numInputBtn plus iconButton"></button>
+    <button class="numInputBtn minus"></button>
+    <button class="numInputBtn plus"></button>
   </label>
   <label section="content">
     <span data-text="use_player_height"></span>
@@ -126,13 +127,13 @@
     </label>
     <label>
       <span data-text="sidebar">: <span data-text="live_streams"></span></span>
-      <button class="selectMenu openPopup rotableArrow" id="hideLiveStreams3">
+      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="hideLiveStreams3">
         <span data-text="off"></span>
-        <ul>
-          <li value data-text="off"></li>
-          <li value="current" data-text="current_live_streams"></li>
-          <li value="completed" data-text="completed_live_streams"></li>
-          <li value="both" data-text="both_live_streams"></li>
+        <ul role="listbox">
+          <li role="option" value data-text="off"></li>
+          <li role="option" value="current" data-text="current_live_streams"></li>
+          <li role="option" value="completed" data-text="completed_live_streams"></li>
+          <li role="option" value="both" data-text="both_live_streams"></li>
         </ul>
       </button>
     </label>
@@ -165,37 +166,37 @@
   <h4 data-text="watched_videos"></h4>
   <label>
     <span data-text="sidebar">: <span data-text="hide"></span></span>
-    <button class="selectMenu openPopup rotableArrow" id="hideWatchVideos3">
+    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="hideWatchVideos3">
       <span data-text="off"></span>
-      <ul>
-        <li value data-text="off"></li>
-        <li value="All videos" data-text="watched_percentage">0-100</li>
-        <li value="50-100%" data-text="watched_percentage">50-100</li>
-        <li value="70-100%" data-text="watched_percentage">70-100</li>
-        <li value="75-100%" data-text="watched_percentage">75-100</li>
-        <li value="80-100%" data-text="watched_percentage">80-100</li>
-        <li value="85-100%" data-text="watched_percentage">85-100</li>
-        <li value="90-100%" data-text="watched_percentage">90-100</li>
-        <li value="95-100%" data-text="watched_percentage">95-100</li>
-        <li value="Only fully-watched videos" data-text="watched_percentage">100</li>
+      <ul role="listbox">
+        <li role="option" value data-text="off"></li>
+        <li role="option" value="All videos" data-text="watched_percentage">0-100</li>
+        <li role="option" value="50-100%" data-text="watched_percentage">50-100</li>
+        <li role="option" value="70-100%" data-text="watched_percentage">70-100</li>
+        <li role="option" value="75-100%" data-text="watched_percentage">75-100</li>
+        <li role="option" value="80-100%" data-text="watched_percentage">80-100</li>
+        <li role="option" value="85-100%" data-text="watched_percentage">85-100</li>
+        <li role="option" value="90-100%" data-text="watched_percentage">90-100</li>
+        <li role="option" value="95-100%" data-text="watched_percentage">95-100</li>
+        <li role="option" value="Only fully-watched videos" data-text="watched_percentage">100</li>
       </ul>
     </button>
   </label>
   <label>
     <span data-text="sidebar">: <span data-text="dim"></span></span>
-    <button class="selectMenu openPopup rotableArrow" id="dimWatchVideos3">
+    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="dimWatchVideos3">
       <span data-text="off"></span>
-      <ul>
-        <li value data-text="off"></li>
-        <li value="dimAllVideos" data-text="watched_percentage">0-100</li>
-        <li value="50-100%" data-text="watched_percentage">50-100</li>
-        <li value="70-100%" data-text="watched_percentage">70-100</li>
-        <li value="75-100%" data-text="watched_percentage">75-100</li>
-        <li value="80-100%" data-text="watched_percentage">80-100</li>
-        <li value="85-100%" data-text="watched_percentage">85-100</li>
-        <li value="90-100%" data-text="watched_percentage">90-100</li>
-        <li value="95-100%" data-text="watched_percentage">95-100</li>
-        <li value="dimFullyWatchVideos" data-text="watched_percentage">100</li>
+      <ul role="listbox">
+        <li role="option" value data-text="off"></li>
+        <li role="option" value="dimAllVideos" data-text="watched_percentage">0-100</li>
+        <li role="option" value="50-100%" data-text="watched_percentage">50-100</li>
+        <li role="option" value="70-100%" data-text="watched_percentage">70-100</li>
+        <li role="option" value="75-100%" data-text="watched_percentage">75-100</li>
+        <li role="option" value="80-100%" data-text="watched_percentage">80-100</li>
+        <li role="option" value="85-100%" data-text="watched_percentage">85-100</li>
+        <li role="option" value="90-100%" data-text="watched_percentage">90-100</li>
+        <li role="option" value="95-100%" data-text="watched_percentage">95-100</li>
+        <li role="option" value="dimFullyWatchVideos" data-text="watched_percentage">100</li>
       </ul>
     </button>
   </label>
@@ -203,8 +204,8 @@
     <label>
       <span data-text="opacity"></span>
       <input type="number" id="watchVideoOpacity3" step="0.01" min="0" max="1" value="0.3">
-      <button class="numInputBtn minus iconButton"></button>
-      <button class="numInputBtn plus iconButton"></button>
+      <button class="numInputBtn minus"></button>
+      <button class="numInputBtn plus"></button>
     </label>
   </div>
 </section>
