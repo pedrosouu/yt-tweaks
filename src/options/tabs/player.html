@@ -6,9 +6,7 @@
   <div class="expandable">
     <label>
       <span data-text="height"> (%)</span>
-      <input type="number" id="ftmHeight" min="0" max="100" step="1" value="100">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="ftmHeight" min="0" max="100" step="1" value="100">
     </label>
     <label>
       <span data-text="auto_hide_header"></span>
@@ -23,15 +21,11 @@
   <div class="expandable">
     <label>
       <span data-text="opacity"></span>
-      <input type="number" id="vfOpacity" min="0" max="1" step="0.01" value="0.9">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="vfOpacity" min="0" max="1" step="0.01" value="0.9">
     </label>
     <label>
       <span data-text="blur"> (px)</span>
-      <input type="number" id="vfBlur" min="0" value="0">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="vfBlur" min="0" value="0">
     </label>
   </div>
   <label>
@@ -41,22 +35,20 @@
   <div class="expandable">
     <label>
       <span data-text="where"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="whereToShowTime">
-        <span data-text="video_player"></span>
-        <ul role="listbox">
-          <li role="option" value="player" data-text="video_player"></li>
-          <li role="option" value="tabTitle" data-text="tab_title"></li>
+      <button is="select-button" id="whereToShowTime">
+        <ul>
+          <li value="player" data-text="video_player"></li>
+          <li value="tabTitle" data-text="tab_title"></li>
         </ul>
       </button>
     </label>
     <label>
       <span data-text="format"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="timeFormat">
-        <span>23:06</span>
-        <ul role="listbox">
-          <li role="option" value="left">23:06</li>
-          <li role="option" value="left%">50%</li>
-          <li role="option" value="left+left%">23:06 (50%)</li>
+      <button is="select-button" id="timeFormat">
+        <ul>
+          <li value="left">23:06</li>
+          <li value="left%">50%</li>
+          <li value="left+left%">23:06 (50%)</li>
         </ul>
       </button>
     </label>
@@ -77,9 +69,7 @@
   </label>
   <label>
     <span data-text="toggle_loop"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleLoopHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="toggleLoopHotkey">
     </button>
   </label>
 </section>
@@ -104,25 +94,23 @@
   <div class="expandable">
     <label>
       <span data-text="top_row"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="dnhTopRow">
-        <span>0-9</span>
-        <ul role="listbox">
-          <li role="option" value data-text="off"></li>
-          <li role="option" value="0-9" aria-selected="true">0-9</li>
-          <li role="option" value="1-9">1-9</li>
-          <li role="option" value="0">0</li>
+      <button is="select-button" id="dnhTopRow">
+        <ul>
+          <li value data-text="off"></li>
+          <li value="0-9" selected>0-9</li>
+          <li value="1-9">1-9</li>
+          <li value="0">0</li>
         </ul>
       </button>
     </label>
     <label>
       <span data-text="numpad"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="dnhNumpad">
-        <span>0-9</span>
-        <ul role="listbox">
-          <li role="option" value data-text="off"></li>
-          <li role="option" value="0-9" aria-selected="true">0-9</li>
-          <li role="option" value="1-9">1-9</li>
-          <li role="option" value="0">0</li>
+      <button is="select-button" id="dnhNumpad">
+        <ul>
+          <li value data-text="off"></li>
+          <li value="0-9" selected>0-9</li>
+          <li value="1-9">1-9</li>
+          <li value="0">0</li>
         </ul>
       </button>
     </label>
@@ -157,21 +145,18 @@
     </label>
     <label>
       <span data-text="opacity"></span>
-      <input type="number" id="progBarOpacity" step="0.01" min="0" max="1" value="1">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="progBarOpacity" step="0.01" min="0" max="1" value="1">
     </label>
   </div>
   <label>
     <span data-text="custom_progress_bar"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="customProgBar">
-      <span data-text="off"></span>
-      <ul role="listbox">
-        <li role="option" value data-text="off"></li>
-        <li role="option" value="solidColor" data-text="solid_color"></li>
-        <li role="option" value="nyanCat">Nyan cat</li>
-        <li role="option" value="pacMan">Pac-Man</li>
-        <li role="option" value="lightSaber" data-text="lightsaber"></li>
+    <button is="select-button" id="customProgBar">
+      <ul>
+        <li value data-text="off"></li>
+        <li value="solidColor" data-text="solid_color"></li>
+        <li value="nyanCat">Nyan cat</li>
+        <li value="pacMan">Pac-Man</li>
+        <li value="lightSaber" data-text="lightsaber"></li>
       </ul>
     </button>
   </label>
@@ -179,9 +164,7 @@
     <div class="expandable" matcher="solidColor|lightSaber">
       <label>
         <span data-text="color"></span>
-        <button class="colorPicker openPopup" id="progBarColor" style="--selectedColor: hsla(204, 100%, 50%, 1);">
-          <div class="checker"></div>
-          <div class="selectedColor"></div>
+        <button is="color-picker" value="hsla(204, 100%, 50%, 1)" id="progBarColor">
         </button>
       </label>
     </div>
@@ -191,12 +174,11 @@
   <h4 data-text="video_snapshot"></h4>
   <label>
     <span data-text="format"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="snapshotFormat">
-      <span>PNG</span>
-      <ul role="listbox">
-        <li role="option" value="png">PNG</li>
-        <li role="option" value="jpeg">JPG</li>
-        <li role="option" value="webp">WEBP</li>
+    <button is="select-button" id="snapshotFormat">
+      <ul>
+        <li value="png">PNG</li>
+        <li value="jpeg">JPG</li>
+        <li value="webp">WEBP</li>
       </ul>
     </button>
   </label>
@@ -204,9 +186,7 @@
     <div class="expandable" matcher="jpeg|webp">
       <label>
         <span data-text="quality"></span>
-        <input type="number" id="snapshotQuality" min="0" max="1" step="0.1" value="1">
-        <button class="numInputBtn minus"></button>
-        <button class="numInputBtn plus"></button>
+        <input is="number-box" type="number" id="snapshotQuality" min="0" max="1" step="0.1" value="1">
       </label>
     </div>
   </div>
@@ -221,46 +201,38 @@
   <div class="expandable">
     <label>
       <span data-text="save_method_left_click"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="snapshotButtonSaveMethod">
-        <span data-text="file"></span>
-        <ul role="listbox">
-          <li role="option" value="file" data-text="file"></li>
-          <li role="option" value="clipboard" data-text="clipboard"></li>
-          <li role="option" value="both" data-text="file_and_clipboard"></li>
+      <button is="select-button" id="snapshotButtonSaveMethod">
+        <ul>
+          <li value="file" data-text="file"></li>
+          <li value="clipboard" data-text="clipboard"></li>
+          <li value="both" data-text="file_and_clipboard"></li>
         </ul>
       </button>
     </label>
     <label>
       <span data-text="save_method_right_click"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="snapshotButtonSaveMethodRc">
-        <span data-text="clipboard"></span>
-        <ul role="listbox">
-          <li role="option" value="file" data-text="file"></li>
-          <li role="option" value="clipboard" data-text="clipboard"></li>
-          <li role="option" value="both" data-text="file_and_clipboard"></li>
+      <button is="select-button" id="snapshotButtonSaveMethodRc">
+        <ul>
+          <li value="file" data-text="file"></li>
+          <li value="clipboard" data-text="clipboard"></li>
+          <li value="both" data-text="file_and_clipboard"></li>
         </ul>
       </button>
     </label>
   </div>
   <label>
     <span data-text="snapshot_to_file"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="snapshotToFileHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="snapshotToFileHotkey">
     </button>
   </label>
   <label>
     <span data-text="snapshot_to_clipboard"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="snapshotToClipHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="snapshotToClipHotkey">
     </button>
   </label>
   <label>
     <span data-text="snapshot_to_file_and_clipboard"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="snapshotToFileAndClipHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="snapshotToFileAndClipHotkey">
     </button>
   </label>
 </section>
@@ -275,45 +247,41 @@
   </label>
   <label section="content">
     <span data-text="activate_deactivate"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="pinUnpinHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="pinUnpinHotkey">
     </button>
   </label>
   <label section="content">
     <span data-text="size"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="pinnedVideoSize">
-      <span>480x270</span>
-      <ul role="listbox">
-        <li role="option" value="320x180">320x180</li>
-        <li role="option" value="400x225">400x225</li>
-        <li role="option" value="480x270" aria-selected="true">480x270</li>
-        <li role="option" value="560x315">560x315</li>
-        <li role="option" value="640x360">640x360</li>
-        <li role="option" value="720x405">720x405</li>
-        <li role="option" value="800x450">800x450</li>
-        <li role="option" value="880x495">880x495</li>
-        <li role="option" value="960x540">960x540</li>
-        <li role="option" value="1040x585">1040x585</li>
-        <li role="option" value="1120x630">1120x630</li>
-        <li role="option" value="1200x675">1200x675</li>
-        <li role="option" value="1280x720">1280x720</li>
+    <button is="select-button" id="pinnedVideoSize">
+      <ul>
+        <li value="320x180">320x180</li>
+        <li value="400x225">400x225</li>
+        <li value="480x270" selected>480x270</li>
+        <li value="560x315">560x315</li>
+        <li value="640x360">640x360</li>
+        <li value="720x405">720x405</li>
+        <li value="800x450">800x450</li>
+        <li value="880x495">880x495</li>
+        <li value="960x540">960x540</li>
+        <li value="1040x585">1040x585</li>
+        <li value="1120x630">1120x630</li>
+        <li value="1200x675">1200x675</li>
+        <li value="1280x720">1280x720</li>
       </ul>
     </button>
   </label>
   <label section="content">
     <span data-text="position"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="pinnedVideoPosition">
-      <span data-text="bottom_right"></span>
-      <ul role="listbox">
-        <li role="option" value="Bottom right" data-text="bottom_right"></li>
-        <li role="option" value="Bottom center" data-text="bottom_center"></li>
-        <li role="option" value="Bottom left" data-text="bottom_left"></li>
-        <li role="option" value="Center right" data-text="center_right"></li>
-        <li role="option" value="Center left" data-text="center_left"></li>
-        <li role="option" value="Top right" data-text="top_right"></li>
-        <li role="option" value="Top center" data-text="top_center"></li>
-        <li role="option" value="Top left" data-text="top_left"></li>
+    <button is="select-button" id="pinnedVideoPosition">
+      <ul>
+        <li value="Bottom right" data-text="bottom_right"></li>
+        <li value="Bottom center" data-text="bottom_center"></li>
+        <li value="Bottom left" data-text="bottom_left"></li>
+        <li value="Center right" data-text="center_right"></li>
+        <li value="Center left" data-text="center_left"></li>
+        <li value="Top right" data-text="top_right"></li>
+        <li value="Top center" data-text="top_center"></li>
+        <li value="Top left" data-text="top_left"></li>
       </ul>
     </button>
   </label>
@@ -327,15 +295,11 @@
   </div>
   <label section="content">
     <span data-text="floating"> (px)</span>
-    <input type="number" id="floatingPinnedVideo" min="0" value="10">
-    <button class="numInputBtn minus"></button>
-    <button class="numInputBtn plus"></button>
+    <input is="number-box" type="number" id="floatingPinnedVideo" min="0" value="10">
   </label>
   <label section="content">
     <span data-text="rounded_corners"> (px)</span>
-    <input type="number" id="pinnedVideoRoundCorners" min="0" value="12">
-    <button class="numInputBtn minus"></button>
-    <button class="numInputBtn plus"></button>
+    <input is="number-box" type="number" id="pinnedVideoRoundCorners" min="0" value="12">
   </label>
   <label section="header">
     <h4 data-text="picture_in_picture"></h4>
@@ -346,9 +310,7 @@
   </label>
   <label section="content">
     <span data-text="toggle_picture_in_picture"><span class="subLabel">Firefox >= 153</span></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="togglePipHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="togglePipHotkey">
     </button>
   </label>
 </section>
@@ -361,27 +323,22 @@
   <div class="expandable">
     <label>
       <span data-text="forward_time"> (<span data-text="seconds"></span>)</span>
-      <input type="number" id="seekOnScrollFtime" step="1" value="5">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="seekOnScrollFtime" step="1" value="5">
     </label>
     <label>
       <span data-text="backward_time"> (<span data-text="seconds"></span>)<span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input type="number" id="seekOnScrollBtime" step="1" value="5">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="seekOnScrollBtime" step="1" value="5">
     </label>
     <label>
       <span data-text="require_holding_key"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="seekOnScrollModifier">
-        <span data-text="nothing"></span>
-        <ul role="listbox">
-          <li role="option" value data-text="nothing"></li>
-          <li role="option" value="1" data-text="lmb"></li>
-          <li role="option" value="2" data-text="rmb"></li>
-          <li role="option" value="ctrlKey">Ctrl</li>
-          <li role="option" value="shiftKey">Shift</li>
-          <li role="option" value="altKey">Alt</li>
+      <button is="select-button" id="seekOnScrollModifier">
+        <ul>
+          <li value data-text="nothing"></li>
+          <li value="1" data-text="lmb"></li>
+          <li value="2" data-text="rmb"></li>
+          <li value="ctrlKey">Ctrl</li>
+          <li value="shiftKey">Shift</li>
+          <li value="altKey">Alt</li>
         </ul>
       </button>
     </label>
@@ -389,31 +346,25 @@
   </div>
   <label>
     <span data-text="seek_video_forward"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="seconds" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="3" number-title="seconds" number-min="0"
       number-step="1" id="seekFhotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="seek_video_backward"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="3" number-title="seconds" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="3" number-title="seconds" number-min="0"
       number-step="1" id="seekBhotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="undo_video_seek"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="undoSeekHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="undoSeekHotkey">
     </button>
   </label>
   <div class="expandable">
     <label>
       <span data-text="redo_video_seek"></span>
-      <button class="keyBinder openPopup" placeholder="set_hotkey" id="redoSeekHotkey">
-      </button>
-      <button class="removeSetting" title="delete" aria-label="delete">
+      <button is="set-hotkey" id="redoSeekHotkey">
       </button>
     </label>
   </div>
@@ -435,9 +386,7 @@
   <div class="expandable">
     <label>
       <span data-text="speed"></span>
-      <input type="number" id="vsSpeed" min="0" value="1.5" step="0.05">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="vsSpeed" min="0" value="1.5" step="0.05">
     </label>
   </div>
   <label>
@@ -447,48 +396,43 @@
   <div class="expandable">
     <label>
       <span data-text="step"> (x) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input type="number" id="speedChangePerScroll" step="0.01" value="0.05">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="speedChangePerScroll" step="0.01" value="0.05">
     </label>
     <label>
       <span data-text="require_holding_key"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="changeSpeedOnScrollModifier">
-        <span data-text="nothing"></span>
-        <ul role="listbox">
-          <li role="option" value data-text="nothing"></li>
-          <li role="option" value="1" data-text="lmb"></li>
-          <li role="option" value="2" data-text="rmb"></li>
-          <li role="option" value="ctrlKey">Ctrl</li>
-          <li role="option" value="shiftKey">Shift</li>
-          <li role="option" value="altKey">Alt</li>
+      <button is="select-button" id="changeSpeedOnScrollModifier">
+        <ul>
+          <li value data-text="nothing"></li>
+          <li value="1" data-text="lmb"></li>
+          <li value="2" data-text="rmb"></li>
+          <li value="ctrlKey">Ctrl</li>
+          <li value="shiftKey">Shift</li>
+          <li value="altKey">Alt</li>
         </ul>
       </button>
     </label>
     <label>
       <span data-text="normal_speed"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="resetSpeedOnPlayerClick">
-        <span data-text="off"></span>
-        <ul role="listbox">
-          <li role="option" value data-text="off"></li>
-          <li role="option" value="leftClick" data-text="left_click"></li>
-          <li role="option" value="rightClick" data-text="right_click"></li>
-          <li role="option" value="middleClick" data-text="middle_click"></li>
+      <button is="select-button" id="resetSpeedOnPlayerClick">
+        <ul>
+          <li value data-text="off"></li>
+          <li value="leftClick" data-text="left_click"></li>
+          <li value="rightClick" data-text="right_click"></li>
+          <li value="middleClick" data-text="middle_click"></li>
         </ul>
       </button>
     </label>
     <div class="expandable">
       <label>
         <span data-text="require_holding_key"></span>
-        <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="resetSpeedOnPlayerClickModifier">
-          <span data-text="nothing"></span>
-          <ul role="listbox">
-            <li role="option" value data-text="nothing"></li>
-            <li role="option" value="1" data-text="lmb"></li>
-            <li role="option" value="2" data-text="rmb"></li>
-            <li role="option" value="ctrlKey">Ctrl</li>
-            <li role="option" value="shiftKey">Shift</li>
-            <li role="option" value="altKey">Alt</li>
+        <button is="select-button" id="resetSpeedOnPlayerClickModifier">
+          <ul>
+            <li value data-text="nothing"></li>
+            <li value="1" data-text="lmb"></li>
+            <li value="2" data-text="rmb"></li>
+            <li value="ctrlKey">Ctrl</li>
+            <li value="shiftKey">Shift</li>
+            <li value="altKey">Alt</li>
           </ul>
         </button>
       </label>
@@ -500,35 +444,30 @@
   </label>
   <label>
     <span data-text="increase_speed"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="step"
+    <button is="list-button" listType="hotkey+number" number-value="0.05" number-title="step"
       number-min="0" number-step="0.05" id="increaseSpeedHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="decrease_speed"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.05" number-title="step"
+    <button is="list-button" listType="hotkey+number" number-value="0.05" number-title="step"
       number-min="0" number-step="0.05" id="decreaseSpeedHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="normal_speed"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="resetSpeedHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="resetSpeedHotkey">
     </button>
   </label>
   <label>
     <span data-text="custom_speed"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="2" number-title="speed" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="2" number-title="speed" number-min="0"
       number-step="0.05" id="customSpeedHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="saved_per_channel_speeds"></span>
-    <button class="list openPopup" listType="text+number" enablesearch number-placeholder="1.5" number-title="speed"
+    <button is="list-button" listType="text+number" enablesearch number-placeholder="1.5" number-title="speed"
       number-min="0" number-step="0.05" text-placeholder="channel_name" text-title="exact_match"
       id="perChannelSpeeds">
     </button>
@@ -539,9 +478,7 @@
   </label>
   <label>
     <span data-text="set_channel_speed"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="setChannelSpeedHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="setChannelSpeedHotkey">
     </button>
   </label>
 </section>
@@ -554,48 +491,43 @@
   <div class="expandable">
     <label>
       <span data-text="step"> (%) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input type="number" id="volChangePerScroll" step="1" value="5">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="volChangePerScroll" step="1" value="5">
     </label>
     <label>
       <span data-text="require_holding_key"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="changeVolOnScrollModifier">
-        <span data-text="nothing"></span>
-        <ul role="listbox">
-          <li role="option" value data-text="nothing"></li>
-          <li role="option" value="1" data-text="lmb"></li>
-          <li role="option" value="2" data-text="rmb"></li>
-          <li role="option" value="ctrlKey">Ctrl</li>
-          <li role="option" value="shiftKey">Shift</li>
-          <li role="option" value="altKey">Alt</li>
+      <button is="select-button" id="changeVolOnScrollModifier">
+        <ul>
+          <li value data-text="nothing"></li>
+          <li value="1" data-text="lmb"></li>
+          <li value="2" data-text="rmb"></li>
+          <li value="ctrlKey">Ctrl</li>
+          <li value="shiftKey">Shift</li>
+          <li value="altKey">Alt</li>
         </ul>
       </button>
     </label>
     <label>
       <span data-text="toggle_mute"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="toggleMuteOnPlayerClick">
-        <span data-text="off"></span>
-        <ul role="listbox">
-          <li role="option" value data-text="off"></li>
-          <li role="option" value="leftClick" data-text="left_click"></li>
-          <li role="option" value="rightClick" data-text="right_click"></li>
-          <li role="option" value="middleClick" data-text="middle_click"></li>
+      <button is="select-button" id="toggleMuteOnPlayerClick">
+        <ul>
+          <li value data-text="off"></li>
+          <li value="leftClick" data-text="left_click"></li>
+          <li value="rightClick" data-text="right_click"></li>
+          <li value="middleClick" data-text="middle_click"></li>
         </ul>
       </button>
     </label>
     <div class="expandable">
       <label>
         <span data-text="require_holding_key"></span>
-        <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="toggleMuteOnPlayerClickModifier">
-          <span data-text="nothing"></span>
-          <ul role="listbox">
-            <li role="option" value data-text="nothing"></li>
-            <li role="option" value="1" data-text="lmb"></li>
-            <li role="option" value="2" data-text="rmb"></li>
-            <li role="option" value="ctrlKey">Ctrl</li>
-            <li role="option" value="shiftKey">Shift</li>
-            <li role="option" value="altKey">Alt</li>
+        <button is="select-button" id="toggleMuteOnPlayerClickModifier">
+          <ul>
+            <li value data-text="nothing"></li>
+            <li value="1" data-text="lmb"></li>
+            <li value="2" data-text="rmb"></li>
+            <li value="ctrlKey">Ctrl</li>
+            <li value="shiftKey">Shift</li>
+            <li value="altKey">Alt</li>
           </ul>
         </button>
       </label>
@@ -603,23 +535,19 @@
   </div>
   <label>
     <span data-text="increase_video_volume"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="step" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="5" number-title="step" number-min="0"
       number-step="1" id="increaseVolHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="decrease_video_volume"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="5" number-title="step" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="5" number-title="step" number-min="0"
       number-step="1" id="decreaseVolHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="volume_booster_level"> (x)</span>
-    <input type="number" id="boostingLevel" step="1" value="2" min="2">
-    <button class="numInputBtn minus"></button>
-    <button class="numInputBtn plus"></button>
+    <input is="number-box" type="number" id="boostingLevel" step="1" value="2" min="2">
   </label>
   <label>
     <span data-text="toggle_volume_boost_with_mouse"></span>
@@ -627,9 +555,7 @@
   </label>
   <label>
     <span data-text="toggle_volume_boost"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleVolBoostHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="toggleVolBoostHotkey">
     </button>
   </label>
   <label>
@@ -642,9 +568,7 @@
   </label>
   <label>
     <span data-text="toggle_mono_audio"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="toggleMonoAudioHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="toggleMonoAudioHotkey">
     </button>
   </label>
   <label>
@@ -656,60 +580,50 @@
   <h4 data-text="video_quality"></h4>
   <label>
     <span data-text="default_video_quality"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="videoQuality">
-      <span data-text="off"></span>
-      <ul role="listbox">
-        <li role="option" value data-text="off"></li>
-        <li role="option" value="highres">4320p (8K)</li>
-        <li role="option" value="hd2160">2160p (4K)</li>
-        <li role="option" value="hd1440">1440p (HD)</li>
-        <li role="option" value="hd1080">1080p (HD)</li>
-        <li role="option" value="hd720">720p</li>
-        <li role="option" value="large">480p</li>
-        <li role="option" value="medium">360p</li>
-        <li role="option" value="small">240p</li>
-        <li role="option" value="tiny">144p</li>
+    <button is="select-button" id="videoQuality">
+      <ul>
+        <li value data-text="off"></li>
+        <li value="highres">4320p (8K)</li>
+        <li value="hd2160">2160p (4K)</li>
+        <li value="hd1440">1440p (HD)</li>
+        <li value="hd1080">1080p (HD)</li>
+        <li value="hd720">720p</li>
+        <li value="large">480p</li>
+        <li value="medium">360p</li>
+        <li value="small">240p</li>
+        <li value="tiny">144p</li>
       </ul>
     </button>
   </label>
   <div class="expandable">
     <label>
       <span data-text="fallback"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="vqFallback">
-        <span data-text="next_low_video_quality"></span>
-        <ul role="listbox">
-          <li role="option" value="highest" data-text="next_high_video_quality"></li>
-          <li role="option" value="lowest" aria-selected="true" data-text="next_low_video_quality"></li>
+      <button is="select-button" id="vqFallback">
+        <ul>
+          <li value="highest" data-text="next_high_video_quality"></li>
+          <li value="lowest" selected data-text="next_low_video_quality"></li>
         </ul>
       </button>
     </label>
   </div>
   <label>
     <span data-text="increase_video_quality"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="increaseQualityHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="increaseQualityHotkey">
     </button>
   </label>
   <label>
     <span data-text="decrease_video_quality"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="decreaseQualityHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="decreaseQualityHotkey">
     </button>
   </label>
   <label>
     <span data-text="highest_video_quality"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="highestQualityHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="highestQualityHotkey">
     </button>
   </label>
   <label>
     <span data-text="lowest_video_quality"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="lowestQualityHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="lowestQualityHotkey">
     </button>
   </label>
 </section>
@@ -722,9 +636,7 @@
   <div class="expandable">
     <label>
       <span data-text="step"> (x) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input type="number" id="zoomChangePerScroll" step="0.1" value="0.5">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="zoomChangePerScroll" step="0.1" value="0.5">
     </label>
     <label>
       <span data-text="zoom_to_cursor"></span>
@@ -732,41 +644,38 @@
     </label>
     <label>
       <span data-text="require_holding_key"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="zoomOnScrollModifier">
-        <span data-text="nothing"></span>
-        <ul role="listbox">
-          <li role="option" value data-text="nothing"></li>
-          <li role="option" value="2" data-text="rmb"></li>
-          <li role="option" value="ctrlKey">Ctrl</li>
-          <li role="option" value="shiftKey">Shift</li>
-          <li role="option" value="altKey">Alt</li>
+      <button is="select-button" id="zoomOnScrollModifier">
+        <ul>
+          <li value data-text="nothing"></li>
+          <li value="2" data-text="rmb"></li>
+          <li value="ctrlKey">Ctrl</li>
+          <li value="shiftKey">Shift</li>
+          <li value="altKey">Alt</li>
         </ul>
       </button>
     </label>
     <label>
       <span data-text="cancel_zoom"></span>
-      <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="cancelZoomOnPlayerClick">
-        <span data-text="off"></span>
-        <ul role="listbox">
-          <li role="option" value data-text="off"></li>
-          <li role="option" value="leftClick" data-text="left_click"></li>
-          <li role="option" value="rightClick" data-text="right_click"></li>
-          <li role="option" value="middleClick" data-text="middle_click"></li>
+      <button is="select-button" id="cancelZoomOnPlayerClick">
+        <ul>
+          <li value data-text="off"></li>
+          <li value="leftClick" data-text="left_click"></li>
+          <li value="rightClick" data-text="right_click"></li>
+          <li value="middleClick" data-text="middle_click"></li>
         </ul>
       </button>
     </label>
     <div class="expandable">
       <label>
         <span data-text="require_holding_key"></span>
-        <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="cancelZoomOnPlayerClickModifier">
-          <span data-text="nothing"></span>
-          <ul role="listbox">
-            <li role="option" value data-text="nothing"></li>
-            <li role="option" value="1" data-text="lmb"></li>
-            <li role="option" value="2" data-text="rmb"></li>
-            <li role="option" value="ctrlKey">Ctrl</li>
-            <li role="option" value="shiftKey">Shift</li>
-            <li role="option" value="altKey">Alt</li>
+        <button is="select-button" id="cancelZoomOnPlayerClickModifier">
+          <ul>
+            <li value data-text="nothing"></li>
+            <li value="1" data-text="lmb"></li>
+            <li value="2" data-text="rmb"></li>
+            <li value="ctrlKey">Ctrl</li>
+            <li value="shiftKey">Shift</li>
+            <li value="altKey">Alt</li>
           </ul>
         </button>
       </label>
@@ -775,44 +684,38 @@
   </div>
   <label>
     <span data-text="zoom_in"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="step" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="0.5" number-title="step" number-min="0"
       number-step="0.10" id="zoomInHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="zoom_out"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="0.5" number-title="step" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="0.5" number-title="step" number-min="0"
       number-step="0.10" id="zoomOutHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="move_zoomed_area_right"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaRightHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="move_zoomed_area_left"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaLeftHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="move_zoomed_area_up"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaUpHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
     <span data-text="move_zoomed_area_down"></span>
-    <button class="list openPopup" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
+    <button is="list-button" listType="hotkey+number" number-value="100" number-title="px" number-min="0"
       number-step="10" id="moveZoomedAreaDownHotkeys">
-      <span data-text="hotkeys"></span>
     </button>
   </label>
   <label>
@@ -825,16 +728,12 @@
   </label>
   <label>
     <span data-text="flip_video_horizontally"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="flipHorizontallyHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="flipHorizontallyHotkey">
     </button>
   </label>
   <label>
     <span data-text="flip_video_vertically"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="flipVerticallyHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="flipVerticallyHotkey">
     </button>
   </label>
   <label>
@@ -847,16 +746,12 @@
   </label>
   <label>
     <span data-text="rotate_video_clockwise"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="rotateHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="rotateHotkey">
     </button>
   </label>
   <label>
     <span data-text="rotate_video_anti_clockwise"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="rotateAcwHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="rotateAcwHotkey">
     </button>
   </label>
 </section>
@@ -864,12 +759,11 @@
   <h4 data-text="hide"></h4>
   <label>
     <span data-text="video_end_cards"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="hideEndCards">
-      <span data-text="default"></span>
-      <ul role="listbox">
-        <li role="option" value data-text="default"></li>
-        <li role="option" value="hide" data-text="hide"></li>
-        <li role="option" value="autoHide" data-text="show_video_end_cards_on_hover_pause"></li>
+    <button is="select-button" id="hideEndCards">
+      <ul>
+        <li value data-text="default"></li>
+        <li value="hide" data-text="hide"></li>
+        <li value="autoHide" data-text="show_video_end_cards_on_hover_pause"></li>
       </ul>
     </button>
   </label>

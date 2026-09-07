@@ -98,7 +98,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytTweaks.ytLogoSubsPage = {
-            storageChanged: function () {
+            storageChanged() {
                 document.removeEventListener('yt-navigate-finish', getCommand);
                 logo?.removeEventListener('click', redirect);
                 if (logo) logo.href = '/';
@@ -163,7 +163,7 @@ ytTweaks.tweaks.push(function (settings) {
         }, { once: true });
 
         ytTweaks.sResultsInNewTab = {
-            storageChanged: function () {
+            storageChanged() {
                 div.remove?.();
                 div = '';
             }

@@ -1,9 +1,7 @@
 <section>
   <label>
     <span data-text="navigate_to_subs_page"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="redToSubsHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="redToSubsHotkey">
     </button>
   </label>
 </section>
@@ -15,13 +13,12 @@
   </label>
   <label>
     <span data-text="live_streams"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="hideLiveStreams2">
-      <span data-text="off"></span>
-      <ul role="listbox">
-        <li role="option" value data-text="off"></li>
-        <li role="option" value="current" data-text="current_live_streams"></li>
-        <li role="option" value="completed" data-text="completed_live_streams"></li>
-        <li role="option" value="both" data-text="both_live_streams"></li>
+    <button is="select-button" id="hideLiveStreams2">
+      <ul>
+        <li value data-text="off"></li>
+        <li value="current" data-text="current_live_streams"></li>
+        <li value="completed" data-text="completed_live_streams"></li>
+        <li value="both" data-text="both_live_streams"></li>
       </ul>
     </button>
   </label>
@@ -34,46 +31,42 @@
   <h4 data-text="watched_videos"></h4>
   <label>
     <span data-text="hide"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="hideWatchVideos2">
-      <span data-text="off"></span>
-      <ul role="listbox">
-        <li role="option" value data-text="off"></li>
-        <li role="option" value="All videos" data-text="watched_percentage">0-100</li>
-        <li role="option" value="50-100%" data-text="watched_percentage">50-100</li>
-        <li role="option" value="70-100%" data-text="watched_percentage">70-100</li>
-        <li role="option" value="75-100%" data-text="watched_percentage">75-100</li>
-        <li role="option" value="80-100%" data-text="watched_percentage">80-100</li>
-        <li role="option" value="85-100%" data-text="watched_percentage">85-100</li>
-        <li role="option" value="90-100%" data-text="watched_percentage">90-100</li>
-        <li role="option" value="95-100%" data-text="watched_percentage">95-100</li>
-        <li role="option" value="Only fully-watched videos" data-text="watched_percentage">100</li>
+    <button is="select-button" id="hideWatchVideos2">
+      <ul>
+        <li value data-text="off"></li>
+        <li value="All videos" data-text="watched_percentage">0-100</li>
+        <li value="50-100%" data-text="watched_percentage">50-100</li>
+        <li value="70-100%" data-text="watched_percentage">70-100</li>
+        <li value="75-100%" data-text="watched_percentage">75-100</li>
+        <li value="80-100%" data-text="watched_percentage">80-100</li>
+        <li value="85-100%" data-text="watched_percentage">85-100</li>
+        <li value="90-100%" data-text="watched_percentage">90-100</li>
+        <li value="95-100%" data-text="watched_percentage">95-100</li>
+        <li value="Only fully-watched videos" data-text="watched_percentage">100</li>
       </ul>
     </button>
   </label>
   <label>
     <span data-text="dim"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="dimWatchVideos2">
-      <span data-text="off"></span>
+    <button is="select-button" id="dimWatchVideos2">
       <ul>
-        <li role="option" value data-text="off"></li>
-        <li role="option" value="dimAllVideos" data-text="watched_percentage">0-100</li>
-        <li role="option" value="50-100%" data-text="watched_percentage">50-100</li>
-        <li role="option" value="70-100%" data-text="watched_percentage">70-100</li>
-        <li role="option" value="75-100%" data-text="watched_percentage">75-100</li>
-        <li role="option" value="80-100%" data-text="watched_percentage">80-100</li>
-        <li role="option" value="85-100%" data-text="watched_percentage">85-100</li>
-        <li role="option" value="90-100%" data-text="watched_percentage">90-100</li>
-        <li role="option" value="95-100%" data-text="watched_percentage">95-100</li>
-        <li role="option" value="dimFullyWatchVideos" data-text="watched_percentage">100</li>
+        <li value data-text="off"></li>
+        <li value="dimAllVideos" data-text="watched_percentage">0-100</li>
+        <li value="50-100%" data-text="watched_percentage">50-100</li>
+        <li value="70-100%" data-text="watched_percentage">70-100</li>
+        <li value="75-100%" data-text="watched_percentage">75-100</li>
+        <li value="80-100%" data-text="watched_percentage">80-100</li>
+        <li value="85-100%" data-text="watched_percentage">85-100</li>
+        <li value="90-100%" data-text="watched_percentage">90-100</li>
+        <li value="95-100%" data-text="watched_percentage">95-100</li>
+        <li value="dimFullyWatchVideos" data-text="watched_percentage">100</li>
       </ul>
     </button>
   </label>
   <div class="expandable">
     <label>
       <span data-text="opacity"></span>
-      <input type="number" id="watchVideoOpacity2" step="0.01" min="0" max="1" value="0.3">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="watchVideoOpacity2" step="0.01" min="0" max="1" value="0.3">
     </label>
   </div>
 </section>

@@ -1,89 +1,70 @@
 <html lang="en">
-
-<head>
-  <title>YT Tweaks</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="options.css">
-  <link rel="stylesheet" href="popup-elements/popup-elements.css">
-</head>
-
-<body>
-  <header>
-    <search>
-      <input class="search button" placeholder="search" type="text">
-      <svg class="clearSearch" viewBox="0 0 24 24">
-        <path
-          d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm4.3 14.3c-.39.39-1.02.39-1.41 0L12 13.41 9.11 16.3c-.39.39-1.02.39-1.41 0-.39-.39-.39-1.02 0-1.41L10.59 12 7.7 9.11c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L12 10.59l2.89-2.89c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41z">
-        </path>
-      </svg>
-      <svg class="searchIcon" viewBox="0 0 17 17">
-        <path
-          d="M.136 6.975c0 .896.17 1.738.508 2.528a6.58 6.58 0 0 0 3.481 3.481c.786.335 1.63.502 2.533.502.69 0 1.35-.102 1.979-.307a6.519 6.519 0 0 0 1.733-.862l3.814 3.825c.11.103.23.178.36.226.129.048.262.072.399.072.3 0 .547-.1.738-.298.192-.198.287-.448.287-.748a1.068 1.068 0 0 0-.287-.739l-3.794-3.804c.404-.54.718-1.14.944-1.8.225-.66.338-1.351.338-2.076 0-.902-.17-1.746-.508-2.533a6.64 6.64 0 0 0-1.4-2.076A6.52 6.52 0 0 0 9.186.961 6.348 6.348 0 0 0 6.658.454c-.903 0-1.747.169-2.533.507A6.597 6.597 0 0 0 2.05 2.366 6.597 6.597 0 0 0 .644 4.442a6.337 6.337 0 0 0-.508 2.533Zm1.58 0a4.885 4.885 0 0 1 1.44-3.496 5.036 5.036 0 0 1 1.58-1.062 4.829 4.829 0 0 1 1.922-.384c.683 0 1.323.128 1.917.384.595.257 1.12.61 1.574 1.062.455.45.81.975 1.067 1.574.256.598.384 1.239.384 1.922 0 .684-.128 1.323-.384 1.918a5.01 5.01 0 0 1-1.067 1.574 5.01 5.01 0 0 1-1.574 1.066 4.792 4.792 0 0 1-1.917.385 4.829 4.829 0 0 1-1.923-.385 4.993 4.993 0 0 1-2.64-2.64 4.848 4.848 0 0 1-.38-1.918Z">
-        </path>
-      </svg>
-    </search>
-    <div id="buttons">
-      <a class="button" id="donate" href="https://ko-fi.com/pedrosou" rel="noreferrer" target="_blank">
-        <svg width="19px" height="100%" viewBox="0 0 19 19">
-          <path style="stroke:none;fill-rule:nonzero;fill-opacity:1;"
-            d="M 17.457031 2.734375 C 16.460938 1.738281 15.132812 1.1875 13.722656 1.1875 C 12.3125 1.1875 10.988281 1.738281 9.992188 2.734375 L 9.5 3.226562 L 9.007812 2.734375 C 8.011719 1.738281 6.6875 1.1875 5.277344 1.1875 C 3.867188 1.1875 2.539062 1.738281 1.542969 2.734375 C -0.515625 4.792969 -0.515625 8.140625 1.542969 10.199219 L 8.917969 17.574219 C 9.039062 17.695312 9.1875 17.769531 9.347656 17.796875 C 9.398438 17.808594 9.453125 17.8125 9.503906 17.8125 C 9.714844 17.8125 9.921875 17.734375 10.082031 17.574219 L 17.457031 10.199219 C 19.515625 8.140625 19.515625 4.792969 17.457031 2.734375 Z M 16.304688 9.046875 L 9.5 15.847656 L 2.695312 9.046875 C 1.273438 7.625 1.273438 5.308594 2.695312 3.886719 C 3.386719 3.199219 4.300781 2.820312 5.277344 2.820312 C 6.25 2.820312 7.167969 3.199219 7.855469 3.886719 L 8.921875 4.953125 C 9.230469 5.261719 9.769531 5.261719 10.078125 4.953125 L 11.144531 3.886719 C 11.832031 3.199219 12.75 2.820312 13.722656 2.820312 C 14.699219 2.820312 15.613281 3.199219 16.304688 3.886719 C 17.726562 5.308594 17.726562 7.625 16.304688 9.046875 Z M 16.304688 9.046875 ">
-          </path>
-        </svg>
-        <span data-text="donate"></span>
-      </a>
-      <button class="openPage" pageType="browserStore"
-        chrome="https://chromewebstore.google.com/detail/youtube-tweaks/oeakphpfoaeggagmgphfejmfjbhjfhhh/reviews"
-        firefox="https://addons.mozilla.org/en-US/firefox/addon/youtube-tweaks/" rel="noreferrer" target="_blank"
-        edge="https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh">
-        <svg width="21px" height="100%" viewBox="0 0 21 21">
-          <path
-            style="fill:none;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter;stroke:var(--text);stroke-opacity:1;stroke-miterlimit:10;"
-            d="M 7.660714 10.102679 L 11.758929 4 C 12.160714 3.401786 13.160714 3 13.959821 3.303571 C 14.861607 3.602679 15.459821 4.602679 15.258929 5.5 L 14.758929 8.700893 C 14.660714 9.401786 15.160714 9.901786 15.758929 9.901786 L 19.758929 9.901786 C 21.258929 9.901786 22.178571 11.053571 21.660714 12.5 C 21.138393 13.950893 20.678571 16.553571 19.258929 18.803571 C 18.611607 19.830357 17.897321 20.553571 16.678571 20.553571 C 12.678571 20.553571 6.660714 20.553571 6.660714 20.553571 "
-            transform="matrix(0.875,0,0,0.875,0,0)"></path>
-          <path
-            style="fill:none;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter;stroke:var(--text);stroke-opacity:1;stroke-miterlimit:4;"
-            d="M 2.178571 10.553571 C 2.178571 10 2.629464 9.553571 3.178571 9.553571 L 6.678571 9.553571 C 7.232143 9.553571 7.678571 10 7.678571 10.553571 L 7.678571 20.553571 L 3.178571 20.553571 C 2.629464 20.553571 2.178571 20.102679 2.178571 19.553571 Z M 2.178571 10.553571 "
-            transform="matrix(0.875,0,0,0.875,0,0)"></path>
-        </svg>
-        <span data-text="rate"></span>
-      </button>
+  <head>
+    <title>YT Tweaks</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="options.css">
+    <link rel="stylesheet" href="components/style.css">
+  </head>
+  <body>
+    <header>
+      <search>
+        <input is="search-box">
+      </search>
+      <div id="buttons">
+        <a class="button" href="https://ko-fi.com/pedrosou" rel="noreferrer" target="_blank">
+          <svg width="19px" height="100%" viewBox="0 0 19 19">
+            <path style="stroke:none;fill-rule:nonzero;fill-opacity:1;" d="M 17.457031 2.734375 C 16.460938 1.738281 15.132812 1.1875 13.722656 1.1875 C 12.3125 1.1875 10.988281 1.738281 9.992188 2.734375 L 9.5 3.226562 L 9.007812 2.734375 C 8.011719 1.738281 6.6875 1.1875 5.277344 1.1875 C 3.867188 1.1875 2.539062 1.738281 1.542969 2.734375 C -0.515625 4.792969 -0.515625 8.140625 1.542969 10.199219 L 8.917969 17.574219 C 9.039062 17.695312 9.1875 17.769531 9.347656 17.796875 C 9.398438 17.808594 9.453125 17.8125 9.503906 17.8125 C 9.714844 17.8125 9.921875 17.734375 10.082031 17.574219 L 17.457031 10.199219 C 19.515625 8.140625 19.515625 4.792969 17.457031 2.734375 Z M 16.304688 9.046875 L 9.5 15.847656 L 2.695312 9.046875 C 1.273438 7.625 1.273438 5.308594 2.695312 3.886719 C 3.386719 3.199219 4.300781 2.820312 5.277344 2.820312 C 6.25 2.820312 7.167969 3.199219 7.855469 3.886719 L 8.921875 4.953125 C 9.230469 5.261719 9.769531 5.261719 10.078125 4.953125 L 11.144531 3.886719 C 11.832031 3.199219 12.75 2.820312 13.722656 2.820312 C 14.699219 2.820312 15.613281 3.199219 16.304688 3.886719 C 17.726562 5.308594 17.726562 7.625 16.304688 9.046875 Z M 16.304688 9.046875 "></path>
+          </svg>
+          <span data-text="donate"></span>
+        </a>
+        <a class="button" id="reviewsPage" rel="noreferrer" target="_blank" data-chrome-link="https://chromewebstore.google.com/detail/youtube-tweaks/oeakphpfoaeggagmgphfejmfjbhjfhhh/reviews" data-edge-link="https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh" data-firefox-link="https://addons.mozilla.org/firefox/addon/youtube-tweaks/"  rel="noreferrer" target="_blank">
+          <svg width="21px" height="100%" viewBox="0 0 21 21">
+            <path style="fill:none;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter;stroke:var(--text);stroke-opacity:1;stroke-miterlimit:10;" d="M 7.660714 10.102679 L 11.758929 4 C 12.160714 3.401786 13.160714 3 13.959821 3.303571 C 14.861607 3.602679 15.459821 4.602679 15.258929 5.5 L 14.758929 8.700893 C 14.660714 9.401786 15.160714 9.901786 15.758929 9.901786 L 19.758929 9.901786 C 21.258929 9.901786 22.178571 11.053571 21.660714 12.5 C 21.138393 13.950893 20.678571 16.553571 19.258929 18.803571 C 18.611607 19.830357 17.897321 20.553571 16.678571 20.553571 C 12.678571 20.553571 6.660714 20.553571 6.660714 20.553571 " transform="matrix(0.875,0,0,0.875,0,0)"></path>
+            <path style="fill:none;stroke-width:1.6;stroke-linecap:butt;stroke-linejoin:miter;stroke:var(--text);stroke-opacity:1;stroke-miterlimit:4;" d="M 2.178571 10.553571 C 2.178571 10 2.629464 9.553571 3.178571 9.553571 L 6.678571 9.553571 C 7.232143 9.553571 7.678571 10 7.678571 10.553571 L 7.678571 20.553571 L 3.178571 20.553571 C 2.629464 20.553571 2.178571 20.102679 2.178571 19.553571 Z M 2.178571 10.553571 " transform="matrix(0.875,0,0,0.875,0,0)"></path>
+          </svg>
+          <span data-text="rate"></span>
+        </a>
+      </div>
+    </header>
+    <div id="navigation" role="tablist">
+      <div>
+        <button role="tab" class="tabHeading" data-text="video_grid" aria-selected="true"></button>
+        <button role="tab" class="tabHeading" data-text="homepage"></button>
+        <button role="tab" class="tabHeading" data-text="subscriptions_page"></button>
+        <button role="tab" class="tabHeading" data-text="channel_page"></button>
+        <button role="tab" class="tabHeading" data-text="video_player"></button>
+        <button role="tab" class="tabHeading" data-text="watch_page"></button>
+        <button role="tab" class="tabHeading" data-text="search_page"></button>
+        <button role="tab" class="tabHeading" data-text="header_bar"></button>
+        <button role="tab" class="tabHeading" data-text="left_sidebar"></button>
+        <button role="tab" class="tabHeading" data-text="youtube_themes"></button>
+        <button role="tab" class="tabHeading" data-text="other"></button>
+        <button role="tab" class="tabHeading" data-text="custom_code"></button>
+        <button role="tab" class="tabHeading" data-text="export_import_settings"></button>
+      </div>
     </div>
-  </header>
-  <div id="navigation" role="tablist">
-    <div>
-      <button role="tab" class="tabHeading" data-text="video_grid" aria-selected="true"></button>
-      <button role="tab" class="tabHeading" data-text="homepage"></button>
-      <button role="tab" class="tabHeading" data-text="subscriptions_page"></button>
-      <button role="tab" class="tabHeading" data-text="channel_page"></button>
-      <button role="tab" class="tabHeading" data-text="video_player"></button>
-      <button role="tab" class="tabHeading" data-text="watch_page"></button>
-      <button role="tab" class="tabHeading" data-text="search_page"></button>
-      <button role="tab" class="tabHeading" data-text="header_bar"></button>
-      <button role="tab" class="tabHeading" data-text="left_sidebar"></button>
-      <button role="tab" class="tabHeading" data-text="youtube_themes"></button>
-      <button role="tab" class="tabHeading" data-text="other"></button>
-      <button role="tab" class="tabHeading" data-text="custom_code"></button>
-      <button role="tab" class="tabHeading" data-text="export_import_settings"></button>
-    </div>
-  </div>
-
-  <main>
-    <div id="video-grid" class="tabContent"></div>
-    <div id="homepage" class="tabContent hidden"></div>
-    <div id="subscriptions-page" class="tabContent hidden"></div>
-    <div id="channel-page" class="tabContent hidden"></div>
-    <div id="player" class="tabContent hidden"></div>
-    <div id="watch-page" class="tabContent hidden"></div>
-    <div id="search-page" class="tabContent hidden"></div>
-    <div id="header-bar" class="tabContent hidden"></div>
-    <div id="left-sidebar" class="tabContent hidden"></div>
-    <div id="themes" class="tabContent hidden"></div>
-    <div id="other" class="tabContent hidden"></div>
-    <div id="custom-code" class="tabContent hidden"></div>
-    <div id="user-settings" class="tabContent hidden"></div>
-  </main>
-  <script src="options.js" type="module"></script>
-</body>
-
+    <main>
+      <div id="video-grid" class="tabContent"></div>
+      <div id="homepage" class="tabContent hidden"></div>
+      <div id="subscriptions-page" class="tabContent hidden"></div>
+      <div id="channel-page" class="tabContent hidden"></div>
+      <div id="player" class="tabContent hidden"></div>
+      <div id="watch-page" class="tabContent hidden"></div>
+      <div id="search-page" class="tabContent hidden"></div>
+      <div id="header-bar" class="tabContent hidden"></div>
+      <div id="left-sidebar" class="tabContent hidden"></div>
+      <div id="themes" class="tabContent hidden"></div>
+      <div id="other" class="tabContent hidden"></div>
+      <div id="custom-code" class="tabContent hidden"></div>
+      <div id="user-settings" class="tabContent hidden"></div>
+    </main>
+    <script src="options.js" type="module"></script>
+    <script src="components/search-box.js" type="module"></script>
+    <script src="components/select-button.js" type="module"></script>
+    <script src="components/color-picker-button.js" type="module"></script>
+    <script src="components/list-button.js" type="module"></script>
+    <script src="components/set-hotkey-button.js" type="module"></script>
+    <script src="components/number-box.js" type="module"></script>
+  </body>
 </html>

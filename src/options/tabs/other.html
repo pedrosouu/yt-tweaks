@@ -1,7 +1,7 @@
 <section>
   <label>
     <span data-text="navigate_to_wl_page"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="redToWatchLaterHotkey">
+    <button is="set-hotkey" id="redToWatchLaterHotkey">
     </button>
   </label>
   <label>
@@ -11,9 +11,7 @@
   <div class="expandable">
     <label>
       <span data-text="speed"> (<span data-text="seconds"></span>)</span>
-      <input type="number" id="maAnimationsSpeed" min="0" step="0.01" value="0.75">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="maAnimationsSpeed" min="0" step="0.01" value="0.75">
     </label>
   </div>
   <label>
@@ -36,49 +34,38 @@
   <h4 data-text="back_to_top"></h4>
   <label>
     <span data-text="show_back_to_top_button"></span>
-    <button role="combobox" aria-haspopup="listbox" class="selectMenu openPopup rotableArrow" id="scrollUpButton">
-      <span data-text="off"></span>
-      <ul role="listbox">
-        <li role="option" value data-text="off"></li>
-        <li role="option" value="On the right" data-text="bottom_right"></li>
-        <li role="option" value="On the left" data-text="bottom_left"></li>
-        <li role="option" value="Centered" data-text="bottom_center"></li>
+    <button is="select-button" id="scrollUpButton">
+      <ul>
+        <li value data-text="off"></li>
+        <li value="On the right" data-text="bottom_right"></li>
+        <li value="On the left" data-text="bottom_left"></li>
+        <li value="Centered" data-text="bottom_center"></li>
       </ul>
     </button>
   </label>
   <div class="expandable">
     <label>
       <span data-text="color"></span>
-      <button class="colorPicker openPopup" id="scrollUpBtnColor" style="--selectedColor: hsla(0, 0%, 95%, 1);">
-        <div class="checker"></div>
-        <div class="selectedColor"></div>
+      <button is="color-picker" id="scrollUpBtnColor" value="hsla(0, 0%, 95%, 1)">
       </button>
     </label>
     <label>
       <span data-text="icon"></span>
-      <button class="colorPicker openPopup" id="scrollUpBtnSvgColor" style="--selectedColor: hsla(0, 0%, 6%, 1);">
-        <div class="checker"></div>
-        <div class="selectedColor"></div>
+      <button is="color-picker" id="scrollUpBtnSvgColor" value="hsla(0, 0%, 6%, 1)">
       </button>
     </label>
     <label>
       <span data-text="size"> (px)</span>
-      <input type="number" id="scrollUpBtnWidth" value="36">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="scrollUpBtnWidth" value="36">
     </label>
     <label>
       <span data-text="rounded_corners"> (px)</span>
-      <input type="number" id="scrollUpBtnRoundCorners" min="0" value="18">
-      <button class="numInputBtn minus"></button>
-      <button class="numInputBtn plus"></button>
+      <input is="number-box" type="number" id="scrollUpBtnRoundCorners" min="0" value="18">
     </label>
   </div>
   <label>
     <span data-text="scroll_back_to_top"></span>
-    <button class="keyBinder openPopup" placeholder="set_hotkey" id="scrollToTopHotkey">
-    </button>
-    <button class="removeSetting" title="delete" aria-label="delete">
+    <button is="set-hotkey" id="scrollToTopHotkey">
     </button>
   </label>
 </section>

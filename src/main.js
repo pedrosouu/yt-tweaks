@@ -301,8 +301,7 @@ ytTweaks = {
                 streamed = '스트리밍';
         };
 
-        // Let us redefine the value of the 'aria-label' attribute of past livestreams titles before the livestreams
-        // are added to the DOM, that way we can target and hide them with CSS later.
+        // Solution to make completed livestreams targetable with CSS.
         const ogPush = Array.prototype.push;
         Array.prototype.push = function () {
             if (arguments[0]?.data?.publishedTimeText?.simpleText?.includes?.(streamed)) {

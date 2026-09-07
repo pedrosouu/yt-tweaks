@@ -32,7 +32,7 @@ ytTweaks.tweaks.push(function (settings) {
             }
 
             ytTweaks.expandedDescription = {
-                storageChanged: function () {
+                storageChanged() {
                     document.removeEventListener('yt-player-updated', expand);
                     document.removeEventListener('yt-text-inline-expander-expanded-changed', expand2);
                 },
@@ -73,7 +73,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytTweaks.disableAutoOpeningOfLiveChat = {
-            storageChanged: function () {
+            storageChanged() {
                 document.removeEventListener('yt-action', updateFlag, true);
                 document.removeEventListener('yt-chat-collapsed-changed', closeChat);
             },
@@ -125,7 +125,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytTweaks.defaultSortingOfComments = {
-            storageChanged: function () {
+            storageChanged() {
                 document.removeEventListener('yt-action', sort, true);
             },
         };
@@ -239,7 +239,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytTweaks.fixChannelLinks = {
-            storageChanged: function () {
+            storageChanged() {
                 document.removeEventListener('yt-player-updated', main);
                 sidebar?.removeEventListener('mouseenter', fixChannelLink, true);
                 sidebar?.removeEventListener('click', redirectToChannel, true);

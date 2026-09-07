@@ -27,20 +27,58 @@
     opacity: 1;
 }
 
-/* SELECT MENU */
-button.selectMenu {
+input[type="number"] {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    width: 32px;
+    min-width: 32px;
+    color: inherit;
+    text-align: end;
+    padding: 0;
+    cursor: text;
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+}
+
+.numInputBtn:before,
+.numInputBtn:after {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 10px;
+    height: 2px;
+    background: var(--text);
+}
+
+.plus::after {
+    transform: rotate(90deg);
+}
+
+[is="select-button"] {
     display: flex;
     border-radius: 100px;
 }
 
-button.selectMenu>span {
+[is="select-button"]>span {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
-button.selectMenu>ul {
+[is="select-button"]>ul {
     display: none;
+}
+
+[is="select-button"]>svg {
+    transition: transform 0.15s ease-in-out;
+}
+
+.open [is="select-button"]>svg {
+    transform: rotateZ(180deg);
 }
 
 ul {
@@ -59,13 +97,12 @@ li:is(:hover, .focused) {
     background: var(--btn-hover-bg);
 }
 
-/* COLOR PICKER */
 #colorPicker {
     padding: var(--spacing-2x);
     padding-top: 6px;
 }
 
-button.colorPicker {
+[is="color-picker"] {
     position: relative;
     min-width: auto;
 }
@@ -147,12 +184,10 @@ input[type=range]::-moz-range-thumb:active {
     text-align: center;
 }
 
-/* KEYBINDER */
 #keyBinder {
     text-align: center;
 }
 
-/* LIST */
 #list {
     display: flex;
     flex-wrap: wrap;
@@ -165,13 +200,6 @@ input[type=range]::-moz-range-thumb:active {
 
 #list:not(.enableSearch) search {
     display: none;
-}
-
-button.delete {
-    --btn-bg: var(--red);
-    background-image: var(--trash-can);
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 #list button.keybinder::before {
@@ -201,15 +229,11 @@ search.list {
     flex: 1;
 }
 
-[type="number"].list {
-    width: 60px;
-}
-
 input.list {
+    width: 60px;
     text-align: center;
 }
 
-/* CLOSE BUTTON */
 .close {
     height: 24px;
     min-height: 24px;

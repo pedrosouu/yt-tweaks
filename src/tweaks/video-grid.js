@@ -104,7 +104,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytTweaks.videosPerRow = {
-            storageChanged: function () {
+            storageChanged() {
                 setTimeout(function () {
                     document.querySelector('[role="main"] ytd-rich-grid-renderer')?.resizeObserved();
                     const contentsShelf = document.documentElement.querySelectorAll('[role="main"] ytd-rich-shelf-renderer');

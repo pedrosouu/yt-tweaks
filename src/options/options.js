@@ -1,13 +1,13 @@
-import { getSelectMenu } from '/options/popup-elements/select-menu.js';
-import { getColorPicker } from '/options/popup-elements/color-picker.js';
-import { getKeyBinder } from '/options/popup-elements/key-binder.js';
-import { getList } from '/options/popup-elements/list.js';
+export { openPopups, showPopup, hidePopup };
 
-export { handlePopupDisplay, saveSettings, openPopup };
+let timeoutId;
+const openPopups = [];
 
 document.documentElement.lang = chrome.i18n.getMessage('locale_lang');
 document.body.dir = chrome.i18n.getMessage('locale_dir');
-showLocalizedText(document);
+
+const reviewsPage = document.getElementById('reviewsPage');
+if (reviewsPage) reviewsPage.href = navigator.userAgent.includes('Firefox') ? reviewsPage.dataset.firefoxLink : navigator.userAgent.includes('Edg') ? reviewsPage.dataset.edgeLink : reviewsPage.dataset.chromeLink;
 
 try {
     navigator.mediaSession.setActionHandler('enterpictureinpicture', function () { });
@@ -28,82 +28,45 @@ await load(chrome.runtime.getURL('options/tabs/custom-code.html'), document.getE
 await load(chrome.runtime.getURL('options/tabs/user-settings.html'), document.getElementById('user-settings'));
 
 function load(url, element) {
+    if (!element) return;
     return fetch(url)
         .then(function (data) {
             return data.text();
         })
         .then(function (data) {
-            element?.insertAdjacentHTML('afterbegin', data);
-            showLocalizedText(element);
+            element.insertAdjacentHTML('afterbegin', data);
         });
 }
 
-let timeoutId;
-const openPopup = [];
+for (const el of document.querySelectorAll(':is([data-text], [text-title], [text-placeholder], [number-title], [aria-label], [title], [placeholder])')) {
+    if (el.attributes['data-text']) showLocalizedText('data-text');
+    if (el.attributes['text-title']) showLocalizedText('text-title');
+    if (el.attributes['text-placeholder']) showLocalizedText('text-placeholder');
+    if (el.attributes['number-title']) showLocalizedText('number-title');
+    if (el.attributes['aria-label']) showLocalizedText('aria-label');
+    if (el.title) showLocalizedText('title');
+    if (el.placeholder) showLocalizedText('placeholder');
 
-function showLocalizedText(ancestor) {
-    let msg;
-
-    for (const el of ancestor.querySelectorAll(':is([data-text], [title], [aria-label], [placeholder], [number-title], [text-title], [text-placeholder])')) {
-        if (el.attributes['data-text']) {
-            msg = chrome.i18n.getMessage(el.getAttribute('data-text'));
-            if (msg) el.prepend(document.createTextNode(msg));
-        }
-        if (el.attributes.title) {
-            msg = chrome.i18n.getMessage(el.getAttribute('title'));
-            if (msg) el.setAttribute('title', msg);
-        }
-        if (el.attributes['aria-label']) {
-            msg = chrome.i18n.getMessage(el.getAttribute('aria-label'));
-            if (msg) el.setAttribute('aria-label', msg);
-        }
-        if (el.attributes.placeholder) {
-            msg = chrome.i18n.getMessage(el.getAttribute('placeholder'));
-            if (msg) el.setAttribute('placeholder', msg);
-        }
-        if (el.attributes['number-title']) {
-            msg = chrome.i18n.getMessage(el.getAttribute('number-title'));
-            if (msg) el.setAttribute('number-title', msg);
-        }
-        if (el.attributes['text-title']) {
-            msg = chrome.i18n.getMessage(el.getAttribute('text-title'));
-            if (msg) el.setAttribute('text-title', msg);
-        }
-        if (el.attributes['text-placeholder']) {
-            msg = chrome.i18n.getMessage(el.getAttribute('text-placeholder'));
-            if (msg) el.setAttribute('text-placeholder', msg);
+    function showLocalizedText(attr) {
+        const msg = chrome.i18n.getMessage(el.getAttribute(attr));
+        if (msg) {
+            attr == 'data-text' ? el.prepend(document.createTextNode(msg)) : el.setAttribute(attr, msg);
         }
     }
 }
 
 chrome.storage.local.get().then(function (settings) {
     for (const key in settings) {
-        restoreSetting(document.getElementById(key), key, settings);
+        restoreSetting(document.getElementById(key), settings[key]);
     }
 });
 
 document.addEventListener('click', function (e) {
     let button;
 
-    if (openPopup.length && !openPopup[openPopup.length - 1].contains(e.target) || e.target.closest('.close')) {
+    if (openPopups.length && !openPopups[openPopups.length - 1].contains(e.target) || e.target.closest('.close')) {
         e.preventDefault();
-        handlePopupDisplay();
-    }
-
-    else if (button = e.target.closest('.removeSetting')) {
-        removeSettingBtnClicked(button);
-    }
-
-    else if (button = e.target.closest('.openPopup')) {
-        handlePopupDisplay(button);
-    }
-
-    else if (button = e.target.closest('.openPage')) {
-        openPage(button);
-    }
-
-    else if (e.target.closest('.clearSearch')) {
-        clearSearchBar(e.target.closest('search').children[0]);
+        hidePopup();
     }
 
     else if (button = e.target.closest('.export')) {
@@ -113,109 +76,58 @@ document.addEventListener('click', function (e) {
     else if (button = e.target.closest('.tabHeading')) {
         handleTabClick(button);
     }
+
+    else e.target.closest('button')?.action?.();
 });
 
 document.addEventListener('input', function (e) {
-    if (e.target.matches('.search')) handleSearch(e.target);
-    else if (e.target.matches('.import')) importSettings(e.target);
-    else saveSettings(0, 0, e);
+    if (e.target.matches('.search')) {
+        handleSearch(e.target);
+    }
+
+    else if (e.target.matches('.import')) {
+        importSettings(e.target);
+    }
+
+    else saveSetting(e);
 });
 
 document.addEventListener('focus', function(e) {
-    if (openPopup.length && e.target.matches(':focus-visible') && !e.target.closest('.popup')) {
-        openPopup[openPopup.length - 1].label.children[1].focus();
-        handlePopupDisplay();
+    if (openPopups.length && e.target.matches(':focus-visible') && !e.target.closest('.popup')) {
+        openPopups[openPopups.length - 1].label.children[1].focus();
+        hidePopup();
     }
 }, true);
 
-document.addEventListener('mousedown', function (e) {
-    if (e.target.matches('.numInputBtn')) {
-        quantityButtonPressed(e.target.closest('label').children[1], e.target);
-    }
-});
-
-async function saveSettings(settings, target, event) {
-    if (event) {
-        settings = { [event.target.id]: event.target.type == 'checkbox' ? event.target.checked : event.target.type == 'number' ? event.target.valueAsNumber : event.target.value };
-        target = event.target;
-    }
-
-    const expandableDiv = target?.parentElement.nextElementSibling;
+async function saveSetting(obj) {
+    const setting = obj instanceof Event ? { [obj.target.id]: obj.target.type == 'checkbox' ? obj.target.checked : obj.target.type == 'number' ? obj.target.valueAsNumber : obj.target.value } : obj;
+    
+    const expandableDiv = obj.target?.parentElement.nextElementSibling;
 
     if (expandableDiv?.matches('.expandable:not([matcher])')) {
-        toggleExpandedDiv(expandableDiv, settings[target.id]);
+        toggleExpandedDiv(expandableDiv, setting[obj.target.id]);
     }
 
-    await chrome.storage.local.set(settings);
+    await chrome.storage.local.set(setting);
 }
 
-function restoreSetting(button, key, data) {
+function restoreSetting(button, setting) {
     if (!button) return;
 
     const expandableDiv = button.parentElement.nextElementSibling;
 
     if (expandableDiv?.matches('.expandable:not([matcher])')) {
         expandableDiv.classList.remove('expanded');
-        if (data[key]) toggleExpandedDiv(expandableDiv, data[key]);
+        if (setting) toggleExpandedDiv(expandableDiv, setting);
     }
 
-    if (button.type == 'checkbox') button.checked = data[key];
-
-    switch (button.classList[0]) {
-        case 'selectMenu':
-            const selectedOption = button.querySelector(`[value="${data[key]}"]`);
-            button.children[0].textContent = selectedOption?.textContent;
-            button.querySelector('[aria-selected="true"]')?.removeAttribute('aria-selected');
-            selectedOption?.setAttribute('aria-selected', true);
-            break;
-
-        case 'colorPicker':
-            button.style.setProperty('--selectedColor', data[key]);
-            break;
-
-        case 'page':
-            button.value = data[key].commandMetadata?.webCommandMetadata?.url || data[key];
-            break;
-
-        default:
-            if (typeof data[key] == 'object') {
-                Object.defineProperty(button, 'value', {
-                    value: data[key],
-                    configurable: true
-                });
-            } else {
-                button.value = data[key];
-            }
-    }
-}
-
-function handlePopupDisplay(button) {
-    if (!button) {
-        return hidePopup(openPopup[openPopup.length - 1]);
-    }
-
-    switch (button.classList[0]) {
-        case 'selectMenu':
-            showPopup(getSelectMenu(button), button);
-            break;
-
-        case 'colorPicker':
-            showPopup(getColorPicker(button), button);
-            break;
-
-        case 'keyBinder':
-            showPopup(getKeyBinder(button), button, true);
-            break;
-
-        case 'list':
-            showPopup(getList(button), button, true);
-            break;
-    }
+    if (button.type == 'checkbox') button.checked = setting;
+    else button.value = setting.commandMetadata?.webCommandMetadata?.url || setting;
 }
 
 function showPopup(popup, button, centered) {
     document.body.appendChild(popup);
-    openPopup.push(popup);
+    openPopups.push(popup);
     popup.label = button.parentElement;
     popup.label.classList.add('open');
     popup.classList.add('popup');
@@ -250,10 +162,9 @@ function showPopup(popup, button, centered) {
     }
 }
 
-function hidePopup(popup) {
-    if (!popup) return;
-
-    openPopup.splice(openPopup.indexOf(openPopup[openPopup.length - 1]), 1);
+function hidePopup() {
+    const popup = openPopups[openPopups.length - 1];
+    openPopups.splice(openPopups.indexOf(popup), 1);
     popup.classList.remove('open');
     popup.label.classList.remove('open');
     document.body.classList.remove('showOverlay');
@@ -261,14 +172,6 @@ function hidePopup(popup) {
     popup.addEventListener('transitionend', function () {
         popup.remove();
     }, { once: true });
-}
-
-function openPage(button) {
-    if (button.getAttribute('pageType') == 'browserStore') {
-        window.open(navigator.userAgent.includes('Firefox') ? button.attributes.firefox.value : navigator.userAgent.includes('Edg') ? button.attributes.edge.value : button.attributes.chrome.value, '_blank');
-    }
-
-    else window.open(chrome.runtime.getURL(button.attributes.htmlFile.value), '_blank');
 }
 
 function toggleExpandedDiv(div, value) {
@@ -303,13 +206,6 @@ function toggleExpandedDiv(div, value) {
     }
 }
 
-function removeSettingBtnClicked(button) {
-    const prevSibling = button.previousElementSibling;
-    prevSibling.value = '';
-    prevSibling.focus();
-    saveSettings({ [prevSibling.id]: '' }, prevSibling);
-}
-
 function handleTabClick(button) {
     button.parentElement.querySelector('[aria-selected]').removeAttribute('aria-selected');
     button.setAttribute('aria-selected', true);
@@ -317,7 +213,7 @@ function handleTabClick(button) {
     document.querySelector('.tabContent:not(.hidden)').classList.add('hidden');
     document.querySelector(`.tabContent:nth-child(${[...button.parentElement.children].indexOf(button) + 1}`).classList.remove('hidden');
 
-    clearSearchBar(document.querySelector('.search'));
+    document.querySelector('.clearSearch').click();
     scrollTo({top: 0, behavior: 'instant'});
 }
 
@@ -336,7 +232,7 @@ function exportSettings(button) {
 
 async function importSettings(input) {
     const data = JSON.parse(input.value);
-    await saveSettings(data);
+    await saveSetting(data);
     location.reload();
 }
 
@@ -455,34 +351,4 @@ function handleSearch(input) {
             children[0]?.classList.add('tprBorder');
         }
     }
-}
-
-function clearSearchBar(input) {
-    input.value = '';
-    input.dispatchEvent(new Event('input', {
-        bubbles: true
-    }));
-}
-
-function quantityButtonPressed(input, buttton) {
-    if (buttton.matches('.plus')) {
-        input.stepUp();
-        timeoutId = setTimeout(function () {
-            timeoutId = setInterval(function () {
-                input.stepUp();
-            }, 35);
-        }, 150);
-    } else {
-        input.stepDown();
-        timeoutId = setTimeout(function () {
-            timeoutId = setInterval(function () {
-                input.stepDown();
-            }, 35);
-        }, 150);
-    }
-
-    document.addEventListener('mouseup', function (e) {
-        clearTimeout(timeoutId);
-        saveSettings({ [input.id]: input.valueAsNumber });
-    }, {once: true});
 }

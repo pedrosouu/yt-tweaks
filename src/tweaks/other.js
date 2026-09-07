@@ -102,7 +102,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytTweaks.scrollUpButton = {
-            storageChanged: function () {
+            storageChanged() {
                 button.remove();
                 document.removeEventListener('scrollend', toggleButton);
             }

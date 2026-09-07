@@ -324,11 +324,11 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.videoQuality = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', setQuality, true);
 				delete ytTweaks.videoQuality;
 			},
-			handleManuallySetQuality: function (arg) {
+			handleManuallySetQuality(arg) {
 				if (arg[0] == 'yt-player-quality' && !qualitySetByCode) {
 					preferredQuality = qualities2[JSON.parse(JSON.parse(arg[1]).data).quality];
 					sessionStorage.setItem('yttwVideoQuality', preferredQuality);
@@ -426,13 +426,13 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.videoSpeed = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', setSpeed, true);
 				speedButton.removeEventListener('click', handleSpeedSetting);
 				speedButton.remove();
 				delete ytTweaks.videoSpeed;
 			},
-			handleManuallySetSpeed: function (arg) {
+			handleManuallySetSpeed(arg) {
 				if (arg[0] == 'yt-player-playback-rate') {
 					globalSpeed = +JSON.parse(arg[1]).data;
 					sessionStorage.setItem('yttwGlobalSpeed', globalSpeed);
@@ -776,7 +776,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.changeSpeedOnScroll = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', main, true);
 				for (const video of document.querySelectorAll('video')) {
 					HTMLElement.prototype.removeEventListener.call(video.parentElement.parentElement, 'wheel', handleWheel, true);
@@ -854,7 +854,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.videoFocus = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', main, true);
 				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'mouseenter', showBackdrop);
 				backdrop.remove();
@@ -919,7 +919,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.volumeBoost = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', autoEnableVolBoost, true);
 				document.removeEventListener('contextmenu', toggleVolBoost, true);
 
@@ -992,7 +992,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.monoAudio = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', autoEnableMono, true);
 				button.removeEventListener('click', toggleMonoAudio);
 				button.remove();
@@ -1028,7 +1028,7 @@ ytTweaks.tweaks.push(function (settings) {
         }
 
         ytTweaks.forceOgAudio = {
-            storageChanged: function () {
+            storageChanged() {
                 document.removeEventListener('playing', setOgAudio, true);
             },
         };
@@ -1181,7 +1181,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}();
 
 		ytTweaks.videoSnapshot = {
-			storageChanged: function () {
+			storageChanged() {
 				button.remove();
 			},
 		};
@@ -1259,7 +1259,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.flipVideo = {
-			storageChanged: function () {
+			storageChanged() {
 				flipHorButton.remove();
 				flipVerButton.remove();
 			}
@@ -1339,7 +1339,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.rotateVideo = {
-			storageChanged: function () {
+			storageChanged() {
 				rotateButton.remove();
 				rotateAcwButton.remove();
 			}
@@ -1444,7 +1444,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.playOneVideoAtAtime = {
-			storageChanged: function () {
+			storageChanged() {
 				bc.close();
 				removeEventListener('playing', videoStarted, true);
 				removeEventListener('pause', videoStopped, true);
@@ -1468,7 +1468,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.disableAutoPause = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('pause', handleVideoUnpause, true);
 			}
 		};
@@ -1561,7 +1561,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.disablePlAutoPlay = {
-			storageChanged: function () {
+			storageChanged() {
 				if (ypm) toggleAutoPlay(true);
 				label.remove();
 				document.removeEventListener('yt-player-updated', main);
@@ -1585,7 +1585,7 @@ ytTweaks.tweaks.push(function (settings) {
 			main: function (e) {
 				if (strg.includes(e.code)) e.stopImmediatePropagation();
 			},
-			storageChanged: function () {
+			storageChanged() {
 				delete ytTweaks.disableNumHotkeys;
 			}
 		};
@@ -1720,7 +1720,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.autoScrollShorts = {
-			storageChanged: function () {
+			storageChanged() {
 				label.remove();
 				document.removeEventListener('ended', scrollToNextShort, true);
 				document.removeEventListener('loadstart', appendToggleButton, true);
@@ -1741,7 +1741,7 @@ ytTweaks.tweaks.push(function (settings) {
 		});
 
 		ytTweaks.disableShortsLooping = {
-			storageChanged: function () {
+			storageChanged() {
 				Object.defineProperty(HTMLVideoElement.prototype, 'loop', {
 					set: ogDescriptor.set,
 					get: ogDescriptor.get,
@@ -1929,7 +1929,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.pinVideoOnScroll = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('yt-player-updated', main);
 				below?.removeEventListener('click', blockTimeStampScroll, true);
 				div.remove();
@@ -2081,7 +2081,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.videoRemTime = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', handler, true);
 				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'timeupdate', updateTimeLeft, true);
 				span?.remove();
@@ -2155,7 +2155,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.alwaysShowProgBar = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', main, true);
 				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'timeupdate', updateVideoData, true);
 			}
@@ -2311,7 +2311,7 @@ ytTweaks.tweaks.push(function (settings) {
 		}
 
 		ytTweaks.hideControlsOnPause = {
-			storageChanged: function () {
+			storageChanged() {
 				document.removeEventListener('loadstart', main, true);
 				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'mousemove', showControlsTemporarily);
 				HTMLElement.prototype.removeEventListener.call(mainPlayer, 'mouseleave', hideControls);
@@ -2698,7 +2698,7 @@ ytTweaks.tweaks.push(function (settings) {
 
 		ytTweaks.numbersThenKey = {
 			main: main,
-			storageChanged: function () {
+			storageChanged() {
 				delete ytTweaks.numbersThenKey;
 			}
 		};
