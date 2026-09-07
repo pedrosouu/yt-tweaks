@@ -88,7 +88,7 @@ ul {
 li {
     position: relative;
     padding: var(--spacing) var(--spacing-2x);
-    border-radius: 10px;
+    border-radius: 16px;
     transition: .15s;
     cursor: pointer;
 }

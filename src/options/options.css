@@ -218,7 +218,6 @@ main {
     display: block;
     background: none;
     width: 100%;
-    border-radius: 12px;
 }
 
 html:not(.searchMode) .tabHeading[aria-selected] {
