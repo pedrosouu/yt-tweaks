@@ -108,6 +108,10 @@ ytTweaks.tweaks.push(function (settings) {
 
     if (settings.sResultsInNewTab) {
         ytTweaks.sheet.textContent += `
+        form[action="/results"] {
+          flex-direction: row
+        }
+
         #yttw-new-tab-button {
           height: 24px;
           width: 24px;
