@@ -26,8 +26,7 @@ ytTweaks.tweaks.push(function (settings) {
 
     if (settings.hideWatchVideos5) {
         ytTweaks.sheet.textContent += `
-        [page-subtype=channels] ytd-rich-item-renderer:has(:is(
-        .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, .ytd-thumbnail-overlay-resume-playback-renderer)${settings.hideWatchVideos5 == 'All videos' ? '' : `:is(
+        [page-subtype=channels] ytd-rich-item-renderer:has([class*="Progress"]${settings.hideWatchVideos5 == 'All videos' ? '' : `:is(
         ${settings.hideWatchVideos5 == '50-100%' ?
                     '[style="width: 100%;"], [style^="width: 9"]:not([style^="width: 9%"]), [style^="width: 8"]:not([style^="width: 8%"]), [style^="width: 7"]:not([style^="width: 7%"]), [style^="width: 6"]:not([style^="width: 6%"]), [style^="width: 5"]:not([style^="width: 5%"])' :
                     settings.hideWatchVideos5 == '70-100%' ?
@@ -50,8 +49,7 @@ ytTweaks.tweaks.push(function (settings) {
 
     if (settings.dimWatchVideos5) {
         ytTweaks.sheet.textContent += `
-        [page-subtype=channels] :is(ytd-rich-item-renderer, ytd-grid-video-renderer):has(:is(
-        .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, .ytd-thumbnail-overlay-resume-playback-renderer)${settings.dimWatchVideos5 == 'dimAllVideos' ? '' : `:is(
+        [page-subtype=channels] :is(ytd-rich-item-renderer, ytd-grid-video-renderer):has([class*="Progress"]${settings.dimWatchVideos5 == 'dimAllVideos' ? '' : `:is(
         ${settings.dimWatchVideos5 == '50-100%' ?
                     '[style="width: 100%;"], [style^="width: 9"]:not([style^="width: 9%"]), [style^="width: 8"]:not([style^="width: 8%"]), [style^="width: 7"]:not([style^="width: 7%"]), [style^="width: 6"]:not([style^="width: 6%"]), [style^="width: 5"]:not([style^="width: 5%"])' :
                     settings.dimWatchVideos5 == '70-100%' ?
