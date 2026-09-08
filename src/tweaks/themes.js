@@ -2201,6 +2201,7 @@ ytTweaks.tweaks.push(function (settings) {
         .ytp-scrubber-button,
         #progress.ytd-thumbnail-overlay-resume-playback-renderer,
         .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment,
+        .ytwThumbnailOverlayResumePlaybackRendererThumbnailOverlayResumePlaybackProgress,
         .ytp-chrome-controls .ytp-button[aria-pressed]:after,
         .ytp-slider-handle,
         .ytp-slider-handle:before,
