@@ -324,12 +324,14 @@ ytTweaks = {
     }
 };
 
-new MutationObserver(function () {
+const obs = new MutationObserver(function () {
     if (document.body) {
-        this.disconnect();
+        obs.disconnect();
         document.documentElement.appendChild(ytTweaks.sheet);
     }
-}).observe(document.documentElement, {
+});
+
+obs.observe(document.documentElement, {
     childList: true
 });
 
