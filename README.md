@@ -3,7 +3,7 @@
 
 A collection of tweaks for hiding Shorts, disabling auto-dubbing, disabling 'Video paused. Continue watching?', changing the number of videos per row and more!
 
-[![Firefox Addons](./images/firefox-addons-banner.png)](https://addons.mozilla.org/en-US/firefox/addon/youtube-tweaks/)
+[![Firefox Addons](./images/firefox-addons-banner.png)](https://addons.mozilla.org/firefox/addon/youtube-tweaks/)
 [![Chrome Web Store](./images/cws-banner.png)](https://chromewebstore.google.com/detail/yt-tweaks/oeakphpfoaeggagmgphfejmfjbhjfhhh)
 [![Edge Addons](./images/edge-addons-banner.png)](https://microsoftedge.microsoft.com/addons/detail/yt-tweaks/ccckogghpbgibdllcncmehbgeecljpmh)
 
