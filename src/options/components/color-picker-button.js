@@ -7,7 +7,6 @@ class ColorPickerButton extends HTMLButtonElement {
         super();
 
         this.action = openPicker;
-        this.classList.add('colorPicker');
 
         const checker = document.createElement('div');
         const selectedColor = document.createElement('div');

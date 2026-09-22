@@ -114,7 +114,7 @@
         "message": "Opacidade"
     },
     "blur": {
-        "message": "Blur"
+        "message": "Blur "
     },
     "videos": {
         "message": "Videos"
@@ -186,7 +186,7 @@
         "message": "Defina o espaço vertical ocupado pelo player no modo teatro."
     },
     "height": {
-        "message": "Altura"
+        "message": "Altura "
     },
     "auto_hide_header": {
         "message": "Ocultar automaticamente o cabeçalho"
@@ -264,7 +264,7 @@
         "message": "Cor sólida"
     },
     "color": {
-        "message": "Cor"
+        "message": "Cor "
     },
     "lightsaber": {
         "message": "Sabre de luz"
@@ -321,7 +321,7 @@
         "message": "Ativar/desativar"
     },
     "size": {
-        "message": "Tamanho"
+        "message": "Tamanho "
     },
     "position": {
         "message": "Posição"
@@ -354,10 +354,10 @@
         "message": "Embaixo do cabeçalho"
     },
     "floating": {
-        "message": "Flutuante"
+        "message": "Flutuante "
     },
     "rounded_corners": {
-        "message": "Cantos arrendados"
+        "message": "Cantos arrendados "
     },
     "auto_picture_in_picture_on_tab_change": {
         "message": "PiP automático ao trocar de aba"
@@ -372,10 +372,10 @@
         "message": "Usar o scroll do mouse sobre o player para voltar/avançar"
     },
     "forward_time": {
-        "message": "Avanço"
+        "message": "Avanço "
     },
     "backward_time": {
-        "message": "Retrocesso"
+        "message": "Retrocesso "
     },
     "seconds": {
         "message": "Segundos"
@@ -426,7 +426,8 @@
         "message": "Por exemplo, aperte 1 + 2 + 5 + Shift para colocar a velocidade em 1.25x."
     },
     "step": {
-        "message": "Intervalo"
+        "message": "Intervalo ",
+        "description": "The interval between numbers"
     },
     "video_speed": {
         "message": "Velocidade do video"
@@ -435,7 +436,7 @@
         "message": "Velocidade padrão"
     },
     "speed": {
-        "message": "Velocidade"
+        "message": "Velocidade "
     },
     "scroll_speed_over_player": {
         "message": "Usar o scroll do mouse sobre o player para mudar a velocidade"
@@ -492,7 +493,7 @@
         "message": "Diminuir volume"
     },
     "volume_booster_level": {
-        "message": "Quantidade de boost"
+        "message": "Quantidade de boost "
     },
     "toggle_volume_boost_with_mouse": {
         "message": "Ativar/desativar boost clicando com o botão direito no botão de volume"
@@ -707,9 +708,6 @@
     "make_yt_logo_redirect_to_another_page": {
         "message": "Associar outra página ao logo do YouTube"
     },
-    "page": {
-        "message": "Página"
-    },
     "open_a_yt_page": {
         "message": "Abra um página do YouTube"
     },
@@ -763,9 +761,6 @@
     },
     "show_back_to_top_button": {
         "message": "Mostrar botão de voltar pro topo"
-    },
-    "icon": {
-        "message": "Ícone"
     },
     "scroll_back_to_top": {
         "message": "Voltar pro topo"

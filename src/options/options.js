@@ -167,7 +167,6 @@ function hidePopup() {
     openPopups.splice(openPopups.indexOf(popup), 1);
     popup.classList.remove('open');
     popup.label.classList.remove('open');
-    document.body.classList.remove('showOverlay');
 
     popup.addEventListener('transitionend', function () {
         popup.remove();

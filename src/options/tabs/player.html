@@ -5,8 +5,8 @@
   </label>
   <div class="expandable">
     <label>
-      <span data-text="height"> (%)</span>
-      <input is="number-box" type="number" id="ftmHeight" min="0" max="100" step="1" value="100">
+      <span data-text="height">(%)</span>
+      <input is="number-box" id="ftmHeight" min="0" max="100" step="1" value="100">
     </label>
     <label>
       <span data-text="auto_hide_header"></span>
@@ -21,11 +21,11 @@
   <div class="expandable">
     <label>
       <span data-text="opacity"></span>
-      <input is="number-box" type="number" id="vfOpacity" min="0" max="1" step="0.01" value="0.9">
+      <input is="number-box" id="vfOpacity" min="0" max="1" step="0.01" value="0.9">
     </label>
     <label>
-      <span data-text="blur"> (px)</span>
-      <input is="number-box" type="number" id="vfBlur" min="0" value="0">
+      <span data-text="blur">(px)</span>
+      <input is="number-box" id="vfBlur" min="0" value="0">
     </label>
   </div>
   <label>
@@ -145,7 +145,7 @@
     </label>
     <label>
       <span data-text="opacity"></span>
-      <input is="number-box" type="number" id="progBarOpacity" step="0.01" min="0" max="1" value="1">
+      <input is="number-box" id="progBarOpacity" step="0.01" min="0" max="1" value="1">
     </label>
   </div>
   <label>
@@ -186,7 +186,7 @@
     <div class="expandable" matcher="jpeg|webp">
       <label>
         <span data-text="quality"></span>
-        <input is="number-box" type="number" id="snapshotQuality" min="0" max="1" step="0.1" value="1">
+        <input is="number-box" id="snapshotQuality" min="0" max="1" step="0.1" value="1">
       </label>
     </div>
   </div>
@@ -294,12 +294,12 @@
     </div>
   </div>
   <label section="content">
-    <span data-text="floating"> (px)</span>
-    <input is="number-box" type="number" id="floatingPinnedVideo" min="0" value="10">
+    <span data-text="floating">(px)</span>
+    <input is="number-box" id="floatingPinnedVideo" min="0" value="10">
   </label>
   <label section="content">
-    <span data-text="rounded_corners"> (px)</span>
-    <input is="number-box" type="number" id="pinnedVideoRoundCorners" min="0" value="12">
+    <span data-text="rounded_corners">(px)</span>
+    <input is="number-box" id="pinnedVideoRoundCorners" min="0" value="12">
   </label>
   <label section="header">
     <h4 data-text="picture_in_picture"></h4>
@@ -322,12 +322,12 @@
   </label>
   <div class="expandable">
     <label>
-      <span data-text="forward_time"> (<span data-text="seconds"></span>)</span>
-      <input is="number-box" type="number" id="seekOnScrollFtime" step="1" value="5">
+      <span data-text="forward_time">(<span data-text="seconds"></span>)</span>
+      <input is="number-box" id="seekOnScrollFtime" step="1" value="5">
     </label>
     <label>
-      <span data-text="backward_time"> (<span data-text="seconds"></span>)<span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input is="number-box" type="number" id="seekOnScrollBtime" step="1" value="5">
+      <span data-text="backward_time">(<span data-text="seconds"></span>)<span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
+      <input is="number-box" id="seekOnScrollBtime" step="1" value="5">
     </label>
     <label>
       <span data-text="require_holding_key"></span>
@@ -386,7 +386,7 @@
   <div class="expandable">
     <label>
       <span data-text="speed"></span>
-      <input is="number-box" type="number" id="vsSpeed" min="0" value="1.5" step="0.05">
+      <input is="number-box" id="vsSpeed" min="0" value="1.5" step="0.05">
     </label>
   </div>
   <label>
@@ -395,8 +395,8 @@
   </label>
   <div class="expandable">
     <label>
-      <span data-text="step"> (x) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input is="number-box" type="number" id="speedChangePerScroll" step="0.01" value="0.05">
+      <span data-text="step">(x)<span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
+      <input is="number-box" id="speedChangePerScroll" step="0.01" value="0.05">
     </label>
     <label>
       <span data-text="require_holding_key"></span>
@@ -490,8 +490,8 @@
   </label>
   <div class="expandable">
     <label>
-      <span data-text="step"> (%) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input is="number-box" type="number" id="volChangePerScroll" step="1" value="5">
+      <span data-text="step">(%)<span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
+      <input is="number-box" id="volChangePerScroll" step="1" value="5">
     </label>
     <label>
       <span data-text="require_holding_key"></span>
@@ -546,8 +546,8 @@
     </button>
   </label>
   <label>
-    <span data-text="volume_booster_level"> (x)</span>
-    <input is="number-box" type="number" id="boostingLevel" step="1" value="2" min="2">
+    <span data-text="volume_booster_level">(x)</span>
+    <input is="number-box" id="boostingLevel" step="1" value="2" min="2">
   </label>
   <label>
     <span data-text="toggle_volume_boost_with_mouse"></span>
@@ -635,8 +635,8 @@
   </label>
   <div class="expandable">
     <label>
-      <span data-text="step"> (x) <span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
-      <input is="number-box" type="number" id="zoomChangePerScroll" step="0.1" value="0.5">
+      <span data-text="step">(x)<span class="subLabel" data-text="mouse_wheel_dir_tip"></span></span>
+      <input is="number-box" id="zoomChangePerScroll" step="0.1" value="0.5">
     </label>
     <label>
       <span data-text="zoom_to_cursor"></span>

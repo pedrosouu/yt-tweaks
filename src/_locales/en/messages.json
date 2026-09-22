@@ -114,7 +114,7 @@
         "message": "Opacity"
     },
     "blur": {
-        "message": "Blur"
+        "message": "Blur "
     },
     "videos": {
         "message": "Videos"
@@ -186,7 +186,7 @@
         "message": "Set how much vertical space the player takes up in Theater mode."
     },
     "height": {
-        "message": "Height"
+        "message": "Height "
     },
     "auto_hide_header": {
         "message": "Auto-hide header"
@@ -264,7 +264,7 @@
         "message": "Solid color"
     },
     "color": {
-        "message": "Color"
+        "message": "Color "
     },
     "lightsaber": {
         "message": "LightSaber"
@@ -321,7 +321,7 @@
         "message": "Activate/deactivate"
     },
     "size": {
-        "message": "Size"
+        "message": "Size "
     },
     "position": {
         "message": "Position"
@@ -354,10 +354,10 @@
         "message": "Below the header"
     },
     "floating": {
-        "message": "Floating"
+        "message": "Floating "
     },
     "rounded_corners": {
-        "message": "Rounded corners"
+        "message": "Rounded corners "
     },
     "auto_picture_in_picture_on_tab_change": {
         "message": "Auto PiP on tab change"
@@ -372,10 +372,10 @@
         "message": "Seek by scrolling over player"
     },
     "forward_time": {
-        "message": "Forward"
+        "message": "Forward "
     },
     "backward_time": {
-        "message": "Backward"
+        "message": "Backward "
     },
     "seconds": {
         "message": "Seconds"
@@ -426,7 +426,8 @@
         "message": "E.g. 1 + 2 + 5 + Shift will set speed to 1.25x."
     },
     "step": {
-        "message": "Step"
+        "message": "Step ",
+        "description": "The interval between numbers"
     },
     "video_speed": {
         "message": "Video speed"
@@ -435,7 +436,7 @@
         "message": "Default video speed"
     },
     "speed": {
-        "message": "Speed"
+        "message": "Speed "
     },
     "scroll_speed_over_player": {
         "message": "Scroll speed over player"
@@ -451,9 +452,6 @@
     },
     "custom_speed": {
         "message": "Custom speed"
-    },
-    "return_to_normal_speed": {
-        "message": "Return to normal speed"
     },
     "saved_per_channel_speeds": {
         "message": "Saved per-channel speeds"
@@ -495,7 +493,7 @@
         "message": "Decrease volume"
     },
     "volume_booster_level": {
-        "message": "Volume booster level"
+        "message": "Volume booster level "
     },
     "toggle_volume_boost_with_mouse": {
         "message": "Toggle volume boost by right clicking the volume button"
@@ -710,9 +708,6 @@
     "make_yt_logo_redirect_to_another_page": {
         "message": "Make logo redirect to another page"
     },
-    "page": {
-        "message": "Page"
-    },
     "open_a_yt_page": {
         "message": "Open a YouTube page"
     },
@@ -766,9 +761,6 @@
     },
     "show_back_to_top_button": {
         "message": "Show back to top button"
-    },
-    "icon": {
-        "message": "Icon"
     },
     "scroll_back_to_top": {
         "message": "Scroll back to top"

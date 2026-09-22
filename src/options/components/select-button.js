@@ -98,7 +98,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 function handleKeyboardNav(e, closedMenu) {
-    const focusedOption = closedMenu ? menu.querySelector(`[value="${button.value}"`) || menu.children[0] : menu.querySelector('.focused');
+    const focusedOption = closedMenu ? menu.querySelector(`[value="${button.value}"`) : menu.querySelector('.focused');
 
     if (e.key.includes('Arrow')) {
         e.preventDefault();

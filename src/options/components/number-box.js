@@ -1,7 +1,9 @@
 class NumberBox extends HTMLInputElement {
     constructor() {
         super();
-        
+
+        this.type = 'number';
+
         const addButton = document.createElement('button');
         const subtractButton = document.createElement('button');
         addButton.classList.add('numInputBtn', 'plus');
