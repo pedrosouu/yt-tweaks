@@ -63,10 +63,10 @@
         "message": "Import"
     },
     "export_settings_feedback": {
-        "message": "Setings copied to clipboard!"
+        "message": "Settings copied to clipboard!"
     },
     "import_settings_instruction": {
-        "message": "Paste your setings here"
+        "message": "Paste your settings here"
     },
     "videos_tab": {
         "message": "Videos tab"
