@@ -1,6 +1,9 @@
-Thank you for considering contributing to YT Tweaks :)
+Thanks for considering contributing to YT Tweaks!
 
-Feature contributions are unlikely to be accepted since I already have many features to maintain, but bug reports, fixes and code optimizations are very welcome!
+Feature contributions are unlikely to be accepted since I already have many features to maintain, but other types of contribution are very welcome!
+
+## Translation
+If you would like to translate YT Tweaks into your language, create a folder with your language code as a name in the [`src/_locales`](src/_locales) directory, paste a copy of the `messages.json` file located in [`src/_locales/en`](src/_locales/en) into it, translate the `message` strings into your language and submit a pull request.
 
 ## Donation
 
