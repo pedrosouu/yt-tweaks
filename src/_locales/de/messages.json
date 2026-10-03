@@ -552,7 +552,7 @@
     "cancel_zoom": {
         "message": "Zoom abbrechen"
     },
-    "zoom": {
+    "zoom_in": {
         "message": "Hineinzoomen"
     },
     "zoom_out": {
