@@ -1,0 +1,834 @@
+{
+    "locale_lang": {
+        "message": "tr"
+    },
+    "locale_dir": {
+        "message": "ltr"
+    },
+    "extension_description": {
+        "message": "Shorts'ları gizleme, satır başına video sayısını değiştirme ve daha fazlası için ince ayarlar koleksiyonu!"
+    },
+    "search": {
+        "message": "Ara"
+    },
+    "donate": {
+        "message": "Bağış yap"
+    },
+    "rate": {
+        "message": "Puan ver"
+    },
+    "video_grid": {
+        "message": "Video ızgarası"
+    },
+    "homepage": {
+        "message": "Ana sayfa"
+    },
+    "subscriptions_page": {
+        "message": "Abonelikler sayfası"
+    },
+    "channel_page": {
+        "message": "Kanal sayfası"
+    },
+    "video_player": {
+        "message": "Video oynatıcı"
+    },
+    "watch_page": {
+        "message": "İzleme sayfası"
+    },
+    "search_page": {
+        "message": "Arama sayfası"
+    },
+    "header_bar": {
+        "message": "Üst çubuk"
+    },
+    "left_sidebar": {
+        "message": "Sol kenar çubuğu"
+    },
+    "youtube_themes": {
+        "message": "YouTube temaları"
+    },
+    "other": {
+        "message": "Diğer"
+    },
+    "custom_code": {
+        "message": "Özel kod"
+    },
+    "export_import_settings": {
+        "message": "Ayarları dışa/içe aktar"
+    },
+    "export_settings": {
+        "message": "Dışa aktar"
+    },
+    "import_settings": {
+        "message": "İçe aktar"
+    },
+    "export_settings_feedback": {
+        "message": "Ayarlar panoya kopyalandı!"
+    },
+    "import_settings_instruction": {
+        "message": "Ayarlarınızı buraya yapıştırın"
+    },
+    "videos_tab": {
+        "message": "Videolar sekmesi"
+    },
+    "default_to_videos_tab": {
+        "message": "Varsayılan olarak Videolar sekmesini aç"
+    },
+    "home_tab": {
+        "message": "Ana sayfa sekmesi"
+    },
+    "navigate_to_homepage": {
+        "message": "Ana sayfaya git"
+    },
+    "navigate_to_subs_page": {
+        "message": "Abonelikler sayfasına git"
+    },
+    "navigate_to_shorts_page": {
+        "message": "Shorts sayfasına git"
+    },
+    "navigate_to_wl_page": {
+        "message": "Daha Sonra İzle sayfasına git"
+    },
+    "set_hotkey": {
+        "message": "Kısayol ata"
+    },
+    "hotkeys": {
+        "message": "Kısayol tuşları"
+    },
+    "key_binder_instruction": {
+        "message": "Şunun için bir tuşa ya da tuş birleşimine basın: "
+    },
+    "off": {
+        "message": "Kapalı"
+    },
+    "default": {
+        "message": "Varsayılan"
+    },
+    "disable": {
+        "message": "Devre dışı bırak"
+    },
+    "hide": {
+        "message": "Gizle"
+    },
+    "dim": {
+        "message": "Soluklaştır"
+    },
+    "opacity": {
+        "message": "Opaklık"
+    },
+    "blur": {
+        "message": "Bulanıklık "
+    },
+    "videos": {
+        "message": "Videolar"
+    },
+    "shorts": {
+        "message": "Shorts"
+    },
+    "mixes": {
+        "message": "Mix'ler"
+    },
+    "live_streams": {
+        "message": "Canlı yayınlar"
+    },
+    "current_live_streams": {
+        "message": "Şu an yayında olanlar"
+    },
+    "completed_live_streams": {
+        "message": "Bitmiş olanlar"
+    },
+    "both_live_streams": {
+        "message": "Her ikisi"
+    },
+    "upcoming_videos": {
+        "message": "Yaklaşan videolar"
+    },
+    "watched_videos": {
+        "message": "İzlenmiş videolar"
+    },
+    "watched_percentage": {
+        "message": "İzlenme %: "
+    },
+    "topic_bar": {
+        "message": "Konu çubuğu"
+    },
+    "latest_yt_Posts": {
+        "message": "'En son YouTube gönderileri'"
+    },
+    "posts": {
+        "message": "Gönderiler"
+    },
+    "toggle_auto_play": {
+        "message": "Otomatik oynatmayı aç/kapat"
+    },
+    "items_per_row": {
+        "message": "Satır başına öğe sayısı"
+    },
+    "items_per_row_option_sub_label": {
+        "message": "Bir satırda kaç video, Shorts ve gönderi görüneceğini ayarlayın."
+    },
+    "max_num_of_cols": {
+        "message": "En fazla sütun sayısı"
+    },
+    "min_col_width": {
+        "message": "En küçük sütun genişliği "
+    },
+    "hide_profile_pictures": {
+        "message": "Profil resimlerini gizle"
+    },
+    "decrease_font_size": {
+        "message": "Yazı boyutunu küçült"
+    },
+    "theater_mode": {
+        "message": "Sinema modu"
+    },
+    "player_height": {
+        "message": "Oynatıcı yüksekliği"
+    },
+    "theater_mode_player_height_option_sub_label": {
+        "message": "Sinema modunda oynatıcının dikeyde ne kadar yer kaplayacağını ayarlayın."
+    },
+    "height": {
+        "message": "Yükseklik "
+    },
+    "auto_hide_header": {
+        "message": "Üst çubuğu otomatik gizle"
+    },
+    "video_focus": {
+        "message": "Video odağı"
+    },
+    "video_focus_option_sub_label": {
+        "message": "Fareyle oynatıcının üzerine gelince sohbet dışında çevresindeki her şeyi karartır."
+    },
+    "show_video_rem_time": {
+        "message": "Videonun kalan süresini göster"
+    },
+    "where": {
+        "message": "Nerede?"
+    },
+    "tab_title": {
+        "message": "Sekme başlığı"
+    },
+    "format": {
+        "message": "Biçim"
+    },
+    "pause_previous_video": {
+        "message": "Başka bir video oynamaya başlayınca öncekini duraklat"
+    },
+    "automatic_resume": {
+        "message": "Otomatik olarak devam ettir"
+    },
+    "auto_scroll_shorts": {
+        "message": "Shorts'ları otomatik kaydır"
+    },
+    "auto_scroll_shorts_option_sub_label": {
+        "message": "Bir Shorts bitince sıradakini otomatik oynatır."
+    },
+    "shorts_auto_scroll_always_on": {
+        "message": "Yorumlar/açıklama paneli açıkken de kaydır"
+    },
+    "toggle_loop": {
+        "message": "Döngüyü aç/kapat"
+    },
+    "video_paused_continue_watching": {
+        "message": "'Video duraklatıldı. İzlemeye devam edilsin mi?'"
+    },
+    "automatic_dubbing": {
+        "message": "Otomatik dublaj"
+    },
+    "auto_play_in_playlists": {
+        "message": "Oynatma listelerinde otomatik oynatma"
+    },
+    "number_keys_shortcuts": {
+        "message": "Rakam tuşu kısayolları"
+    },
+    "top_row": {
+        "message": "Üst sıra"
+    },
+    "numpad": {
+        "message": "Sayısal tuş takımı"
+    },
+    "shorts_looping": {
+        "message": "Shorts döngüsü"
+    },
+    "progress_bar": {
+        "message": "İlerleme çubuğu"
+    },
+    "always_show_progress_bar": {
+        "message": "İlerleme çubuğunu her zaman göster"
+    },
+    "pinned_progress_bar": {
+        "message": "Alta sabitlenmiş"
+    },
+    "outside_the_player": {
+        "message": "Oynatıcının dışında"
+    },
+    "custom_progress_bar": {
+        "message": "Özel ilerleme çubuğu"
+    },
+    "solid_color": {
+        "message": "Düz renk"
+    },
+    "color": {
+        "message": "Renk "
+    },
+    "lightsaber": {
+        "message": "Işın kılıcı"
+    },
+    "video_snapshot": {
+        "message": "Video ekran görüntüsü"
+    },
+    "quality": {
+        "message": "Kalite"
+    },
+    "include_subtitles": {
+        "message": "Altyazıları da ekle"
+    },
+    "snapshot_button": {
+        "message": "Ekran görüntüsü düğmesi"
+    },
+    "save_method_left_click": {
+        "message": "Kaydetme yöntemi (sol tık)"
+    },
+    "save_method_right_click": {
+        "message": "Kaydetme yöntemi (sağ tık)"
+    },
+    "file": {
+        "message": "Dosya"
+    },
+    "clipboard": {
+        "message": "Pano"
+    },
+    "file_and_clipboard": {
+        "message": "Dosya ve pano"
+    },
+    "snapshot_to_file": {
+        "message": "Ekran görüntüsünü dosyaya kaydet"
+    },
+    "snapshot_to_clipboard": {
+        "message": "Ekran görüntüsünü panoya kopyala"
+    },
+    "snapshot_to_file_and_clipboard": {
+        "message": "Ekran görüntüsünü dosyaya kaydet ve panoya kopyala"
+    },
+    "sticky_player": {
+        "message": "Sabit oynatıcı"
+    },
+    "picture_in_picture": {
+        "message": "Pencere içinde pencere"
+    },
+    "sticky_player_and_picture_in_picture": {
+        "message": "Sabit oynatıcı ve Pencere içinde pencere"
+    },
+    "activate_on_scroll": {
+        "message": "Aşağı kaydırınca etkinleştir"
+    },
+    "activate_deactivate": {
+        "message": "Etkinleştir/devre dışı bırak"
+    },
+    "size": {
+        "message": "Boyut "
+    },
+    "position": {
+        "message": "Konum"
+    },
+    "bottom_right": {
+        "message": "Sağ alt"
+    },
+    "bottom_center": {
+        "message": "Alt orta"
+    },
+    "bottom_left": {
+        "message": "Sol alt"
+    },
+    "center_right": {
+        "message": "Sağ orta"
+    },
+    "center_left": {
+        "message": "Sol orta"
+    },
+    "top_right": {
+        "message": "Sağ üst"
+    },
+    "top_center": {
+        "message": "Üst orta"
+    },
+    "top_left": {
+        "message": "Sol üst"
+    },
+    "below_the_header": {
+        "message": "Üst çubuğun altında"
+    },
+    "floating": {
+        "message": "Kenardan uzaklık "
+    },
+    "rounded_corners": {
+        "message": "Yuvarlak köşeler "
+    },
+    "auto_picture_in_picture_on_tab_change": {
+        "message": "Sekme değişince otomatik PiP"
+    },
+    "toggle_picture_in_picture": {
+        "message": "PiP'yi aç/kapat"
+    },
+    "video_seeking": {
+        "message": "Videoda ileri/geri sarma"
+    },
+    "seek_video_by_scrolling_over_player": {
+        "message": "Oynatıcı üzerinde tekerlekle ileri/geri sar"
+    },
+    "forward_time": {
+        "message": "İleri "
+    },
+    "backward_time": {
+        "message": "Geri "
+    },
+    "seconds": {
+        "message": "Saniye"
+    },
+    "require_holding_key": {
+        "message": "Basılı tutulması gereken"
+    },
+    "nothing": {
+        "message": "Hiçbiri"
+    },
+    "lmb": {
+        "message": "Farenin sol tuşu"
+    },
+    "rmb": {
+        "message": "Farenin sağ tuşu"
+    },
+    "mouse_wheel_dir_tip": {
+        "message": "Negatif sayı = fare tekerleğinin yönü ters çevrilir"
+    },
+    "seek_video_forward_button": {
+        "message": "İleri sarma düğmesi"
+    },
+    "seek_video_backward_button": {
+        "message": "Geri sarma düğmesi"
+    },
+    "seek_video_forward": {
+        "message": "İleri sar"
+    },
+    "seek_video_backward": {
+        "message": "Geri sar"
+    },
+    "undo_video_seek": {
+        "message": "Sarmayı geri al"
+    },
+    "redo_video_seek": {
+        "message": "Sarmayı yinele"
+    },
+    "numbers_then_enter": {
+        "message": "Bir sayı yazıp Enter'a basarak o zamana git"
+    },
+    "numbers_then_enter_option_sub_label": {
+        "message": "Örn. 1 + 3 + 0 + Enter, 1 dakika 30 saniyeye gider."
+    },
+    "numbers_then_arrow_key": {
+        "message": "Bir sayı yazıp sol/sağ ok tuşuna basarak o kadar süre geri/ileri sar"
+    },
+    "numbers_then_arrow_key_option_sub_label": {
+        "message": "Örn. 1 + 5 + sağ ok tuşu, 15 saniye ileri sarar."
+    },
+    "numbers_then_shift": {
+        "message": "Bir sayı yazıp Shift'e basarak hızı o sayıya ayarla"
+    },
+    "numbers_then_shift_option_sub_label": {
+        "message": "Örn. 1 + 2 + 5 + Shift, hızı 1.25x yapar."
+    },
+    "step": {
+        "message": "Adım ",
+        "description": "The interval between numbers"
+    },
+    "video_speed": {
+        "message": "Video hızı"
+    },
+    "default_video_speed": {
+        "message": "Varsayılan video hızı"
+    },
+    "speed": {
+        "message": "Hız "
+    },
+    "scroll_speed_over_player": {
+        "message": "Oynatıcı üzerinde tekerlekle hızı değiştir"
+    },
+    "increase_speed_button": {
+        "message": "Hızı artırma düğmesi"
+    },
+    "decrease_speed_button": {
+        "message": "Hızı azaltma düğmesi"
+    },
+    "normal_speed_button": {
+        "message": "Normal hız düğmesi"
+    },
+    "increase_speed": {
+        "message": "Hızı artır"
+    },
+    "decrease_speed": {
+        "message": "Hızı azalt"
+    },
+    "normal_speed": {
+        "message": "Normal hız"
+    },
+    "custom_speed": {
+        "message": "Özel hız"
+    },
+    "saved_per_channel_speeds": {
+        "message": "Kanala göre kaydedilmiş hızlar"
+    },
+    "channel_speed_button": {
+        "message": "Kanal hızı düğmesi"
+    },
+    "set_channel_speed": {
+        "message": "Kanal hızını ayarla"
+    },
+    "left_click": {
+        "message": "Sol tık"
+    },
+    "right_click": {
+        "message": "Sağ tık"
+    },
+    "middle_click": {
+        "message": "Orta tık"
+    },
+    "exact_match": {
+        "message": "Tam eşleşme (büyük/küçük harf duyarlı)"
+    },
+    "channel_name": {
+        "message": "Kanal adı"
+    },
+    "video_audio": {
+        "message": "Video sesi"
+    },
+    "scroll_volume_over_player": {
+        "message": "Oynatıcı üzerinde tekerlekle sesi değiştir"
+    },
+    "toggle_mute": {
+        "message": "Sesi kapat/aç"
+    },
+    "increase_video_volume": {
+        "message": "Sesi artır"
+    },
+    "decrease_video_volume": {
+        "message": "Sesi azalt"
+    },
+    "volume_booster_level": {
+        "message": "Ses yükseltme düzeyi "
+    },
+    "toggle_volume_boost_with_mouse": {
+        "message": "Ses düğmesine sağ tıklayarak ses yükseltmeyi aç/kapat"
+    },
+    "toggle_volume_boost": {
+        "message": "Ses yükseltmeyi aç/kapat"
+    },
+    "auto_boost_volume": {
+        "message": "Sesi otomatik yükselt"
+    },
+    "mono_audio_button": {
+        "message": "Mono ses düğmesi"
+    },
+    "toggle_mono_audio": {
+        "message": "Mono sesi aç/kapat"
+    },
+    "auto_turn_mono_audio_on": {
+        "message": "Mono sesi otomatik aç"
+    },
+    "video_quality": {
+        "message": "Video kalitesi"
+    },
+    "default_video_quality": {
+        "message": "Varsayılan video kalitesi"
+    },
+    "fallback": {
+        "message": "Bu kalite yoksa"
+    },
+    "next_high_video_quality": {
+        "message": "Bir üst kalite"
+    },
+    "next_low_video_quality": {
+        "message": "Bir alt kalite"
+    },
+    "increase_video_quality": {
+        "message": "Kaliteyi artır"
+    },
+    "decrease_video_quality": {
+        "message": "Kaliteyi düşür"
+    },
+    "highest_video_quality": {
+        "message": "En yüksek kalite"
+    },
+    "lowest_video_quality": {
+        "message": "En düşük kalite"
+    },
+    "zoom_flip_rotate_video": {
+        "message": "Videoyu yakınlaştır / çevir / döndür"
+    },
+    "zoom_by_scrolling_over_player": {
+        "message": "Oynatıcı üzerinde tekerlekle yakınlaştır/uzaklaştır"
+    },
+    "zoom_to_cursor": {
+        "message": "Fare imlecini takip et"
+    },
+    "cancel_zoom": {
+        "message": "Yakınlaştırmayı iptal et"
+    },
+    "zoom_in_button": {
+        "message": "Yakınlaştırma düğmesi"
+    },
+    "zoom_out_button": {
+        "message": "Uzaklaştırma düğmesi"
+    },
+    "cancel_zoom_button": {
+        "message": "Yakınlaştırmayı iptal etme düğmesi"
+    },
+    "zoom_in": {
+        "message": "Yakınlaştır"
+    },
+    "zoom_out": {
+        "message": "Uzaklaştır"
+    },
+    "move_zoomed_area_right": {
+        "message": "Yakınlaştırılan alanı sağa kaydır"
+    },
+    "move_zoomed_area_left": {
+        "message": "Yakınlaştırılan alanı sola kaydır"
+    },
+    "move_zoomed_area_up": {
+        "message": "Yakınlaştırılan alanı yukarı kaydır"
+    },
+    "move_zoomed_area_down": {
+        "message": "Yakınlaştırılan alanı aşağı kaydır"
+    },
+    "flip_video_horizontally_button": {
+        "message": "Yatay çevirme düğmesi"
+    },
+    "flip_video_vertically_button": {
+        "message": "Dikey çevirme düğmesi"
+    },
+    "flip_video_horizontally": {
+        "message": "Yatay çevir"
+    },
+    "flip_video_vertically": {
+        "message": "Dikey çevir"
+    },
+    "rotate_video_clockwise_button": {
+        "message": "Saat yönünde döndürme düğmesi"
+    },
+    "rotate_video_anti_clockwise_button": {
+        "message": "Saat yönünün tersine döndürme düğmesi"
+    },
+    "rotate_video_clockwise": {
+        "message": "Saat yönünde döndür"
+    },
+    "rotate_video_anti_clockwise": {
+        "message": "Saat yönünün tersine döndür"
+    },
+    "video_filters": {
+        "message": "Video filtreleri"
+    },
+    "video_filters_button": {
+        "message": "Video filtreleri düğmesi"
+    },
+    "toggle_video_filters": {
+        "message": "Video filtrelerini aç/kapat"
+    },
+    "auto_apply_video_filters": {
+        "message": "Video filtrelerini otomatik uygula"
+    },
+    "hue": {
+        "message": "Renk tonu"
+    },
+    "saturation": {
+        "message": "Doygunluk"
+    },
+    "brightness": {
+        "message": "Parlaklık"
+    },
+    "contrast": {
+        "message": "Kontrast"
+    },
+    "color_inversion": {
+        "message": "Renkleri ters çevir"
+    },
+    "sepia": {
+        "message": "Sepya"
+    },
+    "grayscale": {
+        "message": "Gri tonlama"
+    },
+    "reset": {
+        "message": "Sıfırla"
+    },
+    "video_end_cards": {
+        "message": "Bitiş ekranı kartları"
+    },
+    "hide_video_controls_on_pause_seek": {
+        "message": "Duraklatınca/sarınca video kontrolleri"
+    },
+    "show_video_end_cards_on_hover_pause": {
+        "message": "Üzerine gelince/duraklatınca göster"
+    },
+    "video_description": {
+        "message": "Video açıklaması"
+    },
+    "minimalist_video_description": {
+        "message": "Sade"
+    },
+    "expanded_video_description": {
+        "message": "Genişletilmiş"
+    },
+    "clickable_channel_names": {
+        "message": "Kenar çubuğunda kanal adları tıklanabilir olsun"
+    },
+    "toggle_video_transcript": {
+        "message": "Transkripti aç/kapat"
+    },
+    "toggle_like": {
+        "message": "Beğen / beğeniyi geri al"
+    },
+    "toggle_dislike": {
+        "message": "Beğenme / geri al"
+    },
+    "live_chat": {
+        "message": "Canlı sohbet"
+    },
+    "disable_auto_opening_live_chat": {
+        "message": "Canlı sohbetin otomatik açılmasını engelle"
+    },
+    "default_view": {
+        "message": "Varsayılan görünüm"
+    },
+    "live_chat_view_top_chat": {
+        "message": "Popüler sohbet"
+    },
+    "live_chat_view_live_chat": {
+        "message": "Canlı sohbet"
+    },
+    "comments_section": {
+        "message": "Yorumlar bölümü"
+    },
+    "auto_expand_long_comments": {
+        "message": "Uzun yorumları otomatik genişlet"
+    },
+    "default_sorting_of_comments": {
+        "message": "Yorumların varsayılan sıralaması"
+    },
+    "comments_sorting_top": {
+        "message": "Popüler"
+    },
+    "comments_sorting_newest": {
+        "message": "En yeni"
+    },
+    "sidebar": {
+        "message": "Kenar çubuğu"
+    },
+    "show_comments_section": {
+        "message": "Yorumlar bölümünü göster"
+    },
+    "toggle_comments_section": {
+        "message": "Yorumlar bölümünü aç/kapat"
+    },
+    "use_player_height": {
+        "message": "Oynatıcı yüksekliğini kullan"
+    },
+    "hide_header": {
+        "message": "Başlığı gizle"
+    },
+    "hide_comment_field": {
+        "message": "Yorum yazma alanını gizle"
+    },
+    "share_button": {
+        "message": "Paylaş düğmesi"
+    },
+    "download_button": {
+        "message": "İndir düğmesi"
+    },
+    "clip_button": {
+        "message": "Klip düğmesi"
+    },
+    "thanks_button": {
+        "message": "Teşekkürler düğmesi"
+    },
+    "save_button": {
+        "message": "Kaydet düğmesi"
+    },
+    "button_labels": {
+        "message": "Düğme yazıları"
+    },
+    "show_search_results_as_a_grid": {
+        "message": "Arama sonuçlarını ızgara olarak göster"
+    },
+    "hide_right_sidebar": {
+        "message": "Sağ kenar çubuğunu gizle"
+    },
+    "irrelevant_search_results": {
+        "message": "Alakasız arama sonuçları"
+    },
+    "hide_irrelevant_search_results_option_sub_label": {
+        "message": "Sizin için, Diğer izleyiciler bunları da izledi, Tekrar izleyin..."
+    },
+    "compact_header": {
+        "message": "Kompakt üst çubuk"
+    },
+    "make_yt_logo_redirect_to_another_page": {
+        "message": "Logo başka bir sayfaya yönlendirsin"
+    },
+    "open_in_new_tab_button_in_search_box": {
+        "message": "Arama kutusuna 'Yeni sekmede aç' düğmesi ekle"
+    },
+    "open_in_new_tab": {
+        "message": "Yeni sekmede aç"
+    },
+    "compact_left_sidebar": {
+        "message": "Kompakt sol kenar çubuğu"
+    },
+    "shorts_button": {
+        "message": "Shorts düğmesi"
+    },
+    "explore_section": {
+        "message": "'Keşfet' bölümü"
+    },
+    "more_from_yt_section": {
+        "message": "'YouTube'dan daha fazla içerik' bölümü"
+    },
+    "dark_theme": {
+        "message": "Koyu tema"
+    },
+    "light_theme": {
+        "message": "Açık tema"
+    },
+    "use_theme_in_light_mode": {
+        "message": "Bu temayı açık modda da kullan"
+    },
+    "more_animations": {
+        "message": "Daha fazla animasyon"
+    },
+    "red_subscribe_button": {
+        "message": "Kırmızı abone ol düğmesi"
+    },
+    "video_metadata": {
+        "message": "Video bilgileri"
+    },
+    "show_full_video_title": {
+        "message": "Başlığın tamamını göster"
+    },
+    "show_full_channel_name_and_upload_time": {
+        "message": "Kanal adının ve yükleme zamanının tamamını göster"
+    },
+    "back_to_top": {
+        "message": "Başa dön"
+    },
+    "show_back_to_top_button": {
+        "message": "Başa dön düğmesini göster"
+    },
+    "scroll_back_to_top": {
+        "message": "Sayfanın başına kaydır"
+    },
+    "delete": {
+        "message": "Sil"
+    },
+    "close": {
+        "message": "Kapat"
+    }
+}
