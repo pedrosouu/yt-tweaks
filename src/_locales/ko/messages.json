@@ -1,0 +1,840 @@
+{
+    "locale_lang": {
+        "message": "ko"
+    },
+    "locale_dir": {
+        "message": "ltr"
+    },
+    "extension_description": {
+        "message": "Shorts 숨기기, 한 줄에 표시할 동영상 수 변경 등 다양한 YouTube 개선 기능 모음!"
+    },
+    "search": {
+        "message": "검색"
+    },
+    "donate": {
+        "message": "후원"
+    },
+    "rate": {
+        "message": "평가"
+    },
+    "video_grid": {
+        "message": "동영상 그리드"
+    },
+    "homepage": {
+        "message": "홈페이지"
+    },
+    "subscriptions_page": {
+        "message": "구독 페이지"
+    },
+    "channel_page": {
+        "message": "채널 페이지"
+    },
+    "video_player": {
+        "message": "동영상 플레이어"
+    },
+    "watch_page": {
+        "message": "시청 페이지"
+    },
+    "search_page": {
+        "message": "검색 페이지"
+    },
+    "header_bar": {
+        "message": "상단바"
+    },
+    "left_sidebar": {
+        "message": "왼쪽 사이드바"
+    },
+    "youtube_themes": {
+        "message": "YouTube 테마"
+    },
+    "other": {
+        "message": "기타"
+    },
+    "custom_code": {
+        "message": "사용자 지정 코드"
+    },
+    "export_import_settings": {
+        "message": "설정 내보내기/가져오기"
+    },
+    "export_settings": {
+        "message": "내보내기"
+    },
+    "import_settings": {
+        "message": "가져오기"
+    },
+    "export_settings_feedback": {
+        "message": "설정이 클립보드에 복사되었습니다!"
+    },
+    "import_settings_instruction": {
+        "message": "여기에 설정을 붙여넣으세요"
+    },
+    "videos_tab": {
+        "message": "동영상 탭"
+    },
+    "default_to_videos_tab": {
+        "message": "기본으로 동영상 탭 열기"
+    },
+    "home_tab": {
+        "message": "홈 탭"
+    },
+    "navigate_to_homepage": {
+        "message": "홈페이지로 이동"
+    },
+    "navigate_to_subs_page": {
+        "message": "구독 페이지로 이동"
+    },
+    "navigate_to_shorts_page": {
+        "message": "Shorts 페이지로 이동"
+    },
+    "navigate_to_wl_page": {
+        "message": "나중에 볼 동영상 페이지로 이동"
+    },
+    "set_hotkey": {
+        "message": "단축키 설정"
+    },
+    "hotkeys": {
+        "message": "단축키"
+    },
+    "key_binder_instruction": {
+        "message": "다음 기능에 사용할 키 또는 키 조합을 누르세요: "
+    },
+    "off": {
+        "message": "끄기"
+    },
+    "default": {
+        "message": "기본값"
+    },
+    "disable": {
+        "message": "사용 안 함"
+    },
+    "hide": {
+        "message": "숨기기"
+    },
+    "hide_in_overflow_menu": {
+        "message": "더보기 메뉴로 숨기기"
+    },
+    "dim": {
+        "message": "흐리게"
+    },
+    "opacity": {
+        "message": "불투명도"
+    },
+    "blur": {
+        "message": "블러 "
+    },
+    "videos": {
+        "message": "동영상"
+    },
+    "shorts": {
+        "message": "Shorts"
+    },
+    "mixes": {
+        "message": "믹스"
+    },
+    "live_streams": {
+        "message": "실시간 스트리밍"
+    },
+    "current_live_streams": {
+        "message": "진행 중"
+    },
+    "completed_live_streams": {
+        "message": "종료됨"
+    },
+    "both_live_streams": {
+        "message": "모두"
+    },
+    "upcoming_videos": {
+        "message": "최초 공개 예정 동영상"
+    },
+    "watched_videos": {
+        "message": "시청한 동영상"
+    },
+    "watched_percentage": {
+        "message": "시청 비율(%): "
+    },
+    "topic_bar": {
+        "message": "주제 표시줄"
+    },
+    "latest_yt_Posts": {
+        "message": "'최신 YouTube 게시물'"
+    },
+    "posts": {
+        "message": "게시물"
+    },
+    "toggle_auto_play": {
+        "message": "자동재생 켜기/끄기"
+    },
+    "items_per_row": {
+        "message": "한 줄에 표시할 항목 수"
+    },
+    "items_per_row_option_sub_label": {
+        "message": "한 줄에 표시할 동영상, Shorts, 게시물 수를 조절합니다."
+    },
+    "max_num_of_cols": {
+        "message": "최대 열 수"
+    },
+    "min_col_width": {
+        "message": "최소 열 너비 "
+    },
+    "hide_profile_pictures": {
+        "message": "프로필 사진 숨기기"
+    },
+    "decrease_font_size": {
+        "message": "글자 크기 줄이기"
+    },
+    "theater_mode": {
+        "message": "영화관 모드"
+    },
+    "auto_theater_mode": {
+        "message": "영화관 모드 자동 사용"
+    },
+    "player_height": {
+        "message": "플레이어 높이"
+    },
+    "theater_mode_player_height_option_sub_label": {
+        "message": "영화관 모드에서 플레이어가 차지하는 세로 공간을 설정합니다."
+    },
+    "height": {
+        "message": "높이 "
+    },
+    "auto_hide_header": {
+        "message": "상단바 자동 숨기기"
+    },
+    "video_focus": {
+        "message": "동영상 집중 모드"
+    },
+    "video_focus_option_sub_label": {
+        "message": "마우스를 플레이어 위에 올리면 채팅을 제외한 플레이어 주변을 어둡게 합니다."
+    },
+    "show_video_rem_time": {
+        "message": "동영상 남은 시간 표시"
+    },
+    "where": {
+        "message": "표시 위치"
+    },
+    "tab_title": {
+        "message": "탭 제목"
+    },
+    "format": {
+        "message": "형식"
+    },
+    "pause_previous_video": {
+        "message": "다른 동영상이 재생되면 이전 동영상 일시중지"
+    },
+    "automatic_resume": {
+        "message": "자동으로 이어서 재생"
+    },
+    "auto_scroll_shorts": {
+        "message": "Shorts 자동 넘기기"
+    },
+    "auto_scroll_shorts_option_sub_label": {
+        "message": "Shorts 재생이 끝나면 다음 Shorts를 자동으로 재생합니다."
+    },
+    "shorts_auto_scroll_always_on": {
+        "message": "댓글/설명 패널이 열려 있어도 넘기기"
+    },
+    "toggle_loop": {
+        "message": "반복 재생 켜기/끄기"
+    },
+    "video_paused_continue_watching": {
+        "message": "'동영상이 일시중지되었습니다. 계속 시청하시겠습니까?'"
+    },
+    "automatic_dubbing": {
+        "message": "자동 더빙"
+    },
+    "auto_play_in_playlists": {
+        "message": "재생목록 자동재생"
+    },
+    "number_keys_shortcuts": {
+        "message": "숫자 키 단축키"
+    },
+    "top_row": {
+        "message": "상단 숫자 키"
+    },
+    "numpad": {
+        "message": "숫자 키패드"
+    },
+    "shorts_looping": {
+        "message": "Shorts 반복 재생"
+    },
+    "progress_bar": {
+        "message": "진행률 표시줄"
+    },
+    "always_show_progress_bar": {
+        "message": "진행률 표시줄 항상 표시"
+    },
+    "pinned_progress_bar": {
+        "message": "아래쪽에 고정"
+    },
+    "outside_the_player": {
+        "message": "플레이어 바깥"
+    },
+    "custom_progress_bar": {
+        "message": "사용자 지정 진행률 표시줄"
+    },
+    "solid_color": {
+        "message": "단색"
+    },
+    "color": {
+        "message": "색상 "
+    },
+    "lightsaber": {
+        "message": "광선검"
+    },
+    "video_snapshot": {
+        "message": "동영상 스크린샷"
+    },
+    "quality": {
+        "message": "화질"
+    },
+    "include_subtitles": {
+        "message": "자막 포함"
+    },
+    "snapshot_button": {
+        "message": "스크린샷 버튼"
+    },
+    "save_method_left_click": {
+        "message": "저장 방식 (왼쪽 클릭)"
+    },
+    "save_method_right_click": {
+        "message": "저장 방식 (오른쪽 클릭)"
+    },
+    "file": {
+        "message": "파일"
+    },
+    "clipboard": {
+        "message": "클립보드"
+    },
+    "file_and_clipboard": {
+        "message": "파일과 클립보드"
+    },
+    "snapshot_to_file": {
+        "message": "스크린샷을 파일로 저장"
+    },
+    "snapshot_to_clipboard": {
+        "message": "스크린샷을 클립보드에 복사"
+    },
+    "snapshot_to_file_and_clipboard": {
+        "message": "스크린샷을 파일로 저장하고 클립보드에 복사"
+    },
+    "sticky_player": {
+        "message": "고정 플레이어"
+    },
+    "picture_in_picture": {
+        "message": "PIP 모드"
+    },
+    "sticky_player_and_picture_in_picture": {
+        "message": "고정 플레이어 및 PIP 모드"
+    },
+    "activate_on_scroll": {
+        "message": "아래로 스크롤하면 사용"
+    },
+    "activate_deactivate": {
+        "message": "사용/사용 안 함"
+    },
+    "size": {
+        "message": "크기 "
+    },
+    "position": {
+        "message": "위치"
+    },
+    "bottom_right": {
+        "message": "오른쪽 아래"
+    },
+    "bottom_center": {
+        "message": "가운데 아래"
+    },
+    "bottom_left": {
+        "message": "왼쪽 아래"
+    },
+    "center_right": {
+        "message": "오른쪽 가운데"
+    },
+    "center_left": {
+        "message": "왼쪽 가운데"
+    },
+    "top_right": {
+        "message": "오른쪽 위"
+    },
+    "top_center": {
+        "message": "가운데 위"
+    },
+    "top_left": {
+        "message": "왼쪽 위"
+    },
+    "below_the_header": {
+        "message": "상단바 아래"
+    },
+    "floating": {
+        "message": "떠 있는 효과 "
+    },
+    "rounded_corners": {
+        "message": "둥근 모서리 "
+    },
+    "auto_picture_in_picture_on_tab_change": {
+        "message": "탭 전환 시 자동 PIP"
+    },
+    "toggle_picture_in_picture": {
+        "message": "PIP 켜기/끄기"
+    },
+    "video_seeking": {
+        "message": "동영상 탐색"
+    },
+    "seek_video_by_scrolling_over_player": {
+        "message": "플레이어 위에서 스크롤로 탐색"
+    },
+    "forward_time": {
+        "message": "앞으로 "
+    },
+    "backward_time": {
+        "message": "뒤로 "
+    },
+    "seconds": {
+        "message": "초"
+    },
+    "require_holding_key": {
+        "message": "누른 상태에서만 작동"
+    },
+    "nothing": {
+        "message": "없음"
+    },
+    "lmb": {
+        "message": "마우스 왼쪽 버튼"
+    },
+    "rmb": {
+        "message": "마우스 오른쪽 버튼"
+    },
+    "mouse_wheel_dir_tip": {
+        "message": "음수 = 마우스 휠 방향 반대로"
+    },
+    "seek_video_forward_button": {
+        "message": "앞으로 건너뛰기 버튼"
+    },
+    "seek_video_backward_button": {
+        "message": "뒤로 건너뛰기 버튼"
+    },
+    "seek_video_forward": {
+        "message": "앞으로 건너뛰기"
+    },
+    "seek_video_backward": {
+        "message": "뒤로 건너뛰기"
+    },
+    "undo_video_seek": {
+        "message": "탐색 실행 취소"
+    },
+    "redo_video_seek": {
+        "message": "탐색 다시 실행"
+    },
+    "numbers_then_enter": {
+        "message": "숫자를 입력하고 Enter를 누르면 해당 시간으로 이동"
+    },
+    "numbers_then_enter_option_sub_label": {
+        "message": "예: 1 + 3 + 0 + Enter를 누르면 1분 30초로 이동합니다."
+    },
+    "numbers_then_arrow_key": {
+        "message": "숫자를 입력하고 왼쪽/오른쪽 화살표 키를 누르면 그만큼 이동"
+    },
+    "numbers_then_arrow_key_option_sub_label": {
+        "message": "예: 1 + 5 + 오른쪽 화살표 키를 누르면 15초 앞으로 이동합니다."
+    },
+    "numbers_then_shift": {
+        "message": "숫자를 입력하고 Shift를 누르면 그 숫자로 속도 설정"
+    },
+    "numbers_then_shift_option_sub_label": {
+        "message": "예: 1 + 2 + 5 + Shift를 누르면 속도가 1.25배로 설정됩니다."
+    },
+    "step": {
+        "message": "간격 ",
+        "description": "The interval between numbers"
+    },
+    "video_speed": {
+        "message": "재생 속도"
+    },
+    "default_video_speed": {
+        "message": "기본 재생 속도"
+    },
+    "speed": {
+        "message": "속도 "
+    },
+    "scroll_speed_over_player": {
+        "message": "플레이어 위에서 스크롤로 속도 조절"
+    },
+    "increase_speed_button": {
+        "message": "속도 높이기 버튼"
+    },
+    "decrease_speed_button": {
+        "message": "속도 낮추기 버튼"
+    },
+    "normal_speed_button": {
+        "message": "보통 속도 버튼"
+    },
+    "increase_speed": {
+        "message": "속도 높이기"
+    },
+    "decrease_speed": {
+        "message": "속도 낮추기"
+    },
+    "normal_speed": {
+        "message": "보통 속도"
+    },
+    "custom_speed": {
+        "message": "사용자 지정 속도"
+    },
+    "saved_per_channel_speeds": {
+        "message": "저장된 채널별 속도"
+    },
+    "channel_speed_button": {
+        "message": "채널 속도 버튼"
+    },
+    "set_channel_speed": {
+        "message": "채널 속도 설정"
+    },
+    "left_click": {
+        "message": "왼쪽 클릭"
+    },
+    "right_click": {
+        "message": "오른쪽 클릭"
+    },
+    "middle_click": {
+        "message": "가운데 클릭"
+    },
+    "exact_match": {
+        "message": "정확히 일치 (대소문자 구분)"
+    },
+    "channel_name": {
+        "message": "채널 이름"
+    },
+    "video_audio": {
+        "message": "동영상 오디오"
+    },
+    "scroll_volume_over_player": {
+        "message": "플레이어 위에서 스크롤로 볼륨 조절"
+    },
+    "toggle_mute": {
+        "message": "음소거/음소거 해제"
+    },
+    "increase_video_volume": {
+        "message": "볼륨 높이기"
+    },
+    "decrease_video_volume": {
+        "message": "볼륨 낮추기"
+    },
+    "volume_booster_level": {
+        "message": "볼륨 증폭 수준 "
+    },
+    "toggle_volume_boost_with_mouse": {
+        "message": "볼륨 버튼을 오른쪽 클릭하여 볼륨 증폭 켜기/끄기"
+    },
+    "toggle_volume_boost": {
+        "message": "볼륨 증폭 켜기/끄기"
+    },
+    "auto_boost_volume": {
+        "message": "볼륨 자동 증폭"
+    },
+    "mono_audio_button": {
+        "message": "모노 오디오 버튼"
+    },
+    "toggle_mono_audio": {
+        "message": "모노 오디오 켜기/끄기"
+    },
+    "auto_turn_mono_audio_on": {
+        "message": "모노 오디오 자동 사용"
+    },
+    "video_quality": {
+        "message": "동영상 화질"
+    },
+    "default_video_quality": {
+        "message": "기본 화질"
+    },
+    "fallback": {
+        "message": "해당 화질이 없을 때"
+    },
+    "next_high_video_quality": {
+        "message": "바로 위 화질"
+    },
+    "next_low_video_quality": {
+        "message": "바로 아래 화질"
+    },
+    "increase_video_quality": {
+        "message": "화질 높이기"
+    },
+    "decrease_video_quality": {
+        "message": "화질 낮추기"
+    },
+    "highest_video_quality": {
+        "message": "최고 화질"
+    },
+    "lowest_video_quality": {
+        "message": "최저 화질"
+    },
+    "zoom_flip_rotate_video": {
+        "message": "동영상 확대 / 뒤집기 / 회전"
+    },
+    "zoom_by_scrolling_over_player": {
+        "message": "플레이어 위에서 스크롤로 확대/축소"
+    },
+    "zoom_to_cursor": {
+        "message": "마우스 커서 따라가기"
+    },
+    "cancel_zoom": {
+        "message": "확대 취소"
+    },
+    "zoom_in_button": {
+        "message": "확대 버튼"
+    },
+    "zoom_out_button": {
+        "message": "축소 버튼"
+    },
+    "cancel_zoom_button": {
+        "message": "확대 취소 버튼"
+    },
+    "zoom_in": {
+        "message": "확대"
+    },
+    "zoom_out": {
+        "message": "축소"
+    },
+    "move_zoomed_area_right": {
+        "message": "확대 영역 오른쪽으로 이동"
+    },
+    "move_zoomed_area_left": {
+        "message": "확대 영역 왼쪽으로 이동"
+    },
+    "move_zoomed_area_up": {
+        "message": "확대 영역 위로 이동"
+    },
+    "move_zoomed_area_down": {
+        "message": "확대 영역 아래로 이동"
+    },
+    "flip_video_horizontally_button": {
+        "message": "좌우 뒤집기 버튼"
+    },
+    "flip_video_vertically_button": {
+        "message": "상하 뒤집기 버튼"
+    },
+    "flip_video_horizontally": {
+        "message": "좌우 뒤집기"
+    },
+    "flip_video_vertically": {
+        "message": "상하 뒤집기"
+    },
+    "rotate_video_clockwise_button": {
+        "message": "시계 방향 회전 버튼"
+    },
+    "rotate_video_anti_clockwise_button": {
+        "message": "시계 반대 방향 회전 버튼"
+    },
+    "rotate_video_clockwise": {
+        "message": "시계 방향으로 회전"
+    },
+    "rotate_video_anti_clockwise": {
+        "message": "시계 반대 방향으로 회전"
+    },
+    "video_filters": {
+        "message": "동영상 필터"
+    },
+    "video_filters_button": {
+        "message": "동영상 필터 버튼"
+    },
+    "toggle_video_filters": {
+        "message": "동영상 필터 켜기/끄기"
+    },
+    "auto_apply_video_filters": {
+        "message": "동영상 필터 자동 적용"
+    },
+    "hue": {
+        "message": "색조"
+    },
+    "saturation": {
+        "message": "채도"
+    },
+    "brightness": {
+        "message": "밝기"
+    },
+    "contrast": {
+        "message": "대비"
+    },
+    "color_inversion": {
+        "message": "색상 반전"
+    },
+    "sepia": {
+        "message": "세피아"
+    },
+    "grayscale": {
+        "message": "흑백"
+    },
+    "reset": {
+        "message": "초기화"
+    },
+    "video_end_cards": {
+        "message": "최종 화면"
+    },
+    "hide_video_controls_on_pause_seek": {
+        "message": "일시중지/탐색 시 플레이어 컨트롤"
+    },
+    "show_video_end_cards_on_hover_pause": {
+        "message": "마우스를 올리거나 일시중지할 때 표시"
+    },
+    "video_description": {
+        "message": "동영상 설명"
+    },
+    "minimalist_video_description": {
+        "message": "간결하게"
+    },
+    "expanded_video_description": {
+        "message": "펼쳐서 표시"
+    },
+    "clickable_channel_names": {
+        "message": "사이드바에서 채널 이름 클릭 가능"
+    },
+    "toggle_video_transcript": {
+        "message": "스크립트 열기/닫기"
+    },
+    "toggle_like": {
+        "message": "좋아요 표시/취소"
+    },
+    "toggle_dislike": {
+        "message": "싫어요 표시/취소"
+    },
+    "live_chat": {
+        "message": "실시간 채팅"
+    },
+    "disable_auto_opening_live_chat": {
+        "message": "실시간 채팅 자동으로 열지 않기"
+    },
+    "default_view": {
+        "message": "기본 보기"
+    },
+    "live_chat_view_top_chat": {
+        "message": "인기 채팅"
+    },
+    "live_chat_view_live_chat": {
+        "message": "실시간 채팅"
+    },
+    "comments_section": {
+        "message": "댓글"
+    },
+    "auto_expand_long_comments": {
+        "message": "긴 댓글 자동으로 펼치기"
+    },
+    "default_sorting_of_comments": {
+        "message": "댓글 기본 정렬"
+    },
+    "comments_sorting_top": {
+        "message": "인기 댓글순"
+    },
+    "comments_sorting_newest": {
+        "message": "최신순"
+    },
+    "sidebar": {
+        "message": "사이드바"
+    },
+    "show_comments_section": {
+        "message": "댓글 표시"
+    },
+    "toggle_comments_section": {
+        "message": "댓글 표시/숨기기"
+    },
+    "use_player_height": {
+        "message": "플레이어 높이에 맞추기"
+    },
+    "hide_header": {
+        "message": "댓글 상단(개수·정렬) 숨기기"
+    },
+    "hide_comment_field": {
+        "message": "댓글 입력란 숨기기"
+    },
+    "share_button": {
+        "message": "공유 버튼"
+    },
+    "download_button": {
+        "message": "오프라인 저장 버튼"
+    },
+    "clip_button": {
+        "message": "클립 버튼"
+    },
+    "thanks_button": {
+        "message": "Thanks 버튼"
+    },
+    "save_button": {
+        "message": "저장 버튼"
+    },
+    "button_labels": {
+        "message": "버튼 이름"
+    },
+    "show_search_results_as_a_grid": {
+        "message": "검색 결과를 그리드로 표시"
+    },
+    "hide_right_sidebar": {
+        "message": "오른쪽 사이드바 숨기기"
+    },
+    "irrelevant_search_results": {
+        "message": "관련 없는 검색 결과"
+    },
+    "hide_irrelevant_search_results_option_sub_label": {
+        "message": "회원님을 위한 추천, 다른 사용자가 시청한 동영상, 다시 보기..."
+    },
+    "compact_header": {
+        "message": "상단바 간결하게"
+    },
+    "make_yt_logo_redirect_to_another_page": {
+        "message": "로고 클릭 시 다른 페이지로 이동"
+    },
+    "open_in_new_tab_button_in_search_box": {
+        "message": "검색창에 '새 탭에서 열기' 버튼 추가"
+    },
+    "open_in_new_tab": {
+        "message": "새 탭에서 열기"
+    },
+    "compact_left_sidebar": {
+        "message": "왼쪽 사이드바 간결하게"
+    },
+    "shorts_button": {
+        "message": "Shorts 버튼"
+    },
+    "explore_section": {
+        "message": "'탐색' 섹션"
+    },
+    "more_from_yt_section": {
+        "message": "'YouTube 더보기' 섹션"
+    },
+    "dark_theme": {
+        "message": "어두운 테마"
+    },
+    "light_theme": {
+        "message": "밝은 테마"
+    },
+    "use_theme_in_light_mode": {
+        "message": "밝은 모드에서도 이 테마 사용"
+    },
+    "more_animations": {
+        "message": "애니메이션 추가"
+    },
+    "red_subscribe_button": {
+        "message": "빨간색 구독 버튼"
+    },
+    "video_metadata": {
+        "message": "동영상 정보"
+    },
+    "show_full_video_title": {
+        "message": "제목 전체 표시"
+    },
+    "show_full_channel_name_and_upload_time": {
+        "message": "채널 이름과 업로드 시간 전체 표시"
+    },
+    "back_to_top": {
+        "message": "맨 위로"
+    },
+    "show_back_to_top_button": {
+        "message": "맨 위로 버튼 표시"
+    },
+    "scroll_back_to_top": {
+        "message": "맨 위로 스크롤"
+    },
+    "delete": {
+        "message": "삭제"
+    },
+    "close": {
+        "message": "닫기"
+    }
+}
